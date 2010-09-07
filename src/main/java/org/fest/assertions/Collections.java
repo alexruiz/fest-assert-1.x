@@ -27,9 +27,9 @@ public final class Collections {
   /**
    * Attempts to find the given objects in the given <code>{@link Collection}</code>, returning the ones that were not
    * found.
-   * @param target the given <code>Collection</code>.
-   * @param objects the elements to find in the given <code>Collection</code>.
-   * @return the elements that were not found in the given <code>Collection</code>.
+   * @param target the given {@code Collection}.
+   * @param objects the elements to find in the given {@code Collection}.
+   * @return the elements that were not found in the given {@code Collection}.
    */
   public static Collection<Object> notFound(Collection<?> target, Object...objects) {
     List<Object> notFound = new ArrayList<Object>();
@@ -40,9 +40,9 @@ public final class Collections {
   /**
    * Attempts to find the given objects in the given <code>{@link Collection}</code>, returning the ones that were
    * found.
-   * @param target the given <code>Collection</code>.
-   * @param objects the elements to find in the given <code>Collection</code>.
-   * @return the elements that were found in the given <code>Collection</code>.
+   * @param target the given {@code Collection}.
+   * @param objects the elements to find in the given {@code Collection}.
+   * @return the elements that were found in the given {@code Collection}.
    */
   public static Collection<Object> found(Collection<?> target, Object...objects) {
     List<Object> found = new ArrayList<Object>();

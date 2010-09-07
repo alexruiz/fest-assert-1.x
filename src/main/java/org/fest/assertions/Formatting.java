@@ -76,7 +76,7 @@ public final class Formatting {
 
   /**
    * Returns the <code>String</code> representation of the given object in between brackets ("<" and ">"). This method
-   * has special support for arrays, <code>Class<?></code>, <code>Collection</code>s, {@code Map}s, {@code File}s and
+   * has special support for arrays, <code>Class<?></code>, {@code Collection}s, {@code Map}s, {@code File}s and
    * <code>Dimension</code>s. For any other types, this method simply calls its <code>toString</code> implementation.
    * @param o the given object.
    * @return the <code>String</code> representation of the given object in between brackets.
