@@ -16,7 +16,7 @@
 package org.fest.assertions;
 
 /**
- * Understands an index.
+ * An index.
  *
  * @author Alex Ruiz
  */

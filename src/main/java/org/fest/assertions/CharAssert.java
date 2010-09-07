@@ -16,12 +16,13 @@ package org.fest.assertions;
 
 import static java.lang.Character.valueOf;
 import static org.fest.assertions.ErrorMessages.*;
-import static org.fest.assertions.Formatting.inBrackets;
-import static org.fest.util.Strings.concat;
 
 /**
- * Understands assertion methods for {@code Character}s and {@code char}s. To create a new instance of this class call
- * <code>{@link Assertions#assertThat(Character)}</code> or <code>{@link Assertions#assertThat(char)}</code>.
+ * Assertions for {@code Character}s and {@code char}s.
+ * <p>
+ * To create a new instance of this class invoke either <code>{@link Assertions#assertThat(Character)}</code> or
+ * <code>{@link Assertions#assertThat(char)}</code>.
+ * </p>
  *
  * @author Yvonne Wang
  * @author David DIDIER
@@ -168,7 +169,7 @@ public class CharAssert extends GenericAssert<Character> {
   public CharAssert isUpperCase() {
     if (Character.isUpperCase(actual)) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat(inBrackets(actual), " should be an upper-case character"));
+    throw failure(String.format("<%s> should be an upper-case character", actual));
   }
 
   /**
@@ -179,7 +180,7 @@ public class CharAssert extends GenericAssert<Character> {
   public CharAssert isLowerCase() {
     if (Character.isLowerCase(actual)) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat(inBrackets(actual), " should be a lower-case character"));
+    throw failure(String.format("<%s> should be a lower-case character", actual));
   }
 
   /** {@inheritDoc} */
@@ -192,7 +193,7 @@ public class CharAssert extends GenericAssert<Character> {
    * Verifies that the actual <code>{@link Character}</code> satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Character} does not satisfy the given condition.
    * @see #is(Condition)
    * @since 1.3
@@ -206,7 +207,7 @@ public class CharAssert extends GenericAssert<Character> {
    * Verifies that the actual <code>{@link Character}</code> does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Character} does satisfies the given condition.
    * @see #isNot(Condition)
    * @since 1.3
@@ -220,7 +221,7 @@ public class CharAssert extends GenericAssert<Character> {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Character} does not satisfy the given condition.
    * @since 1.3
    */
@@ -233,7 +234,7 @@ public class CharAssert extends GenericAssert<Character> {
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Character} does not satisfy the given condition.
    * @since 1.3
    */
@@ -243,9 +244,9 @@ public class CharAssert extends GenericAssert<Character> {
   }
 
   /**
-   * Verifies that the actual <code>{@link Character}</code> is not <code>null</code>.
+   * Verifies that the actual <code>{@link Character}</code> is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code Character} value is <code>null</code>.
+   * @throws AssertionError if the actual {@code Character} value is {@code null}.
    * @since 1.3
    */
   @Override public CharAssert isNotNull() {

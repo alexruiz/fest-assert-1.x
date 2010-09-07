@@ -15,18 +15,19 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ErrorMessages.*;
-import static org.fest.assertions.Formatting.inBrackets;
+import static org.fest.assertions.Formatting.format;
 import static org.fest.assertions.PropertySupport.propertyValues;
 import static org.fest.util.Collections.list;
-import static org.fest.util.Strings.concat;
 
 import java.util.*;
 
 import org.fest.util.IntrospectionError;
 
 /**
- * Understands assertions for <code>Object</code> arrays. To create a new instance of this class use the method
- * <code>{@link Assertions#assertThat(Object[])}</code>.
+ * Assertions for {@code Object} arrays.
+ * <p>
+ * To create a new instance of this class invoke <code>{@link Assertions#assertThat(Object[])}</code>.
+ * </p>
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -64,7 +65,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
   }
 
   /**
-   * Verifies that all the elements in the actual <code>Object</code> array belong to the specified type. Matching
+   * Verifies that all the elements in the actual {@code Object} array belong to the specified type. Matching
    * includes subclasses of the given type.
    * <p>
    * For example, consider the following code listing:
@@ -76,8 +77,8 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * </p>
    * @param type the expected type.
    * @return this assertion object.
-   * @throws NullPointerException if the given type is <code>null</code>.
-   * @throws AssertionError if the component type of the actual <code>Object</code> array is not the same as the
+   * @throws NullPointerException if the given type is {@code null}.
+   * @throws AssertionError if the component type of the actual {@code Object} array is not the same as the
    * specified one.
    */
   public ObjectArrayAssert hasAllElementsOfType(Class<?> type) {
@@ -86,17 +87,17 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
     for (Object o : actual) {
       if (type.isInstance(o)) continue;
       failIfCustomMessageIsSet();
-      fail(concat("not all elements in array:", inBrackets(actual), " belong to the type:", inBrackets(type)));
+      fail(format("not all elements in array:<%s> belong to the type:<%s>", actual, type));
     }
     return this;
   }
 
   /**
-   * Verifies that at least one element in the actual <code>Object</code> array belong to the specified type. Matching
+   * Verifies that at least one element in the actual {@code Object} array belong to the specified type. Matching
    * includes subclasses of the given type.
    * @param type the expected type.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> does not have any elements of the given type.
+   * @throws AssertionError if the actual {@code Object} does not have any elements of the given type.
    */
   public ObjectArrayAssert hasAtLeastOneElementOfType(Class<?> type) {
     validateIsNotNull(type);
@@ -109,7 +110,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
     }
     if (found) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat("array:", inBrackets(actual), " does not have any elements of type:", inBrackets(type)));
+    throw failure(format("array:<%s> does not have any elements of type:<%s>", actual, type));
   }
 
   private void validateIsNotNull(Class<?> type) {
@@ -117,12 +118,12 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> array contains the given objects.
+   * Verifies that the actual {@code Object} array contains the given objects.
    * @param objects the objects to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> array is <code>null</code>.
-   * @throws NullPointerException if the given <code>Object</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>Object</code> array does not contain the given objects.
+   * @throws AssertionError if the actual {@code Object} array is {@code null}.
+   * @throws NullPointerException if the given {@code Object} array is {@code null}.
+   * @throws AssertionError if the actual {@code Object} array does not contain the given objects.
    */
   @Override public ObjectArrayAssert contains(Object... objects) {
     assertContains(objects);
@@ -130,13 +131,13 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> array contains the given objects <strong>only</strong>.
+   * Verifies that the actual {@code Object} array contains the given objects <strong>only</strong>.
    * @param objects the objects to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> array is <code>null</code>.
-   * @throws NullPointerException if the given <code>Object</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>Object</code> array does not contain the given objects, or if the actual
-   * <code>Object</code> array contains elements other than the ones specified.
+   * @throws AssertionError if the actual {@code Object} array is {@code null}.
+   * @throws NullPointerException if the given {@code Object} array is {@code null}.
+   * @throws AssertionError if the actual {@code Object} array does not contain the given objects, or if the actual
+   * {@code Object} array contains elements other than the ones specified.
    */
   @Override public ObjectArrayAssert containsOnly(Object... objects) {
     assertContainsOnly(objects);
@@ -144,12 +145,12 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> array does not contain the given objects.
+   * Verifies that the actual {@code Object} array does not contain the given objects.
    * @param objects the objects the array should exclude.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> array is <code>null</code>.
-   * @throws NullPointerException if the given <code>Object</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>Object</code> array contains any of the given objects.
+   * @throws AssertionError if the actual {@code Object} array is {@code null}.
+   * @throws NullPointerException if the given {@code Object} array is {@code null}.
+   * @throws AssertionError if the actual {@code Object} array contains any of the given objects.
    */
   @Override public ObjectArrayAssert excludes(Object... objects) {
     assertExcludes(objects);
@@ -157,10 +158,10 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> array does not have duplicates.
+   * Verifies that the actual {@code Object} array does not have duplicates.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>Object</code> array has duplicates.
+   * @throws AssertionError if the actual {@code Object} array is {@code null}.
+   * @throws AssertionError if the actual {@code Object} array has duplicates.
    */
   @Override public ObjectArrayAssert doesNotHaveDuplicates() {
     assertDoesNotHaveDuplicates();
@@ -168,11 +169,11 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> array satisfies the given condition.
+   * Verifies that the actual {@code Object} array satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>Object</code> array does not satisfy the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code Object} array does not satisfy the given condition.
    * @see #is(Condition)
    */
   @Override public ObjectArrayAssert satisfies(Condition<Object[]> condition) {
@@ -181,11 +182,11 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> array does not satisfy the given condition.
+   * Verifies that the actual {@code Object} array does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>Object</code> array satisfies the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code Object} array satisfies the given condition.
    * @see #isNot(Condition)
    */
   @Override public ObjectArrayAssert doesNotSatisfy(Condition<Object[]> condition) {
@@ -197,8 +198,8 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>Object</code> array does not satisfy the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code Object} array does not satisfy the given condition.
    * @since 1.2
    */
   @Override public ObjectArrayAssert is(Condition<Object[]> condition) {
@@ -210,8 +211,8 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>Object</code> array satisfies the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code Object} array satisfies the given condition.
    * @since 1.2
    */
   @Override public ObjectArrayAssert isNot(Condition<Object[]> condition) {
@@ -220,9 +221,9 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> array is not <code>null</code>.
+   * Verifies that the actual {@code Object} array is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> array is <code>null</code>.
+   * @throws AssertionError if the actual {@code Object} array is {@code null}.
    */
   @Override public ObjectArrayAssert isNotNull() {
     assertNotNull();
@@ -230,10 +231,10 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> array contains at least on element.
+   * Verifies that the actual {@code Object} array contains at least on element.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>Object</code> array is empty.
+   * @throws AssertionError if the actual {@code Object} array is {@code null}.
+   * @throws AssertionError if the actual {@code Object} array is empty.
    */
   @Override public ObjectArrayAssert isNotEmpty() {
     assertIsNotEmpty();
@@ -241,11 +242,11 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> array is equal to the given array. Array equality is checked by
+   * Verifies that the actual {@code Object} array is equal to the given array. Array equality is checked by
    * <code>{@link Arrays#deepEquals(Object[], Object[])}</code>.
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> array is not equal to the given one.
+   * @throws AssertionError if the actual {@code Object} array is not equal to the given one.
    */
   @Override public ObjectArrayAssert isEqualTo(Object[] expected) {
     if (Arrays.deepEquals(actual, expected)) return this;
@@ -254,11 +255,11 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> array is not equal to the given array. Array equality is checked by
+   * Verifies that the actual {@code Object} array is not equal to the given array. Array equality is checked by
    * <code>{@link Arrays#deepEquals(Object[], Object[])}</code>.
    * @param array the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> array is equal to the given one.
+   * @throws AssertionError if the actual {@code Object} array is equal to the given one.
    */
   @Override public ObjectArrayAssert isNotEqualTo(Object[] array) {
     if (!Arrays.deepEquals(actual, array)) return this;
@@ -267,11 +268,11 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
   }
 
   /**
-   * Verifies that the number of elements in the actual <code>Object</code> array is equal to the given one.
-   * @param expected the expected number of elements in the actual <code>Object</code> array.
+   * Verifies that the number of elements in the actual {@code Object} array is equal to the given one.
+   * @param expected the expected number of elements in the actual {@code Object} array.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> array is <code>null</code>.
-   * @throws AssertionError if the number of elements in the actual <code>Object</code> array is not equal to the given
+   * @throws AssertionError if the actual {@code Object} array is {@code null}.
+   * @throws AssertionError if the number of elements in the actual {@code Object} array is not equal to the given
    * one.
    */
   @Override public ObjectArrayAssert hasSize(int expected) {
@@ -280,10 +281,10 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> array is the same as the given array.
+   * Verifies that the actual {@code Object} array is the same as the given array.
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> array is not the same as the given one.
+   * @throws AssertionError if the actual {@code Object} array is not the same as the given one.
    */
   @Override public ObjectArrayAssert isSameAs(Object[] expected) {
     assertSameAs(expected);
@@ -291,10 +292,10 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> array is not the same as the given array.
+   * Verifies that the actual {@code Object} array is not the same as the given array.
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> array is the same as the given one.
+   * @throws AssertionError if the actual {@code Object} array is the same as the given one.
    */
   @Override public ObjectArrayAssert isNotSameAs(Object[] expected) {
     assertNotSameAs(expected);
@@ -322,7 +323,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * {@code ObjectArrayAssert}.
    * @return a new {@code ObjectArrayAssert} containing the values of the given property name from the elements of this
    * {@code ObjectArrayAssert}'s array.
-   * @throws AssertionError if the actual array is <code>null</code>.
+   * @throws AssertionError if the actual array is {@code null}.
    * @throws IntrospectionError if an element in the given array does not have a matching property.
    * @since 1.3
    */

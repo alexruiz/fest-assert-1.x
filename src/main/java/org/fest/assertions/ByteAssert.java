@@ -20,8 +20,11 @@ import static org.fest.assertions.ErrorMessages.*;
 import org.fest.util.VisibleForTesting;
 
 /**
- * Understands assertion methods for {@code Byte}s and {@code byte}s. To create a new instance of this class call
- * <code>{@link Assertions#assertThat(Byte)}</code> or <code>{@link Assertions#assertThat(byte)}</code>.
+ * Assertions for {@code Byte}s and {@code byte}s.
+ * <p>
+ * To create a new instance of this class invoke either <code>{@link Assertions#assertThat(Byte)}</code> or
+ * <code>{@link Assertions#assertThat(byte)}</code>.
+ * </p>
  *
  * @author Yvonne Wang
  * @author David DIDIER
@@ -206,7 +209,7 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
    * Verifies that the actual {@code Byte} satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Byte} does not satisfy the given condition.
    * @see #is(Condition)
    * @since 1.3
@@ -220,7 +223,7 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
    * Verifies that the actual {@code Byte} does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Byte} does satisfies the given condition.
    * @see #isNot(Condition)
    * @since 1.3
@@ -234,7 +237,7 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Byte} does not satisfy the given condition.
    * @since 1.3
    */
@@ -247,7 +250,7 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Byte} does not satisfy the given condition.
    * @since 1.3
    */
@@ -257,9 +260,9 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
   }
 
   /**
-   * Verifies that the actual {@code Byte} is not <code>null</code>.
+   * Verifies that the actual {@code Byte} is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code Byte} value is <code>null</code>.
+   * @throws AssertionError if the actual {@code Byte} value is {@code null}.
    * @since 1.3
    */
   @Override public ByteAssert isNotNull() {

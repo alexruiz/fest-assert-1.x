@@ -22,7 +22,7 @@ import static org.fest.util.Arrays.array;
 import static org.fest.util.Objects.areEqual;
 
 /**
- * Understands failure methods.
+ * Common failures.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -40,7 +40,7 @@ public final class Fail {
   /**
    * Throws an <code>{@link AssertionError}</code> if the given objects are equal.
    * @param customErrorMessage any custom error message. This message will replace the default one only if it (the
-   * custom message) is not <code>null</code>.
+   * custom message) is not {@code null}.
    * @param descriptionOfActual the description of the actual value.
    * @param actual the actual object.
    * @param other the object to compare to.
@@ -58,7 +58,7 @@ public final class Fail {
    * in the classpath, this method will throw a <code>ComparisonFailure</code> instead. More details about this feature
    * can be found <a href="http://docs.codehaus.org/display/FEST/JUnit-Specific+Features">here</a>.
    * @param customErrorMessage any custom error message. This message will replace the default one only if it (the
-   * custom message) is not <code>null</code>.
+   * custom message) is not {@code null}.
    * @param descriptionOfActual the description of the actual value.
    * @param actual the actual object.
    * @param expected the expected object.
@@ -86,12 +86,12 @@ public final class Fail {
   }
 
   /**
-   * Throws an <code>{@link AssertionError}</code> if the actual value is <code>null</code>.
+   * Throws an <code>{@link AssertionError}</code> if the actual value is {@code null}.
    * @param customErrorMessage any custom error message. This message will replace the default one only if it (the
-   * custom message) is not <code>null</code>.
+   * custom message) is not {@code null}.
    * @param description the description of the actual value.
    * @param actual the actual value.
-   * @throws AssertionError if the actual value is <code>null</code>.
+   * @throws AssertionError if the actual value is {@code null}.
    * @since 1.3
    */
   protected static void failIfActualIsNull(String customErrorMessage, Description description, Object actual) {
@@ -101,12 +101,12 @@ public final class Fail {
   }
 
   /**
-   * Throws an <code>{@link AssertionError}</code> if the given object is <code>null</code>.
+   * Throws an <code>{@link AssertionError}</code> if the given object is {@code null}.
    * @param customErrorMessage any custom error message. This message will replace the default one only if it (the
-   * custom message) is not <code>null</code>.
+   * custom message) is not {@code null}.
    * @param description the description of the given object.
    * @param o the given object.
-   * @throws AssertionError if the given object is <code>null</code>.
+   * @throws AssertionError if the given object is {@code null}.
    * @since 1.2
    */
   protected static void failIfNull(String customErrorMessage, Description description, Object o) {
@@ -116,12 +116,12 @@ public final class Fail {
   }
 
   /**
-   * Throws an <code>{@link AssertionError}</code> if the given object is not <code>null</code>.
+   * Throws an <code>{@link AssertionError}</code> if the given object is not {@code null}.
    * @param customErrorMessage any custom error message. This message will replace the default one only if it (the
-   * custom message) is not <code>null</code>.
+   * custom message) is not {@code null}.
    * @param description the description of the given object.
    * @param o the given object.
-   * @throws AssertionError if the given object is not <code>null</code>.
+   * @throws AssertionError if the given object is not {@code null}.
    * @since 1.2
    */
   protected static void failIfNotNull(String customErrorMessage, Description description, Object o) {
@@ -133,7 +133,7 @@ public final class Fail {
   /**
    * Throws an <code>{@link AssertionError}</code> if the given objects are the same.
    * @param customErrorMessage any custom error message. This message will replace the default one only if it (the
-   * custom message) is not <code>null</code>.
+   * custom message) is not {@code null}.
    * @param descriptionOfActual the description of the actual value.
    * @param actual the actual object.
    * @param other the object to compare to.
@@ -149,7 +149,7 @@ public final class Fail {
   /**
    * Throws an <code>{@link AssertionError}</code> if the given objects are not the same.
    * @param customErrorMessage any custom error message. This message will replace the default one only if it (the
-   * custom message) is not <code>null</code>.
+   * custom message) is not {@code null}.
    * @param descriptionOfActual the description of the actual value.
    * @param actual the actual object.
    * @param other the object to compare to.
@@ -168,9 +168,9 @@ public final class Fail {
   }
 
   /**
-   * Throws an <code>{@link AssertionError}</code> only if the given custom message is not <code>null</code>.
+   * Throws an <code>{@link AssertionError}</code> only if the given custom message is not {@code null}.
    * @param customErrorMessage the custom error message.
-   * @throws AssertionError only if the custom error message is not <code>null</code>.
+   * @throws AssertionError only if the custom error message is not {@code null}.
    * @since 1.2
    */
   protected static void failWithMessage(String customErrorMessage) {
@@ -178,10 +178,10 @@ public final class Fail {
   }
 
   /**
-   * Throws an <code>{@link AssertionError}</code> only if the given custom message is not <code>null</code>.
+   * Throws an <code>{@link AssertionError}</code> only if the given custom message is not {@code null}.
    * @param customErrorMessage the custom error message.
    * @param realCause cause of the error.
-   * @throws AssertionError only if the custom error message is not <code>null</code>.
+   * @throws AssertionError only if the custom error message is not {@code null}.
    * @since 1.2
    */
   protected static void failWithMessage(String customErrorMessage, Throwable realCause) {
@@ -191,7 +191,7 @@ public final class Fail {
   /**
    * Throws an <code>{@link AssertionError}</code> with the given message and with the <code>{@link Throwable}</code>
    * that caused the failure.
-   * @param description the description of the failed assertion. It can be <code>null</code>.
+   * @param description the description of the failed assertion. It can be {@code null}.
    * @param realCause cause of the error.
    */
   public static void fail(String description, Throwable realCause) {

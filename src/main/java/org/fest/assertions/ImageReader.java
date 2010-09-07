@@ -21,7 +21,7 @@ import java.io.*;
 import javax.imageio.ImageIO;
 
 /**
- * Understands reading an image from the file system.
+ * Reads an image from the file system.
  *
  * @author Yvonne Wang
  */

@@ -19,7 +19,7 @@ import static org.fest.assertions.ArrayInspection.*;
 import java.util.*;
 
 /**
- * Understands assertions for arrays.
+ * Assertions for arrays.
  * @param <T> the generic type of the arrays.
  *
  * @author Alex Ruiz
@@ -37,7 +37,7 @@ public abstract class ArrayAssert<T> extends ItemGroupAssert<T> {
   /**
    * Returns the size of the actual array.
    * @return the size of the actual array.
-   * @throws NullPointerException if the actual array is <code>null</code>.
+   * @throws NullPointerException if the actual array is {@code null}.
    */
   @Override protected final int actualGroupSize() {
     isNotNull();

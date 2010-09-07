@@ -16,10 +16,11 @@
 package org.fest.assertions;
 
 /**
- * Understands a finite increment in a variable.
- * @since 1.1
+ * A finite increment in a variable.
  *
  * @author Alex Ruiz
+ *
+ * @since 1.1
  */
 public final class Delta {
 
@@ -58,8 +59,8 @@ public final class Delta {
   }
 
   /**
-   * Returns the value of this delta as a <code>double</code>.
-   * @return the value of this delta as a <code>double</code>.
+   * Returns the value of this delta as a {@code double}.
+   * @return the value of this delta as a {@code double}.
    * @since 1.2
    */
   public double doubleValue() {
@@ -67,8 +68,8 @@ public final class Delta {
   }
 
   /**
-   * Returns the value of this delta as a <code>float</code>.
-   * @return the value of this delta as a <code>float</code>.
+   * Returns the value of this delta as a {@code float}.
+   * @return the value of this delta as a {@code float}.
    * @since 1.2
    */
   public float floatValue() {

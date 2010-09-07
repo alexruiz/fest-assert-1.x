@@ -21,8 +21,10 @@ import static org.fest.assertions.ErrorMessages.*;
 import java.util.Arrays;
 
 /**
- * Understands assertion methods for <code>float</code> arrays. To create a new instance of this class use the
- * method <code>{@link Assertions#assertThat(float[])}</code>.
+ * Assertions for {@code float} arrays.
+ * <p>
+ * To create a new instance of this class invoke <code>{@link Assertions#assertThat(float[])}</code>.
+ * </p>
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -60,12 +62,12 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
   }
 
   /**
-   * Verifies that the actual <code>float</code> array contains the given values.
+   * Verifies that the actual {@code float} array contains the given values.
    * @param values the values to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>float</code> array is <code>null</code>.
-   * @throws NullPointerException if the given <code>float</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>float</code> array does not contain the given values.
+   * @throws AssertionError if the actual {@code float} array is {@code null}.
+   * @throws NullPointerException if the given {@code float} array is {@code null}.
+   * @throws AssertionError if the actual {@code float} array does not contain the given values.
    */
   public FloatArrayAssert contains(float...values) {
     assertContains(copy(values));
@@ -73,13 +75,13 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
   }
 
   /**
-   * Verifies that the actual <code>float</code> array contains the given values <strong>only</strong>.
+   * Verifies that the actual {@code float} array contains the given values <strong>only</strong>.
    * @param values the values to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>float</code> array is <code>null</code>.
-   * @throws NullPointerException if the given <code>float</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>float</code> array does not contain the given objects, or if the actual
-   * <code>float</code> array contains elements other than the ones specified.
+   * @throws AssertionError if the actual {@code float} array is {@code null}.
+   * @throws NullPointerException if the given {@code float} array is {@code null}.
+   * @throws AssertionError if the actual {@code float} array does not contain the given objects, or if the actual
+   * {@code float} array contains elements other than the ones specified.
    */
   public FloatArrayAssert containsOnly(float...values) {
     assertContainsOnly(copy(values));
@@ -87,12 +89,12 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
   }
 
   /**
-   * Verifies that the actual <code>float</code> array does not contain the given values.
+   * Verifies that the actual {@code float} array does not contain the given values.
    * @param values the values the array should exclude.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>float</code> array is <code>null</code>.
-   * @throws NullPointerException if the given <code>float</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>Object</code> array contains any of the given values.
+   * @throws AssertionError if the actual {@code float} array is {@code null}.
+   * @throws NullPointerException if the given {@code float} array is {@code null}.
+   * @throws AssertionError if the actual {@code Object} array contains any of the given values.
    */
   public FloatArrayAssert excludes(float...values) {
     assertExcludes(copy(values));
@@ -100,11 +102,11 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
   }
 
   /**
-   * Verifies that the actual <code>float</code> array satisfies the given condition.
+   * Verifies that the actual {@code float} array satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>float</code> array does not satisfy the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code float} array does not satisfy the given condition.
    * @see #is(Condition)
    */
   @Override public FloatArrayAssert satisfies(Condition<float[]> condition) {
@@ -113,11 +115,11 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
   }
 
   /**
-   * Verifies that the actual <code>float</code> array does not satisfy the given condition.
+   * Verifies that the actual {@code float} array does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>float</code> array satisfies the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code float} array satisfies the given condition.
    * @see #isNot(Condition)
    */
   @Override public FloatArrayAssert doesNotSatisfy(Condition<float[]> condition) {
@@ -130,8 +132,8 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>float</code> array does not satisfy the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code float} array does not satisfy the given condition.
    * @since 1.2
    */
   @Override public FloatArrayAssert is(Condition<float[]> condition) {
@@ -143,8 +145,8 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>float</code> array satisfies the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code float} array satisfies the given condition.
    * @since 1.2
    */
   @Override public FloatArrayAssert isNot(Condition<float[]> condition) {
@@ -153,9 +155,9 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
   }
 
   /**
-   * Verifies that the actual <code>float</code> array is not <code>null</code>.
+   * Verifies that the actual {@code float} array is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>float</code> array is <code>null</code>.
+   * @throws AssertionError if the actual {@code float} array is {@code null}.
    */
   @Override public FloatArrayAssert isNotNull() {
     assertNotNull();
@@ -163,10 +165,10 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
   }
 
   /**
-   * Verifies that the actual <code>float</code> array contains at least on element.
+   * Verifies that the actual {@code float} array contains at least on element.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>float</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>float</code> array is empty.
+   * @throws AssertionError if the actual {@code float} array is {@code null}.
+   * @throws AssertionError if the actual {@code float} array is empty.
    */
   @Override public FloatArrayAssert isNotEmpty() {
     assertIsNotEmpty();
@@ -174,11 +176,11 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
   }
 
   /**
-   * Verifies that the actual <code>float</code> array is equal to the given array. Array equality is checked by
+   * Verifies that the actual {@code float} array is equal to the given array. Array equality is checked by
    * <code>{@link Arrays#equals(float[], float[])}</code>.
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>float</code> array is not equal to the given one.
+   * @throws AssertionError if the actual {@code float} array is not equal to the given one.
    */
   @Override public FloatArrayAssert isEqualTo(float[] expected) {
     if (Arrays.equals(actual, expected)) return this;
@@ -187,11 +189,11 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
   }
 
   /**
-   * Verifies that the actual <code>float</code> array is not equal to the given array. Array equality is checked by
+   * Verifies that the actual {@code float} array is not equal to the given array. Array equality is checked by
    * <code>{@link Arrays#equals(float[], float[])}</code>.
    * @param array the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>float</code> array is equal to the given one.
+   * @throws AssertionError if the actual {@code float} array is equal to the given one.
    */
   @Override public FloatArrayAssert isNotEqualTo(float[] array) {
     if (!Arrays.equals(actual, array)) return this;
@@ -200,11 +202,11 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
   }
 
   /**
-   * Verifies that the number of elements in the actual <code>float</code> array is equal to the given one.
-   * @param expected the expected number of elements in the actual <code>float</code> array.
+   * Verifies that the number of elements in the actual {@code float} array is equal to the given one.
+   * @param expected the expected number of elements in the actual {@code float} array.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>float</code> array is <code>null</code>.
-   * @throws AssertionError if the number of elements in the actual <code>float</code> array is not equal to the given
+   * @throws AssertionError if the actual {@code float} array is {@code null}.
+   * @throws AssertionError if the number of elements in the actual {@code float} array is not equal to the given
    * one.
    */
   @Override public FloatArrayAssert hasSize(int expected) {
@@ -213,10 +215,10 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
   }
 
   /**
-   * Verifies that the actual <code>float</code> array is the same as the given array.
+   * Verifies that the actual {@code float} array is the same as the given array.
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>float</code> array is not the same as the given one.
+   * @throws AssertionError if the actual {@code float} array is not the same as the given one.
    */
   @Override public FloatArrayAssert isSameAs(float[] expected) {
     assertSameAs(expected);
@@ -224,10 +226,10 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
   }
 
   /**
-   * Verifies that the actual <code>float</code> array is not the same as the given array.
+   * Verifies that the actual {@code float} array is not the same as the given array.
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>float</code> array is the same as the given one.
+   * @throws AssertionError if the actual {@code float} array is the same as the given one.
    */
   @Override public FloatArrayAssert isNotSameAs(float[] expected) {
     assertNotSameAs(expected);

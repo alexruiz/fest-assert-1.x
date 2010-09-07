@@ -16,11 +16,9 @@
 package org.fest.assertions;
 
 import static java.lang.Math.abs;
-import static java.lang.String.valueOf;
-import static org.fest.util.Strings.concat;
 
 /**
- * Understands a color.
+ * A color.
  *
  * @author Alex Ruiz
  */
@@ -63,11 +61,6 @@ final class RGBColor {
   }
 
   @Override public String toString() {
-    return concat(
-        "color[",
-        "r=", valueOf(r), ",",
-        "g=", valueOf(g), ",",
-        "b=", valueOf(b), "]"
-        );
+    return String.format("color[r=%d,g=%d,b=%d]", r, g, b);
   }
 }

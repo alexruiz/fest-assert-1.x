@@ -15,11 +15,11 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Strings.*;
+import static org.fest.util.Strings.isEmpty;
 
 /**
- * Understands a condition to be met by a given <code>{@link Object}</code>.
- * @param <T> the type of <code>Object</code> this condition accepts.
+ * Condition to be met by an <code>{@link Object}</code>.
+ * @param <T> the type of {@code Object} this condition accepts.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -54,7 +54,7 @@ public abstract class Condition<T> {
   final String addDescriptionTo(String s) {
     String descriptionToAdd = description();
     if (isEmpty(descriptionToAdd)) descriptionToAdd = getClass().getSimpleName();
-    return concat(s, ":<", descriptionToAdd, ">");
+    return String.format("%s:<%s>", s, descriptionToAdd);
   }
 
   /**
@@ -66,7 +66,7 @@ public abstract class Condition<T> {
   /**
    * Verifies that the given value satisfies this condition.
    * @param value the value to verify.
-   * @return <code>true</code> if the given value satisfies this condition, <code>false</code> otherwise.
+   * @return {@code true} if the given value satisfies this condition, {@code false} otherwise.
    */
   public abstract boolean matches(T value);
 }

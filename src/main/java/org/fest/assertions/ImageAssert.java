@@ -14,20 +14,20 @@
  */
 package org.fest.assertions;
 
-import static java.lang.String.valueOf;
 import static org.fest.assertions.ErrorMessages.*;
-import static org.fest.assertions.Formatting.inBrackets;
+import static org.fest.assertions.Formatting.format;
 import static org.fest.assertions.Threshold.threshold;
 import static org.fest.util.Objects.areEqual;
-import static org.fest.util.Strings.*;
 
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
 /**
- * Understands assertion methods for images. To create a new instance of this class use the method
- * <code>{@link Assertions#assertThat(BufferedImage)}</code>.
+ * Assertions for <code>{@link BufferedImage}</code>s.
+ * <p>
+ * To create a new instance of this class invoke <code>{@link Assertions#assertThat(BufferedImage)}</code>.
+ * </p>
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -43,7 +43,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
    * Reads the image in the specified path.
    * @param imageFilePath the path of the image to read.
    * @return the read image.
-   * @throws NullPointerException if the given path is <code>null</code>.
+   * @throws NullPointerException if the given path is {@code null}.
    * @throws IllegalArgumentException if the given path does not belong to a file.
    * @throws IOException if any I/O error occurred while reading the image.
    */
@@ -51,7 +51,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
     if (imageFilePath == null) throw new NullPointerException("The path of the image to read should not be null");
     File imageFile = new File(imageFilePath);
     if (!imageFile.isFile())
-      throw new IllegalArgumentException(concat("The path ", quote(imageFilePath), " does not belong to a file"));
+      throw new IllegalArgumentException(format("The path <%s> does not belong to a file", imageFilePath));
     return imageReader.read(imageFile);
   }
 
@@ -89,7 +89,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
    * Verifies that the actual image satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual image does not satisfy the given condition.
    * @see #is(Condition)
    */
@@ -102,7 +102,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
    * Verifies that the actual image does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual image satisfies the given condition.
    * @see #isNot(Condition)
    */
@@ -115,7 +115,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual image does not satisfy the given condition.
    * @since 1.2
    */
@@ -128,7 +128,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual image satisfies the given condition.
    * @since 1.2
    */
@@ -180,7 +180,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
   private void failIfNotEqual(Dimension a, Dimension e) {
     if (areEqual(a, e)) return;
     failIfCustomMessageIsSet();
-    fail(concat("image size, expected:", inBrackets(e), " but was:", inBrackets(a)));
+    fail(format("image size: expected:<%s> but was:<%s>", e, a));
   }
 
   private void failIfNotEqualColor(BufferedImage expected, Threshold threshold) {
@@ -194,7 +194,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
   private void failIfNotEqual(RGBColor a, RGBColor e, Threshold threshold, int x, int y) {
     if (a.isEqualTo(e, threshold.value())) return;
     failIfCustomMessageIsSet();
-    fail(concat("expected:", inBrackets(a), " but was:", inBrackets(e), " at pixel [", valueOf(x), ",", valueOf(y), "]"));
+    fail(String.format("expected:<%s> but was:<%s> at pixel [%d,%d]", a, e, x, y));
   }
 
   /**
@@ -231,9 +231,9 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
   }
 
   /**
-   * Verifies that the actual image is not <code>null</code>.
+   * Verifies that the actual image is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual image is <code>null</code>.
+   * @throws AssertionError if the actual image is {@code null}.
    */
   @Override public ImageAssert isNotNull() {
     assertNotNull();
@@ -266,8 +266,8 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
    * Verifies that the size of the actual image is equal to the given one.
    * @param expected the expected size of the actual image.
    * @return this assertion object.
-   * @throws AssertionError if the actual image is <code>null</code>.
-   * @throws NullPointerException if the given size is <code>null</code>.
+   * @throws AssertionError if the actual image is {@code null}.
+   * @throws NullPointerException if the given size is {@code null}.
    * @throws AssertionError if the size of the actual image is not equal to the given one.
    */
   public ImageAssert hasSize(Dimension expected) {

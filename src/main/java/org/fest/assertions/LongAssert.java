@@ -18,8 +18,11 @@ import static java.lang.Long.valueOf;
 import static org.fest.assertions.ErrorMessages.*;
 
 /**
- * Understands assertion methods for {@code Long}s and {@code long}s. To create a new instance of this class call
- * <code>{@link Assertions#assertThat(Long)}</code> or <code>{@link Assertions#assertThat(long)}</code>.
+ * Assertions for {@code Long}s and {@code long}s.
+ * <p>
+ * To create a new instance of this class invoke either <code>{@link Assertions#assertThat(Long)}</code> or
+ * <code>{@link Assertions#assertThat(long)}</code>.
+ * </p>
  *
  * @author Yvonne Wang
  * @author David DIDIER
@@ -197,7 +200,7 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
    * Verifies that the actual {@code Long} satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Long} does not satisfy the given condition.
    * @see #is(Condition)
    * @since 1.3
@@ -211,7 +214,7 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
    * Verifies that the actual {@code Long} does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual value does satisfies the given condition.
    * @see #isNot(Condition)
    * @since 1.3
@@ -225,7 +228,7 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Long} does not satisfy the given condition.
    * @since 1.3
    */
@@ -239,7 +242,7 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Long} does not satisfy the given condition.
    * @since 1.3
    */
@@ -249,9 +252,9 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
   }
 
   /**
-   * Verifies that the actual {@code Long} is not <code>null</code>.
+   * Verifies that the actual {@code Long} is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code Long} is <code>null</code>.
+   * @throws AssertionError if the actual {@code Long} is {@code null}.
    * @since 1.3
    */
   @Override public LongAssert isNotNull() {

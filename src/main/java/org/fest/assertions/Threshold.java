@@ -16,7 +16,7 @@
 package org.fest.assertions;
 
 /**
- * Understands a threshold.
+ * A threshold.
  *
  * @author Alex Ruiz
  * @since 1.1

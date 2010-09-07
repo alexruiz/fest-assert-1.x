@@ -18,8 +18,8 @@ import static org.fest.assertions.ErrorMessages.*;
 import static org.fest.assertions.Fail.comparisonFailed;
 
 /**
- * Understands a template for assertion methods, applicable to <code>{@link Comparable}</code>s.
- * @param <T> the type of <code>Comparable</code> this template can verify.
+ * Template for assertions applicable to <code>{@link Comparable}</code>s.
+ * @param <T> the type of {@code Comparable} this template can verify.
  *
  * @author Alex Ruiz
  * @author Ted M. Young
@@ -36,19 +36,19 @@ public abstract class ComparableAssert<T extends Comparable<T>> extends GenericA
 
   /**
    * Verifies that the actual <code>{@link Comparable}</code> is equal to the given one.
-   * @param expected the given <code>Comparable</code> to compare the actual <code>Comparable</code> to.
+   * @param expected the given {@code Comparable} to compare the actual {@code Comparable} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Comparable</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>Comparable</code> is not equal to the given one.
+   * @throws AssertionError if the actual {@code Comparable} is {@code null}.
+   * @throws AssertionError if the actual {@code Comparable} is not equal to the given one.
    */
   protected abstract ComparableAssert<T> isEqualByComparingTo(T expected);
 
   /**
    * Verifies that the actual <code>{@link Comparable}</code> is <b>not</b> equal to the given one.
-   * @param expected the given <code>Comparable</code> to use to compare to the actual <code>Comparable</code>.
+   * @param expected the given {@code Comparable} to use to compare to the actual {@code Comparable}.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Comparable</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>Comparable</code> is equal to the given one.
+   * @throws AssertionError if the actual {@code Comparable} is {@code null}.
+   * @throws AssertionError if the actual {@code Comparable} is equal to the given one.
    */
   protected abstract ComparableAssert<T> isNotEqualByComparingTo(T expected);
 
@@ -56,8 +56,8 @@ public abstract class ComparableAssert<T extends Comparable<T>> extends GenericA
    * Verifies that the actual <code>{@link Comparable}</code> is less than the given one.
    * @param other the given value.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Comparable</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>Comparable</code> is not less than the given one.
+   * @throws AssertionError if the actual {@code Comparable} is {@code null}.
+   * @throws AssertionError if the actual {@code Comparable} is not less than the given one.
    */
   protected abstract ComparableAssert<T> isLessThan(T other);
 
@@ -65,8 +65,8 @@ public abstract class ComparableAssert<T extends Comparable<T>> extends GenericA
    * Verifies that the actual <code>{@link Comparable}</code> is greater than the given one.
    * @param other the given value.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Comparable</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>Comparable</code> is not greater than the given one.
+   * @throws AssertionError if the actual {@code Comparable} is {@code null}.
+   * @throws AssertionError if the actual {@code Comparable} is not greater than the given one.
    */
   protected abstract ComparableAssert<T> isGreaterThan(T other);
 
@@ -74,8 +74,8 @@ public abstract class ComparableAssert<T extends Comparable<T>> extends GenericA
    * Verifies that the actual <code>{@link Comparable}</code> is less than or equal to the given one.
    * @param other the given value.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Comparable</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>Comparable</code> is not less than or equal to the given one.
+   * @throws AssertionError if the actual {@code Comparable} is {@code null}.
+   * @throws AssertionError if the actual {@code Comparable} is not less than or equal to the given one.
    */
   protected abstract ComparableAssert<T> isLessThanOrEqualTo(T other);
 
@@ -83,16 +83,16 @@ public abstract class ComparableAssert<T extends Comparable<T>> extends GenericA
    * Verifies that the actual <code>{@link Comparable}</code> is greater than or equal to the given one.
    * @param other the given value.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Comparable</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>Comparable</code> is not greater than or equal to the given one.
+   * @throws AssertionError if the actual {@code Comparable} is {@code null}.
+   * @throws AssertionError if the actual {@code Comparable} is not greater than or equal to the given one.
    */
   protected abstract ComparableAssert<T> isGreaterThanOrEqualTo(T other);
 
   /**
    * Verifies that the actual <code>{@link Comparable}</code> is equal to the given one.
-   * @param expected the given <code>Comparable</code> to compare the actual <code>Comparable</code> to.
-   * @throws AssertionError if the actual <code>Comparable</code> value is <code>null</code>.
-   * @throws AssertionError if the actual <code>Comparable</code> value is not equal to the given one.
+   * @param expected the given {@code Comparable} to compare the actual {@code Comparable} to.
+   * @throws AssertionError if the actual {@code Comparable} value is {@code null}.
+   * @throws AssertionError if the actual {@code Comparable} value is not equal to the given one.
    */
   protected final void assertIsEqualByComparingTo(T expected) {
     isNotNull();
@@ -103,9 +103,9 @@ public abstract class ComparableAssert<T extends Comparable<T>> extends GenericA
 
   /**
    * Verifies that the actual <code>{@link Comparable}</code> is <b>not</b> equal to the given one.
-   * @param expected the given <code>Comparable</code> to use to compare to the actual <code>Comparable</code>.
-   * @throws AssertionError if the actual <code>Comparable</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>Comparable</code> is equal to the given one.
+   * @param expected the given {@code Comparable} to use to compare to the actual {@code Comparable}.
+   * @throws AssertionError if the actual {@code Comparable} is {@code null}.
+   * @throws AssertionError if the actual {@code Comparable} is equal to the given one.
    */
   protected final void assertIsNotEqualByComparingTo(T expected) {
     isNotNull();
@@ -117,8 +117,8 @@ public abstract class ComparableAssert<T extends Comparable<T>> extends GenericA
   /**
    * Verifies that the actual <code>{@link Comparable}</code> is less than the given one.
    * @param other the given value.
-   * @throws AssertionError if the actual <code>Comparable</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>Comparable</code> is not less than the given one.
+   * @throws AssertionError if the actual {@code Comparable} is {@code null}.
+   * @throws AssertionError if the actual {@code Comparable} is not less than the given one.
    */
   protected final void assertIsLessThan(T other) {
     isNotNull();
@@ -130,8 +130,8 @@ public abstract class ComparableAssert<T extends Comparable<T>> extends GenericA
   /**
    * Verifies that the actual <code>{@link Comparable}</code> is greater than the given one.
    * @param other the given value.
-   * @throws AssertionError if the actual <code>Comparable</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>Comparable</code> is not greater than the given one.
+   * @throws AssertionError if the actual {@code Comparable} is {@code null}.
+   * @throws AssertionError if the actual {@code Comparable} is not greater than the given one.
    */
   protected final void assertIsGreaterThan(T other) {
     isNotNull();
@@ -143,8 +143,8 @@ public abstract class ComparableAssert<T extends Comparable<T>> extends GenericA
   /**
    * Verifies that the actual <code>{@link Comparable}</code> is less than or equal to the given one.
    * @param other the given value.
-   * @throws AssertionError if the actual <code>Comparable</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>Comparable</code> is not less than or equal to the given one.
+   * @throws AssertionError if the actual {@code Comparable} is {@code null}.
+   * @throws AssertionError if the actual {@code Comparable} is not less than or equal to the given one.
    */
   protected final void assertIsLessThanOrEqualTo(T other) {
     isNotNull();
@@ -156,8 +156,8 @@ public abstract class ComparableAssert<T extends Comparable<T>> extends GenericA
   /**
    * Verifies that the actual <code>{@link Comparable}</code> is greater than or equal to the given one.
    * @param other the given value.
-   * @throws AssertionError if the actual <code>Comparable</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>Comparable</code> is not greater than or equal to the given one.
+   * @throws AssertionError if the actual {@code Comparable} is {@code null}.
+   * @throws AssertionError if the actual {@code Comparable} is not greater than or equal to the given one.
    */
   protected final void assertIsGreaterThanOrEqualTo(T other) {
     isNotNull();

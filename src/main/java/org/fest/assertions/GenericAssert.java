@@ -16,11 +16,10 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.Fail.*;
-import static org.fest.assertions.Formatting.inBrackets;
-import static org.fest.util.Strings.concat;
+import static org.fest.assertions.Formatting.format;
 
 /**
- * Understands a template for assertion methods.
+ * Template for assertions.
  * @param <T> the type of object implementations of this template can verify.
  *
  * @author Yvonne Wang
@@ -39,8 +38,8 @@ public abstract class GenericAssert<T> extends Assert {
   }
 
   /**
-   * Asserts that the actual value (specified in the constructor of this class) is <code>null</code>.
-   * @throws AssertionError if the actual value is not <code>null</code>.
+   * Asserts that the actual value (specified in the constructor of this class) is {@code null}.
+   * @throws AssertionError if the actual value is not {@code null}.
    */
   public final void isNull() {
     failIfNotNull(customErrorMessage(), rawDescription(), actual);
@@ -50,7 +49,7 @@ public abstract class GenericAssert<T> extends Assert {
    * Verifies that the actual value satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual value does not satisfy the given condition.
    * @see #is(Condition)
    */
@@ -60,7 +59,7 @@ public abstract class GenericAssert<T> extends Assert {
    * Verifies that the actual value does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual value satisfies the given condition.
    * @see #isNot(Condition)
    */
@@ -70,7 +69,7 @@ public abstract class GenericAssert<T> extends Assert {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual value does not satisfy the given condition.
    * @since 1.2
    */
@@ -80,7 +79,7 @@ public abstract class GenericAssert<T> extends Assert {
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual value satisfies the given condition.
    * @since 1.2
    */
@@ -163,9 +162,9 @@ public abstract class GenericAssert<T> extends Assert {
   protected abstract GenericAssert<T> isNotEqualTo(T other);
 
   /**
-   * Verifies that the actual value is not <code>null</code>.
+   * Verifies that the actual value is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual value is <code>null</code>.
+   * @throws AssertionError if the actual value is {@code null}.
    */
   protected abstract GenericAssert<T> isNotNull();
 
@@ -188,7 +187,7 @@ public abstract class GenericAssert<T> extends Assert {
   /**
    * Verifies that the actual value satisfies the given condition.
    * @param condition the condition to check.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual value does not satisfy the given condition.
    */
   protected final void assertSatisfies(Condition<T> condition) {
@@ -198,14 +197,13 @@ public abstract class GenericAssert<T> extends Assert {
   }
 
   private String errorMessageIfConditionNotSatisfied(Condition<T> condition) {
-    String message = concat("actual value:", inBrackets(actual), " should satisfy condition");
-    return condition.addDescriptionTo(message);
+    return condition.addDescriptionTo(format("actual value:<%s> should satisfy condition", actual));
   }
 
   /**
    * Verifies that the actual value satisfies the given condition.
    * @param condition the condition to check.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual value does not satisfy the given condition.
    */
   protected final void assertIs(Condition<T> condition) {
@@ -215,14 +213,13 @@ public abstract class GenericAssert<T> extends Assert {
   }
 
   private String errorMessageIfIsNot(Condition<T> condition) {
-    String message = concat("actual value:", inBrackets(actual), " should be");
-    return condition.addDescriptionTo(message);
+    return condition.addDescriptionTo(format("actual value:<%s> should be", actual));
   }
 
   /**
    * Verifies that the actual value does not satisfy the given condition.
    * @param condition the condition to check.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual value satisfies the given condition.
    */
   protected final void assertDoesNotSatisfy(Condition<T> condition) {
@@ -232,14 +229,13 @@ public abstract class GenericAssert<T> extends Assert {
   }
 
   private String errorMessageIfConditionSatisfied(Condition<T> condition) {
-    String message = concat("actual value:", inBrackets(actual), " should not satisfy condition");
-    return condition.addDescriptionTo(message);
+    return condition.addDescriptionTo(format("actual value:<%s> should not satisfy condition", actual));
   }
 
   /**
    * Verifies that the actual value does not satisfy the given condition.
    * @param condition the condition to check.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual value satisfies the given condition.
    */
   protected final void assertIsNot(Condition<T> condition) {
@@ -258,8 +254,7 @@ public abstract class GenericAssert<T> extends Assert {
   }
 
   private String errorMessageIfIs(Condition<T> condition) {
-    String message = concat("actual value:", inBrackets(actual), " should not be");
-    return condition.addDescriptionTo(message);
+    return condition.addDescriptionTo(format("actual value:<%s> should not be", actual));
   }
 
   /**
@@ -281,8 +276,8 @@ public abstract class GenericAssert<T> extends Assert {
   }
 
   /**
-   * Verifies that the actual value is not <code>null</code>.
-   * @throws AssertionError if the actual value is <code>null</code>.
+   * Verifies that the actual value is not {@code null}.
+   * @throws AssertionError if the actual value is {@code null}.
    */
   protected final void assertNotNull() {
     failIfActualIsNull(customErrorMessage(), rawDescription(), actual);

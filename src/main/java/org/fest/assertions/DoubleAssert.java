@@ -4,12 +4,14 @@ import static java.lang.Double.*;
 import static java.lang.Math.abs;
 import static org.fest.assertions.ErrorMessages.*;
 import static org.fest.assertions.Fail.comparisonFailed;
-import static org.fest.assertions.Formatting.inBrackets;
-import static org.fest.util.Strings.concat;
+import static org.fest.assertions.Formatting.format;
 
 /**
- * Understands Assertion methods for {@code Double}s and {@code double}s. To create a new instance of this class call
- * <code>{@link Assertions#assertThat(Double)}</code> or <code>{@link Assertions#assertThat(double)}</code>.
+ * Assertions for {@code Double}s and {@code double}s.
+ * <p>
+ * To create a new instance of this class invoke <code>{@link Assertions#assertThat(Double)}</code> or
+ * <code>{@link Assertions#assertThat(double)}</code>.
+ * </p>
  *
  * @author Yvonne Wang
  * @author David DIDIER
@@ -135,7 +137,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
     if (actual.compareTo(expected) == 0) return this;
     if (abs(expected - actual) <= deltaValue) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat(unexpectedNotEqual(actual, expected), " using delta:", inBrackets(deltaValue)));
+    throw failure(unexpectedNotEqual(actual, expected) + format(" using delta:<%s>", deltaValue));
   }
 
   /**
@@ -277,7 +279,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
    * Verifies that the actual {@code Double} satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Double} does not satisfy the given condition.
    * @see #is(Condition)
    * @since 1.3
@@ -291,7 +293,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
    * Verifies that the actual {@code Double} does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual value does satisfies the given condition.
    * @see #isNot(Condition)
    * @since 1.3
@@ -305,7 +307,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Double} does not satisfy the given condition.
    * @since 1.3
    */
@@ -318,7 +320,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Double} does not satisfy the given condition.
    * @since 1.3
    */
@@ -340,9 +342,9 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
   }
 
   /**
-   * Verifies that the actual {@code Double} is not <code>null</code>.
+   * Verifies that the actual {@code Double} is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code Double} is <code>null</code>.
+   * @throws AssertionError if the actual {@code Double} is {@code null}.
    * @since 1.3
    */
   @Override public DoubleAssert isNotNull() {

@@ -19,7 +19,7 @@ import static org.fest.assertions.ToString.toStringOf;
 import static org.fest.util.Strings.*;
 
 /**
- * Understands creation of JUnit's <code>ComparisonFailure</code>.
+ * Creates instances of JUnit's <code>ComparisonFailure</code>.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -36,10 +36,10 @@ public final class ComparisonFailureFactory {
 
   /**
    * Creates a new instance of JUnit's <code>ComparisonFailure</code> only if JUnit 4+ is in the classpath.
-   * @param message the identifying message or <code>null</code>.
+   * @param message the identifying message or {@code null}.
    * @param expected the expected value.
    * @param actual the actual value.
-   * @return the created <code>ComparisonFailure</code>, or <code>null</code> if JUnit 4+ is not in the classpath.
+   * @return the created <code>ComparisonFailure</code>, or {@code null} if JUnit 4+ is not in the classpath.
    */
   public static AssertionError comparisonFailure(String message, Object expected, Object actual) {
     try {
@@ -70,7 +70,7 @@ public final class ComparisonFailureFactory {
 
   private static String format(String message) {
     if (isEmpty(message)) return EMPTY_MESSAGE;
-    return concat("[", message, "]");
+    return String.format("[%s]", message);
   }
 
   private ComparisonFailureFactory() {}

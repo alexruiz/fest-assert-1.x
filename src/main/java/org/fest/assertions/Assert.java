@@ -19,7 +19,7 @@ import static org.fest.assertions.Fail.failWithMessage;
 import static org.fest.assertions.Formatting.*;
 
 /**
- * Understands the base class for all assertion methods for objects and primitives.
+ * Base class for all assertion classes.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -86,7 +86,7 @@ public abstract class Assert {
 
   /**
    * Returns the message to use when a failure occurs, if one has been specified.
-   * @return the message to use when a failure occurs, or <code>null</code> if none has been specified.
+   * @return the message to use when a failure occurs, or {@code null} if none has been specified.
    */
   protected final String customErrorMessage() {
     return errorMessage;
@@ -94,8 +94,8 @@ public abstract class Assert {
 
   /**
    * Throws an <code>{@link AssertionError}</code> only if the the custom message in this assertion object is not
-   * <code>null</code>.
-   * @throws AssertionError only if the custom error message in this assertion object is not <code>null</code>.
+   * {@code null}.
+   * @throws AssertionError only if the custom error message in this assertion object is not {@code null}.
    * @since 1.2
    */
   protected final void failIfCustomMessageIsSet() {
@@ -104,9 +104,9 @@ public abstract class Assert {
 
   /**
    * Throws an <code>{@link AssertionError}</code> only if the the custom message in this assertion object is not
-   * <code>null</code>.
+   * {@code null}.
    * @param realCause cause of the error.
-   * @throws AssertionError only if the custom error message in this assertion object is not <code>null</code>.
+   * @throws AssertionError only if the custom error message in this assertion object is not {@code null}.
    * @since 1.2
    */
   protected final void failIfCustomMessageIsSet(Throwable realCause) {

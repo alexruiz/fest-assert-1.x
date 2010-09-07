@@ -18,7 +18,7 @@ import java.lang.reflect.*;
 import java.security.*;
 
 /**
- * Understands access to constructors using Java reflection.
+ * Constructor access through Java reflection.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz

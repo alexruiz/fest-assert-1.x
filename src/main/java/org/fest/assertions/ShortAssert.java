@@ -20,8 +20,11 @@ import static org.fest.assertions.ErrorMessages.*;
 import org.fest.util.VisibleForTesting;
 
 /**
- * Understands assertion methods for {@code Short}s and {@code short}s. To create a new instance of this class call
- * <code>{@link Assertions#assertThat(Short)}</code> <code>{@link Assertions#assertThat(short)}</code>.
+ * Assertions for {@code Short}s and {@code short}s.
+ * <p>
+ * To create a new instance of this class invoke either <code>{@link Assertions#assertThat(Short)}</code>
+ * <code>{@link Assertions#assertThat(short)}</code>.
+ * </p>
  *
  * @author Yvonne Wang
  * @author David DIDIER
@@ -204,7 +207,7 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
    * Verifies that the actual {@code Short} satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Short} does not satisfy the given condition.
    * @see #is(Condition)
    * @since 1.3
@@ -218,7 +221,7 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
    * Verifies that the actual {@code Short} does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual value does satisfies the given condition.
    * @see #isNot(Condition)
    * @since 1.3
@@ -232,7 +235,7 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Short} does not satisfy the given condition.
    * @since 1.3
    */
@@ -246,7 +249,7 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
    *
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Short} does not satisfy the given condition.
    * @since 1.3
    */
@@ -256,9 +259,9 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
   }
 
   /**
-   * Verifies that the actual {@code Short} is not <code>null</code>.
+   * Verifies that the actual {@code Short} is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code Short} is <code>null</code>.
+   * @throws AssertionError if the actual {@code Short} is {@code null}.
    * @since 1.3
    */
   @Override public ShortAssert isNotNull() {

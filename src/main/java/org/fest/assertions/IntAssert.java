@@ -19,8 +19,11 @@ import static java.lang.Integer.valueOf;
 import static org.fest.assertions.ErrorMessages.*;
 
 /**
- * Understands assert method for {@code Integer}s and {@code int}s. To create a new instance of this class call
- * <code>{@link Assertions#assertThat(Integer)}</code> or <code>{@link Assertions#assertThat(int)}</code>.
+ * Assertions for {@code Integer}s and {@code int}s.
+ * <p>
+ * To create a new instance of this class invoke either <code>{@link Assertions#assertThat(Integer)}</code> or
+ * <code>{@link Assertions#assertThat(int)}</code>.
+ * </p>
  *
  * @author Yvonne Wang
  * @author David DIDIER
@@ -201,7 +204,7 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
    * Verifies that the actual <code>{@link Integer}</code> satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual <code>Integer</code> does not satisfy the given condition.
    * @see #is(Condition)
    * @since 1.3
@@ -215,7 +218,7 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
    * Verifies that the actual <code>{@link Integer}</code> does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual value does satisfies the given condition.
    * @see #isNot(Condition)
    * @since 1.3
@@ -229,7 +232,7 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual <code>Integer</code> does not satisfy the given condition.
    * @since 1.3
    */
@@ -242,7 +245,7 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual <code>Integer</code> does not satisfy the given condition.
    * @since 1.3
    */
@@ -252,9 +255,9 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
   }
 
   /**
-   * Verifies that the actual <code>{@link Integer}</code> is not <code>null</code>.
+   * Verifies that the actual <code>{@link Integer}</code> is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code Integer} is <code>null</code>.
+   * @throws AssertionError if the actual {@code Integer} is {@code null}.
    * @since 1.3
    */
   @Override public IntAssert isNotNull() {

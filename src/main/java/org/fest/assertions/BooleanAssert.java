@@ -18,8 +18,11 @@ package org.fest.assertions;
 import static java.lang.Boolean.valueOf;
 
 /**
- * Understands assertion methods for {@code Boolean}s and {@code boolean}s. To create a new instance of this class call
- * <code>{@link Assertions#assertThat(Boolean)}</code> or <code>{@link Assertions#assertThat(boolean)}</code>.
+ * Assertions for {@code Boolean}s and {@code boolean}s.
+ * <p>
+ * To create a new instance of this class invoke either <code>{@link Assertions#assertThat(Boolean)}</code> or
+ * <code>{@link Assertions#assertThat(boolean)}</code>.
+ * </p>
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -67,16 +70,16 @@ public class BooleanAssert extends GenericAssert<Boolean> {
   }
 
   /**
-   * Verifies that the actual {@code Boolean} value is <code>true</code>.
-   * @throws AssertionError if the actual {@code Boolean} value is <code>false</code>.
+   * Verifies that the actual {@code Boolean} value is {@code true}.
+   * @throws AssertionError if the actual {@code Boolean} value is {@code false}.
    */
   public void isTrue() {
     isEqualTo(true);
   }
 
   /**
-   * Verifies that the actual {@code Boolean} value is <code>false</code>.
-   * @throws AssertionError if the actual {@code Boolean} value is <code>true</code>.
+   * Verifies that the actual {@code Boolean} value is {@code false}.
+   * @throws AssertionError if the actual {@code Boolean} value is {@code true}.
    */
   public void isFalse() {
     isEqualTo(false);
@@ -130,7 +133,7 @@ public class BooleanAssert extends GenericAssert<Boolean> {
    * Verifies that the actual {@code Boolean} satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Boolean} does not satisfy the given condition.
    * @see #is(Condition)
    * @since 1.3
@@ -144,7 +147,7 @@ public class BooleanAssert extends GenericAssert<Boolean> {
    * Verifies that the actual {@code Boolean} does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual value does satisfies the given condition.
    * @see #isNot(Condition)
    * @since 1.3
@@ -158,7 +161,7 @@ public class BooleanAssert extends GenericAssert<Boolean> {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Boolean} does not satisfy the given condition.
    * @since 1.3
    */
@@ -171,7 +174,7 @@ public class BooleanAssert extends GenericAssert<Boolean> {
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code Boolean} does not satisfy the given condition.
    * @since 1.3
    */
@@ -181,9 +184,9 @@ public class BooleanAssert extends GenericAssert<Boolean> {
   }
 
   /**
-   * Verifies that the actual {@code Boolean} is not <code>null</code>.
+   * Verifies that the actual {@code Boolean} is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code Boolean} value is <code>null</code>.
+   * @throws AssertionError if the actual {@code Boolean} value is {@code null}.
    * @since 1.3
    */
   @Override public BooleanAssert isNotNull() {

@@ -15,7 +15,7 @@
 package org.fest.assertions;
 
 /**
- * Understands a template of assertion methods for numbers (primitives and objects.)
+ * Template for assertions for numbers (primitives and objects.)
  *
  * @author Alex Ruiz
  *

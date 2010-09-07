@@ -16,7 +16,7 @@
 package org.fest.assertions;
 
 /**
- * Understands a description of something.
+ * A description of something.
  *
  * @author Alex Ruiz
  */

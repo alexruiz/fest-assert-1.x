@@ -16,7 +16,7 @@
 package org.fest.assertions;
 
 /**
- * Understands the default implementation of <code>{@link Description}</code>.
+ * Default implementation of <code>{@link Description}</code>.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang

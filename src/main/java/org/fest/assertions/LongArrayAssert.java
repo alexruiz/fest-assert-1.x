@@ -21,8 +21,10 @@ import static org.fest.assertions.ErrorMessages.*;
 import java.util.Arrays;
 
 /**
- * Understands assertion methods for <code>long</code> arrays. To create a new instance of this class use the
- * method <code>{@link Assertions#assertThat(long[])}</code>.
+ * Assertions for {@code long} arrays.
+ * <p>
+ * To create a new instance of this class invoke <code>{@link Assertions#assertThat(long[])}</code>.
+ * </p>
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -60,12 +62,12 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
   }
 
   /**
-   * Verifies that the actual <code>long</code> array contains the given values.
+   * Verifies that the actual {@code long} array contains the given values.
    * @param values the values to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>long</code> array is <code>null</code>.
-   * @throws NullPointerException if the given <code>long</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>long</code> array does not contain the given values.
+   * @throws AssertionError if the actual {@code long} array is {@code null}.
+   * @throws NullPointerException if the given {@code long} array is {@code null}.
+   * @throws AssertionError if the actual {@code long} array does not contain the given values.
    */
   public LongArrayAssert contains(long...values) {
     assertContains(copy(values));
@@ -73,13 +75,13 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
   }
 
   /**
-   * Verifies that the actual <code>long</code> array contains the given values <strong>only</strong>.
+   * Verifies that the actual {@code long} array contains the given values <strong>only</strong>.
    * @param values the values to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>long</code> array is <code>null</code>.
-   * @throws NullPointerException if the given <code>long</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>long</code> array does not contain the given objects, or if the actual
-   * <code>long</code> array contains elements other than the ones specified.
+   * @throws AssertionError if the actual {@code long} array is {@code null}.
+   * @throws NullPointerException if the given {@code long} array is {@code null}.
+   * @throws AssertionError if the actual {@code long} array does not contain the given objects, or if the actual
+   * {@code long} array contains elements other than the ones specified.
    */
   public LongArrayAssert containsOnly(long...values) {
     assertContainsOnly(copy(values));
@@ -87,12 +89,12 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
   }
 
   /**
-   * Verifies that the actual <code>long</code> array does not contain the given values.
+   * Verifies that the actual {@code long} array does not contain the given values.
    * @param values the values the array should exclude.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>long</code> array is <code>null</code>.
-   * @throws NullPointerException if the given <code>long</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>long</code> array contains any of the given values.
+   * @throws AssertionError if the actual {@code long} array is {@code null}.
+   * @throws NullPointerException if the given {@code long} array is {@code null}.
+   * @throws AssertionError if the actual {@code long} array contains any of the given values.
    */
   public LongArrayAssert excludes(long...values) {
     assertExcludes(copy(values));
@@ -100,11 +102,11 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
   }
 
   /**
-   * Verifies that the actual <code>long</code> array satisfies the given condition.
+   * Verifies that the actual {@code long} array satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>long</code> array does not satisfy the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code long} array does not satisfy the given condition.
    * @see #is(Condition)
    */
   @Override public LongArrayAssert satisfies(Condition<long[]> condition) {
@@ -113,11 +115,11 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
   }
 
   /**
-   * Verifies that the actual <code>long</code> array does not satisfy the given condition.
+   * Verifies that the actual {@code long} array does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>long</code> array satisfies the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code long} array satisfies the given condition.
    * @see #isNot(Condition)
    */
   @Override public LongArrayAssert doesNotSatisfy(Condition<long[]> condition) {
@@ -129,8 +131,8 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>long</code> array does not satisfy the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code long} array does not satisfy the given condition.
    * @since 1.2
    */
   @Override public LongArrayAssert is(Condition<long[]> condition) {
@@ -142,8 +144,8 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>long</code> array satisfies the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code long} array satisfies the given condition.
    * @since 1.2
    */
   @Override public LongArrayAssert isNot(Condition<long[]> condition) {
@@ -152,9 +154,9 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
   }
 
   /**
-   * Verifies that the actual <code>long</code> array is not <code>null</code>.
+   * Verifies that the actual {@code long} array is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>long</code> array is <code>null</code>.
+   * @throws AssertionError if the actual {@code long} array is {@code null}.
    */
   @Override public LongArrayAssert isNotNull() {
     assertNotNull();
@@ -162,10 +164,10 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
   }
 
   /**
-   * Verifies that the actual <code>long</code> array contains at least on element.
+   * Verifies that the actual {@code long} array contains at least on element.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>long</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>long</code> array is empty.
+   * @throws AssertionError if the actual {@code long} array is {@code null}.
+   * @throws AssertionError if the actual {@code long} array is empty.
    */
   @Override public LongArrayAssert isNotEmpty() {
     assertIsNotEmpty();
@@ -173,11 +175,11 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
   }
 
   /**
-   * Verifies that the actual <code>long</code> array is equal to the given array. Array equality is checked by
+   * Verifies that the actual {@code long} array is equal to the given array. Array equality is checked by
    * <code>{@link Arrays#equals(long[], long[])}</code>.
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>long</code> array is not equal to the given one.
+   * @throws AssertionError if the actual {@code long} array is not equal to the given one.
    */
   @Override public LongArrayAssert isEqualTo(long[] expected) {
     if (Arrays.equals(actual, expected)) return this;
@@ -186,11 +188,11 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
   }
 
   /**
-   * Verifies that the actual <code>long</code> array is not equal to the given array. Array equality is checked by
+   * Verifies that the actual {@code long} array is not equal to the given array. Array equality is checked by
    * <code>{@link Arrays#equals(long[], long[])}</code>.
    * @param array the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>long</code> array is equal to the given one.
+   * @throws AssertionError if the actual {@code long} array is equal to the given one.
    */
   @Override public LongArrayAssert isNotEqualTo(long[] array) {
     if (!Arrays.equals(actual, array)) return this;
@@ -199,11 +201,11 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
   }
 
   /**
-   * Verifies that the number of elements in the actual <code>long</code> array is equal to the given one.
-   * @param expected the expected number of elements in the actual <code>long</code> array.
+   * Verifies that the number of elements in the actual {@code long} array is equal to the given one.
+   * @param expected the expected number of elements in the actual {@code long} array.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>long</code> array is <code>null</code>.
-   * @throws AssertionError if the number of elements in the actual <code>long</code> array is not equal to the given
+   * @throws AssertionError if the actual {@code long} array is {@code null}.
+   * @throws AssertionError if the number of elements in the actual {@code long} array is not equal to the given
    * one.
    */
   @Override public LongArrayAssert hasSize(int expected) {
@@ -212,10 +214,10 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
   }
 
   /**
-   * Verifies that the actual <code>long</code> array is the same as the given array.
+   * Verifies that the actual {@code long} array is the same as the given array.
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>long</code> array is not the same as the given one.
+   * @throws AssertionError if the actual {@code long} array is not the same as the given one.
    */
   @Override public LongArrayAssert isSameAs(long[] expected) {
     assertSameAs(expected);
@@ -223,10 +225,10 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
   }
 
   /**
-   * Verifies that the actual <code>long</code> array is not the same as the given array.
+   * Verifies that the actual {@code long} array is not the same as the given array.
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>long</code> array is the same as the given one.
+   * @throws AssertionError if the actual {@code long} array is the same as the given one.
    */
   @Override public LongArrayAssert isNotSameAs(long[] expected) {
     assertNotSameAs(expected);

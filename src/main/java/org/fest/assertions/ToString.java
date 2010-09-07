@@ -15,7 +15,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Strings.*;
+import static org.fest.util.Strings.quote;
 
 import java.awt.Dimension;
 import java.io.File;
@@ -26,7 +26,7 @@ import org.fest.util.Arrays;
 import org.fest.util.Collections;
 
 /**
- * Understands how to obtain the <code>toString</code> representation of an object.
+ * Obtains the <code>toString</code> representation of an object.
  *
  * @author Alex Ruiz
  */
@@ -64,7 +64,7 @@ final class ToString {
   }
 
   private static String toStringOf(Dimension d) {
-    return concat("(", d.width, ", ", d.height, ")");
+    return String.format("(%d, %d)", d.width, d.height);
   }
 
   private ToString() {}

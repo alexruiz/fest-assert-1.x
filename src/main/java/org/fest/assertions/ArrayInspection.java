@@ -20,7 +20,7 @@ import static java.lang.reflect.Array.*;
 import java.util.*;
 
 /**
- * Understands utility methods for arrays.
+ * Utility methods for arrays.
  *
  * @author Alex Ruiz
  *
@@ -72,7 +72,7 @@ public final class ArrayInspection {
    * Returns the size of the given array.
    * @param array the array.
    * @return the size of the given array.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws IllegalArgumentException if the given object is not an array.
    */
   public static int sizeOf(Object array) {

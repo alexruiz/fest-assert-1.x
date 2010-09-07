@@ -14,14 +14,17 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Formatting.inBrackets;
-import static org.fest.util.Strings.*;
+import static org.fest.assertions.Formatting.format;
+import static org.fest.assertions.ToString.toStringOf;
+import static org.fest.util.Strings.quote;
 
 import java.util.*;
 
 /**
- * Understands assertions for <code>{@link Map}</code>s. To create a new instance of this class use the method
- * <code>{@link Assertions#assertThat(Map)}</code>.
+ * Assertions for <code>{@link Map}</code>s.
+ * <p>
+ * To create a new instance of this class invoke <code>{@link Assertions#assertThat(Map)}</code>.
+ * </p>
  *
  * @author David DIDIER
  * @author Yvonne Wang
@@ -76,10 +79,10 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * </p>
    * @param entries the given entries.
    * @return this assertion error.
-   * @throws AssertionError if the actual map is <code>null</code>.
-   * @throws AssertionError if the actual <code>Map</code> does not contain any of the given entries.
-   * @throws NullPointerException if the given array of entries is <code>null</code>.
-   * @throws NullPointerException if any of the entries in the given array is <code>null</code>.
+   * @throws AssertionError if the actual map is {@code null}.
+   * @throws AssertionError if the actual {@code Map} does not contain any of the given entries.
+   * @throws NullPointerException if the given array of entries is {@code null}.
+   * @throws NullPointerException if any of the entries in the given array is {@code null}.
    */
   public MapAssert includes(Entry...entries) {
     isNotNull();
@@ -103,10 +106,10 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * </p>
    * @param entries the given entries.
    * @return this assertion error.
-   * @throws AssertionError if the actual map is <code>null</code>.
-   * @throws AssertionError if the actual <code>Map</code> contains any of the given entries.
-   * @throws NullPointerException if the given array of entries is <code>null</code>.
-   * @throws NullPointerException if any of the entries in the given array is <code>null</code>.
+   * @throws AssertionError if the actual map is {@code null}.
+   * @throws AssertionError if the actual {@code Map} contains any of the given entries.
+   * @throws NullPointerException if the given array of entries is {@code null}.
+   * @throws NullPointerException if any of the entries in the given array is {@code null}.
    */
   public MapAssert excludes(Entry...entries) {
     isNotNull();
@@ -155,51 +158,51 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
 
     /** @see java.lang.Object#toString() */
     @Override public String toString() {
-      return concat(quote(key), "=", quote(value));
+      return String.format("%s=%s", quote(key), quote(value));
     }
   }
 
   private void failIfNotFound(String description, Collection<?> notFound) {
     failIfCustomMessageIsSet();
-    fail(concat("the map:", formattedActual(), " does not contain the ", description, ":", inBrackets(notFound)));
+    fail(String.format(
+        "the map:<%s> does not contain the %s:<%s>", formattedActual(), description, toStringOf(notFound)));
   }
 
   private void validate(String description, Object[] objects) {
     if (objects == null)
       throw new NullPointerException(
-          formattedErrorMessage(concat("The given array of ", description, " should not be null")));
+          formattedErrorMessage(String.format("The given array of %s should not be null", description)));
   }
 
   private void failIfFound(String description, Collection<?> found) {
     failIfCustomMessageIsSet();
-    fail(concat("the map:", formattedActual(), " contains the ", description, ":", inBrackets(found)));
+    fail(String.format("the map:<%s> contains the %s:<%s>", formattedActual(), description, toStringOf(found)));
   }
 
   /**
    * Verifies that the number of elements in the actual <code>{@link Map}</code> is equal to the given one.
-   * @param expected the expected number of elements in the actual <code>Map</code>.
+   * @param expected the expected number of elements in the actual {@code Map}.
    * @return this assertion object.
-   * @throws AssertionError if the actual map is <code>null</code>.
-   * @throws AssertionError if the number of elements of the actual <code>Map</code> is not equal to the given one.
+   * @throws AssertionError if the actual map is {@code null}.
+   * @throws AssertionError if the number of elements of the actual {@code Map} is not equal to the given one.
    */
   @Override public MapAssert hasSize(int expected) {
     isNotNull();
     int actualSize = actualGroupSize();
     if (actualSize == expected) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat(
-          "expected size:", inBrackets(expected)," but was:", inBrackets(actualSize), " for map:", inBrackets(actual)));
+    throw failure(format("expected size:<%s> but was:<%s> for map:<%s>", expected, actualSize, actual));
   }
 
   private String formattedActual() {
-    return inBrackets(actual);
+    return toStringOf(actual);
   }
 
   /**
    * Verifies that the actual <code>{@link Map}</code> is equal to the given one.
-   * @param expected the given map to compare the actual <code>Map</code> to.
+   * @param expected the given map to compare the actual {@code Map} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Map</code> is not equal to the given one.
+   * @throws AssertionError if the actual {@code Map} is not equal to the given one.
    */
   @Override public MapAssert isEqualTo(Map<?, ?> expected) {
     assertEqualTo(expected);
@@ -209,7 +212,7 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
   /**
    * Verifies that the actual <code>{@link Map}</code> contains at least on element.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Map</code> is empty.
+   * @throws AssertionError if the actual {@code Map} is empty.
    */
   @Override public MapAssert isNotEmpty() {
     assertIsNotEmpty();
@@ -218,9 +221,9 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
 
   /**
    * Verifies that the actual <code>{@link Map}</code> is not equal to the given one.
-   * @param other the given map to compare the actual <code>Map</code> to.
+   * @param other the given map to compare the actual {@code Map} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Map</code> is equal to the given one.
+   * @throws AssertionError if the actual {@code Map} is equal to the given one.
    */
   @Override public MapAssert isNotEqualTo(Map<?, ?> other) {
     assertNotEqualTo(other);
@@ -228,9 +231,9 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
   }
 
   /**
-   * Verifies that the actual <code>{@link Map}</code> is not <code>null</code>.
+   * Verifies that the actual <code>{@link Map}</code> is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Map</code> is <code>null</code>.
+   * @throws AssertionError if the actual {@code Map} is {@code null}.
    */
   @Override public MapAssert isNotNull() {
     assertNotNull();
@@ -239,9 +242,9 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
 
   /**
    * Verifies that the actual <code>{@link Map}</code> is not the same as the given one.
-   * @param other the given map to compare the actual <code>Map</code> to.
+   * @param other the given map to compare the actual {@code Map} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Map</code> is the same as the given one.
+   * @throws AssertionError if the actual {@code Map} is the same as the given one.
    */
   @Override public MapAssert isNotSameAs(Map<?, ?> other) {
     assertNotSameAs(other);
@@ -250,9 +253,9 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
 
   /**
    * Verifies that the actual <code>{@link Map}</code> is the same as the given one.
-   * @param expected the given map to compare the actual <code>Map</code> to.
+   * @param expected the given map to compare the actual {@code Map} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Map</code> is not the same as the given one.
+   * @throws AssertionError if the actual {@code Map} is not the same as the given one.
    */
   @Override public MapAssert isSameAs(Map<?, ?> expected) {
     assertSameAs(expected);
@@ -263,8 +266,8 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * Verifies that the actual <code>{@link Map}</code> satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>Map</code> does not satisfy the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code Map} does not satisfy the given condition.
    * @see #is(Condition)
    */
   @Override public MapAssert satisfies(Condition<Map<?, ?>> condition) {
@@ -276,8 +279,8 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * Verifies that the actual <code>{@link Map}</code> does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>Map</code> satisfies the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code Map} satisfies the given condition.
    * @see #isNot(Condition)
    */
   @Override public MapAssert doesNotSatisfy(Condition<Map<?, ?>> condition) {
@@ -289,8 +292,8 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>Map</code> does not satisfy the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code Map} does not satisfy the given condition.
    * @since 1.2
    */
   @Override public MapAssert is(Condition<Map<?, ?>> condition) {
@@ -302,8 +305,8 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>Map</code> satisfies the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code Map} satisfies the given condition.
    * @since 1.2
    */
   @Override public MapAssert isNot(Condition<Map<?, ?>> condition) {

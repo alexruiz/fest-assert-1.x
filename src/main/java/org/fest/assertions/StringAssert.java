@@ -14,12 +14,13 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Formatting.inBrackets;
-import static org.fest.util.Strings.concat;
+import static org.fest.assertions.Formatting.format;
 
 /**
- * Understands assertion methods for {@code String}s. To create a new instance of this class use the
- * method <code>{@link Assertions#assertThat(String)}</code>.
+ * Assertions for {@code String}s.
+ * <p>
+ * To create a new instance of this class invoke <code>{@link Assertions#assertThat(String)}</code>.
+ * </p>
  *
  * @author Yvonne Wang
  * @author David DIDIER
@@ -60,7 +61,7 @@ public class StringAssert extends GroupAssert<String> {
    * Verifies that the actual {@code String} satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code String} does not satisfy the given condition.
    * @see #is(Condition)
    */
@@ -73,7 +74,7 @@ public class StringAssert extends GroupAssert<String> {
    * Verifies that the actual {@code String} does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code String} satisfies the given condition.
    * @see #isNot(Condition)
    */
@@ -86,7 +87,7 @@ public class StringAssert extends GroupAssert<String> {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code String} does not satisfy the given condition.
    * @since 1.2
    */
@@ -99,7 +100,7 @@ public class StringAssert extends GroupAssert<String> {
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual {@code String} satisfies the given condition.
    * @since 1.2
    */
@@ -111,7 +112,7 @@ public class StringAssert extends GroupAssert<String> {
   /**
    * Verifies that the actual {@code String} contains at least on character.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is <code>null</code> or empty.
+   * @throws AssertionError if the actual {@code String} is {@code null} or empty.
    */
   @Override public StringAssert isNotEmpty() {
     assertIsNotEmpty();
@@ -133,7 +134,7 @@ public class StringAssert extends GroupAssert<String> {
    * Verifies that the actual {@code String} is equal to the given one ignoring case.
    * @param expected the given {@code String} to compare the actual {@code String} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is <code>null</code>.
+   * @throws AssertionError if the actual {@code String} is {@code null}.
    * @throws AssertionError if the actual {@code String} is not equal to the given one ignoring case.
    */
   public StringAssert isEqualToIgnoringCase(String expected) {
@@ -141,7 +142,7 @@ public class StringAssert extends GroupAssert<String> {
     isNotNull();
     if (actual.equalsIgnoreCase(expected)) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat(actual(), " should be equal to :", inBrackets(expected), " ignoring case"));
+    throw failure(format("<%s> should be equal to :<%s> ignoring case", actual, expected));
   }
 
   /**
@@ -156,9 +157,9 @@ public class StringAssert extends GroupAssert<String> {
   }
 
   /**
-   * Verifies that the actual {@code String} is not <code>null</code>.
+   * Verifies that the actual {@code String} is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is <code>null</code>.
+   * @throws AssertionError if the actual {@code String} is {@code null}.
    */
   @Override public StringAssert isNotNull() {
     assertNotNull();
@@ -211,88 +212,84 @@ public class StringAssert extends GroupAssert<String> {
    * Verifies that the actual {@code String} contains the given one.
    * @param expected the given {@code String} expected to be contained in the actual one.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is <code>null</code>.
+   * @throws AssertionError if the actual {@code String} is {@code null}.
    * @throws AssertionError if the actual {@code String} does not contain the given one.
    */
   public StringAssert contains(String expected) {
     isNotNull();
     if (actual.indexOf(expected) != -1) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat(actual(), " should contain the String:", inBrackets(expected)));
+    throw failure(format("<%s> should contain the String:<%s>", actual, expected));
   }
 
   /**
    * Verifies that the actual {@code String} ends with the given one.
    * @param expected the given {@code String} expected to be at the end of the actual one.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is <code>null</code>.
+   * @throws AssertionError if the actual {@code String} is {@code null}.
    * @throws AssertionError if the actual {@code String} does not end with the given one.
    */
   public StringAssert endsWith(String expected) {
     isNotNull();
     if (actual.endsWith(expected)) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat(actual(), " should end with:", inBrackets(expected)));
+    throw failure(format("<%s> should end with:<%s>", actual, expected));
   }
 
   /**
    * Verifies that the actual {@code String} starts with the given one.
    * @param expected the given {@code String} expected to be at the beginning of the actual one.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is <code>null</code>.
+   * @throws AssertionError if the actual {@code String} is {@code null}.
    * @throws AssertionError if the actual {@code String} does not start with the given one.
    */
   public StringAssert startsWith(String expected) {
     isNotNull();
     if (actual.startsWith(expected)) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat(actual(), " should start with:", inBrackets(expected)));
+    throw failure(format("<%s> should start with:<%s>", actual, expected));
   }
 
   /**
    * Verifies that the actual {@code String} does not contains the given one.
    * @param s the given {@code String} expected not to be contained in the actual one.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is <code>null</code>.
+   * @throws AssertionError if the actual {@code String} is {@code null}.
    * @throws AssertionError if the actual {@code String} does contain the given one.
    */
   public StringAssert excludes(String s) {
     isNotNull();
     if (actual.indexOf(s) == -1) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat(actual(), " should not contain the String:", inBrackets(s)));
+    throw failure(format("<%s> should not contain the String:<%s>", actual, s));
   }
 
   /**
    * Verifies that the actual {@code String} matches the given one.
    * @param regex the given regular expression expected to be matched by the actual one.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is <code>null</code>.
+   * @throws AssertionError if the actual {@code String} is {@code null}.
    * @throws AssertionError if the actual {@code String} does not match the given regular expression.
    */
   public StringAssert matches(String regex) {
     isNotNull();
     if (actual.matches(regex)) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat(actual(), " should match the regular expression:", inBrackets(regex)));
+    throw failure(format("<%s> should match the regular expression:<%s>", actual, regex));
   }
 
   /**
    * Verifies that the actual {@code String} does not match the given one.
    * @param regex the given regular expression expected not to be matched by the actual one.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is <code>null</code>.
+   * @throws AssertionError if the actual {@code String} is {@code null}.
    * @throws AssertionError if the actual {@code String} matches the given regular expression.
    */
   public StringAssert doesNotMatch(String regex) {
     isNotNull();
     if (!actual.matches(regex)) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat(actual(), " should not match the regular expression:", inBrackets(regex)));
-  }
-
-  private String actual() {
-    return inBrackets(actual);
+    throw failure(format("<%s> should not match the regular expression:<%s>", actual, regex));
   }
 
   /** {@inheritDoc} */
@@ -305,9 +302,9 @@ public class StringAssert extends GroupAssert<String> {
    * Verifies that the actual {@code String} contains the given text regardless of the case.
    * @param text the given text.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is <code>null</code>.
+   * @throws AssertionError if the actual {@code String} is {@code null}.
    * @throws AssertionError if the actual {@code String} does not contain the given text.
-   * @throws NullPointerException if the given {@code String} is <code>null</code>.
+   * @throws NullPointerException if the given {@code String} is {@code null}.
    * @since 1.3
    */
   public StringAssert containsIgnoringCase(String text) {
@@ -315,16 +312,16 @@ public class StringAssert extends GroupAssert<String> {
     isNotNull();
     if (actual.toLowerCase().contains(text.toLowerCase())) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat(actual(), " does not contain ", inBrackets(text)));
+    throw failure(format("<%s> does not contain <%s>", actual, text));
   }
 
   /**
    * Verifies that the actual {@code String} does not contain the given text.
    * @param text the given text.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is <code>null</code>.
+   * @throws AssertionError if the actual {@code String} is {@code null}.
    * @throws AssertionError if the actual {@code String} contains the given text.
-   * @throws NullPointerException if the given {@code String} is <code>null</code>.
+   * @throws NullPointerException if the given {@code String} is {@code null}.
    * @since 1.3
    */
   public StringAssert doesNotContain(String text) {
@@ -332,7 +329,7 @@ public class StringAssert extends GroupAssert<String> {
     isNotNull();
     if (!actual.contains(text)) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat(actual(), " should not contain ", inBrackets(text)));
+    throw failure(format("<%s> should not contain <%s>", actual, text));
   }
 
   private static void validateNotNull(String text) {

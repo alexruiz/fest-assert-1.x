@@ -18,7 +18,7 @@ package org.fest.assertions;
 import java.util.*;
 
 /**
- * Understands utility methods related to <code>{@link Collections}</code>.
+ * Utility methods for <code>{@link Collection}</code>s.
  *
  * @author Alex Ruiz
  */

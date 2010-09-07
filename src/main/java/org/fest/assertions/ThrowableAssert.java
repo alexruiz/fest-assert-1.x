@@ -15,12 +15,13 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.Fail.failIfNotEqual;
-import static org.fest.assertions.Formatting.inBrackets;
-import static org.fest.util.Strings.concat;
+import static org.fest.assertions.Formatting.format;
 
 /**
- * Understands assertion methods for <code>{@link Throwable}</code>. To create a new instance of this class use the
- * method <code>{@link Assertions#assertThat(Throwable)}</code>.
+ * Assertions for <code>{@link Throwable}</code>.
+ * <p>
+ * To create a new instance of this class invoke <code>{@link Assertions#assertThat(Throwable)}</code>.
+ * </p>
  *
  * @author David DIDIER
  * @author Alex Ruiz
@@ -67,9 +68,9 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
    * Verifies that the actual <code>Throwable</code> is an instance of the given type.
    * @param type the type to check the actual <code>Throwable</code> against.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Throwable</code> is <code>null</code>.
+   * @throws AssertionError if the actual <code>Throwable</code> is {@code null}.
    * @throws AssertionError if the actual <code>Throwable</code> is not an instance of the given type.
-   * @throws NullPointerException if the given type is <code>null</code>.
+   * @throws NullPointerException if the given type is {@code null}.
    */
   public ThrowableAssert isInstanceOf(Class<? extends Throwable> type) {
     objectAssert.isInstanceOf(type);
@@ -81,9 +82,9 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
    * pass, the type of the actual <code>Throwable</code> has to be exactly the same as the given type.
    * @param type the type to check the actual <code>Throwable</code> against.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Throwable</code> is <code>null</code>.
+   * @throws AssertionError if the actual <code>Throwable</code> is {@code null}.
    * @throws AssertionError if the actual <code>Throwable</code> is not an instance of the given type.
-   * @throws NullPointerException if the given type is <code>null</code>.
+   * @throws NullPointerException if the given type is {@code null}.
    */
   public ThrowableAssert isExactlyInstanceOf(Class<?> type) {
     isNotNull();
@@ -91,14 +92,14 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
     Class<?> current = actual.getClass();
     if (type.equals(current)) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat("expected exactly the same type:", inBrackets(type), " but was:", inBrackets(current)));
+    throw failure(format("expected exactly the same type:<%s> but was:<%s>", type, current));
   }
 
   /**
    * Verifies that the message of the actual <code>Throwable</code> is equal to the given one.
    * @param message the expected message.
    * @return this assertion error.
-   * @throws AssertionError if the actual <code>Throwable</code> is <code>null</code>.
+   * @throws AssertionError if the actual <code>Throwable</code> is {@code null}.
    * @throws AssertionError if the message of the actual <code>Throwable</code> is not equal to the given one.
    */
   public ThrowableAssert hasMessage(String message) {
@@ -110,7 +111,7 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
   /**
    * Verifies that the actual <code>Throwable</code> does not have a cause.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Throwable</code> is <code>null</code>.
+   * @throws AssertionError if the actual <code>Throwable</code> is {@code null}.
    * @throws AssertionError if the actual <code>Throwable</code> has a cause.
    */
   public ThrowableAssert hasNoCause() {
@@ -118,7 +119,7 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
     Throwable actualCause = actual.getCause();
     if (actualCause == null) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat("expected exception without cause, but cause was:", inBrackets(actualCause.getClass())));
+    throw failure(format("expected exception without cause, but cause was:<%s>", actualCause.getClass()));
   }
 
   /**
@@ -144,11 +145,11 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
   }
 
   /**
-   * Verifies that the actual <code>Throwable</code> is not <code>null</code>.
+   * Verifies that the actual <code>Throwable</code> is not {@code null}.
    *
    * @return this assertion object.
    *
-   * @throws AssertionError if the actual <code>Throwable</code> is <code>null</code>.
+   * @throws AssertionError if the actual <code>Throwable</code> is {@code null}.
    */
   @Override public ThrowableAssert isNotNull() {
     assertNotNull();
@@ -181,7 +182,7 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
    * Verifies that the actual <code>Throwable</code> satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual <code>Throwable</code> does not satisfy the given condition.
    * @see #is(Condition)
    */
@@ -194,7 +195,7 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
    * Verifies that the actual <code>Throwable</code> does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual <code>Throwable</code> satisfies the given condition.
    * @see #isNot(Condition)
    */
@@ -208,7 +209,7 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual <code>Throwable</code> does not satisfy the given condition.
    * @since 1.2
    */
@@ -221,7 +222,7 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual <code>Throwable</code> satisfies the given condition.
    * @since 1.2
    */

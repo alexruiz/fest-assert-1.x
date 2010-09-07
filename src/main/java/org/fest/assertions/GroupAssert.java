@@ -15,11 +15,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Formatting.inBrackets;
-import static org.fest.util.Strings.concat;
+import static org.fest.assertions.Formatting.format;
 
 /**
- * Understands a template for assertion methods related to classes representing groups of values.
+ * Template for assertions for classes representing groups of values.
  * @param <T> the type of object implementations of this template can verify.
  *
  * @author Yvonne Wang
@@ -36,24 +35,24 @@ public abstract class GroupAssert<T> extends GenericAssert<T> {
   }
 
   /**
-   * Verifies that the actual group of values is <code>null</code> or empty.
-   * @throws AssertionError if the actual group of values is not <code>null</code> or not empty.
+   * Verifies that the actual group of values is {@code null} or empty.
+   * @throws AssertionError if the actual group of values is not {@code null} or not empty.
    */
   public void isNullOrEmpty() {
     if (actual == null || !hasElements()) return;
     failIfCustomMessageIsSet();
-    fail(concat("expecting null or empty, but was:", inBrackets(actual)));
+    fail(format("expecting null or empty, but was:<%s>", actual));
   }
 
   /**
    * Verifies that the actual group of values is empty.
-   * @throws AssertionError if the actual group of values is <code>null</code> or not empty.
+   * @throws AssertionError if the actual group of values is {@code null} or not empty.
    */
   public void isEmpty() {
     isNotNull();
     if (!hasElements()) return;
     failIfCustomMessageIsSet();
-    fail(concat("expecting empty, but was:", inBrackets(actual)));
+    fail(format("expecting empty, but was:<%s>", actual));
   }
 
   private boolean hasElements() {
@@ -63,13 +62,13 @@ public abstract class GroupAssert<T> extends GenericAssert<T> {
   /**
    * Verifies that the actual group contains at least on value.
    * @return this assertion object.
-   * @throws AssertionError if the actual group is <code>null</code> or empty.
+   * @throws AssertionError if the actual group is {@code null} or empty.
    */
   protected abstract GroupAssert<T> isNotEmpty();
 
   /**
    * Verifies that the actual group of values contains at least one element.
-   * @throws AssertionError if the actual group of values is <code>null</code>.
+   * @throws AssertionError if the actual group of values is {@code null}.
    * @throws AssertionError if the actual group of values is empty.
    */
   protected final void assertIsNotEmpty() {
@@ -90,7 +89,7 @@ public abstract class GroupAssert<T> extends GenericAssert<T> {
   /**
    * Verifies that the number of elements in the actual group of values is equal to the given one.
    * @param expected the expected number of elements in the actual group of values.
-   * @throws AssertionError if the actual group of values is <code>null</code>.
+   * @throws AssertionError if the actual group of values is {@code null}.
    * @throws AssertionError if the number of elements of the actual group of values is not equal to the given one.
    */
   protected final void assertHasSize(int expected) {
@@ -98,7 +97,7 @@ public abstract class GroupAssert<T> extends GenericAssert<T> {
     int size = actualGroupSize();
     if (size == expected) return;
     failIfCustomMessageIsSet();
-    throw failure(concat("expected size:", inBrackets(expected), " but was:", inBrackets(size), " for ", inBrackets(actual)));
+    throw failure(format("expected size:<%s> but was:<%s> for <%s>", expected, size, actual));
   }
 
   /**

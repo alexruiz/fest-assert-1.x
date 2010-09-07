@@ -21,8 +21,10 @@ import static org.fest.assertions.ErrorMessages.*;
 import java.util.Arrays;
 
 /**
- * Understands assertion methods for <code>short</code> arrays. To create a new instance of this class use the
- * method <code>{@link Assertions#assertThat(short[])}</code>.
+ * Assertions for {@code short} arrays.
+ * <p>
+ * To create a new instance of this class invoke <code>{@link Assertions#assertThat(short[])}</code>.
+ * </p>
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -60,12 +62,12 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
   }
 
   /**
-   * Verifies that the actual <code>short</code> array contains the given values.
+   * Verifies that the actual {@code short} array contains the given values.
    * @param values the values to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> array is <code>null</code>.
-   * @throws NullPointerException if the given <code>short</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>short</code> array does not contain the given values.
+   * @throws AssertionError if the actual {@code short} array is {@code null}.
+   * @throws NullPointerException if the given {@code short} array is {@code null}.
+   * @throws AssertionError if the actual {@code short} array does not contain the given values.
    */
   public ShortArrayAssert contains(short...values) {
     assertContains(copy(values));
@@ -73,13 +75,13 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
   }
 
   /**
-   * Verifies that the actual <code>short</code> array contains the given values <strong>only</strong>.
+   * Verifies that the actual {@code short} array contains the given values <strong>only</strong>.
    * @param values the values to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> array is <code>null</code>.
-   * @throws NullPointerException if the given <code>short</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>short</code> array does not contain the given objects, or if the actual
-   * <code>short</code> array contains elements other than the ones specified.
+   * @throws AssertionError if the actual {@code short} array is {@code null}.
+   * @throws NullPointerException if the given {@code short} array is {@code null}.
+   * @throws AssertionError if the actual {@code short} array does not contain the given objects, or if the actual
+   * {@code short} array contains elements other than the ones specified.
    */
   public ShortArrayAssert containsOnly(short...values) {
     assertContainsOnly(copy(values));
@@ -87,12 +89,12 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
   }
 
   /**
-   * Verifies that the actual <code>short</code> array does not contain the given values.
+   * Verifies that the actual {@code short} array does not contain the given values.
    * @param values the values the array should exclude.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> array is <code>null</code>.
-   * @throws NullPointerException if the given <code>short</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>Object</code> array contains any of the given values.
+   * @throws AssertionError if the actual {@code short} array is {@code null}.
+   * @throws NullPointerException if the given {@code short} array is {@code null}.
+   * @throws AssertionError if the actual {@code Object} array contains any of the given values.
    */
   public ShortArrayAssert excludes(short...values) {
     assertExcludes(copy(values));
@@ -100,11 +102,11 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
   }
 
   /**
-   * Verifies that the actual <code>short</code> array satisfies the given condition.
+   * Verifies that the actual {@code short} array satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>short</code> array does not satisfy the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code short} array does not satisfy the given condition.
    * @see #is(Condition)
    */
   @Override public ShortArrayAssert satisfies(Condition<short[]> condition) {
@@ -113,11 +115,11 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
   }
 
   /**
-   * Verifies that the actual <code>short</code> array does not satisfy the given condition.
+   * Verifies that the actual {@code short} array does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>short</code> array satisfies the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code short} array satisfies the given condition.
    * @see #isNot(Condition)
    */
   @Override public ShortArrayAssert doesNotSatisfy(Condition<short[]> condition) {
@@ -129,8 +131,8 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>short</code> array does not satisfy the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code short} array does not satisfy the given condition.
    * @since 1.2
    */
   @Override public ShortArrayAssert is(Condition<short[]> condition) {
@@ -142,8 +144,8 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>short</code> array satisfies the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code short} array satisfies the given condition.
    * @since 1.2
    */
   @Override public ShortArrayAssert isNot(Condition<short[]> condition) {
@@ -152,9 +154,9 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
   }
 
   /**
-   * Verifies that the actual <code>short</code> array is not <code>null</code>.
+   * Verifies that the actual {@code short} array is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> array is <code>null</code>.
+   * @throws AssertionError if the actual {@code short} array is {@code null}.
    */
   @Override public ShortArrayAssert isNotNull() {
     assertNotNull();
@@ -162,10 +164,10 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
   }
 
   /**
-   * Verifies that the actual <code>short</code> array contains at least on element.
+   * Verifies that the actual {@code short} array contains at least on element.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>short</code> array is empty.
+   * @throws AssertionError if the actual {@code short} array is {@code null}.
+   * @throws AssertionError if the actual {@code short} array is empty.
    */
   @Override public ShortArrayAssert isNotEmpty() {
     assertIsNotEmpty();
@@ -173,11 +175,11 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
   }
 
   /**
-   * Verifies that the actual <code>short</code> array is equal to the given array. Array equality is checked by
+   * Verifies that the actual {@code short} array is equal to the given array. Array equality is checked by
    * <code>{@link Arrays#equals(short[], short[])}</code>.
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> array is not equal to the given one.
+   * @throws AssertionError if the actual {@code short} array is not equal to the given one.
    */
   @Override public ShortArrayAssert isEqualTo(short[] expected) {
     if (Arrays.equals(actual, expected)) return this;
@@ -186,11 +188,11 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
   }
 
   /**
-   * Verifies that the actual <code>short</code> array is not equal to the given array. Array equality is checked by
+   * Verifies that the actual {@code short} array is not equal to the given array. Array equality is checked by
    * <code>{@link Arrays#equals(short[], short[])}</code>.
    * @param array the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> array is equal to the given one.
+   * @throws AssertionError if the actual {@code short} array is equal to the given one.
    */
   @Override public ShortArrayAssert isNotEqualTo(short[] array) {
     if (!Arrays.equals(actual, array)) return this;
@@ -199,11 +201,11 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
   }
 
   /**
-   * Verifies that the number of elements in the actual <code>short</code> array is equal to the given one.
-   * @param expected the expected number of elements in the actual <code>short</code> array.
+   * Verifies that the number of elements in the actual {@code short} array is equal to the given one.
+   * @param expected the expected number of elements in the actual {@code short} array.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> array is <code>null</code>.
-   * @throws AssertionError if the number of elements in the actual <code>short</code> array is not equal to the given
+   * @throws AssertionError if the actual {@code short} array is {@code null}.
+   * @throws AssertionError if the number of elements in the actual {@code short} array is not equal to the given
    * one.
    */
   @Override public ShortArrayAssert hasSize(int expected) {
@@ -212,10 +214,10 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
   }
 
   /**
-   * Verifies that the actual <code>short</code> array is the same as the given array.
+   * Verifies that the actual {@code short} array is the same as the given array.
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> array is not the same as the given one.
+   * @throws AssertionError if the actual {@code short} array is not the same as the given one.
    */
   @Override public ShortArrayAssert isSameAs(short[] expected) {
     assertSameAs(expected);
@@ -223,10 +225,10 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
   }
 
   /**
-   * Verifies that the actual <code>short</code> array is not the same as the given array.
+   * Verifies that the actual {@code short} array is not the same as the given array.
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> array is the same as the given one.
+   * @throws AssertionError if the actual {@code short} array is the same as the given one.
    */
   @Override public ShortArrayAssert isNotSameAs(short[] expected) {
     assertNotSameAs(expected);

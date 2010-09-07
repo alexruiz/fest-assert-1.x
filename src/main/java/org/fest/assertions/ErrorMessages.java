@@ -17,17 +17,16 @@ package org.fest.assertions;
 
 import static org.fest.assertions.Formatting.*;
 import static org.fest.util.Arrays.array;
-import static org.fest.util.Strings.concat;
 
 /**
- * Understands common error messages.
+ * Common error messages.
  *
  * @author Alex Ruiz
  */
 final class ErrorMessages {
 
   static String unexpectedNotEqual(Object actual, Object expected) {
-    return concat("expected:", inBrackets(expected), " but was:", inBrackets(actual));
+    return format("expected:<%s> but was:<%s>", expected, actual);
   }
 
   static String unexpectedEqual(Object actual, Object o) {

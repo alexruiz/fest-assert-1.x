@@ -17,7 +17,7 @@ package org.fest.assertions;
 import static java.util.Collections.emptyList;
 import static org.fest.util.Collections.*;
 import static org.fest.util.Introspection.descriptorForProperty;
-import static org.fest.util.Strings.*;
+import static org.fest.util.Strings.quote;
 
 import java.beans.PropertyDescriptor;
 import java.util.*;
@@ -25,7 +25,7 @@ import java.util.*;
 import org.fest.util.IntrospectionError;
 
 /**
- * Understands utility methods related to properties.
+ * Utility methods for properties access.
  *
  * @author Joel Costigliola
  * @author Alex Ruiz
@@ -38,7 +38,7 @@ final class PropertySupport {
 
   /**
    * Returns a list containing the values of the given property name, from the elements of the given collection. If the
-   * given collection is empty or <code>null</code>, this method will return an empty collection.
+   * given collection is empty or {@code null}, this method will return an empty collection.
    * <p>
    * For example, given the nested property "address.street.number", this method will:
    * <ol>
@@ -50,7 +50,7 @@ final class PropertySupport {
    * @param propertyName the name of the property. It may be a nested property.
    * @param target the given collection.
    * @return a list containing the values of the given property name, from the elements of the given collection.
-   * @throws NullPointerException if given property name is <code>null</code>.
+   * @throws NullPointerException if given property name is {@code null}.
    * @throws IntrospectionError if an element in the given collection does not have a matching property.
    */
   static List<Object> propertyValues(String propertyName, Collection<?> target) {
@@ -67,7 +67,7 @@ final class PropertySupport {
   }
 
   /**
-   * Returns <code>true</code> if property is nested, <code>false</code> otherwise.
+   * Returns {@code true} if property is nested, {@code false} otherwise.
    * <p>
    * Examples:
    * <pre>
@@ -82,8 +82,8 @@ final class PropertySupport {
    * isNestedProperty(""); // false
    * </pre>
    * @param propertyName the given property name.
-   * @return <code>true</code> if property is nested, <code>false</code> otherwise.
-   * @throws NullPointerException if given property name is <code>null</code>.
+   * @return {@code true} if property is nested, {@code false} otherwise.
+   * @throws NullPointerException if given property name is {@code null}.
    */
   static boolean isNestedProperty(String propertyName) {
     if (propertyName == null) throw new NullPointerException("The property name to verify should not be null");
@@ -97,7 +97,7 @@ final class PropertySupport {
    * @param propertyName the given property name.
    * @return the given property name without its first property, if the property name belongs to a nested property;
    * otherwise, it will return an empty {@code String}.
-   * @throws NullPointerException if given property name is <code>null</code>.
+   * @throws NullPointerException if given property name is {@code null}.
    */
   static String removeFirstPropertyIfNested(String propertyName) {
     if (!isNestedProperty(propertyName)) return "";
@@ -111,7 +111,7 @@ final class PropertySupport {
    * @param propertyName the given property name.
    * @return the first property from the given property name, if the property name belongs to a nested property;
    * otherwise, it will return the given property name unchanged.
-   * @throws NullPointerException if given property name is <code>null</code>.
+   * @throws NullPointerException if given property name is {@code null}.
    */
   static String firstPropertyIfNested(String propertyName) {
     if (!isNestedProperty(propertyName)) return propertyName;
@@ -130,7 +130,7 @@ final class PropertySupport {
     try {
       return descriptor.getReadMethod().invoke(target);
     } catch (Exception e) {
-      throw new IntrospectionError(concat("Unable to obtain the value in property " + quote(propertyName)), e);
+      throw new IntrospectionError("Unable to obtain the value in property " + quote(propertyName), e);
     }
   }
 

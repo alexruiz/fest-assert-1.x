@@ -18,7 +18,7 @@ package org.fest.assertions;
 import org.fest.util.IntrospectionError;
 
 /**
- * Understands a template for assertion methods related to arrays or collections.
+ * Template for assertions for arrays or collections.
  * @param <T> the type of object implementations of this template can verify.
  *
  * @author Yvonne Wang
@@ -39,8 +39,8 @@ public abstract class ObjectGroupAssert<T> extends ItemGroupAssert<T> {
    * Verifies that the actual group of objects contains the given objects.
    * @param objects the objects to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual group of objects is <code>null</code>.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws AssertionError if the actual group of objects is {@code null}.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws AssertionError if the actual group of objects does not contain the given objects.
    */
   protected abstract ObjectGroupAssert<T> contains(Object... objects);
@@ -49,8 +49,8 @@ public abstract class ObjectGroupAssert<T> extends ItemGroupAssert<T> {
    * Verifies that the actual group of objects contains the given objects <strong>only</strong>, in any order.
    * @param objects the objects to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual group of objects is <code>null</code>.
-   * @throws NullPointerException if the given group of objects is <code>null</code>.
+   * @throws AssertionError if the actual group of objects is {@code null}.
+   * @throws NullPointerException if the given group of objects is {@code null}.
    * @throws AssertionError if the actual group of objects does not contain the given objects, or if the actual group of
    * objects contains elements other than the ones specified.
    */
@@ -60,8 +60,8 @@ public abstract class ObjectGroupAssert<T> extends ItemGroupAssert<T> {
    * Verifies that the actual group of objects does not contain the given objects.
    * @param objects the objects that the group of objects should exclude.
    * @return this assertion object.
-   * @throws AssertionError if the actual group of objects is <code>null</code>.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws AssertionError if the actual group of objects is {@code null}.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws AssertionError if the actual group of objects contains any of the given objects.
    */
   protected abstract ObjectGroupAssert<T> excludes(Object... objects);
@@ -69,7 +69,7 @@ public abstract class ObjectGroupAssert<T> extends ItemGroupAssert<T> {
   /**
    * Verifies that the actual group of objects does not have duplicates.
    * @return this assertion object.
-   * @throws AssertionError if the actual group of objects is <code>null</code>.
+   * @throws AssertionError if the actual group of objects is {@code null}.
    * @throws AssertionError if the actual group of objects has duplicates.
    */
   protected abstract ObjectGroupAssert<T> doesNotHaveDuplicates();
@@ -88,7 +88,7 @@ public abstract class ObjectGroupAssert<T> extends ItemGroupAssert<T> {
    * objects.
    * @return a new group of objects containing the values of the given property name from the elements of the actual
    * group of objects.
-   * @throws AssertionError if the actual group of objects is <code>null</code>.
+   * @throws AssertionError if the actual group of objects is {@code null}.
    * @throws IntrospectionError if an element in the given collection does not have a matching property.
    * @since 1.3
    */

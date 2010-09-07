@@ -15,14 +15,13 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.Collections.*;
-import static org.fest.assertions.Formatting.inBrackets;
+import static org.fest.assertions.Formatting.format;
 import static org.fest.util.Collections.duplicatesFrom;
-import static org.fest.util.Strings.concat;
 
 import java.util.*;
 
 /**
- * Understands a template for assertion methods related to groups of items (e.g. collections or arrays.)
+ * Template for assertions for groups of items (e.g. collections or arrays.)
  * @param <T> the type of object implementations of this template can verify.
  *
  * @author Yvonne Wang
@@ -42,8 +41,8 @@ public abstract class ItemGroupAssert<T> extends GroupAssert<T> {
   /**
    * Verifies that the actual actual group of objects contains the given objects, in any order.
    * @param objects the objects to look for.
-   * @throws AssertionError if the actual actual group of objects is <code>null</code>.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws AssertionError if the actual actual group of objects is {@code null}.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws AssertionError if the actual actual group of objects does not contain the given objects.
    */
   protected final void assertContains(Object... objects) {
@@ -61,8 +60,8 @@ public abstract class ItemGroupAssert<T> extends GroupAssert<T> {
   /**
    * Verifies that the actual group of objects contains the given objects <strong>only</strong>, in any order.
    * @param objects the objects to look for.
-   * @throws AssertionError if the actual group of objects is <code>null</code>.
-   * @throws NullPointerException if the given group of objects is <code>null</code>.
+   * @throws AssertionError if the actual group of objects is {@code null}.
+   * @throws NullPointerException if the given group of objects is {@code null}.
    * @throws AssertionError if the actual group of objects does not contain the given objects, or if the actual
    * group of objects contains elements other than the ones specified.
    */
@@ -107,19 +106,19 @@ public abstract class ItemGroupAssert<T> extends GroupAssert<T> {
 
   private AssertionError failureIfExpectedElementsNotFound(Collection<Object> notFound) {
     failIfCustomMessageIsSet();
-    return failure(concat(inBrackets(actual), " does not contain element(s):", inBrackets(notFound)));
+    return failure(format("<%s> does not contain element(s):<%s>", actual, notFound));
   }
 
   private AssertionError failureIfUnexpectedElementsFound(Collection<Object> unexpected) {
     failIfCustomMessageIsSet();
-    return failure(concat("unexpected element(s):", inBrackets(unexpected), " in ", inBrackets(actual)));
+    return failure(format("unexpected element(s):<%s> in <%s>", unexpected, actual));
   }
 
   /**
    * Verifies that the actual group of objects does not contain the given objects.
    * @param objects the objects that the group of objects should exclude.
-   * @throws AssertionError if the actual group of objects is <code>null</code>.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws AssertionError if the actual group of objects is {@code null}.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws AssertionError if the actual group of objects contains any of the given objects.
    */
   protected final void assertExcludes(Object... objects) {
@@ -128,13 +127,13 @@ public abstract class ItemGroupAssert<T> extends GroupAssert<T> {
     Collection<Object> found = found(actualAsSet(), objects);
     if (found.isEmpty()) return;
     failIfCustomMessageIsSet();
-    throw failure(concat(inBrackets(actual), " does not exclude element(s):", inBrackets(found)));
+    throw failure(format("<%s> does not exclude element(s):<%s>", actual, found));
   }
 
   /**
-   * Validates that the given array of objects is not <code>null</code>.
+   * Validates that the given array of objects is not {@code null}.
    * @param objects the array of objects to verify.
-   * @throws NullPointerException if the given array of objects is <code>null</code>.
+   * @throws NullPointerException if the given array of objects is {@code null}.
    */
   protected final void validateIsNotNull(Object[] objects) {
     if (objects == null)
@@ -143,7 +142,7 @@ public abstract class ItemGroupAssert<T> extends GroupAssert<T> {
 
   /**
    * Verifies that the actual group of objects does not have duplicates.
-   * @throws AssertionError if the actual group of objects is <code>null</code>.
+   * @throws AssertionError if the actual group of objects is {@code null}.
    * @throws AssertionError if the actual group of objects has duplicates.
    */
   protected final void assertDoesNotHaveDuplicates() {
@@ -151,7 +150,7 @@ public abstract class ItemGroupAssert<T> extends GroupAssert<T> {
     Collection<?> duplicates = duplicatesFrom(actualAsList());
     if (duplicates.isEmpty()) return;
     failIfCustomMessageIsSet();
-    throw failure(concat(inBrackets(actual), " contains duplicate(s):", inBrackets(duplicates)));
+    throw failure(format("<%s> contains duplicate(s):<%s>", actual, duplicates));
   }
 
   /**

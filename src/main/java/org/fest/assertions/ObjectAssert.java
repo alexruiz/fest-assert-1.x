@@ -16,15 +16,16 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ErrorMessages.unexpectedNullType;
-import static org.fest.assertions.Formatting.inBrackets;
+import static org.fest.assertions.Formatting.format;
 import static org.fest.util.Objects.namesOf;
-import static org.fest.util.Strings.concat;
 
 import java.util.Arrays;
 
 /**
- * Understands assertion methods for objects. To create a new instance of this class use the
- * method <code>{@link Assertions#assertThat(Object)}</code>.
+ * Assertions for <code>{@link Object}</code>s.
+ * <p>
+ * To create a new instance of this class use the method <code>{@link Assertions#assertThat(Object)}</code>.
+ * </p>
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -40,12 +41,12 @@ public class ObjectAssert extends GenericAssert<Object> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> is an instance of the given type.
-   * @param type the type to check the actual <code>Object</code> against.
+   * Verifies that the actual {@code Object} is an instance of the given type.
+   * @param type the type to check the actual {@code Object} against.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>Object</code> is not an instance of the given type.
-   * @throws NullPointerException if the given type is <code>null</code>.
+   * @throws AssertionError if the actual {@code Object} is {@code null}.
+   * @throws AssertionError if the actual {@code Object} is not an instance of the given type.
+   * @throws NullPointerException if the given type is {@code null}.
    */
   public ObjectAssert isInstanceOf(Class<?> type) {
     isNotNull();
@@ -53,24 +54,25 @@ public class ObjectAssert extends GenericAssert<Object> {
     Class<?> current = actual.getClass();
     if (type.isAssignableFrom(current)) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat("expected instance of:", inBrackets(type), " but was instance of:", inBrackets(current)));
+    throw failure(format("expected instance of:<%s> but was instance of:<%s>", type, current));
   }
 
   /**
-   * Verifies that the actual <code>Object</code> is an instance of any of the given types.
-   * @param types the types to check the actual <code>Object</code> against.
+   * Verifies that the actual {@code Object} is an instance of any of the given types.
+   * @param types the types to check the actual {@code Object} against.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>Object</code> is not an instance of any of the given types.
-   * @throws NullPointerException if the given array of types is <code>null</code>.
-   * @throws NullPointerException if the given array of types contains <code>null</code>s.
+   * @throws AssertionError if the actual {@code Object} is {@code null}.
+   * @throws AssertionError if the actual {@code Object} is not an instance of any of the given types.
+   * @throws NullPointerException if the given array of types is {@code null}.
+   * @throws NullPointerException if the given array of types contains {@code null}s.
    */
   public ObjectAssert isInstanceOfAny(Class<?>...types) {
     isNotNull();
     if (types == null)
       throw new NullPointerException(formattedErrorMessage("The given array of types should not be null"));
     if (!foundInstanceOfAny(types))
-      fail(concat("expected instance of any:<", typeNames(types), "> but was instance of:", inBrackets(actual.getClass())));
+      fail(String.format(
+          "expected instance of any:<%s> but was instance of:<%s>", typeNames(types), actual.getClass().getName()));
     return this;
   }
 
@@ -115,11 +117,11 @@ public class ObjectAssert extends GenericAssert<Object> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> satisfies the given condition.
+   * Verifies that the actual {@code Object} satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>Object</code> does not satisfy the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code Object} does not satisfy the given condition.
    * @see #is(Condition)
    */
   @Override public ObjectAssert satisfies(Condition<Object> condition) {
@@ -128,11 +130,11 @@ public class ObjectAssert extends GenericAssert<Object> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> does not satisfy the given condition.
+   * Verifies that the actual {@code Object} does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>Object</code> satisfies the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code Object} satisfies the given condition.
    * @see #isNot(Condition)
    */
   @Override public ObjectAssert doesNotSatisfy(Condition<Object> condition) {
@@ -144,8 +146,8 @@ public class ObjectAssert extends GenericAssert<Object> {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>Object</code> does not satisfy the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code Object} does not satisfy the given condition.
    * @since 1.2
    */
   @Override public ObjectAssert is(Condition<Object> condition) {
@@ -157,8 +159,8 @@ public class ObjectAssert extends GenericAssert<Object> {
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>Object</code> satisfies the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code Object} satisfies the given condition.
    * @since 1.2
    */
   @Override public ObjectAssert isNot(Condition<Object> condition) {
@@ -167,9 +169,9 @@ public class ObjectAssert extends GenericAssert<Object> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> is not <code>null</code>.
+   * Verifies that the actual {@code Object} is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> is <code>null</code>.
+   * @throws AssertionError if the actual {@code Object} is {@code null}.
    */
   @Override public ObjectAssert isNotNull() {
     assertNotNull();
@@ -177,10 +179,10 @@ public class ObjectAssert extends GenericAssert<Object> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> is the same as the given one.
-   * @param expected the given <code>Object</code> to compare the actual <code>Object</code> to.
+   * Verifies that the actual {@code Object} is the same as the given one.
+   * @param expected the given {@code Object} to compare the actual {@code Object} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> is not the same as the given one.
+   * @throws AssertionError if the actual {@code Object} is not the same as the given one.
    */
   @Override public ObjectAssert isSameAs(Object expected) {
     assertSameAs(expected);
@@ -188,10 +190,10 @@ public class ObjectAssert extends GenericAssert<Object> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> is not the same as the given one.
-   * @param other the given <code>Object</code> to compare the actual <code>Object</code> to.
+   * Verifies that the actual {@code Object} is not the same as the given one.
+   * @param other the given {@code Object} to compare the actual {@code Object} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> is the same as the given one.
+   * @throws AssertionError if the actual {@code Object} is the same as the given one.
    */
   @Override public ObjectAssert isNotSameAs(Object other) {
     assertNotSameAs(other);
@@ -199,10 +201,10 @@ public class ObjectAssert extends GenericAssert<Object> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> is equal to the given one.
-   * @param expected the given <code>Object</code> to compare the actual <code>Object</code> to.
+   * Verifies that the actual {@code Object} is equal to the given one.
+   * @param expected the given {@code Object} to compare the actual {@code Object} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> is not equal to the given one.
+   * @throws AssertionError if the actual {@code Object} is not equal to the given one.
    */
   @Override public ObjectAssert isEqualTo(Object expected) {
     assertEqualTo(expected);
@@ -210,10 +212,10 @@ public class ObjectAssert extends GenericAssert<Object> {
   }
 
   /**
-   * Verifies that the actual <code>Object</code> is not equal to the given one.
-   * @param other the given <code>Object</code> to compare the actual <code>Object</code> to.
+   * Verifies that the actual {@code Object} is not equal to the given one.
+   * @param other the given {@code Object} to compare the actual {@code Object} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Object</code> is equal to the given one.
+   * @throws AssertionError if the actual {@code Object} is equal to the given one.
    */
   @Override public ObjectAssert isNotEqualTo(Object other) {
     assertNotEqualTo(other);

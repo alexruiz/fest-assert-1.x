@@ -21,8 +21,10 @@ import static org.fest.assertions.ErrorMessages.*;
 import java.util.Arrays;
 
 /**
- * Understands assertion methods for <code>char</code> arrays. To create a new instance of this class use the
- * method <code>{@link Assertions#assertThat(char[])}</code>.
+ * Assertions for {@code char} arrays.
+ * <p>
+ * To create a new instance of this class invoke <code>{@link Assertions#assertThat(char[])}</code>.
+ * </p>
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -108,12 +110,12 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
   }
 
   /**
-   * Verifies that the actual <code>char</code> array contains the given values.
+   * Verifies that the actual {@code char} array contains the given values.
    * @param values the values to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>char</code> array is <code>null</code>.
-   * @throws NullPointerException if the given <code>char</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>char</code> array does not contain the given values.
+   * @throws AssertionError if the actual {@code char} array is {@code null}.
+   * @throws NullPointerException if the given {@code char} array is {@code null}.
+   * @throws AssertionError if the actual {@code char} array does not contain the given values.
    */
   public CharArrayAssert contains(char...values) {
     assertContains(copy(values));
@@ -121,13 +123,13 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
   }
 
   /**
-   * Verifies that the actual <code>char</code> array contains the given values <strong>only</strong>.
+   * Verifies that the actual {@code char} array contains the given values <strong>only</strong>.
    * @param values the values to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>char</code> array is <code>null</code>.
-   * @throws NullPointerException if the given <code>char</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>char</code> array does not contain the given objects, or if the actual
-   * <code>char</code> array contains elements other than the ones specified.
+   * @throws AssertionError if the actual {@code char} array is {@code null}.
+   * @throws NullPointerException if the given {@code char} array is {@code null}.
+   * @throws AssertionError if the actual {@code char} array does not contain the given objects, or if the actual
+   * {@code char} array contains elements other than the ones specified.
    */
   public CharArrayAssert containsOnly(char...values) {
     assertContainsOnly(copy(values));
@@ -135,12 +137,12 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
   }
 
   /**
-   * Verifies that the actual <code>char</code> array does not contain the given values.
+   * Verifies that the actual {@code char} array does not contain the given values.
    * @param values the values the array should exclude.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>char</code> array is <code>null</code>.
-   * @throws NullPointerException if the given <code>char</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>char</code> array contains any of the given values.
+   * @throws AssertionError if the actual {@code char} array is {@code null}.
+   * @throws NullPointerException if the given {@code char} array is {@code null}.
+   * @throws AssertionError if the actual {@code char} array contains any of the given values.
    */
   public CharArrayAssert excludes(char...values) {
     assertExcludes(copy(values));
@@ -148,11 +150,11 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
   }
 
   /**
-   * Verifies that the actual <code>char</code> array satisfies the given condition.
+   * Verifies that the actual {@code char} array satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>char</code> array does not satisfy the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code char} array does not satisfy the given condition.
    * @see #is(Condition)
    */
   @Override public CharArrayAssert satisfies(Condition<char[]> condition) {
@@ -161,11 +163,11 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
   }
 
   /**
-   * Verifies that the actual <code>char</code> array does not satisfy the given condition.
+   * Verifies that the actual {@code char} array does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>char</code> array satisfies the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code char} array satisfies the given condition.
    * @see #isNot(Condition)
    */
   @Override public CharArrayAssert doesNotSatisfy(Condition<char[]> condition) {
@@ -177,8 +179,8 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>char</code> array does not satisfy the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code char} array does not satisfy the given condition.
    * @since 1.2
    */
   @Override public CharArrayAssert is(Condition<char[]> condition) {
@@ -190,8 +192,8 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>char</code> array satisfies the given condition.
+   * @throws NullPointerException if the given condition is {@code null}.
+   * @throws AssertionError if the actual {@code char} array satisfies the given condition.
    * @since 1.2
    */
   @Override public CharArrayAssert isNot(Condition<char[]> condition) {
@@ -200,9 +202,9 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
   }
 
   /**
-   * Verifies that the actual <code>char</code> array is not <code>null</code>.
+   * Verifies that the actual {@code char} array is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>char</code> array is <code>null</code>.
+   * @throws AssertionError if the actual {@code char} array is {@code null}.
    */
   @Override public CharArrayAssert isNotNull() {
     assertNotNull();
@@ -210,10 +212,10 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
   }
 
   /**
-   * Verifies that the actual <code>char</code> array contains at least on element.
+   * Verifies that the actual {@code char} array contains at least on element.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>char</code> array is <code>null</code>.
-   * @throws AssertionError if the actual <code>char</code> array is empty.
+   * @throws AssertionError if the actual {@code char} array is {@code null}.
+   * @throws AssertionError if the actual {@code char} array is empty.
    */
   @Override public CharArrayAssert isNotEmpty() {
     assertIsNotEmpty();
@@ -221,11 +223,11 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
   }
 
   /**
-   * Verifies that the actual <code>char</code> array is equal to the given array. Array equality is checked by
+   * Verifies that the actual {@code char} array is equal to the given array. Array equality is checked by
    * <code>{@link Arrays#equals(char[], char[])}</code>.
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>char</code> array is not equal to the given one.
+   * @throws AssertionError if the actual {@code char} array is not equal to the given one.
    */
   @Override public CharArrayAssert isEqualTo(char[] expected) {
     if (Arrays.equals(actual, expected)) return this;
@@ -234,11 +236,11 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
   }
 
   /**
-   * Verifies that the actual <code>char</code> array is not equal to the given array. Array equality is checked by
+   * Verifies that the actual {@code char} array is not equal to the given array. Array equality is checked by
    * <code>{@link Arrays#equals(char[], char[])}</code>.
    * @param array the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>char</code> array is equal to the given one.
+   * @throws AssertionError if the actual {@code char} array is equal to the given one.
    */
   @Override public CharArrayAssert isNotEqualTo(char[] array) {
     if (!Arrays.equals(actual, array)) return this;
@@ -247,11 +249,11 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
   }
 
   /**
-   * Verifies that the number of elements in the actual <code>char</code> array is equal to the given one.
-   * @param expected the expected number of elements in the actual <code>char</code> array.
+   * Verifies that the number of elements in the actual {@code char} array is equal to the given one.
+   * @param expected the expected number of elements in the actual {@code char} array.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>char</code> array is <code>null</code>.
-   * @throws AssertionError if the number of elements in the actual <code>char</code> array is not equal to the given
+   * @throws AssertionError if the actual {@code char} array is {@code null}.
+   * @throws AssertionError if the number of elements in the actual {@code char} array is not equal to the given
    * one.
    */
   @Override public CharArrayAssert hasSize(int expected) {
@@ -260,10 +262,10 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
   }
 
   /**
-   * Verifies that the actual <code>char</code> array is the same as the given array.
+   * Verifies that the actual {@code char} array is the same as the given array.
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>char</code> array is not the same as the given one.
+   * @throws AssertionError if the actual {@code char} array is not the same as the given one.
    */
   @Override public CharArrayAssert isSameAs(char[] expected) {
     assertSameAs(expected);
@@ -271,10 +273,10 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
   }
 
   /**
-   * Verifies that the actual <code>char</code> array is not the same as the given array.
+   * Verifies that the actual {@code char} array is not the same as the given array.
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>char</code> array is the same as the given one.
+   * @throws AssertionError if the actual {@code char} array is the same as the given one.
    */
   @Override public CharArrayAssert isNotSameAs(char[] expected) {
     assertNotSameAs(expected);

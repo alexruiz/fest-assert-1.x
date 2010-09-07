@@ -22,8 +22,10 @@ import java.util.*;
 import org.fest.util.IntrospectionError;
 
 /**
- * Understands assertions for collections. To create a new instance of this class use the method
- * <code>{@link Assertions#assertThat(Collection)}</code>.
+ * Assertions for <code>{@link Collection}</code>s.
+ * <p>
+ * To create a new instance of this class invoke <code>{@link Assertions#assertThat(Collection)}</code>.
+ * </p>
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -42,8 +44,8 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * Verifies that the actual collection contains the given objects.
    * @param objects the objects to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual collection is <code>null</code>.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws AssertionError if the actual collection is {@code null}.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws AssertionError if the actual collection does not contain the given objects.
    */
   @Override public CollectionAssert contains(Object... objects) {
@@ -55,8 +57,8 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * Verifies that the actual collection contains the given objects <strong>only</strong>.
    * @param objects the objects to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual collection is <code>null</code>.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws AssertionError if the actual collection is {@code null}.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws AssertionError if the actual collection does not contain the given objects, or if the actual collection
    *           contains elements other than the ones specified.
    */
@@ -69,8 +71,8 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * Verifies that the actual collection does not contain the given objects.
    * @param objects the objects that the collection should exclude.
    * @return this assertion object.
-   * @throws AssertionError if the actual collection is <code>null</code>.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws AssertionError if the actual collection is {@code null}.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws AssertionError if the actual collection contains any of the given objects.
    */
   @Override public CollectionAssert excludes(Object... objects) {
@@ -81,7 +83,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
   /**
    * Verifies that the actual collection does not have duplicates.
    * @return this assertion object.
-   * @throws AssertionError if the actual collection is <code>null</code>.
+   * @throws AssertionError if the actual collection is {@code null}.
    * @throws AssertionError if the actual collection has duplicates.
    */
   @Override public CollectionAssert doesNotHaveDuplicates() {
@@ -115,7 +117,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * Verifies that the actual collection satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual collection does not satisfy the given condition.
    * @see #is(Condition)
    */
@@ -128,7 +130,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * Verifies that the actual collection does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual collection satisfies the given condition.
    * @see #isNot(Condition)
    */
@@ -141,7 +143,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * Alias for <code>{@link #satisfies(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual collection does not satisfy the given condition.
    * @since 1.2
    */
@@ -154,7 +156,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
    * @param condition the given condition.
    * @return this assertion object.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws AssertionError if the actual collection satisfies the given condition.
    * @since 1.2
    */
@@ -164,9 +166,9 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
   }
 
   /**
-   * Verifies that the actual collection is not <code>null</code>.
+   * Verifies that the actual collection is not {@code null}.
    * @return this assertion object.
-   * @throws AssertionError if the actual collection is <code>null</code>.
+   * @throws AssertionError if the actual collection is {@code null}.
    */
   @Override public CollectionAssert isNotNull() {
     assertNotNull();
@@ -176,7 +178,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
   /**
    * Verifies that the actual collection contains at least on element.
    * @return this assertion object.
-   * @throws AssertionError if the actual collection is <code>null</code>.
+   * @throws AssertionError if the actual collection is {@code null}.
    * @throws AssertionError if the actual collection is empty.
    */
   @Override public CollectionAssert isNotEmpty() {
@@ -188,7 +190,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * Verifies that the number of elements in the actual collection is equal to the given one.
    * @param expected the expected number of elements in the actual collection.
    * @return this assertion object.
-   * @throws AssertionError if the actual collection is <code>null</code>.
+   * @throws AssertionError if the actual collection is {@code null}.
    * @throws AssertionError if the number of elements of the actual collection is not equal to the given one.
    */
   @Override public CollectionAssert hasSize(int expected) {
@@ -199,7 +201,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
   /**
    * Returns the number of elements in the actual collection.
    * @return the number of elements in the actual collection.
-   * @throws AssertionError if the actual collection is <code>null</code>.
+   * @throws AssertionError if the actual collection is {@code null}.
    */
   @Override protected int actualGroupSize() {
     isNotNull();
@@ -270,7 +272,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * {@code CollectionAssert}.
    * @return a new {@code CollectionAssert} containing the values of the given property name from the elements of this
    * {@code CollectionAssert}'s collection.
-   * @throws AssertionError if the actual collection is <code>null</code>.
+   * @throws AssertionError if the actual collection is {@code null}.
    * @throws IntrospectionError if an element in the given collection does not have a matching property.
    * @since 1.3
    */
