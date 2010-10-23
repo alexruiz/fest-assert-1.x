@@ -14,15 +14,20 @@
  */
 package org.fest.assertions;
 
-import static java.awt.Color.*;
-import static org.fest.assertions.Images.*;
+import static java.awt.Color.BLUE;
+import static java.awt.Color.YELLOW;
+
+import static org.fest.assertions.Images.fivePixelBlueImage;
+import static org.fest.assertions.Images.fivePixelYellowImage;
+import static org.fest.assertions.Images.image;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Strings.concat;
 
 import java.awt.image.BufferedImage;
 
-import org.fest.test.CodeToTest;
 import org.junit.Test;
+
+import org.fest.test.CodeToTest;
 
 /**
  * Tests for <code>{@link ImageAssert#isEqualTo(BufferedImage)}</code>.
@@ -65,7 +70,7 @@ public class ImageAssert_isEqualTo_Test {
 
   @Test
   public void should_fail_if_width_is_not_equal() {
-    expectAssertionError("image size, expected:<(3, 5)> but was:<(5, 5)>").on(new CodeToTest() {
+    expectAssertionError("image size: expected:<(3, 5)> but was:<(5, 5)>").on(new CodeToTest() {
       public void run() {
         BufferedImage a = fivePixelBlueImage();
         BufferedImage e = image(3, 5, BLUE);
@@ -76,7 +81,7 @@ public class ImageAssert_isEqualTo_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_width_is_not_equal() {
-    expectAssertionError("[A Test] image size, expected:<(3, 5)> but was:<(5, 5)>").on(new CodeToTest() {
+    expectAssertionError("[A Test] image size: expected:<(3, 5)> but was:<(5, 5)>").on(new CodeToTest() {
       public void run() {
         BufferedImage a = fivePixelBlueImage();
         BufferedImage e = image(3, 5, BLUE);
@@ -88,7 +93,7 @@ public class ImageAssert_isEqualTo_Test {
 
   @Test
   public void should_fail_if_height_is_not_equal() {
-    expectAssertionError("image size, expected:<(5, 2)> but was:<(5, 5)>").on(new CodeToTest() {
+    expectAssertionError("image size: expected:<(5, 2)> but was:<(5, 5)>").on(new CodeToTest() {
       public void run() {
         BufferedImage a = fivePixelBlueImage();
         BufferedImage e = image(5, 2, BLUE);
@@ -99,7 +104,7 @@ public class ImageAssert_isEqualTo_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_height_is_not_equal() {
-    expectAssertionError("[A Test] image size, expected:<(5, 2)> but was:<(5, 5)>").on(new CodeToTest() {
+    expectAssertionError("[A Test] image size: expected:<(5, 2)> but was:<(5, 5)>").on(new CodeToTest() {
       public void run() {
         BufferedImage a = fivePixelBlueImage();
         BufferedImage e = image(5, 2, BLUE);
