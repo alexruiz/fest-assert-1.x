@@ -16,7 +16,8 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.Formatter.format;
-import static org.fest.util.Strings.*;
+import static org.fest.util.Strings.concat;
+import static org.fest.util.Strings.isEmpty;
 
 import org.junit.ComparisonFailure;
 
@@ -25,7 +26,7 @@ import org.junit.ComparisonFailure;
  *
  * @author Alex Ruiz
  */
-final class FailureMessages {
+final class FailureMessages {   
 
   static String unexpectedNotEqual(Object actual, Object expected) {
     return unexpectedNotEqual(null, actual, expected);
@@ -57,6 +58,11 @@ final class FailureMessages {
   static String unexpectedEqualOrLess(String description, Object actual, Object other) {
     String d = addSpaceIfNotEmpty(inBrackets(description));
     return concat(d, "actual value:<", format(actual), "> should be greater than:<", format(other), ">");
+  }
+
+  static String unexpectedNotIn(String description, Object actual, Object other) {
+    String d = addSpaceIfNotEmpty(inBrackets(description));
+    return concat(d, "actual value:<", format(actual), "> should be in:<", format(other), ">");
   }
 
   private static String inBrackets(String s) {

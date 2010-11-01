@@ -69,7 +69,7 @@ public class ImageAssert_read_Test {
 
   @Test
   public void should_throw_error_if_path_of_image_to_read_does_not_belong_to_a_file() {
-    expectIllegalArgumentException("The path 'blah' does not belong to a file").on(new CodeToTest() {
+    expectIllegalArgumentException("The path <'blah'> does not belong to a file").on(new CodeToTest() {
       public void run() throws IOException {
         ImageAssert.read("blah");
       }

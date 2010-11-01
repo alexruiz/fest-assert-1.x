@@ -15,8 +15,18 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Fail.*;
+import static org.fest.assertions.ErrorMessages.unexpectedNotIn;
+import static org.fest.assertions.Fail.failIfActualIsNull;
+import static org.fest.assertions.Fail.failIfEqual;
+import static org.fest.assertions.Fail.failIfNotEqual;
+import static org.fest.assertions.Fail.failIfNotNull;
+import static org.fest.assertions.Fail.failIfNotSame;
+import static org.fest.assertions.Fail.failIfSame;
 import static org.fest.assertions.Formatting.format;
+import static org.fest.util.Collections.list;
+import static org.fest.util.Objects.areEqual;
+
+import java.util.Collection;
 
 /**
  * Template for assertions.
@@ -183,6 +193,49 @@ public abstract class GenericAssert<T> extends Assert {
    * @throws AssertionError if the actual value is the same as the given one.
    */
   protected abstract GenericAssert<T> isNotSameAs(T other);
+
+  /**
+   * Verifies that the actual value is in the given values.
+   * @param values the given values to search the actual value in.
+   * @return this assertion object.
+   * @throws AssertionError if the actual value is not in the given values.
+   * @throws NullPointerException if the given vararg parameter is null.
+   */
+  protected GenericAssert<T> isIn(T... values) {
+    return isIn(list(values));
+  }
+
+  /**
+   * Verifies that the actual value is in the given collection.
+   * @param values the given collection to search the actual value in. must not be null.
+   * @return this assertion object.
+   * @throws AssertionError if the actual value is not in the given collection.
+   * @throws NullPointerException if the given collection is null.
+   */
+  protected GenericAssert<T> isIn(Collection<T> values) {
+    if (values == null) { throw new NullPointerException( formattedErrorMessage("expecting values parameter not to be null")); }
+    if (assertThatActualIsIn(values)) { return this; }
+    failIfCustomMessageIsSet();
+    throw failure(unexpectedNotIn(customErrorMessage(), actual, values));
+  }
+
+  /**
+   * Return true if values collection contains actual, false otherwise.</br>
+   * Works also when T is an array by comparing values elements (arrays !) with actual.
+   * @param values the collection to search actual in
+   * @return true if values collection contains actual, false otherwise.
+   */
+  protected boolean assertThatActualIsIn(Collection<T> values) {
+    // handle the case where T is an array, we can't rely on contains because it compares actual and values elements with equals, 
+    // but equals on array only checks references equality and not array items equality (wich areEquals does)
+    if (!values.isEmpty() && values.iterator().next().getClass().isArray()) {
+      for (T value : values) {
+        if (areEqual(actual, value)) { return true; }
+      }
+      return false;
+    }
+    return values.contains(actual);
+  }
 
   /**
    * Verifies that the actual value satisfies the given condition.

@@ -15,7 +15,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Formatting.*;
+import static org.fest.assertions.Formatting.createMessageFrom;
+import static org.fest.assertions.Formatting.format;
+import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.util.Arrays.array;
 
 /**
@@ -61,5 +63,10 @@ final class ErrorMessages {
     return createMessageFrom(description, array("actual value:", inBrackets(actual), reason, inBrackets(expected)));
   }
 
+  static String unexpectedNotIn(String description, Object actual, Object other) {
+    return assertionFailed(actual, " should be in:", other);
+  }
+
+  
   private ErrorMessages() {}
 }

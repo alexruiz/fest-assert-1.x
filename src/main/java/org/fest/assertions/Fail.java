@@ -16,8 +16,12 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ComparisonFailureFactory.comparisonFailure;
-import static org.fest.assertions.ErrorMessages.*;
-import static org.fest.assertions.Formatting.*;
+import static org.fest.assertions.ErrorMessages.unexpectedEqual;
+import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
+import static org.fest.assertions.Formatting.createMessageFrom;
+import static org.fest.assertions.Formatting.format;
+import static org.fest.assertions.Formatting.inBrackets;
+import static org.fest.assertions.Formatting.valueOf;
 import static org.fest.util.Arrays.array;
 import static org.fest.util.Objects.areEqual;
 
@@ -70,7 +74,7 @@ public final class Fail {
     failWithMessage(customErrorMessage);
     throw comparisonFailed(descriptionOfActual, actual, expected);
   }
-
+ 
   /**
    * Returns a <code>{@link AssertionError}</code> describing a comparison failure.
    * @param description the description of the comparison.

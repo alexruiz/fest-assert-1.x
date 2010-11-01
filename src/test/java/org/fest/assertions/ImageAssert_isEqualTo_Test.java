@@ -65,7 +65,7 @@ public class ImageAssert_isEqualTo_Test {
 
   @Test
   public void should_fail_if_width_is_not_equal() {
-    expectAssertionError("image size, expected:<(3, 5)> but was:<(5, 5)>").on(new CodeToTest() {
+    expectAssertionError("image size: expected:<(3, 5)> but was:<(5, 5)>").on(new CodeToTest() {
       public void run() {
         BufferedImage a = fivePixelBlueImage();
         BufferedImage e = image(3, 5, BLUE);
@@ -76,7 +76,7 @@ public class ImageAssert_isEqualTo_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_width_is_not_equal() {
-    expectAssertionError("[A Test] image size, expected:<(3, 5)> but was:<(5, 5)>").on(new CodeToTest() {
+    expectAssertionError("[A Test] image size: expected:<(3, 5)> but was:<(5, 5)>").on(new CodeToTest() {
       public void run() {
         BufferedImage a = fivePixelBlueImage();
         BufferedImage e = image(3, 5, BLUE);
@@ -88,7 +88,7 @@ public class ImageAssert_isEqualTo_Test {
 
   @Test
   public void should_fail_if_height_is_not_equal() {
-    expectAssertionError("image size, expected:<(5, 2)> but was:<(5, 5)>").on(new CodeToTest() {
+    expectAssertionError("image size: expected:<(5, 2)> but was:<(5, 5)>").on(new CodeToTest() {
       public void run() {
         BufferedImage a = fivePixelBlueImage();
         BufferedImage e = image(5, 2, BLUE);
@@ -99,7 +99,7 @@ public class ImageAssert_isEqualTo_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_height_is_not_equal() {
-    expectAssertionError("[A Test] image size, expected:<(5, 2)> but was:<(5, 5)>").on(new CodeToTest() {
+    expectAssertionError("[A Test] image size: expected:<(5, 2)> but was:<(5, 5)>").on(new CodeToTest() {
       public void run() {
         BufferedImage a = fivePixelBlueImage();
         BufferedImage e = image(5, 2, BLUE);
