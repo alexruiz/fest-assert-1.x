@@ -15,8 +15,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ToString.toStringOf;
-import static org.fest.util.Strings.*;
+import static org.fest.util.Strings.isEmpty;
+import static org.fest.util.Strings.quote;
+import static org.fest.util.ToString.toStringOf;
 
 /**
  * Creates instances of JUnit's <code>ComparisonFailure</code>.
