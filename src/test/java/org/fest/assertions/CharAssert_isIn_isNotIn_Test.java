@@ -15,26 +15,26 @@
 package org.fest.assertions;
 
 /**
- * Tests for <code>{@link org.fest.assertions.ObjectAssert#isIn(Object ... objects)}</code> and
- * <code>{@link org.fest.assertions.ObjectAssert#isIn(java.util.Collection)}</code>.
- *
+ * Tests for <code>{@link CharAssert#isIn(Character... values)}</code> and
+ * <code>{@link CharAssert#isIn(java.util.Collection)}</code>.
+ * 
  * @author Joel Costigliola
  */
-public class StringAssert_isIn_Test extends GenericAssert_isIn_TestCase<Object> {
+public class CharAssert_isIn_isNotIn_Test extends GenericAssert_isIn_isNotIn_TestCase<Character> {
 
   @Override
-  protected GenericAssert<Object> assertionsFor(Object actual) {
-    return new ObjectAssert(actual);
+  protected GenericAssert<Character> assertionsFor(Character actual) {
+    return new CharAssert(actual);
   }
 
   @Override
-  protected Object notNullValue() {
-    return "Xavi";
+  protected Character notNullValue() {
+    return 'a';
   }
 
   @Override
   public void setUpValuesContainingActual() {
-    initValuesContainingActual("Andres", notNullValue(), "Leo");
+    initValuesContainingActual(notNullValue(), 'b', 'c');
   }
 
 }

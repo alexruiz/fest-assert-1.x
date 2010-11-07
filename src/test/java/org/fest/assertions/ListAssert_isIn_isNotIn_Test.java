@@ -14,29 +14,32 @@
  */
 package org.fest.assertions;
 
-import java.math.BigDecimal;
+import static org.fest.util.Collections.list;
+
+import java.util.Collection;
+import java.util.List;
 
 /**
- * Tests for <code>{@link BigDecimalAssert#isIn(BigDecimal... values)}</code> and
- * <code>{@link BigDecimalAssert#isIn(java.util.Collection)}</code>.
+ * Tests for <code>{@link ListAssert#isIn(Collection)}</code> and
+ * <code>{@link ListAssert#isIn(Collection)}</code>.
  * 
  * @author Joel Costigliola
  */
-public class BigDecimalAssert_isIn_Test extends GenericAssert_isIn_TestCase<BigDecimal> {
+public class ListAssert_isIn_isNotIn_Test extends GenericAssert_isIn_isNotIn_TestCase<List<?>> {
 
   @Override
-  protected GenericAssert<BigDecimal> assertionsFor(BigDecimal actual) {
-    return new BigDecimalAssert(actual);
+  protected GenericAssert<List<?>> assertionsFor(List<?> actual) {
+    return new ListAssert(actual);
   }
 
   @Override
-  protected BigDecimal notNullValue() {
-    return BigDecimals.eight();
+  protected List<?> notNullValue() {
+    return list("a1", "a2", "a3");
   }
 
   @Override
   public void setUpValuesContainingActual() {
-    initValuesContainingActual(notNullValue(), BigDecimals.seven(), BigDecimals.negativeEight());
+    initValuesContainingActual(notNullValue(), list("b1", "b2"), list("c1", "c2"));
   }
 
 }

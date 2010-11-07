@@ -14,29 +14,29 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.byteArray;
+import java.math.BigDecimal;
 
 /**
- * Tests for <code>{@link ByteArrayAssert#isIn(byte[])}</code> and
- * <code>{@link ByteArrayAssert#isIn(java.util.Collection)}</code>.
+ * Tests for <code>{@link BigDecimalAssert#isIn(BigDecimal... values)}</code> and
+ * <code>{@link BigDecimalAssert#isIn(java.util.Collection)}</code>.
  * 
  * @author Joel Costigliola
  */
-public class ByteArrayAssert_isIn_Test extends GenericAssert_isIn_TestCase<byte[]> {
+public class BigDecimalAssert_isIn_isNotIn_Test extends GenericAssert_isIn_isNotIn_TestCase<BigDecimal> {
 
   @Override
-  protected GenericAssert<byte[]> assertionsFor(byte[] actual) {
-    return new ByteArrayAssert(actual);
+  protected GenericAssert<BigDecimal> assertionsFor(BigDecimal actual) {
+    return new BigDecimalAssert(actual);
   }
 
   @Override
-  protected byte[] notNullValue() {
-    return byteArray((byte) 0, (byte) 1);
+  protected BigDecimal notNullValue() {
+    return BigDecimals.eight();
   }
 
   @Override
   public void setUpValuesContainingActual() {
-    initValuesContainingActual(notNullValue(), byteArray((byte) 2, (byte) 3));
+    initValuesContainingActual(notNullValue(), BigDecimals.seven(), BigDecimals.negativeEight());
   }
 
 }

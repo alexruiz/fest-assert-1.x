@@ -14,27 +14,29 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.ArrayFactory.byteArray;
+
 /**
- * Tests for <code>{@link CharAssert#isIn(Character... values)}</code> and
- * <code>{@link CharAssert#isIn(java.util.Collection)}</code>.
+ * Tests for <code>{@link ByteArrayAssert#isIn(byte[])}</code> and
+ * <code>{@link ByteArrayAssert#isIn(java.util.Collection)}</code>.
  * 
  * @author Joel Costigliola
  */
-public class CharAssert_isIn_Test extends GenericAssert_isIn_TestCase<Character> {
+public class ByteArrayAssert_isIn_isNotIn_Test extends GenericAssert_isIn_isNotIn_TestCase<byte[]> {
 
   @Override
-  protected GenericAssert<Character> assertionsFor(Character actual) {
-    return new CharAssert(actual);
+  protected GenericAssert<byte[]> assertionsFor(byte[] actual) {
+    return new ByteArrayAssert(actual);
   }
 
   @Override
-  protected Character notNullValue() {
-    return 'a';
+  protected byte[] notNullValue() {
+    return byteArray((byte) 0, (byte) 1);
   }
 
   @Override
   public void setUpValuesContainingActual() {
-    initValuesContainingActual(notNullValue(), 'b', 'c');
+    initValuesContainingActual(notNullValue(), byteArray((byte) 2, (byte) 3));
   }
 
 }

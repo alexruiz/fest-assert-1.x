@@ -15,10 +15,13 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.Formatting.format;
-import static org.fest.assertions.ToString.toStringOf;
 import static org.fest.util.Strings.quote;
+import static org.fest.util.ToString.toStringOf;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Assertions for <code>{@link Map}</code>s.

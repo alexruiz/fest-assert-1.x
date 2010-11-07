@@ -65,6 +65,11 @@ final class FailureMessages {
     return concat(d, "actual value:<", format(actual), "> should be in:<", format(other), ">");
   }
 
+  static String unexpectedIn(String description, Object actual, Object other) {
+    String d = addSpaceIfNotEmpty(inBrackets(description));
+    return concat(d, "actual value:<", format(actual), "> should not be in:<", format(other), ">");
+  }
+  
   private static String inBrackets(String s) {
     if (isEmpty(s)) return "";
     return concat("[", s, "]");

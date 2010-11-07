@@ -14,30 +14,29 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FileStub.aFile;
+import static org.fest.assertions.ArrayFactory.doubleArray;
 
-import java.io.File;
 /**
- * Tests for <code>{@link FileAssert#isIn(File... values)}</code> and
- * <code>{@link FileAssert#isIn(java.util.Collection)}</code>.
+ * Tests for <code>{@link DoubleArrayAssert#isIn(double[])}</code> and
+ * <code>{@link DoubleArrayAssert#isIn(java.util.Collection)}</code>.
  * 
  * @author Joel Costigliola
  */
-public class FileAssert_isIn_Test extends GenericAssert_isIn_TestCase<File> {
+public class DoubleArrayAssert_isIn_isNotIn_Test extends GenericAssert_isIn_isNotIn_TestCase<double[]> {
 
   @Override
-  protected GenericAssert<File> assertionsFor(File actual) {
-    return new FileAssert(actual);
+  protected GenericAssert<double[]> assertionsFor(double[] actual) {
+    return new DoubleArrayAssert(actual);
   }
 
   @Override
-  protected File notNullValue() {
-    return aFile();
+  protected double[] notNullValue() {
+    return doubleArray(1.0, 2.0, 3.0);
   }
 
   @Override
   public void setUpValuesContainingActual() {
-    initValuesContainingActual(notNullValue(), aFile());
+    initValuesContainingActual(notNullValue(), doubleArray(4.0, 5.0, 6.0), doubleArray(7.0, 8.0));
   }
 
 }

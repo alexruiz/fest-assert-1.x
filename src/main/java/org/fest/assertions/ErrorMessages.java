@@ -67,6 +67,10 @@ final class ErrorMessages {
     return assertionFailed(actual, " should be in:", other);
   }
 
+  static String unexpectedIn(String description, Object actual, Object other) {
+    return assertionFailed(actual, " should not be in:", other);
+  }
+  
   
   private ErrorMessages() {}
 }

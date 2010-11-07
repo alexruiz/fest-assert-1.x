@@ -14,29 +14,29 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.floatArray;
+import static org.fest.assertions.ArrayFactory.longArray;
 
 /**
- * Tests for <code>{@link FloatArrayAssert#isIn(float[])}</code> and
- * <code>{@link FloatArrayAssert#isIn(java.util.Collection)}</code>.
+ * Tests for <code>{@link LongArrayAssert#isIn(long[])}</code> and
+ * <code>{@link LongArrayAssert#isIn(java.util.Collection)}</code>.
  * 
  * @author Joel Costigliola
  */
-public class FloatArrayAssert_isIn_Test extends GenericAssert_isIn_TestCase<float[]> {
+public class LongArrayAssert_isIn_isNotIn_Test extends GenericAssert_isIn_isNotIn_TestCase<long[]> {
 
   @Override
-  protected GenericAssert<float[]> assertionsFor(float[] actual) {
-    return new FloatArrayAssert(actual);
+  protected GenericAssert<long[]> assertionsFor(long[] actual) {
+    return new LongArrayAssert(actual);
   }
 
   @Override
-  protected float[] notNullValue() {
-    return floatArray(1.0f, 2.0f, 3.0f);
+  protected long[] notNullValue() {
+    return longArray(1, 2, 3);
   }
 
   @Override
   public void setUpValuesContainingActual() {
-    initValuesContainingActual(notNullValue(), floatArray(4.0f, 5.0f, 6.0f), floatArray(7.0f, 8.0f));
+    initValuesContainingActual(notNullValue(), longArray(4, 5, 6), longArray(7, 8));
   }
 
 }

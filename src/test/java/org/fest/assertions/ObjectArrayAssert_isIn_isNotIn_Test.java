@@ -14,27 +14,31 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.ArrayFactory.objectArray;
+
+import java.util.Collection;
+
 /**
- * Tests for <code>{@link DoubleAssert#isIn(Double... values)}</code> and
- * <code>{@link DoubleAssert#isIn(java.util.Collection)}</code>.
+ * Tests for <code>{@link ObjectArrayAssert#isIn(Collection)}</code> and
+ * <code>{@link ObjectArrayAssert#isIn(Collection)}</code>.
  * 
  * @author Joel Costigliola
  */
-public class DoubleAssert_isIn_Test extends GenericAssert_isIn_TestCase<Double> {
+public class ObjectArrayAssert_isIn_isNotIn_Test extends GenericAssert_isIn_isNotIn_TestCase<Object[]> {
 
   @Override
-  protected GenericAssert<Double> assertionsFor(Double actual) {
-    return new DoubleAssert(actual);
+  protected GenericAssert<Object[]> assertionsFor(Object[] actual) {
+    return new ObjectArrayAssert(actual);
   }
 
   @Override
-  protected Double notNullValue() {
-    return 1.0;
+  protected Object[] notNullValue() {
+    return objectArray(1, 2);
   }
 
   @Override
   public void setUpValuesContainingActual() {
-    initValuesContainingActual(notNullValue(), 2.0, 3.0);
+    initValuesContainingActual(notNullValue(), objectArray(3,4,5));
   }
 
 }

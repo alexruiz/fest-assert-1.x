@@ -14,31 +14,27 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Collections.set;
-
-import java.util.Collection;
-
 /**
- * Tests for <code>{@link CollectionAssert#isIn(Collection)}</code> and
- * <code>{@link CollectionAssert#isIn(java.util.Collection)}</code>.
+ * Tests for <code>{@link LongAssert#isIn(Long... values)}</code> and
+ * <code>{@link LongAssert#isIn(java.util.Collection)}</code>.
  * 
  * @author Joel Costigliola
  */
-public class CollectionAssert_isIn_Test extends GenericAssert_isIn_TestCase<Collection<?>> {
+public class LongAssert_isIn_isNotIn_Test extends GenericAssert_isIn_isNotIn_TestCase<Long> {
 
   @Override
-  protected GenericAssert<Collection<?>> assertionsFor(Collection<?> actual) {
-    return new CollectionAssert(actual);
+  protected GenericAssert<Long> assertionsFor(Long actual) {
+    return new LongAssert(actual);
   }
 
   @Override
-  protected Collection<?> notNullValue() {
-    return set("a1", "a2", "a3");
+  protected Long notNullValue() {
+    return 1L;
   }
 
   @Override
   public void setUpValuesContainingActual() {
-    initValuesContainingActual(notNullValue(), set("b1", "b2"), set("c1", "c2"));
+    initValuesContainingActual(notNullValue(), 2L, 3L);
   }
 
 }

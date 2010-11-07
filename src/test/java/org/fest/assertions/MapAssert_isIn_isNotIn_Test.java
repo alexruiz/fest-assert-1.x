@@ -19,35 +19,25 @@ import static org.fest.assertions.MapFactory.map;
 
 import java.util.Map;
 
-import org.junit.BeforeClass;
-
 /**
- * Tests for <code>{@link org.fest.assertions.MapAssert#isEqualTo(java.util.Map)}</code>.
- *
- * @author David DIDIER
- * @author Yvonne Wang
- * @author Alex Ruiz
+ * Tests for <code>{@link MapAssert#isIn(java.util.Collection)}</code> and
+ * <code>{@link MapAssert#isIn(java.util.Collection)}</code>.
+ * 
+ * @author Joel Costigliola
  */
-public class MapAssert_isIn_Test extends GenericAssert_isEqualTo_TestCase<Map<?, ?>> {
-
-  private static Map<?, ?> notNullValue;
-  private static Map<?, ?> unequalValue;
-
-  @BeforeClass
-  public static void setUpOnce() {
-    notNullValue = map(entry("key1", 1), entry("key2", 2));
-    unequalValue = map(entry("key6", 6), entry("key8", 8));
-  }
+public class MapAssert_isIn_isNotIn_Test extends GenericAssert_isIn_isNotIn_TestCase<Map<?, ?>> {
 
   @Override protected MapAssert assertionsFor(Map<?, ?> actual) {
     return new MapAssert(actual);
   }
 
   @Override protected Map<?, ?> notNullValue() {
-    return notNullValue;
+      return map(entry("key1", 1), entry("key2", 2));
   }
 
-  @Override protected Map<?, ?> unequalValue() {
-    return unequalValue;
+  @Override
+  public void setUpValuesContainingActual() {
+    initValuesContainingActual(notNullValue(), map(entry("key3", 3), entry("key4", 4)));
   }
+
 }

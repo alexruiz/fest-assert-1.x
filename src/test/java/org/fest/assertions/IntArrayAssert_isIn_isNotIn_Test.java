@@ -14,27 +14,29 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.ArrayFactory.intArray;
+
 /**
- * Tests for <code>{@link ObjectAssert#isIn(Object ... objects)}</code> and
- * <code>{@link ObjectAssert#isIn(java.util.Collection)}</code>.
+ * Tests for <code>{@link IntArrayAssert#isIn(int[])}</code> and
+ * <code>{@link IntArrayAssert#isIn(java.util.Collection)}</code>.
  * 
  * @author Joel Costigliola
  */
-public class ObjectAssert_isIn_Test extends GenericAssert_isIn_TestCase<Object> {
+public class IntArrayAssert_isIn_isNotIn_Test extends GenericAssert_isIn_isNotIn_TestCase<int[]> {
 
   @Override
-  protected GenericAssert<Object> assertionsFor(Object actual) {
-    return new ObjectAssert(actual);
+  protected GenericAssert<int[]> assertionsFor(int[] actual) {
+    return new IntArrayAssert(actual);
   }
 
   @Override
-  protected Object notNullValue() {
-    return "Xavi";
+  protected int[] notNullValue() {
+    return intArray(1, 2, 3);
   }
 
   @Override
   public void setUpValuesContainingActual() {
-    initValuesContainingActual("Andres", notNullValue(), "Leo");
+    initValuesContainingActual(notNullValue(), intArray(4, 5, 6), intArray(7, 8));
   }
 
 }

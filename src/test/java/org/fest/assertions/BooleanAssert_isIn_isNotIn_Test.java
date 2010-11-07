@@ -14,29 +14,27 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.booleanArray;
-
 /**
- * Tests for <code>{@link BooleanArrayAssert#isIn(boolean[])}</code> and
- * <code>{@link BooleanArrayAssert#isIn(java.util.Collection)}</code>.
+ * Tests for <code>{@link BooleanAssert#isIn(Boolean... values)}</code> and
+ * <code>{@link BooleanAssert#isIn(java.util.Collection)}</code>.
  * 
  * @author Joel Costigliola
  */
-public class BooleanArrayAssert_isIn_Test extends GenericAssert_isIn_TestCase<boolean[]> {
+public class BooleanAssert_isIn_isNotIn_Test extends GenericAssert_isIn_isNotIn_TestCase<Boolean> {
 
   @Override
-  protected GenericAssert<boolean[]> assertionsFor(boolean[] actual) {
-    return new BooleanArrayAssert(actual);
+  protected GenericAssert<Boolean> assertionsFor(Boolean actual) {
+    return new BooleanAssert(actual);
   }
 
   @Override
-  protected boolean[] notNullValue() {
-    return booleanArray(true, false);
+  protected Boolean notNullValue() {
+    return true;
   }
 
   @Override
   public void setUpValuesContainingActual() {
-    initValuesContainingActual(notNullValue(), booleanArray(true, true, true), booleanArray(false, true));
+    initValuesContainingActual(notNullValue(), false);
   }
 
 }

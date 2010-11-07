@@ -14,29 +14,30 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.longArray;
+import static org.fest.assertions.FileStub.aFile;
 
+import java.io.File;
 /**
- * Tests for <code>{@link LongArrayAssert#isIn(long[])}</code> and
- * <code>{@link LongArrayAssert#isIn(java.util.Collection)}</code>.
+ * Tests for <code>{@link FileAssert#isIn(File... values)}</code> and
+ * <code>{@link FileAssert#isIn(java.util.Collection)}</code>.
  * 
  * @author Joel Costigliola
  */
-public class LongArrayAssert_isIn_Test extends GenericAssert_isIn_TestCase<long[]> {
+public class FileAssert_isIn_isNotIn_Test extends GenericAssert_isIn_isNotIn_TestCase<File> {
 
   @Override
-  protected GenericAssert<long[]> assertionsFor(long[] actual) {
-    return new LongArrayAssert(actual);
+  protected GenericAssert<File> assertionsFor(File actual) {
+    return new FileAssert(actual);
   }
 
   @Override
-  protected long[] notNullValue() {
-    return longArray(1, 2, 3);
+  protected File notNullValue() {
+    return aFile();
   }
 
   @Override
   public void setUpValuesContainingActual() {
-    initValuesContainingActual(notNullValue(), longArray(4, 5, 6), longArray(7, 8));
+    initValuesContainingActual(notNullValue(), aFile());
   }
 
 }

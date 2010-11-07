@@ -14,30 +14,27 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.charArray;
-
-
 /**
- * Tests for <code>{@link CharArrayAssert#isIn(char[])}</code> and
- * <code>{@link CharArrayAssert#isIn(java.util.Collection)}</code>.
+ * Tests for <code>{@link DoubleAssert#isIn(Double... values)}</code> and
+ * <code>{@link DoubleAssert#isIn(java.util.Collection)}</code>.
  * 
  * @author Joel Costigliola
  */
-public class CharArrayAssert_isIn_Test extends GenericAssert_isIn_TestCase<char[]> {
+public class DoubleAssert_isIn_isNotIn_Test extends GenericAssert_isIn_isNotIn_TestCase<Double> {
 
   @Override
-  protected GenericAssert<char[]> assertionsFor(char[] actual) {
-    return new CharArrayAssert(actual);
+  protected GenericAssert<Double> assertionsFor(Double actual) {
+    return new DoubleAssert(actual);
   }
 
   @Override
-  protected char[] notNullValue() {
-    return charArray('a', 'b');
+  protected Double notNullValue() {
+    return 1.0;
   }
 
   @Override
   public void setUpValuesContainingActual() {
-    initValuesContainingActual(notNullValue(), charArray('c', 'd'), charArray('e', 'f'));
+    initValuesContainingActual(notNullValue(), 2.0, 3.0);
   }
 
 }

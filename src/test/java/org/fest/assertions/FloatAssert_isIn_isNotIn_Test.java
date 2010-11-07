@@ -14,32 +14,27 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Collections.list;
-
-import java.util.Collection;
-import java.util.List;
-
 /**
- * Tests for <code>{@link ListAssert#isIn(Collection)}</code> and
- * <code>{@link ListAssert#isIn(Collection)}</code>.
+ * Tests for <code>{@link FloatAssert#isIn(Float... values)}</code> and
+ * <code>{@link FloatAssert#isIn(java.util.Collection)}</code>.
  * 
  * @author Joel Costigliola
  */
-public class ListAssert_isIn_Test extends GenericAssert_isIn_TestCase<List<?>> {
+public class FloatAssert_isIn_isNotIn_Test extends GenericAssert_isIn_isNotIn_TestCase<Float> {
 
   @Override
-  protected GenericAssert<List<?>> assertionsFor(List<?> actual) {
-    return new ListAssert(actual);
+  protected GenericAssert<Float> assertionsFor(Float actual) {
+    return new FloatAssert(actual);
   }
 
   @Override
-  protected List<?> notNullValue() {
-    return list("a1", "a2", "a3");
+  protected Float notNullValue() {
+    return 1.0f;
   }
 
   @Override
   public void setUpValuesContainingActual() {
-    initValuesContainingActual(notNullValue(), list("b1", "b2"), list("c1", "c2"));
+    initValuesContainingActual(notNullValue(), 2.0f, 3.0f);
   }
 
 }

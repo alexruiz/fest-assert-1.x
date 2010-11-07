@@ -14,27 +14,29 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.ArrayFactory.shortArray;
+
 /**
- * Tests for <code>{@link BooleanAssert#isIn(Boolean... values)}</code> and
- * <code>{@link BooleanAssert#isIn(java.util.Collection)}</code>.
+ * Tests for <code>{@link ShortArrayAssert#isIn(short[])}</code> and
+ * <code>{@link ShortArrayAssert#isIn(java.util.Collection)}</code>.
  * 
  * @author Joel Costigliola
  */
-public class BooleanAssert_isIn_Test extends GenericAssert_isIn_TestCase<Boolean> {
+public class ShortArrayAssert_isIn_isNotIn_Test extends GenericAssert_isIn_isNotIn_TestCase<short[]> {
 
   @Override
-  protected GenericAssert<Boolean> assertionsFor(Boolean actual) {
-    return new BooleanAssert(actual);
+  protected GenericAssert<short[]> assertionsFor(short[] actual) {
+    return new ShortArrayAssert(actual);
   }
 
   @Override
-  protected Boolean notNullValue() {
-    return true;
+  protected short[] notNullValue() {
+    return shortArray(1, 2, 3);
   }
 
   @Override
   public void setUpValuesContainingActual() {
-    initValuesContainingActual(notNullValue(), false);
+    initValuesContainingActual(notNullValue(), shortArray(4, 5, 6), shortArray(7, 8));
   }
 
 }

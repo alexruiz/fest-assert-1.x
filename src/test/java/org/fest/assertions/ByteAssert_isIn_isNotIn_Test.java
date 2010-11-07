@@ -15,26 +15,26 @@
 package org.fest.assertions;
 
 /**
- * Tests for <code>{@link LongAssert#isIn(Long... values)}</code> and
- * <code>{@link LongAssert#isIn(java.util.Collection)}</code>.
+ * Tests for <code>{@link ByteAssert#isIn(Byte... values)}</code> and
+ * <code>{@link ByteAssert#isIn(java.util.Collection)}</code>.
  * 
  * @author Joel Costigliola
  */
-public class LongAssert_isIn_Test extends GenericAssert_isIn_TestCase<Long> {
+public class ByteAssert_isIn_isNotIn_Test extends GenericAssert_isIn_isNotIn_TestCase<Byte> {
 
   @Override
-  protected GenericAssert<Long> assertionsFor(Long actual) {
-    return new LongAssert(actual);
+  protected GenericAssert<Byte> assertionsFor(Byte actual) {
+    return new ByteAssert(actual);
   }
 
   @Override
-  protected Long notNullValue() {
-    return 1L;
+  protected Byte notNullValue() {
+    return (byte) 1;
   }
 
   @Override
   public void setUpValuesContainingActual() {
-    initValuesContainingActual(notNullValue(), 2L, 3L);
+    initValuesContainingActual(notNullValue(), (byte) 2, (byte) 3);
   }
 
 }

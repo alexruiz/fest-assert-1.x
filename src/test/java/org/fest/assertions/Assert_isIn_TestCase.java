@@ -15,21 +15,25 @@
 package org.fest.assertions;
 
 /**
- * Test case for implementations of <code>isIn</code> for objects and primitives.
+ * Test case for implementations of <code>isIn</code> assertion.
  * 
  * @author Joel Costigliola
  */
 public interface Assert_isIn_TestCase {
 
-  void should_pass_if_actual_is_in_given_values();
+  void isIn_should_pass_if_actual_is_in_given_values();
 
-  void should_pass_if_actual_is_null_and_is_in_given_values();
+  void isIn_should_pass_if_actual_is_null_and_is_in_given_values();
 
-  void should_fail_if_actual_is_not_in_given_values();
+  void isIn_should_fail_if_actual_is_not_in_given_values();
 
-  void should_fail_and_display_description_of_assertion_if_actual_is_not_in_given_values();
+  void isIn_should_fail_and_display_description_of_assertion_if_actual_is_not_in_given_values();
 
-  void should_fail_with_custom_message_if_actual_is_not_in_given_values();
+  void isIn_should_fail_with_custom_message_if_actual_is_not_in_given_values();
 
-  void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_in_given_values();
+  void isIn_should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_in_given_values();
+  
+  void isIn_should_throw_error_if_given_values_parameter_is_null();
+
+  void isIn_should_throw_error_and_display_description_of_assertion_if_given_values_parameter_is_null();
 }

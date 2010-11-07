@@ -15,26 +15,26 @@
 package org.fest.assertions;
 
 /**
- * Tests for <code>{@link FloatAssert#isIn(Float... values)}</code> and
- * <code>{@link FloatAssert#isIn(java.util.Collection)}</code>.
- * 
+ * Tests for <code>{@link org.fest.assertions.StringAssert#isIn(String... values)}</code> and
+ * <code>{@link org.fest.assertions.StringAssert#isIn(java.util.Collection)}</code>.
+ *
  * @author Joel Costigliola
  */
-public class FloatAssert_isIn_Test extends GenericAssert_isIn_TestCase<Float> {
+public class StringAssert_isIn_isNotIn_Test extends GenericAssert_isIn_isNotIn_TestCase<String> {
 
   @Override
-  protected GenericAssert<Float> assertionsFor(Float actual) {
-    return new FloatAssert(actual);
+  protected GenericAssert<String> assertionsFor(String actual) {
+    return new StringAssert(actual);
   }
 
   @Override
-  protected Float notNullValue() {
-    return 1.0f;
+  protected String notNullValue() {
+    return "Xavi";
   }
 
   @Override
   public void setUpValuesContainingActual() {
-    initValuesContainingActual(notNullValue(), 2.0f, 3.0f);
+    initValuesContainingActual("Andres", notNullValue(), "Leo");
   }
 
 }

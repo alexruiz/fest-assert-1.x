@@ -14,8 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ToString.toStringOf;
-import static org.fest.util.Strings.*;
+import static org.fest.util.Strings.concat;
+import static org.fest.util.Strings.isEmpty;
+import static org.fest.util.ToString.toStringOf;
 
 import java.util.IllegalFormatException;
 
@@ -106,7 +107,7 @@ public final class Formatting {
   public static String format(String format, Object... args) {
     Object[] argsAsText = new String[args.length];
     for (int i = 0; i < args.length; i++)
-      argsAsText[i] = ToString.toStringOf(args[i]);
+      argsAsText[i] = toStringOf(args[i]);
     return String.format(format, argsAsText);
   }
 
