@@ -15,16 +15,24 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
+
 import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
-import static org.fest.assertions.Title.*;
+import static org.fest.assertions.Title.Miss;
+import static org.fest.assertions.Title.Mr;
+import static org.fest.assertions.Title.Ms;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
+
 import static org.junit.Assert.assertEquals;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import org.fest.test.CodeToTest;
 import org.fest.util.IntrospectionError;
-import org.junit.*;
 
 /**
  * Base class for testing implementations of <code>{@link ObjectGroupAssert#onProperty(String)}</code>.
@@ -260,6 +268,13 @@ public abstract class ObjectGroupAssert_onProperty_Test<T> {
       }
     });
   }
+  
+  @Test
+  public void should_pass_on_property_defined_at_object_class_level() {
+    assertions(persons).onProperty("class").containsOnly(Person.class);
+  }
+
+  
 
   protected abstract ObjectGroupAssert<T> assertions(Collection<?> data);
 }
