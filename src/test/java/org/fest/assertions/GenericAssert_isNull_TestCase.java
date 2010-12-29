@@ -19,7 +19,8 @@ import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Strings.concat;
 
 import org.fest.test.CodeToTest;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Base class for testing <code>{@link GenericAssert#isNull()}</code>.

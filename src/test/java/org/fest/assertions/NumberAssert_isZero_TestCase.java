@@ -19,7 +19,8 @@ import static org.fest.assertions.FailureMessages.unexpectedNotEqual;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test case for implementations of <code>{@link NumberAssert#isZero()}</code>.

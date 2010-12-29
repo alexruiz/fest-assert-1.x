@@ -16,8 +16,7 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.Formatter.format;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.isEmpty;
+import static org.fest.util.Strings.*;
 
 import org.junit.ComparisonFailure;
 

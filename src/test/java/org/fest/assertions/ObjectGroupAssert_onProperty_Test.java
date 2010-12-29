@@ -15,24 +15,17 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
-
 import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
-import static org.fest.assertions.Title.Miss;
-import static org.fest.assertions.Title.Mr;
-import static org.fest.assertions.Title.Ms;
+import static org.fest.assertions.Title.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
-
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
+import java.util.*;
 
 import org.fest.test.CodeToTest;
 import org.fest.util.IntrospectionError;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Base class for testing implementations of <code>{@link ObjectGroupAssert#onProperty(String)}</code>.

@@ -16,7 +16,8 @@ package org.fest.assertions;
 
 import static org.junit.Assert.*;
 
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test cases for implementations of:

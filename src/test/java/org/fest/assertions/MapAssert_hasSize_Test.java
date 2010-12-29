@@ -22,7 +22,8 @@ import static org.fest.test.ExpectedFailure.expectAssertionError;
 import java.util.Map;
 
 import org.fest.test.CodeToTest;
-import org.junit.*;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link MapAssert#hasSize(int)}</code>.

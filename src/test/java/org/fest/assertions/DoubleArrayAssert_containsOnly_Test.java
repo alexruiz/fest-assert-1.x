@@ -20,7 +20,8 @@ import static org.fest.assertions.EmptyArrays.emptyDoubleArray;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.*;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link DoubleArrayAssert#containsOnly(double...)}</code>.

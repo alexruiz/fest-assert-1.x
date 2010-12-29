@@ -16,7 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.ArrayInspection.*;
 
-import java.util.*;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Assertions for arrays.

@@ -23,9 +23,10 @@ import java.util.Collection;
 
 import org.fest.assertions.FileContentComparator.LineDiff;
 import org.fest.util.Collections;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.*;
+import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**

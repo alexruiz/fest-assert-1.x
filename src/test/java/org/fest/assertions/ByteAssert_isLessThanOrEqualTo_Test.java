@@ -17,7 +17,8 @@ package org.fest.assertions;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.*;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link ByteAssert#isLessThanOrEqualTo(byte)}</code>.

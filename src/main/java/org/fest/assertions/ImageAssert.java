@@ -21,7 +21,8 @@ import static org.fest.util.Objects.areEqual;
 
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Assertions for <code>{@link BufferedImage}</code>s.

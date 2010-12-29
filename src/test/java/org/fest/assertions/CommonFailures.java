@@ -17,7 +17,7 @@ package org.fest.assertions;
 
 import static org.fest.test.ExpectedFailure.*;
 
-import org.fest.test.*;
+import org.fest.test.CodeToTest;
 import org.fest.test.ExpectedFailure.Message;
 import org.junit.ComparisonFailure;
 

@@ -17,7 +17,8 @@ package org.fest.assertions;
 import static org.fest.util.Strings.concat;
 import static org.junit.Assert.*;
 
-import org.junit.*;
+import org.junit.ComparisonFailure;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link ComparisonFailureFactory#comparisonFailure(String, Object, Object)}</code>.

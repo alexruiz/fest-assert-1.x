@@ -18,10 +18,7 @@ import static org.fest.assertions.Formatting.format;
 import static org.fest.util.Strings.quote;
 import static org.fest.util.ToString.toStringOf;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Assertions for <code>{@link Map}</code>s.
