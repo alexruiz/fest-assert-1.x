@@ -17,7 +17,8 @@ package org.fest.assertions;
 
 import static org.junit.Assert.*;
 
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Tests for {@link Assert#equals(Object)} and <code>{@link Assert#hashCode()}</code>.

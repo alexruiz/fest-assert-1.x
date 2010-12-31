@@ -22,10 +22,12 @@ import static org.fest.util.Strings.concat;
 import static org.fest.util.Systems.LINE_SEPARATOR;
 import static org.junit.Assert.*;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 import org.fest.test.CodeToTest;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link FileAssert#hasSameContentAs(File)}</code>.

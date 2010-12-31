@@ -17,8 +17,8 @@ package org.fest.assertions;
 
 import static org.fest.util.Collections.list;
 
-import java.util.*;
 import java.util.Collections;
+import java.util.List;
 
 import org.junit.BeforeClass;
 

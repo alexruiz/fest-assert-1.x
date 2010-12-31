@@ -18,7 +18,8 @@ package org.fest.assertions;
 import static org.junit.Assert.assertEquals;
 
 import org.fest.assertions.FileContentComparator.LineDiff;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link LineDiff#toString()}</code>.

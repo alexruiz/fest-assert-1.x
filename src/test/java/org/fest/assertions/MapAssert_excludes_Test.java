@@ -23,7 +23,8 @@ import java.util.Map;
 
 import org.fest.assertions.MapAssert.Entry;
 import org.fest.test.CodeToTest;
-import org.junit.*;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link MapAssert#excludes(Entry...)}</code>.

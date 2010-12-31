@@ -17,20 +17,14 @@ package org.fest.assertions;
 import static java.util.Collections.emptyList;
 
 import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
-import static org.fest.assertions.Title.Miss;
-import static org.fest.assertions.Title.Mr;
-import static org.fest.assertions.Title.Ms;
+import static org.fest.assertions.Title.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 import org.fest.test.CodeToTest;
 import org.fest.util.IntrospectionError;
@@ -39,7 +33,7 @@ import org.fest.util.IntrospectionError;
  * Base class for testing implementations of <code>{@link ObjectGroupAssert#onProperty(String)}</code>.
  * @param <T> The type supported by the implementation of the {@code ObjectGroupAssert} to test.
  *
- * @author Joel Costigliola
+ * @author Joel Costigliola 
  * @author Alex Ruiz
  */
 public abstract class ObjectGroupAssert_onProperty_Test<T> {
@@ -229,13 +223,13 @@ public abstract class ObjectGroupAssert_onProperty_Test<T> {
   public final void should_fail_because_of_non_public_getter() {
     try {
       assertions(persons).onProperty("country").containsOnly("Spain");
-      Assert.fail("IntrospectionError expected");
+      fail("IntrospectionError expected");
     } catch (IntrospectionError e) {
       assertEquals("No public getter for property 'country' in org.fest.assertions.Person", e.getMessage());
     }
     try {
       assertions(persons).onProperty("adult").containsOnly(true);
-      Assert.fail("IntrospectionError expected");
+      fail("IntrospectionError expected");
     } catch (IntrospectionError e) {
       assertEquals("No public getter for property 'adult' in org.fest.assertions.Person", e.getMessage());
     }
@@ -246,6 +240,7 @@ public abstract class ObjectGroupAssert_onProperty_Test<T> {
     try {
       // expected failure: Person does not have a public getter for 'country'
       assertions(persons).onProperty("favoriteSport").containsOnly("soccer");
+      fail("IntrospectionError expected");
     } catch (IntrospectionError e) {
       assertEquals("No getter for property 'favoriteSport' in org.fest.assertions.Person", e.getMessage());
     }

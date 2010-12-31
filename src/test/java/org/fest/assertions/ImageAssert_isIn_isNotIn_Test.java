@@ -15,9 +15,7 @@
 package org.fest.assertions;
 
 import static java.awt.Color.BLUE;
-
-import static org.fest.assertions.Images.fivePixelBlueImage;
-import static org.fest.assertions.Images.image;
+import static org.fest.assertions.Images.*;
 
 import java.awt.image.BufferedImage;
 

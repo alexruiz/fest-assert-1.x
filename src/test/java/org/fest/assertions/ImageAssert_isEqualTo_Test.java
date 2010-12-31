@@ -14,20 +14,15 @@
  */
 package org.fest.assertions;
 
-import static java.awt.Color.BLUE;
-import static java.awt.Color.YELLOW;
-
-import static org.fest.assertions.Images.fivePixelBlueImage;
-import static org.fest.assertions.Images.fivePixelYellowImage;
-import static org.fest.assertions.Images.image;
+import static java.awt.Color.*;
+import static org.fest.assertions.Images.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Strings.concat;
 
 import java.awt.image.BufferedImage;
 
-import org.junit.Test;
-
 import org.fest.test.CodeToTest;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link ImageAssert#isEqualTo(BufferedImage)}</code>.

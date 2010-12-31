@@ -15,14 +15,8 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ErrorMessages.unexpectedIn;
-import static org.fest.assertions.ErrorMessages.unexpectedNotIn;
-import static org.fest.assertions.Fail.failIfActualIsNull;
-import static org.fest.assertions.Fail.failIfEqual;
-import static org.fest.assertions.Fail.failIfNotEqual;
-import static org.fest.assertions.Fail.failIfNotNull;
-import static org.fest.assertions.Fail.failIfNotSame;
-import static org.fest.assertions.Fail.failIfSame;
+import static org.fest.assertions.ErrorMessages.*;
+import static org.fest.assertions.Fail.*;
 import static org.fest.assertions.Formatting.format;
 import static org.fest.util.Collections.list;
 import static org.fest.util.Objects.areEqual;

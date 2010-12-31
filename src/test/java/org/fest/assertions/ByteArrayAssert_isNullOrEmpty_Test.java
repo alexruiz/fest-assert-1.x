@@ -19,7 +19,8 @@ import static org.fest.assertions.EmptyArrays.emptyByteArray;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.*;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link ByteArrayAssert#isNullOrEmpty()}</code>.

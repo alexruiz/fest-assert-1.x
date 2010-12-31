@@ -23,7 +23,8 @@ import static org.fest.test.ExpectedFailure.expectAssertionError;
 import java.math.BigDecimal;
 
 import org.fest.test.CodeToTest;
-import org.junit.*;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link BigDecimalAssert#isEqualByComparingTo(BigDecimal)}</code>.

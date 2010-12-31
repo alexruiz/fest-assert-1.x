@@ -18,7 +18,8 @@ package org.fest.assertions;
 import static java.awt.Color.*;
 import static java.awt.image.BufferedImage.TYPE_INT_ARGB;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 /**

@@ -19,9 +19,11 @@ import static org.fest.assertions.Resources.file;
 import static org.junit.Assert.*;
 
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
-import org.junit.*;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link ImageReader#read(File)}</code>.

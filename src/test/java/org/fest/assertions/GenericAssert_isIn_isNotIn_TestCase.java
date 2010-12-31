@@ -1,35 +1,32 @@
 /*
  * Created on Apr 23, 2010
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2010 the original author or authors.
  */
 package org.fest.assertions;
 
-import static java.util.Arrays.copyOf;
-
 import static org.fest.assertions.CommonFailures.expectNullPointerException;
-import static org.fest.assertions.FailureMessages.unexpectedIn;
-import static org.fest.assertions.FailureMessages.unexpectedNotIn;
+import static org.fest.assertions.FailureMessages.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.util.Arrays.copyOf;
 import static org.fest.util.Collections.list;
 import static org.fest.util.Objects.areEqual;
 
 import java.lang.reflect.Array;
 import java.util.Collection;
 
+import org.fest.test.CodeToTest;
 import org.junit.Before;
 import org.junit.Test;
-
-import org.fest.test.CodeToTest;
 
 /**
  * Base class for testing <b>isIn</b> assertions :
@@ -52,7 +49,7 @@ import org.fest.test.CodeToTest;
  * <li>An array of values containing the <i>actual value under assertion</i> by implementing {@link #setUpValuesContainingActual()}</li>
  * </ul>
  * @param <T> The type of the {@code GenericAssert} to test.
- * 
+ *
  * @author Joel Costigliola
  */
 public abstract class GenericAssert_isIn_isNotIn_TestCase<T> extends GenericAssert_TestCase<T> implements Assert_isIn_TestCase, Assert_isNotIn_TestCase {
@@ -78,7 +75,7 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<T> extends GenericAsse
     setUpValuesContainingActual();
     setUpValuesNotContainingActual();
     setUpValuesContainingNull();
-    valuesNotContainingNull = valuesContainingActual; // a check is done on valuesContainingActual to avoid null elements 
+    valuesNotContainingNull = valuesContainingActual; // a check is done on valuesContainingActual to avoid null elements
     // collection initialization for collection parameter based test
     collectionContainingActual = list(valuesContainingActual);
     collectionNotContainingActual = list(valuesNotContainingActual);
@@ -140,7 +137,7 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<T> extends GenericAsse
   @Test
   public final void isIn_should_pass_if_actual_is_null_and_is_in_given_values() {
     assertionsForNull.isIn(valuesContainingNull);
-    assertionsForNull.isIn(collectionContainingNull); 
+    assertionsForNull.isIn(collectionContainingNull);
   }
 
   @Test
@@ -260,11 +257,11 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<T> extends GenericAsse
       }
     });
   }
-  
+
   // ----------------------------------------------------------------------------------------------
   // isNotIn tests
   // ----------------------------------------------------------------------------------------------
-  
+
   @Test
   public final void isNotIn_should_pass_if_actual_is_not_in_given_values() {
     assertions.isNotIn(valuesNotContainingActual);
@@ -273,8 +270,8 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<T> extends GenericAsse
 
   @Test
   public final void isNotIn_should_pass_if_actual_is_null_and_is_not_in_given_values() {
-    assertionsForNull.isNotIn(valuesNotContainingNull); 
-    assertionsForNull.isNotIn(collectionNotContainingNull); 
+    assertionsForNull.isNotIn(valuesNotContainingNull);
+    assertionsForNull.isNotIn(collectionNotContainingNull);
   }
 
   @Test
@@ -394,5 +391,5 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<T> extends GenericAsse
       }
     });
   }
-  
+
 }

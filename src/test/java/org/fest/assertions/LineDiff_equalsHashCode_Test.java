@@ -20,7 +20,8 @@ import static org.junit.Assert.*;
 
 import org.fest.assertions.FileContentComparator.LineDiff;
 import org.fest.test.EqualsHashCodeContractTestCase;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link LineDiff#equals(Object)}</code> and <code>{@link LineDiff#hashCode()}</code>.

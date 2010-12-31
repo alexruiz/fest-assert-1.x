@@ -15,7 +15,8 @@
  */
 package org.fest.assertions;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.fest.assertions.MapAssert.Entry;
 

@@ -19,7 +19,8 @@ import static org.junit.Assert.*;
 
 import java.lang.reflect.Constructor;
 
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Tests that implementations of <code>{@link GenericAssert}</code> that handle primitive wrappers provide a constructor
