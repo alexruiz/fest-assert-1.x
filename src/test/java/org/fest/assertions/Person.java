@@ -40,6 +40,11 @@ public class Person {
   private final float height;
   private final double weight;
   private Person father;
+  private String country = "Spain";
+  private boolean adult = true;
+  // no getter on purpose for test should_fail_because_of_no_getter
+  @SuppressWarnings("unused")
+  private String favoriteSport = "soccer";
 
   public Person(Long id, String name, int age, long ssn, boolean male, char favoriteAlphabetLetter, int favoriteByte,
       int yearOfBirth, float height, double weight, String homeTown) {
@@ -119,4 +124,15 @@ public class Person {
   public void setTitle(Title title) {
     this.title = title;
   }
+  
+  // not public on purpose for test should_fail_because_of_non_public_getter
+  String getCountry() {
+    return country;
+  }
+
+  // not public on purpose for test should_fail_because_of_non_public_getter
+  boolean isAdult() {
+    return adult;
+  }
+
 }

@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -220,10 +221,36 @@ public abstract class ObjectGroupAssert_onProperty_Test<T> {
       // expected failure: Person.name does not have a 'nickname' property
       assertions(persons).onProperty("name.nickname").containsOnly("PaulaFather", "JackFather", "OtherJackFather");
     } catch (IntrospectionError e) {
-      assertEquals("Unable to find property 'nickname' in org.fest.assertions.Name", e.getMessage());
+      assertEquals("No getter for property 'nickname' in org.fest.assertions.Name", e.getMessage());
     }
   }
 
+  @Test
+  public final void should_fail_because_of_non_public_getter() {
+    try {
+      assertions(persons).onProperty("country").containsOnly("Spain");
+      Assert.fail("IntrospectionError expected");
+    } catch (IntrospectionError e) {
+      assertEquals("No public getter for property 'country' in org.fest.assertions.Person", e.getMessage());
+    }
+    try {
+      assertions(persons).onProperty("adult").containsOnly(true);
+      Assert.fail("IntrospectionError expected");
+    } catch (IntrospectionError e) {
+      assertEquals("No public getter for property 'adult' in org.fest.assertions.Person", e.getMessage());
+    }
+  }
+  
+  @Test
+  public final void should_fail_because_of_no_getter() {
+    try {
+      // expected failure: Person does not have a public getter for 'country'
+      assertions(persons).onProperty("favoriteSport").containsOnly("soccer");
+    } catch (IntrospectionError e) {
+      assertEquals("No getter for property 'favoriteSport' in org.fest.assertions.Person", e.getMessage());
+    }
+  }
+  
   @Test
   public final void should_pass_even_if_actual_contains_null_elements() {
     persons.add(null);
