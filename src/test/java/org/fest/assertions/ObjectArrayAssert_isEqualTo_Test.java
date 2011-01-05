@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ObjectArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<Object[]> {
+public class ObjectArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<ObjectArrayAssert, Object[]> {
 
   private static Object[] notNullValue;
   private static Object[] unequalValue;

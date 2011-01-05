@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ByteArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<byte[]> {
+public class ByteArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<ByteArrayAssert, byte[]> {
 
   private static byte[] notNullValue;
   private static byte[] unequalValue;

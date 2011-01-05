@@ -22,7 +22,7 @@ import java.util.Collection;
  * @author Joel Costigliola
  * @author Alex Ruiz
  */
-public class CollectionAssert_onProperty_Test extends ObjectGroupAssert_onProperty_Test<Collection<?>> {
+public class CollectionAssert_onProperty_Test extends ObjectGroupAssert_onProperty_Test<CollectionAssert, Collection<?>> {
 
   @Override protected CollectionAssert assertions(Collection<?> data) {
     return new CollectionAssert(data);

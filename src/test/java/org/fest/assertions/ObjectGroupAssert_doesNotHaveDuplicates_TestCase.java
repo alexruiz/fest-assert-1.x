@@ -24,12 +24,15 @@ import org.junit.*;
 
 /**
  * Base class for testing implementations of <code>{@link ObjectGroupAssert#doesNotHaveDuplicates()}</code>.
- * @param <T> The type supported by the implementation of the {@code ObjectGroupAssert} to test.
+ * @param <S> used to simulate "self types." For more information please read &quot;<a
+ * href="http://passion.forco.de/content/emulating-self-types-using-java-generics-simplify-fluent-api-implementation"
+ * target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ * @param <A> The type supported by the implementation of the {@code ObjectGroupAssert} to test.
  *
  * @author Yvonne Wang
  */
-public abstract class ObjectGroupAssert_doesNotHaveDuplicates_TestCase<T> extends ObjectGroupAssert_TestCase<T>
-    implements GroupAssert_doesNotHaveDuplicates_TestCase {
+public abstract class ObjectGroupAssert_doesNotHaveDuplicates_TestCase<S extends ObjectGroupAssert<S, A>, A> extends
+    ObjectGroupAssert_TestCase<S, A> implements GroupAssert_doesNotHaveDuplicates_TestCase {
 
   private static Object[] actualValues;
 
@@ -38,8 +41,8 @@ public abstract class ObjectGroupAssert_doesNotHaveDuplicates_TestCase<T> extend
     actualValues = objectArray("Luke", "Yoda", "Luke");
   }
 
-  private T actual;
-  private ObjectGroupAssert<T> assertions;
+  private A actual;
+  private ObjectGroupAssert<S, A> assertions;
 
   @Before
   public final void setUp() {

@@ -31,40 +31,35 @@ import org.junit.Test;
 /**
  * Base class for testing <b>isIn</b> assertions :
  * <ul>
- * <li><code>{@link GenericAssert#isIn(T... values)}</code></li>
+ * <li><code>{@link GenericAssert#isIn(A... values)}</code></li>
  * <li><code>{@link GenericAssert#isIn(Collection values)}.</code></li>
  * </ul>
  * and <b>isNotIn</b> assertions :<br>
  * <ul><br>
- * <li><code>{@link GenericAssert#isNotIn(T... values)}</code></li>
+ * <li><code>{@link GenericAssert#isNotIn(A... values)}</code></li>
  * <li><code>{@link GenericAssert#isNotIn(Collection values)}.</code></li>
  * </ul>
- * <p>
- * Tests are made against an array and a collection of T supplied by concrete subclasses like {@link StringAssert_isIn_isNotIn_Test}.
- * <p>
- * Subclasses must supply :
- * <ul>
- * <li>The <i>actual value under assertion</i> by implementing {@link #notNullValue()}</li>
- * <li>The concrete instance of Assert to test by implementing {@link #assertionsFor(Object)}.</li>
- * <li>An array of values containing the <i>actual value under assertion</i> by implementing {@link #setUpValuesContainingActual()}</li>
- * </ul>
- * @param <T> The type of the {@code GenericAssert} to test.
+ * @param <S> used to simulate "self types." For more information please read &quot;<a
+ * href="http://passion.forco.de/content/emulating-self-types-using-java-generics-simplify-fluent-api-implementation"
+ * target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ * @param <A> The type of the {@code GenericAssert} to test.
  *
  * @author Joel Costigliola
  */
-public abstract class GenericAssert_isIn_isNotIn_TestCase<T> extends GenericAssert_TestCase<T> implements Assert_isIn_TestCase, Assert_isNotIn_TestCase {
+public abstract class GenericAssert_isIn_isNotIn_TestCase<S extends GenericAssert<S, A>, A> extends
+    GenericAssert_TestCase<S, A> implements Assert_isIn_TestCase, Assert_isNotIn_TestCase {
 
-  private T actual;
-  private GenericAssert<T> assertions;
-  private GenericAssert<T> assertionsForNull;
-  private T[] valuesContainingActual;
-  private T[] valuesNotContainingActual;
-  private T[] valuesContainingNull;
-  private T[] valuesNotContainingNull;
-  private Collection<T> collectionContainingActual;
-  private Collection<T> collectionNotContainingActual;
-  private Collection<T> collectionContainingNull;
-  private Collection<T> collectionNotContainingNull;
+  private A actual;
+  private GenericAssert<S, A> assertions;
+  private GenericAssert<S, A> assertionsForNull;
+  private A[] valuesContainingActual;
+  private A[] valuesNotContainingActual;
+  private A[] valuesContainingNull;
+  private A[] valuesNotContainingNull;
+  private Collection<A> collectionContainingActual;
+  private Collection<A> collectionNotContainingActual;
+  private Collection<A> collectionContainingNull;
+  private Collection<A> collectionNotContainingNull;
 
   @Before
   public void setUp() {
@@ -85,7 +80,7 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<T> extends GenericAsse
   }
 
   /**
-   * implements this method by calling {@link #initValuesContainingActual(T ... values)} with non null values including
+   * implements this method by calling {@link #initValuesContainingActual(A ... values)} with non null values including
    * the actual value returned by {@link #notNullValue()}
    */
   protected abstract void setUpValuesContainingActual();
@@ -96,8 +91,8 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<T> extends GenericAsse
    * @param values values used in tests (null elements are not permitted)
    * @throws NullPointerException if one ot the given values is null
    */
-  protected void initValuesContainingActual(T... values) {
-    for (T value : values) {
+  protected void initValuesContainingActual(A... values) {
+    for (A value : values) {
       if (value == null) { throw new NullPointerException(
           "null elements are not permitted when initializing valuesContainingActual (all test cases involving null are handled automatically, don't worry !)"); }
     }
@@ -117,7 +112,7 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<T> extends GenericAsse
    */
   @SuppressWarnings("unchecked")
   private void setUpValuesNotContainingActual() {
-    valuesNotContainingActual = (T[]) Array.newInstance(valuesContainingActual.getClass().getComponentType(),
+    valuesNotContainingActual = (A[]) Array.newInstance(valuesContainingActual.getClass().getComponentType(),
         valuesContainingActual.length - 1);
     int j = 0;
     for (int i = 0; i < valuesContainingActual.length; i++) {
@@ -172,13 +167,13 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<T> extends GenericAsse
   public final void isIn_should_fail_if_given_values_parameter_is_null() {
     expectNullPointerException("expecting values parameter not to be null").on(new CodeToTest() {
       public void run() {
-        T[] nullArray = null;
+        A[] nullArray = null;
         assertionsForNull.isIn(nullArray);
       }
     });
     expectNullPointerException("expecting values parameter not to be null").on(new CodeToTest() {
       public void run() {
-        Collection<T> nullCollection = null;
+        Collection<A> nullCollection = null;
         assertionsForNull.isIn(nullCollection);
       }
     });
@@ -188,13 +183,13 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<T> extends GenericAsse
   public final void isIn_should_throw_error_if_given_values_parameter_is_null() {
     expectNullPointerException("expecting values parameter not to be null").on(new CodeToTest() {
       public void run() {
-        T[] nullArray = null;
+        A[] nullArray = null;
         assertions.isIn(nullArray);
       }
     });
     expectNullPointerException("expecting values parameter not to be null").on(new CodeToTest() {
       public void run() {
-        Collection<T> nullCollection = null;
+        Collection<A> nullCollection = null;
         assertions.isIn(nullCollection);
       }
     });
@@ -204,13 +199,13 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<T> extends GenericAsse
   public final void isIn_should_throw_error_and_display_description_of_assertion_if_given_values_parameter_is_null() {
     expectNullPointerException("[A Test] expecting values parameter not to be null").on(new CodeToTest() {
       public void run() {
-        T[] nullArray = null;
+        A[] nullArray = null;
         assertions.as("A Test").isIn(nullArray);
       }
     });
     expectNullPointerException("[A Test] expecting values parameter not to be null").on(new CodeToTest() {
       public void run() {
-        Collection<T> nullCollection = null;
+        Collection<A> nullCollection = null;
         assertions.as("A Test").isIn(nullCollection);
       }
     });
@@ -306,13 +301,13 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<T> extends GenericAsse
   public final void isNotIn_should_fail_if_given_values_parameter_is_null() {
     expectNullPointerException("expecting values parameter not to be null").on(new CodeToTest() {
       public void run() {
-        T[] nullArray = null;
+        A[] nullArray = null;
         assertionsForNull.isNotIn(nullArray);
       }
     });
     expectNullPointerException("expecting values parameter not to be null").on(new CodeToTest() {
       public void run() {
-        Collection<T> nullCollection = null;
+        Collection<A> nullCollection = null;
         assertionsForNull.isNotIn(nullCollection);
       }
     });
@@ -322,13 +317,13 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<T> extends GenericAsse
   public final void isNotIn_should_throw_error_if_given_values_parameter_is_null() {
     expectNullPointerException("expecting values parameter not to be null").on(new CodeToTest() {
       public void run() {
-        T[] nullArray = null;
+        A[] nullArray = null;
         assertions.isNotIn(nullArray);
       }
     });
     expectNullPointerException("expecting values parameter not to be null").on(new CodeToTest() {
       public void run() {
-        Collection<T> nullCollection = null;
+        Collection<A> nullCollection = null;
         assertions.isNotIn(nullCollection);
       }
     });
@@ -338,13 +333,13 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<T> extends GenericAsse
   public final void isNotIn_should_throw_error_and_display_description_of_assertion_if_given_values_parameter_is_null() {
     expectNullPointerException("[A Test] expecting values parameter not to be null").on(new CodeToTest() {
       public void run() {
-        T[] nullArray = null;
+        A[] nullArray = null;
         assertions.as("A Test").isNotIn(nullArray);
       }
     });
     expectNullPointerException("[A Test] expecting values parameter not to be null").on(new CodeToTest() {
       public void run() {
-        Collection<T> nullCollection = null;
+        Collection<A> nullCollection = null;
         assertions.as("A Test").isNotIn(nullCollection);
       }
     });

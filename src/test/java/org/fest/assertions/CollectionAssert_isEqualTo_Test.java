@@ -27,7 +27,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CollectionAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<Collection<?>> {
+public class CollectionAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<CollectionAssert, Collection<?>> {
 
   private static Collection<?> notNullValue;
   private static Collection<?> unequalValue;

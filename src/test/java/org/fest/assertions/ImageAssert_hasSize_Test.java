@@ -77,7 +77,7 @@ public class ImageAssert_hasSize_Test {
 
   @Test
   public void should_fail_if_width_is_not_equal() {
-    expectAssertionError("expected:<([3], 5)> but was:<([5], 5)>").on(new CodeToTest() {
+    expectAssertionError("expected:<(w=[3], h=5)> but was:<(w=[5], h=5)>").on(new CodeToTest() {
       public void run() {
         new ImageAssert(fivePixelBlueImage()).hasSize(new Dimension(3, 5));
       }
@@ -86,7 +86,7 @@ public class ImageAssert_hasSize_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_width_is_not_equal() {
-    expectAssertionError("[A Test] expected:<([3], 5)> but was:<([5], 5)>").on(new CodeToTest() {
+    expectAssertionError("[A Test] expected:<(w=[3], h=5)> but was:<(w=[5], h=5)>").on(new CodeToTest() {
       public void run() {
         new ImageAssert(fivePixelBlueImage()).as("A Test")
                                              .hasSize(new Dimension(3, 5));
@@ -96,7 +96,7 @@ public class ImageAssert_hasSize_Test {
 
   @Test
   public void should_fail_if_height_is_not_equal() {
-    expectAssertionError("expected:<(5, [3])> but was:<(5, [5])>").on(new CodeToTest() {
+    expectAssertionError("expected:<(w=5, h=[3])> but was:<(w=5, h=[5])>").on(new CodeToTest() {
       public void run() {
         new ImageAssert(fivePixelBlueImage()).hasSize(new Dimension(5, 3));
       }
@@ -105,7 +105,7 @@ public class ImageAssert_hasSize_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_height_is_not_equal() {
-    expectAssertionError("[A Test] expected:<(5, [3])> but was:<(5, [5])>").on(new CodeToTest() {
+    expectAssertionError("[A Test] expected:<(w=5, h=[3])> but was:<(w=5, h=[5])>").on(new CodeToTest() {
       public void run() {
         new ImageAssert(fivePixelBlueImage()).as("A Test")
                                              .hasSize(new Dimension(5, 3));

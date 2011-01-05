@@ -27,13 +27,16 @@ import org.junit.Test;
  * <li><code>{@link GenericAssert#describedAs(Description)}</code></li>
  * <li><code>{@link GenericAssert#describedAs(String)}</code></li>
  * </ul>
- * @param <T> The type supported by the implementation of the {@code GenericAssert} to test.
+ * @param <S> used to simulate "self types." For more information please read &quot;<a
+ * href="http://passion.forco.de/content/emulating-self-types-using-java-generics-simplify-fluent-api-implementation"
+ * target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ * @param <A> The type supported by the implementation of the {@code GenericAssert} to test.
  *
  * @author Alex Ruiz
  */
-public abstract class GenericAssert_description_TestCase<T> {
+public abstract class GenericAssert_description_TestCase<S extends GenericAssert<S, A>, A> {
 
-  private GenericAssert<T> assertion;
+  private GenericAssert<S, A> assertion;
 
   @Before
   public final void setUp() {
@@ -41,7 +44,7 @@ public abstract class GenericAssert_description_TestCase<T> {
     assertNull(assertion.description());
   }
 
-  protected abstract GenericAssert<T> assertionToTest();
+  protected abstract GenericAssert<S, A> assertionToTest();
 
   @Test
   public void should_set_description_as_text() {

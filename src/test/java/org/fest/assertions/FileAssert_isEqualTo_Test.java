@@ -28,7 +28,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class FileAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<File> {
+public class FileAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<FileAssert, File> {
 
   private static File notNullValue;
   private static File unequalValue;

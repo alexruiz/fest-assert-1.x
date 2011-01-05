@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class ShortAssert_isEqualTo_Short_Test extends GenericAssert_isEqualTo_TestCase<Short> {
+public class ShortAssert_isEqualTo_Short_Test extends GenericAssert_isEqualTo_TestCase<ShortAssert, Short> {
 
   private static Short notNullValue;
   private static Short unequalValue;

@@ -3,7 +3,6 @@ package org.fest.assertions;
 import static java.lang.Double.*;
 import static java.lang.Math.abs;
 import static org.fest.assertions.ErrorMessages.*;
-import static org.fest.assertions.Fail.comparisonFailed;
 import static org.fest.assertions.Formatting.format;
 
 /**
@@ -18,7 +17,7 @@ import static org.fest.assertions.Formatting.format;
  * @author Alex Ruiz
  * @author Ansgar Konermann
  */
-public class DoubleAssert extends GenericAssert<Double> implements NumberAssert {
+public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements NumberAssert {
 
   private static final double ZERO = 0.0;
 
@@ -27,7 +26,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
    * @param actual the actual value to verify.
    */
   protected DoubleAssert(double actual) {
-    super(actual);
+    super(DoubleAssert.class, actual);
   }
 
   /**
@@ -35,29 +34,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
    * @param actual the actual value to verify.
    */
   protected DoubleAssert(Double actual) {
-    super(actual);
-  }
-
-  /** {@inheritDoc} */
-  @Override public DoubleAssert as(String description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public DoubleAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /** {@inheritDoc} */
-  @Override public DoubleAssert as(Description description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public DoubleAssert describedAs(Description description) {
-    return as(description);
+    super(DoubleAssert.class, actual);
   }
 
   /**
@@ -68,23 +45,6 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
    */
   public DoubleAssert isEqualTo(double expected) {
     return isEqualTo(valueOf(expected));
-  }
-
-  /**
-   * Verifies that the actual {@code Double} is equal to the given one.
-   * @param expected the given value to compare the actual {@code Double} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Double} is not equal to the given one.
-   * @since 1.3
-   */
-  @Override public DoubleAssert isEqualTo(Double expected) {
-    if (actual == null || expected == null) {
-      assertEqualTo(expected);
-      return this;
-    }
-    if (actual.compareTo(expected) == 0) return this;
-    failIfCustomMessageIsSet();
-    throw comparisonFailed(rawDescription(), actual, expected);
   }
 
   /**
@@ -131,7 +91,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
 
   private DoubleAssert isEqualTo(Double expected, double deltaValue) {
     if (actual == null || expected == null) {
-      assertEqualTo(expected);
+      isEqualTo(expected);
       return this;
     }
     if (actual.compareTo(expected) == 0) return this;
@@ -267,112 +227,5 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
     private Delta(double value) {
       this.value = value;
     }
-  }
-
-  /** {@inheritDoc} */
-  @Override public DoubleAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Double} satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Double} does not satisfy the given condition.
-   * @see #is(Condition)
-   * @since 1.3
-   */
-  @Override public DoubleAssert satisfies(Condition<Double> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Double} does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual value does satisfies the given condition.
-   * @see #isNot(Condition)
-   * @since 1.3
-   */
-  @Override public DoubleAssert doesNotSatisfy(Condition<Double> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #satisfies(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Double} does not satisfy the given condition.
-   * @since 1.3
-   */
-  @Override public DoubleAssert is(Condition<Double> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Double} does not satisfy the given condition.
-   * @since 1.3
-   */
-  @Override public DoubleAssert isNot(Condition<Double> condition) {
-    assertIsNot(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Double} is not equal to the given one.
-   * @param other the given {@code Double} to compare the actual {@code Double} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Double} is equal to the given one.
-   * @since 1.3
-   */
-  @Override public DoubleAssert isNotEqualTo(Double other) {
-    assertNotEqualTo(other);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Double} is not {@code null}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Double} is {@code null}.
-   * @since 1.3
-   */
-  @Override public DoubleAssert isNotNull() {
-    assertNotNull();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Double} is the same object as the given one.
-   * @param expected the given {@code Double} to compare the actual {@code Double} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Double} is not the same as the given one.
-   * @since 1.3
-   */
-  @Override public DoubleAssert isSameAs(Double expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Double} is not the same object as the given one.
-   * @param other the given {@code Double} to compare the actual <code>BigDecimal</code> to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Double} is the same as the given one.
-   * @since 1.3
-   */
-  @Override public DoubleAssert isNotSameAs(Double other) {
-    assertNotSameAs(other);
-    return this;
   }
 }

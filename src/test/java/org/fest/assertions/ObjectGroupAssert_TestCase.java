@@ -16,13 +16,16 @@ package org.fest.assertions;
 
 /**
  * Base class for testing implementations of <code>{@link ObjectGroupAssert}</code>.
- * @param <T> The type supported by the implementation of the {@code ObjectGroupAssert} to test.
+ * @param <S> used to simulate "self types." For more information please read &quot;<a
+ * href="http://passion.forco.de/content/emulating-self-types-using-java-generics-simplify-fluent-api-implementation"
+ * target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ * @param <A> The type supported by the implementation of the {@code ObjectGroupAssert} to test.
  *
  * @author Yvonne Wang
  */
-public abstract class ObjectGroupAssert_TestCase<T> {
+public abstract class ObjectGroupAssert_TestCase<S extends GenericAssert<S, A>, A> {
 
-  protected abstract T actualFrom(Object...values);
+  protected abstract A actualFrom(Object...values);
 
-  protected abstract ObjectGroupAssert<T> assertionsFor(T actual);
+  protected abstract ObjectGroupAssert<S, A> assertionsFor(A actual);
 }

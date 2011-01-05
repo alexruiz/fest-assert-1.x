@@ -29,14 +29,14 @@ import static org.fest.assertions.ErrorMessages.*;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class CharAssert extends GenericAssert<Character> {
+public class CharAssert extends GenericAssert<CharAssert, Character> {
 
   /**
    * Creates a new <code>{@link CharAssert}</code>.
    * @param actual the actual value to verify.
    */
   protected CharAssert(char actual) {
-    super(actual);
+    super(CharAssert.class, actual);
   }
 
   /**
@@ -44,29 +44,7 @@ public class CharAssert extends GenericAssert<Character> {
    * @param actual the actual value to verify.
    */
   protected CharAssert(Character actual) {
-    super(actual);
-  }
-
-  /** {@inheritDoc} */
-  @Override public CharAssert as(String description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public CharAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /** {@inheritDoc} */
-  @Override public CharAssert as(Description description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public CharAssert describedAs(Description description) {
-    return as(description);
+    super(CharAssert.class, actual);
   }
 
   /**
@@ -80,18 +58,6 @@ public class CharAssert extends GenericAssert<Character> {
   }
 
   /**
-   * Verifies that the actual <code>{@link Character}</code> value is equal to the given one.
-   * @param expected the given {@code Character} value to compare the actual {@code Character} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Character} value is not equal to the given one.
-   * @since 1.3
-   */
-  @Override public CharAssert isEqualTo(Character expected) {
-    assertEqualTo(expected);
-    return this;
-  }
-
-  /**
    * Verifies that the {@code Character} value is not equal to the given one.
    * @param other the given value.
    * @return this assertion object.
@@ -99,18 +65,6 @@ public class CharAssert extends GenericAssert<Character> {
    */
   public CharAssert isNotEqualTo(char other) {
     return isNotEqualTo(valueOf(other));
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Character}</code> is not equal to the given one.
-   * @param other the given {@code Character} to compare the actual {@code Character} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Character} value is equal to the given one.
-   * @since 1.3
-   */
-  @Override public CharAssert isNotEqualTo(Character other) {
-    assertNotEqualTo(other);
-    return this;
   }
 
   /**
@@ -181,100 +135,5 @@ public class CharAssert extends GenericAssert<Character> {
     if (Character.isLowerCase(actual)) return this;
     failIfCustomMessageIsSet();
     throw failure(String.format("<%s> should be a lower-case character", actual));
-  }
-
-  /** {@inheritDoc} */
-  @Override public CharAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Character}</code> satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Character} does not satisfy the given condition.
-   * @see #is(Condition)
-   * @since 1.3
-   */
-  @Override public CharAssert satisfies(Condition<Character> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Character}</code> does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Character} does satisfies the given condition.
-   * @see #isNot(Condition)
-   * @since 1.3
-   */
-  @Override public CharAssert doesNotSatisfy(Condition<Character> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #satisfies(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Character} does not satisfy the given condition.
-   * @since 1.3
-   */
-  @Override public CharAssert is(Condition<Character> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Character} does not satisfy the given condition.
-   * @since 1.3
-   */
-  @Override public CharAssert isNot(Condition<Character> condition) {
-    assertIsNot(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Character}</code> is not {@code null}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Character} value is {@code null}.
-   * @since 1.3
-   */
-  @Override public CharAssert isNotNull() {
-    assertNotNull();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Character}</code> is the same object as the given one.
-   * @param expected the given {@code Character} to compare the actual {@code Character} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Character} value is not the same as the given one.
-   * @since 1.3
-   */
-  @Override public CharAssert isSameAs(Character expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Character}</code> is not the same object as the given one.
-   * @param other the given {@code Character} to compare the actual <code>BigDecimal</code> to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Character} value is the same as the given one.
-   * @since 1.3
-   */
-  @Override public CharAssert isNotSameAs(Character other) {
-    assertNotSameAs(other);
-    return this;
   }
 }

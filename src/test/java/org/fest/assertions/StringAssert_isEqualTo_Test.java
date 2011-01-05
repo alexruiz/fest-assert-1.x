@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class StringAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<String> {
+public class StringAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<StringAssert, String> {
 
   private static String notNullValue;
   private static String unequalValue;

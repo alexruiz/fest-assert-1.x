@@ -35,14 +35,14 @@ import org.fest.util.IntrospectionError;
  *
  * @since 1.1
  */
-public class ListAssert extends ObjectGroupAssert<List<?>> {
+public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
 
   /**
    * Creates a new </code>{@link ListAssert}</code>.
    * @param actual the target to verify.
    */
   protected ListAssert(List<?> actual) {
-    super(actual);
+    super(ListAssert.class, actual);
   }
 
   /**
@@ -170,154 +170,6 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
   }
 
   /**
-   * Verifies that the actual <code>{@link List}</code> contains the given objects, in any order.
-   * @param objects the objects to look for.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code List} is {@code null}.
-   * @throws NullPointerException if the given array is {@code null}.
-   * @throws AssertionError if the actual {@code List} does not contain the given objects.
-   */
-  @Override public ListAssert contains(Object... objects) {
-    assertContains(objects);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link List}</code> contains the given objects <strong>only</strong>, in any order.
-   * @param objects the objects to look for.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code List} is {@code null}.
-   * @throws NullPointerException if the given array is {@code null}.
-   * @throws AssertionError if the actual {@code List} does not contain the given objects, or if the actual
-   * {@code List} contains elements other than the ones specified.
-   */
-  @Override public ListAssert containsOnly(Object... objects) {
-    assertContainsOnly(objects);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link List}</code> does not contain the given objects.
-   * @param objects the objects that the {@code List} should exclude.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code List} is {@code null}.
-   * @throws NullPointerException if the given array is {@code null}.
-   * @throws AssertionError if the actual {@code List} contains any of the given objects.
-   */
-  @Override public ListAssert excludes(Object... objects) {
-    assertExcludes(objects);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link List}</code> does not have duplicates.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code List} is {@code null}.
-   * @throws AssertionError if the actual {@code List} has duplicates.
-   */
-  @Override public ListAssert doesNotHaveDuplicates() {
-    assertDoesNotHaveDuplicates();
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ListAssert as(String description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ListAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /** {@inheritDoc} */
-  @Override public ListAssert as(Description description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ListAssert describedAs(Description description) {
-    return as(description);
-  }
-
-  /**
-   * Verifies that the actual <code>{@link List}</code> satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code List} does not satisfy the given condition.
-   * @see #is(Condition)
-   */
-  @Override public ListAssert satisfies(Condition<List<?>> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link List}</code> does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code List} satisfies the given condition.
-   * @see #isNot(Condition)
-   */
-  @Override public ListAssert doesNotSatisfy(Condition<List<?>> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #satisfies(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code List} does not satisfy the given condition.
-   * @since 1.2
-   */
-  @Override public ListAssert is(Condition<List<?>> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code List} satisfies the given condition.
-   * @since 1.2
-   */
-  @Override public ListAssert isNot(Condition<List<?>> condition) {
-    assertIsNot(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the number of elements in the actual <code>{@link List}</code> is equal to the given one.
-   * @param expected the expected number of elements in the actual {@code List}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code List} is {@code null}.
-   * @throws AssertionError if the number of elements of the actual {@code List} is not equal to the given one.
-   */
-  @Override public ListAssert hasSize(int expected) {
-    assertHasSize(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link List}</code> contains at least on element.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code List} is {@code null}.
-   * @throws AssertionError if the actual {@code List} is empty.
-   */
-  @Override public ListAssert isNotEmpty() {
-    assertIsNotEmpty();
-    return this;
-  }
-
-  /**
    * Returns the number of elements in the actual <code>{@link List}</code>.
    * @return the number of elements in the actual {@code List}.
    * @throws AssertionError if the actual {@code List} is {@code null}.
@@ -325,16 +177,6 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
   @Override protected int actualGroupSize() {
     isNotNull();
     return actual.size();
-  }
-
-  /**
-   * Verifies that the actual <code>{@link List}</code> is not {@code null}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code List} is {@code null}.
-   */
-  @Override public ListAssert isNotNull() {
-    assertNotNull();
-    return this;
   }
 
   /**
@@ -350,56 +192,6 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
   public ListAssert containsExactly(Object... objects) {
     validateIsNotNull(objects);
     return isNotNull().isEqualTo(list(objects));
-  }
-
-  /**
-   * Verifies that the actual <code>{@link List}</code> is equal to the given one.
-   * @param expected the given {@code List} to compare the actual {@code List} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code List} is not equal to the given one.
-   */
-  @Override public ListAssert isEqualTo(List<?> expected) {
-    assertEqualTo(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link List}</code> is not equal to the given one.
-   * @param other the given {@code List} to compare the actual {@code List} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code List} is equal to the given one.
-   */
-  @Override public ListAssert isNotEqualTo(List<?> other) {
-    assertNotEqualTo(other);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link List}</code> is the same as the given one.
-   * @param expected the given {@code List} to compare the actual {@code List} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code List} is not the same as the given one.
-   */
-  @Override public ListAssert isSameAs(List<?> expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link List}</code> is not the same as the given one.
-   * @param other the given {@code List} to compare the actual {@code List} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code List} is the same as the given one.
-   */
-  @Override public ListAssert isNotSameAs(List<?> other) {
-    assertNotSameAs(other);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ListAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
-    return this;
   }
 
   /**

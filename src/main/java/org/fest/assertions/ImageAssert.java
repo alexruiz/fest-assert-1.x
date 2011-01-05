@@ -34,7 +34,7 @@ import java.io.IOException;
  * @author Alex Ruiz
  * @author Ansgar Konermann
  */
-public class ImageAssert extends GenericAssert<BufferedImage> {
+public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
 
   private static final Threshold ZERO_THRESHOLD = threshold(0);
 
@@ -61,81 +61,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
    * @param actual the target to verify.
    */
   protected ImageAssert(BufferedImage actual) {
-    super(actual);
-  }
-
-  /** {@inheritDoc} */
-  @Override public ImageAssert as(String description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ImageAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /** {@inheritDoc} */
-  @Override public ImageAssert as(Description description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ImageAssert describedAs(Description description) {
-    return as(description);
-  }
-
-  /**
-   * Verifies that the actual image satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual image does not satisfy the given condition.
-   * @see #is(Condition)
-   */
-  @Override public ImageAssert satisfies(Condition<BufferedImage> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual image does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual image satisfies the given condition.
-   * @see #isNot(Condition)
-   */
-  @Override public ImageAssert doesNotSatisfy(Condition<BufferedImage> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #satisfies(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual image does not satisfy the given condition.
-   * @since 1.2
-   */
-  @Override public ImageAssert is(Condition<BufferedImage> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual image satisfies the given condition.
-   * @since 1.2
-   */
-  @Override public ImageAssert isNot(Condition<BufferedImage> condition) {
-    assertIsNot(condition);
-    return this;
+    super(ImageAssert.class, actual);
   }
 
   /**
@@ -232,38 +158,6 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
   }
 
   /**
-   * Verifies that the actual image is not {@code null}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual image is {@code null}.
-   */
-  @Override public ImageAssert isNotNull() {
-    assertNotNull();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual image is not the same as the given one.
-   * @param expected the given image to compare the actual image to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual image is the same as the given one.
-   */
-  @Override public ImageAssert isNotSameAs(BufferedImage expected) {
-    assertNotSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual image is the same as the given one.
-   * @param expected the given image to compare the actual image to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual image is not the same as the given one.
-   */
-  @Override public ImageAssert isSameAs(BufferedImage expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
    * Verifies that the size of the actual image is equal to the given one.
    * @param expected the expected size of the actual image.
    * @return this assertion object.
@@ -277,12 +171,6 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
       throw new NullPointerException(formattedErrorMessage("The size to compare to should not be null"));
     Dimension actualDimension = new Dimension(actual.getWidth(), actual.getHeight());
     Fail.failIfNotEqual(customErrorMessage(), rawDescription(), actualDimension, expected);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ImageAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
     return this;
   }
 

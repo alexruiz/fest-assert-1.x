@@ -29,36 +29,14 @@ import java.util.Arrays;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
+public class BooleanArrayAssert extends ArrayAssert<BooleanArrayAssert, boolean[]> {
 
   /**
    * Creates a new </code>{@link BooleanArrayAssert}</code>.
    * @param actual the target to verify.
    */
   protected BooleanArrayAssert(boolean... actual) {
-    super(actual);
-  }
-
-  /** {@inheritDoc} */
-  @Override public BooleanArrayAssert as(String description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public BooleanArrayAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /** {@inheritDoc} */
-  @Override public BooleanArrayAssert as(Description description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public BooleanArrayAssert describedAs(Description description) {
-    return as(description);
+    super(BooleanArrayAssert.class, actual);
   }
 
   /**
@@ -102,79 +80,6 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
   }
 
   /**
-   * Verifies that the actual {@code boolean} array satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code boolean} array does not satisfy the given condition.
-   * @see #is(Condition)
-   */
-  @Override public BooleanArrayAssert satisfies(Condition<boolean[]> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code boolean} array does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code boolean} array satisfies the given condition.
-   * @see #isNot(Condition)
-   */
-  @Override public BooleanArrayAssert doesNotSatisfy(Condition<boolean[]> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #satisfies(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code boolean} array does not satisfy the given condition.
-   * @since 1.2
-   */
-  @Override public BooleanArrayAssert is(Condition<boolean[]> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code boolean} array satisfies the given condition.
-   * @since 1.2
-   */
-  @Override public BooleanArrayAssert isNot(Condition<boolean[]> condition) {
-    assertIsNot(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code boolean} array is not {@code null}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code boolean} array is {@code null}.
-   */
-  @Override public BooleanArrayAssert isNotNull() {
-    assertNotNull();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code boolean} array contains at least on element.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code boolean} array is {@code null}.
-   * @throws AssertionError if the actual {@code boolean} array is empty.
-   */
-  @Override public BooleanArrayAssert isNotEmpty() {
-    assertIsNotEmpty();
-    return this;
-  }
-
-  /**
    * Verifies that the actual {@code boolean} array is equal to the given array. Array equality is checked by
    * <code>{@link Arrays#equals(boolean[], boolean[])}</code>.
    * @param expected the given array to compare the actual array to.
@@ -199,46 +104,4 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
     failIfCustomMessageIsSet();
     throw failure(unexpectedEqual(actual, array));
   }
-
-  /**
-   * Verifies that the number of elements in the actual {@code boolean} array is equal to the given one.
-   * @param expected the expected number of elements in the actual {@code boolean} array.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code boolean} array is {@code null}.
-   * @throws AssertionError if the number of elements in the actual {@code boolean} array is not equal to the given
-   * one.
-   */
-  @Override public BooleanArrayAssert hasSize(int expected) {
-    assertHasSize(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code boolean} array is the same as the given array.
-   * @param expected the given array to compare the actual array to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code boolean} array is not the same as the given one.
-   */
-  @Override public BooleanArrayAssert isSameAs(boolean[] expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code boolean} array is not the same as the given array.
-   * @param expected the given array to compare the actual array to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code boolean} array is the same as the given one.
-   */
-  @Override public BooleanArrayAssert isNotSameAs(boolean[] expected) {
-    assertNotSameAs(expected);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public BooleanArrayAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
-    return this;
-  }
-
 }

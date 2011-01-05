@@ -29,36 +29,14 @@ import java.util.Arrays;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class IntArrayAssert extends ArrayAssert<int[]> {
+public class IntArrayAssert extends ArrayAssert<IntArrayAssert, int[]> {
 
   /**
    * Creates a new </code>{@link IntArrayAssert}</code>.
    * @param actual the target to verify.
    */
   protected IntArrayAssert(int... actual) {
-    super(actual);
-  }
-
-  /** {@inheritDoc} */
-  @Override public IntArrayAssert as(String description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public IntArrayAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /** {@inheritDoc} */
-  @Override public IntArrayAssert as(Description description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public IntArrayAssert describedAs(Description description) {
-    return as(description);
+    super(IntArrayAssert.class, actual);
   }
 
   /**
@@ -102,79 +80,6 @@ public class IntArrayAssert extends ArrayAssert<int[]> {
   }
 
   /**
-   * Verifies that the actual {@code int} array satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code int} array does not satisfy the given condition.
-   * @see #is(Condition)
-   */
-  @Override public IntArrayAssert satisfies(Condition<int[]> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code int} array does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code int} array satisfies the given condition.
-   * @see #isNot(Condition)
-   */
-  @Override public IntArrayAssert doesNotSatisfy(Condition<int[]> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #satisfies(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code int} array does not satisfy the given condition.
-   * @since 1.2
-   */
-  @Override public IntArrayAssert is(Condition<int[]> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code int} array satisfies the given condition.
-   * @since 1.2
-   */
-  @Override public IntArrayAssert isNot(Condition<int[]> condition) {
-    assertIsNot(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code int} array is not {@code null}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code int} array is {@code null}.
-   */
-  @Override public IntArrayAssert isNotNull() {
-    assertNotNull();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code int} array contains at least on element.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code int} array is {@code null}.
-   * @throws AssertionError if the actual {@code int} array is empty.
-   */
-  @Override public IntArrayAssert isNotEmpty() {
-    assertIsNotEmpty();
-    return this;
-  }
-
-  /**
    * Verifies that the actual {@code int} array is equal to the given array. Array equality is checked by
    * <code>{@link Arrays#equals(int[], int[])}</code>.
    * @param expected the given array to compare the actual array to.
@@ -199,46 +104,4 @@ public class IntArrayAssert extends ArrayAssert<int[]> {
     failIfCustomMessageIsSet();
     throw failure(unexpectedEqual(actual, array));
   }
-
-  /**
-   * Verifies that the number of elements in the actual {@code int} array is equal to the given one.
-   * @param expected the expected number of elements in the actual {@code int} array.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code int} array is {@code null}.
-   * @throws AssertionError if the number of elements in the actual {@code int} array is not equal to the given
-   * one.
-   */
-  @Override public IntArrayAssert hasSize(int expected) {
-    assertHasSize(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code int} array is the same as the given array.
-   * @param expected the given array to compare the actual array to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code int} array is not the same as the given one.
-   */
-  @Override public IntArrayAssert isSameAs(int[] expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code int} array is not the same as the given array.
-   * @param expected the given array to compare the actual array to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code int} array is the same as the given one.
-   */
-  @Override public IntArrayAssert isNotSameAs(int[] expected) {
-    assertNotSameAs(expected);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public IntArrayAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
-    return this;
-  }
-  
 }

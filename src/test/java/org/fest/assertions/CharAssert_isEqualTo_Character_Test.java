@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class CharAssert_isEqualTo_Character_Test extends GenericAssert_isEqualTo_TestCase<Character> {
+public class CharAssert_isEqualTo_Character_Test extends GenericAssert_isEqualTo_TestCase<CharAssert, Character> {
 
   private static Character notNullValue;
   private static Character unequalValue;

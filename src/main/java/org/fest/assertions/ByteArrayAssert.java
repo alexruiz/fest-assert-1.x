@@ -29,36 +29,14 @@ import java.util.Arrays;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ByteArrayAssert extends ArrayAssert<byte[]> {
+public class ByteArrayAssert extends ArrayAssert<ByteArrayAssert, byte[]> {
 
   /**
    * Creates a new </code>{@link ByteArrayAssert}</code>.
    * @param actual the target to verify.
    */
   protected ByteArrayAssert(byte... actual) {
-    super(actual);
-  }
-
-  /** {@inheritDoc} */
-  @Override public ByteArrayAssert as(String description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ByteArrayAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /** {@inheritDoc} */
-  @Override public ByteArrayAssert as(Description description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ByteArrayAssert describedAs(Description description) {
-    return as(description);
+    super(ByteArrayAssert.class, actual);
   }
 
   /**
@@ -102,79 +80,6 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
   }
 
   /**
-   * Verifies that the actual {@code byte} array satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code byte} array does not satisfy the given condition.
-   * @see #is(Condition)
-   */
-  @Override public ByteArrayAssert satisfies(Condition<byte[]> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code byte} array does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code byte} array satisfies the given condition.
-   * @see #isNot(Condition)
-   */
-  @Override public ByteArrayAssert doesNotSatisfy(Condition<byte[]> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #satisfies(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code byte} array does not satisfy the given condition.
-   * @since 1.2
-   */
-  @Override public ByteArrayAssert is(Condition<byte[]> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code byte} array satisfies the given condition.
-   * @since 1.2
-   */
-  @Override public ByteArrayAssert isNot(Condition<byte[]> condition) {
-    assertIsNot(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code byte} array is not {@code null}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code byte} array is {@code null}.
-   */
-  @Override public ByteArrayAssert isNotNull() {
-    assertNotNull();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code byte} array contains at least on element.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code byte} array is {@code null}.
-   * @throws AssertionError if the actual {@code byte} array is empty.
-   */
-  @Override public ByteArrayAssert isNotEmpty() {
-    assertIsNotEmpty();
-    return this;
-  }
-
-  /**
    * Verifies that the actual {@code byte} array is equal to the given array. Array equality is checked by
    * <code>{@link Arrays#equals(byte[], byte[])}</code>.
    * @param expected the given array to compare the actual array to.
@@ -198,46 +103,5 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
     if (!Arrays.equals(actual, array)) return this;
     failIfCustomMessageIsSet();
     throw failure(unexpectedEqual(actual, array));
-  }
-
-  /**
-   * Verifies that the number of elements in the actual {@code byte} array is equal to the given one.
-   * @param expected the expected number of elements in the actual {@code byte} array.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code byte} array is {@code null}.
-   * @throws AssertionError if the number of elements in the actual {@code byte} array is not equal to the given
-   * one.
-   */
-  @Override public ByteArrayAssert hasSize(int expected) {
-    assertHasSize(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code byte} array is the same as the given array.
-   * @param expected the given array to compare the actual array to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code byte} array is not the same as the given one.
-   */
-  @Override public ByteArrayAssert isSameAs(byte[] expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code byte} array is not the same as the given array.
-   * @param expected the given array to compare the actual array to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code byte} array is the same as the given one.
-   */
-  @Override public ByteArrayAssert isNotSameAs(byte[] expected) {
-    assertNotSameAs(expected);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ByteArrayAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
-    return this;
   }
 }

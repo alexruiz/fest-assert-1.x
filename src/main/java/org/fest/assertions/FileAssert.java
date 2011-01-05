@@ -33,7 +33,7 @@ import org.fest.assertions.FileContentComparator.LineDiff;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class FileAssert extends GenericAssert<File> {
+public class FileAssert extends GenericAssert<FileAssert, File> {
 
   private final FileContentComparator comparator;
 
@@ -47,30 +47,8 @@ public class FileAssert extends GenericAssert<File> {
 
   /* for testing only */
   FileAssert(File actual, FileContentComparator comparator) {
-    super(actual);
+    super(FileAssert.class, actual);
     this.comparator = comparator;
-  }
-
-  /** {@inheritDoc} */
-  @Override public FileAssert as(String description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public FileAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /** {@inheritDoc} */
-  @Override public FileAssert as(Description description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public FileAssert describedAs(Description description) {
-    return as(description);
   }
 
   /**
@@ -127,18 +105,6 @@ public class FileAssert extends GenericAssert<File> {
   }
 
   /**
-   * Verifies that the actual {@code File} is equal to the given one. To verify that the actual {@code File}
-   * has the same content as another {@code File}, use <code>{@link #hasSameContentAs(File)}</code>.
-   * @param expected the given {@code File} to compare the actual {@code File} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code File} is not equal to the given one.
-   */
-  @Override public FileAssert isEqualTo(File expected) {
-    assertEqualTo(expected);
-    return this;
-  }
-
-  /**
    * Verifies that the actual {@code File} is a regular file.
    * @return this assertion object.
    * @throws AssertionError if the the actual {@code File} is {@code null}.
@@ -149,100 +115,6 @@ public class FileAssert extends GenericAssert<File> {
     if (actual.isFile()) return this;
     failIfCustomMessageIsSet();
     throw failure(format("file:<%s> should be a file", actual));
-  }
-
-  /**
-   * Verifies that the actual {@code File} is not equal to the given one.
-   * @param other the given {@code File} to compare the actual {@code File} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code File} is equal to the given one.
-   */
-  @Override public FileAssert isNotEqualTo(File other) {
-    assertNotEqualTo(other);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code File} is not {@code null}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code File} is {@code null}.
-   */
-  @Override public FileAssert isNotNull() {
-    assertNotNull();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code File} is not the same as the given one.
-   * @param other the given {@code File} to compare the actual {@code File} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code File} is the same as the given one.
-   */
-  @Override public FileAssert isNotSameAs(File other) {
-    assertNotSameAs(other);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code File} is the same as the given one.
-   * @param expected the given {@code File} to compare the actual {@code File} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code File} is not the same as the given one.
-   */
-  @Override public FileAssert isSameAs(File expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code File} satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code File} does not satisfy the given condition.
-   * @see #is(Condition)
-   */
-  @Override public FileAssert satisfies(Condition<File> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code File} does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code File} satisfies the given condition.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @see #isNot(Condition)
-   */
-  @Override public FileAssert doesNotSatisfy(Condition<File> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-
-  /**
-   * Verifies that the actual {@code File} satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code File} does not satisfy the given condition.
-   */
-  @Override public FileAssert is(Condition<File> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code File} does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code File} satisfies the given condition.
-   * @throws NullPointerException if the given condition is {@code null}.
-   */
-  @Override public FileAssert isNot(Condition<File> condition) {
-    assertIsNot(condition);
-    return this;
   }
 
   /**
@@ -314,11 +186,5 @@ public class FileAssert extends GenericAssert<File> {
     if (actual.isAbsolute()) return this;
     failIfCustomMessageIsSet();
     throw failure(format("file:<%s> should be an absolute path", actual));
-  }
-
-  /** {@inheritDoc} */
-  @Override public FileAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
-    return this;
   }
 }

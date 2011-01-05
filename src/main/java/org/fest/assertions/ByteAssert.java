@@ -33,7 +33,7 @@ import org.fest.util.VisibleForTesting;
  *
  * @since 1.2
  */
-public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
+public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements NumberAssert {
 
   private static final byte ZERO = (byte) 0;
 
@@ -47,7 +47,7 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
    * @param actual the actual value to verify.
    */
   protected ByteAssert(byte actual) {
-    super(actual);
+    super(ByteAssert.class, actual);
   }
 
   /**
@@ -55,29 +55,7 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
    * @param actual the actual value to verify.
    */
   protected ByteAssert(Byte actual) {
-    super(actual);
-  }
-
-  /** {@inheritDoc} */
-  @Override public ByteAssert as(String description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ByteAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /** {@inheritDoc} */
-  @Override public ByteAssert as(Description description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ByteAssert describedAs(Description description) {
-    return as(description);
+    super(ByteAssert.class, actual);
   }
 
   /**
@@ -91,18 +69,6 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
   }
 
   /**
-   * Verifies that the actual {@code Byte} value is equal to the given one.
-   * @param expected the given {@code Byte} value to compare the actual {@code Byte} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Byte} value is not equal to the given one.
-   * @since 1.3
-   */
-  @Override public ByteAssert isEqualTo(Byte expected) {
-    assertEqualTo(expected);
-    return this;
-  }
-
-  /**
    * Verifies that the actual {@code Byte} value is not equal to the given one.
    * @param other the given value.
    * @return this assertion object.
@@ -110,18 +76,6 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
    */
   public ByteAssert isNotEqualTo(byte other) {
     return isNotEqualTo(valueOf(other));
-  }
-
-  /**
-   * Verifies that the actual {@code Byte} is not equal to the given one.
-   * @param other the given {@code Byte} to compare the actual {@code Byte} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Byte} value is equal to the given one.
-   * @since 1.3
-   */
-  @Override public ByteAssert isNotEqualTo(Byte other) {
-    assertNotEqualTo(other);
-    return this;
   }
 
   /**
@@ -197,100 +151,5 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
    */
   public ByteAssert isNegative() {
     return isLessThan(ZERO);
-  }
-
-  /** {@inheritDoc} */
-  @Override public ByteAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Byte} satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Byte} does not satisfy the given condition.
-   * @see #is(Condition)
-   * @since 1.3
-   */
-  @Override public ByteAssert satisfies(Condition<Byte> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Byte} does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Byte} does satisfies the given condition.
-   * @see #isNot(Condition)
-   * @since 1.3
-   */
-  @Override public ByteAssert doesNotSatisfy(Condition<Byte> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #satisfies(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Byte} does not satisfy the given condition.
-   * @since 1.3
-   */
-  @Override public ByteAssert is(Condition<Byte> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Byte} does not satisfy the given condition.
-   * @since 1.3
-   */
-  @Override public ByteAssert isNot(Condition<Byte> condition) {
-    assertIsNot(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Byte} is not {@code null}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Byte} value is {@code null}.
-   * @since 1.3
-   */
-  @Override public ByteAssert isNotNull() {
-    assertNotNull();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Byte} is the same object as the given one.
-   * @param expected the given {@code Byte} to compare the actual {@code Byte} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Byte} value is not the same as the given one.
-   * @since 1.3
-   */
-  @Override public ByteAssert isSameAs(Byte expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Byte} is not the same object as the given one.
-   * @param other the given {@code Byte} to compare the actual {@code Byte} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Byte} value is the same as the given one.
-   * @since 1.3
-   */
-  @Override public ByteAssert isNotSameAs(Byte other) {
-    assertNotSameAs(other);
-    return this;
   }
 }

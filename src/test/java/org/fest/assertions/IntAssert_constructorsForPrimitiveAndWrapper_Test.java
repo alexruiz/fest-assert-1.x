@@ -21,7 +21,7 @@ package org.fest.assertions;
  * @author Alex Ruiz
  */
 public class IntAssert_constructorsForPrimitiveAndWrapper_Test extends
-    GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<Integer> {
+    GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<IntAssert, Integer> {
 
   @Override protected Class<IntAssert> assertionType() {
     return IntAssert.class;

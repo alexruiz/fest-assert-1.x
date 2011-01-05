@@ -26,7 +26,7 @@ import static org.fest.assertions.Formatting.format;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class ThrowableAssert extends GenericAssert<Throwable> {
+public class ThrowableAssert extends GenericAssert<ThrowableAssert, Throwable> {
 
   // TODO remove dependency on ObjectAssert.
   private final ObjectAssert objectAssert;
@@ -36,40 +36,16 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
    * @param actual the target to verify.
    */
   protected ThrowableAssert(Throwable actual) {
-    super(actual);
+    super(ThrowableAssert.class, actual);
     objectAssert = new ObjectAssert(actual);
   }
 
-  /** {@inheritDoc} */
-  @Override public ThrowableAssert as(String description) {
-    objectAssert.as(description);
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ThrowableAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /** {@inheritDoc} */
-  @Override public ThrowableAssert as(Description description) {
-    objectAssert.as(description);
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ThrowableAssert describedAs(Description description) {
-    return as(description);
-  }
-
   /**
-   * Verifies that the actual <code>Throwable</code> is an instance of the given type.
-   * @param type the type to check the actual <code>Throwable</code> against.
+   * Verifies that the actual {@code Throwable} is an instance of the given type.
+   * @param type the type to check the actual {@code Throwable} against.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Throwable</code> is {@code null}.
-   * @throws AssertionError if the actual <code>Throwable</code> is not an instance of the given type.
+   * @throws AssertionError if the actual {@code Throwable} is {@code null}.
+   * @throws AssertionError if the actual {@code Throwable} is not an instance of the given type.
    * @throws NullPointerException if the given type is {@code null}.
    */
   public ThrowableAssert isInstanceOf(Class<? extends Throwable> type) {
@@ -78,12 +54,12 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
   }
 
   /**
-   * Verifies that the actual <code>Throwable</code> is an instance of the given type. In order for the assertion to
-   * pass, the type of the actual <code>Throwable</code> has to be exactly the same as the given type.
-   * @param type the type to check the actual <code>Throwable</code> against.
+   * Verifies that the actual {@code Throwable} is an instance of the given type. In order for the assertion to
+   * pass, the type of the actual {@code Throwable} has to be exactly the same as the given type.
+   * @param type the type to check the actual {@code Throwable} against.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Throwable</code> is {@code null}.
-   * @throws AssertionError if the actual <code>Throwable</code> is not an instance of the given type.
+   * @throws AssertionError if the actual {@code Throwable} is {@code null}.
+   * @throws AssertionError if the actual {@code Throwable} is not an instance of the given type.
    * @throws NullPointerException if the given type is {@code null}.
    */
   public ThrowableAssert isExactlyInstanceOf(Class<?> type) {
@@ -96,11 +72,11 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
   }
 
   /**
-   * Verifies that the message of the actual <code>Throwable</code> is equal to the given one.
+   * Verifies that the message of the actual {@code Throwable} is equal to the given one.
    * @param message the expected message.
    * @return this assertion error.
-   * @throws AssertionError if the actual <code>Throwable</code> is {@code null}.
-   * @throws AssertionError if the message of the actual <code>Throwable</code> is not equal to the given one.
+   * @throws AssertionError if the actual {@code Throwable} is {@code null}.
+   * @throws AssertionError if the message of the actual {@code Throwable} is not equal to the given one.
    */
   public ThrowableAssert hasMessage(String message) {
     isNotNull();
@@ -109,10 +85,10 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
   }
 
   /**
-   * Verifies that the actual <code>Throwable</code> does not have a cause.
+   * Verifies that the actual {@code Throwable} does not have a cause.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Throwable</code> is {@code null}.
-   * @throws AssertionError if the actual <code>Throwable</code> has a cause.
+   * @throws AssertionError if the actual {@code Throwable} is {@code null}.
+   * @throws AssertionError if the actual {@code Throwable} has a cause.
    */
   public ThrowableAssert hasNoCause() {
     isNotNull();
@@ -122,119 +98,31 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
     throw failure(format("expected exception without cause, but cause was:<%s>", actualCause.getClass()));
   }
 
-  /**
-   * Verifies that the actual <code>Throwable</code> is equal to the given one.
-   * @param expected the given <code>Throwable</code> to compare the actual <code>Throwable</code> to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual <code>Throwable</code> is not equal to the given one.
-   */
-  @Override public ThrowableAssert isEqualTo(Throwable expected) {
-    assertEqualTo(expected);
-    return this;
+  /** {@inheritDoc} */
+  @Override public ThrowableAssert as(String description) {
+    objectAssert.as(description);
+    return super.as(description);
   }
 
-  /**
-   * Verifies that the actual <code>Throwable</code> is not equal to the given one.
-   * @param other the given <code>Throwable</code> to compare the actual <code>Throwable</code> to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual <code>Throwable</code> is equal to the given one.
-   */
-  @Override public ThrowableAssert isNotEqualTo(Throwable other) {
-    assertNotEqualTo(other);
-    return this;
+  /** {@inheritDoc} */
+  @Override public ThrowableAssert describedAs(String description) {
+    return as(description);
   }
 
-  /**
-   * Verifies that the actual <code>Throwable</code> is not {@code null}.
-   *
-   * @return this assertion object.
-   *
-   * @throws AssertionError if the actual <code>Throwable</code> is {@code null}.
-   */
-  @Override public ThrowableAssert isNotNull() {
-    assertNotNull();
-    return this;
+  /** {@inheritDoc} */
+  @Override public ThrowableAssert as(Description description) {
+    objectAssert.as(description);
+    return super.as(description);
   }
 
-  /**
-   * Verifies that the actual <code>Throwable</code> is not the same as the given one.
-   * @param other the given <code>Throwable</code> to compare the actual <code>Throwable</code> to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual <code>Throwable</code> is the same as the given one.
-   */
-  @Override public ThrowableAssert isNotSameAs(Throwable other) {
-    assertNotSameAs(other);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>Throwable</code> is the same as the given one.
-   * @param expected the given <code>Throwable</code> to compare the actual <code>Throwable</code> to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual <code>Throwable</code> is not the same as the given one.
-   */
-  @Override public ThrowableAssert isSameAs(Throwable expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>Throwable</code> satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual <code>Throwable</code> does not satisfy the given condition.
-   * @see #is(Condition)
-   */
-  @Override public ThrowableAssert satisfies(Condition<Throwable> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>Throwable</code> does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual <code>Throwable</code> satisfies the given condition.
-   * @see #isNot(Condition)
-   */
-  @Override public ThrowableAssert doesNotSatisfy(Condition<Throwable> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-
-  /**
-   * Alias for <code>{@link #satisfies(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual <code>Throwable</code> does not satisfy the given condition.
-   * @since 1.2
-   */
-  @Override public ThrowableAssert is(Condition<Throwable> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual <code>Throwable</code> satisfies the given condition.
-   * @since 1.2
-   */
-  @Override public ThrowableAssert isNot(Condition<Throwable> condition) {
-    assertIsNot(condition);
-    return this;
+  /** {@inheritDoc} */
+  @Override public ThrowableAssert describedAs(Description description) {
+    return as(description);
   }
 
   /** {@inheritDoc} */
   @Override public ThrowableAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
     objectAssert.overridingErrorMessage(message);
-    return this;
+    return super.overridingErrorMessage(message);
   }
 }

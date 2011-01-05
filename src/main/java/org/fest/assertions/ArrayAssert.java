@@ -21,18 +21,22 @@ import java.util.Set;
 
 /**
  * Assertions for arrays.
- * @param <T> the generic type of the arrays.
+ * @param <S> used to simulate "self types." For more information please read &quot;<a
+ * href="http://passion.forco.de/content/emulating-self-types-using-java-generics-simplify-fluent-api-implementation"
+ * target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ * @param <A> the type the "actual" value.
  *
  * @author Alex Ruiz
  */
-public abstract class ArrayAssert<T> extends ItemGroupAssert<T> {
+public abstract class ArrayAssert<S, A> extends ItemGroupAssert<S, A> {
 
   /**
    * Creates a new </code>{@link ArrayAssert}</code>.
+   * @param selfType the "self type."
    * @param actual the target to verify.
    */
-  protected ArrayAssert(T actual) {
-    super(actual);
+  protected ArrayAssert(Class<S> selfType, A actual) {
+    super(selfType, actual);
   }
 
   /**

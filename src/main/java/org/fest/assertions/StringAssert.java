@@ -25,109 +25,14 @@ import static org.fest.assertions.Formatting.format;
  * @author Yvonne Wang
  * @author David DIDIER
  */
-public class StringAssert extends GroupAssert<String> {
+public class StringAssert extends GroupAssert<StringAssert, String> {
 
   /**
    * Creates a new </code>{@link StringAssert}</code>.
    * @param actual the target to verify.
    */
   protected StringAssert(String actual) {
-    super(actual);
-  }
-
-  /** {@inheritDoc} */
-  @Override public StringAssert as(String description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public StringAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /** {@inheritDoc} */
-  @Override public StringAssert as(Description description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public StringAssert describedAs(Description description) {
-    return as(description);
-  }
-
-  /**
-   * Verifies that the actual {@code String} satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code String} does not satisfy the given condition.
-   * @see #is(Condition)
-   */
-  @Override public StringAssert satisfies(Condition<String> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code String} does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code String} satisfies the given condition.
-   * @see #isNot(Condition)
-   */
-  @Override public StringAssert doesNotSatisfy(Condition<String> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #satisfies(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code String} does not satisfy the given condition.
-   * @since 1.2
-   */
-  @Override public StringAssert is(Condition<String> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code String} satisfies the given condition.
-   * @since 1.2
-   */
-  @Override public StringAssert isNot(Condition<String> condition) {
-    assertIsNot(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code String} contains at least on character.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is {@code null} or empty.
-   */
-  @Override public StringAssert isNotEmpty() {
-    assertIsNotEmpty();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code String} is equal to the given one.
-   * @param expected the given {@code String} to compare the actual {@code String} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is not equal to the given one.
-   */
-  @Override public StringAssert isEqualTo(String expected) {
-    assertEqualTo(expected);
-    return this;
+    super(StringAssert.class, actual);
   }
 
   /**
@@ -143,60 +48,6 @@ public class StringAssert extends GroupAssert<String> {
     if (actual.equalsIgnoreCase(expected)) return this;
     failIfCustomMessageIsSet();
     throw failure(format("<%s> should be equal to :<%s> ignoring case", actual, expected));
-  }
-
-  /**
-   * Verifies that the actual {@code String} is not equal to the given one.
-   * @param other the given {@code String} to compare the actual {@code String} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is equal to the given one.
-   */
-  @Override public StringAssert isNotEqualTo(String other) {
-    assertNotEqualTo(other);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code String} is not {@code null}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is {@code null}.
-   */
-  @Override public StringAssert isNotNull() {
-    assertNotNull();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code String} is not the same as the given one.
-   * @param other the given {@code String} to compare the actual {@code String} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is the same as the given one.
-   */
-  @Override public StringAssert isNotSameAs(String other) {
-    assertNotSameAs(other);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code String} is the same as the given one.
-   * @param expected the given {@code String} to compare the actual {@code String} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is not the same as the given one.
-   */
-  @Override public StringAssert isSameAs(String expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the number of characters in the actual {@code String} is equal to the given one.
-   * @param expected the expected number of characters in the actual {@code String}.
-   * @return this assertion object.
-   * @throws AssertionError if the number of characters of the actual {@code String} is not equal to the given one.
-   */
-  @Override public StringAssert hasSize(int expected) {
-    assertHasSize(expected);
-    return this;
   }
 
   /**
@@ -290,12 +141,6 @@ public class StringAssert extends GroupAssert<String> {
     if (!actual.matches(regex)) return this;
     failIfCustomMessageIsSet();
     throw failure(format("<%s> should not match the regular expression:<%s>", actual, regex));
-  }
-
-  /** {@inheritDoc} */
-  @Override public StringAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
-    return this;
   }
 
   /**

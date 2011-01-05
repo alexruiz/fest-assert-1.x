@@ -27,21 +27,27 @@ import org.fest.util.Arrays;
 
 /**
  * Template for assertions.
- * @param <T> the type of object implementations of this template can verify.
+ * @param <S> used to simulate "self types." For more information please read &quot;<a
+ * href="http://passion.forco.de/content/emulating-self-types-using-java-generics-simplify-fluent-api-implementation"
+ * target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ * @param <A> the type the "actual" value.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class GenericAssert<T> extends Assert {
+public abstract class GenericAssert<S, A> extends Assert {
 
-  protected final T actual;
+  protected final A actual;
+  protected final S myself;
 
   /**
    * Creates a new <code>{@link GenericAssert}</code>.
-   * @param actual the actual target to verify.
+   * @param selfType the "self type."
+   * @param actual the actual value to verify.
    */
-  protected GenericAssert(T actual) {
+  protected GenericAssert(Class<S> selfType, A actual) {
     this.actual = actual;
+    myself = selfType.cast(this);
   }
 
   /**
@@ -60,7 +66,15 @@ public abstract class GenericAssert<T> extends Assert {
    * @throws AssertionError if the actual value does not satisfy the given condition.
    * @see #is(Condition)
    */
-  protected abstract GenericAssert<T> satisfies(Condition<T> condition);
+  public final S satisfies(Condition<A> condition) {
+    if (matches(condition)) return myself;
+    failIfCustomMessageIsSet();
+    throw failure(errorMessageIfConditionNotSatisfied(condition));
+  }
+
+  private String errorMessageIfConditionNotSatisfied(Condition<A> condition) {
+    return condition.addDescriptionTo(format("actual value:<%s> should satisfy condition", actual));
+  }
 
   /**
    * Verifies that the actual value does not satisfy the given condition.
@@ -70,7 +84,15 @@ public abstract class GenericAssert<T> extends Assert {
    * @throws AssertionError if the actual value satisfies the given condition.
    * @see #isNot(Condition)
    */
-  protected abstract GenericAssert<T> doesNotSatisfy(Condition<T> condition);
+  public final S doesNotSatisfy(Condition<A> condition) {
+    if (!matches(condition)) return myself;
+    failIfCustomMessageIsSet();
+    throw failure(errorMessageIfConditionSatisfied(condition));
+  }
+
+  private String errorMessageIfConditionSatisfied(Condition<A> condition) {
+    return condition.addDescriptionTo(format("actual value:<%s> should not satisfy condition", actual));
+  }
 
   /**
    * Alias for <code>{@link #satisfies(Condition)}</code>.
@@ -80,7 +102,15 @@ public abstract class GenericAssert<T> extends Assert {
    * @throws AssertionError if the actual value does not satisfy the given condition.
    * @since 1.2
    */
-  protected abstract GenericAssert<T> is(Condition<T> condition);
+  public final S is(Condition<A> condition) {
+    if (matches(condition)) return myself;
+    failIfCustomMessageIsSet();
+    throw failure(errorMessageIfIsNot(condition));
+  }
+
+  private String errorMessageIfIsNot(Condition<A> condition) {
+    return condition.addDescriptionTo(format("actual value:<%s> should be", actual));
+  }
 
   /**
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
@@ -90,7 +120,24 @@ public abstract class GenericAssert<T> extends Assert {
    * @throws AssertionError if the actual value satisfies the given condition.
    * @since 1.2
    */
-  protected abstract GenericAssert<T> isNot(Condition<T> condition);
+  public final S isNot(Condition<A> condition) {
+    if (!matches(condition)) return myself;
+    failIfCustomMessageIsSet();
+    throw failure(errorMessageIfIs(condition));
+  }
+
+  private boolean matches(Condition<A> condition) {
+    validateIsNotNull(condition);
+    return condition.matches(actual);
+  }
+
+  private void validateIsNotNull(Condition<A> condition) {
+    if (condition == null) throw new NullPointerException("Condition to check should not be null");
+  }
+
+  private String errorMessageIfIs(Condition<A> condition) {
+    return condition.addDescriptionTo(format("actual value:<%s> should not be", actual));
+  }
 
   /**
    * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
@@ -105,7 +152,10 @@ public abstract class GenericAssert<T> extends Assert {
    * @param description the description of the actual value.
    * @return this assertion object.
    */
-  protected abstract GenericAssert<T> as(String description);
+  public S as(String description) {
+    description(description);
+    return myself;
+  }
 
   /**
    * Alias for <code>{@link #as(String)}</code>, since "as" is a keyword in
@@ -120,7 +170,9 @@ public abstract class GenericAssert<T> extends Assert {
    * @param description the description of the actual value.
    * @return this assertion object.
    */
-  protected abstract GenericAssert<T> describedAs(String description);
+  public S describedAs(String description) {
+    return as(description);
+  }
 
   /**
    * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
@@ -135,7 +187,10 @@ public abstract class GenericAssert<T> extends Assert {
    * @param description the description of the actual value.
    * @return this assertion object.
    */
-  protected abstract GenericAssert<T> as(Description description);
+  public S as(Description description) {
+    description(description);
+    return myself;
+  }
 
   /**
    * Alias for <code>{@link #as(Description)}</code>, since "as" is a keyword in
@@ -150,7 +205,9 @@ public abstract class GenericAssert<T> extends Assert {
    * @param description the description of the actual value.
    * @return this assertion object.
    */
-  protected abstract GenericAssert<T> describedAs(Description description);
+  public S describedAs(Description description) {
+    return as(description);
+  }
 
   /**
    * Verifies that the actual value is equal to the given one.
@@ -158,7 +215,10 @@ public abstract class GenericAssert<T> extends Assert {
    * @return this assertion object.
    * @throws AssertionError if the actual value is not equal to the given one.
    */
-  protected abstract GenericAssert<T> isEqualTo(T expected);
+  public S isEqualTo(A expected) {
+    failIfNotEqual(customErrorMessage(), rawDescription(), actual, expected);
+    return myself;
+  }
 
   /**
    * Verifies that the actual value is not equal to the given one.
@@ -166,14 +226,20 @@ public abstract class GenericAssert<T> extends Assert {
    * @return this assertion object.
    * @throws AssertionError if the actual value is equal to the given one.
    */
-  protected abstract GenericAssert<T> isNotEqualTo(T other);
+  public S isNotEqualTo(A other) {
+    failIfEqual(customErrorMessage(), rawDescription(), actual, other);
+    return myself;
+  }
 
   /**
    * Verifies that the actual value is not {@code null}.
    * @return this assertion object.
    * @throws AssertionError if the actual value is {@code null}.
    */
-  protected abstract GenericAssert<T> isNotNull();
+  public final S isNotNull() {
+    failIfActualIsNull(customErrorMessage(), rawDescription(), actual);
+    return myself;
+  }
 
   /**
    * Verifies that the actual value is the same as the given one.
@@ -181,7 +247,10 @@ public abstract class GenericAssert<T> extends Assert {
    * @return this assertion object.
    * @throws AssertionError if the actual value is not the same as the given one.
    */
-  protected abstract GenericAssert<T> isSameAs(T expected);
+  public final S isSameAs(A expected) {
+    failIfNotSame(customErrorMessage(), rawDescription(), actual, expected);
+    return myself;
+  }
 
   /**
    * Verifies that the actual value is not the same as the given one.
@@ -189,16 +258,20 @@ public abstract class GenericAssert<T> extends Assert {
    * @return this assertion object.
    * @throws AssertionError if the actual value is the same as the given one.
    */
-  protected abstract GenericAssert<T> isNotSameAs(T other);
+  public final S isNotSameAs(A other) {
+    failIfSame(customErrorMessage(), rawDescription(), actual, other);
+    return myself;
+  }
 
   /**
    * Verifies that the actual value is in the given values.
    * @param values the given values to search the actual value in.
    * @return this assertion object.
    * @throws AssertionError if the actual value is not in the given values.
-   * @throws NullPointerException if the given vararg parameter is null.
+   * @throws NullPointerException if the given parameter is null.
    */
-  protected GenericAssert<T> isIn(T... values) {
+  public final S isIn(Object... values) {
+    // TODO check for null.
     return isIn(list(values));
   }
 
@@ -209,27 +282,21 @@ public abstract class GenericAssert<T> extends Assert {
    * @throws AssertionError if the actual value is not in the given collection.
    * @throws NullPointerException if the given collection is null.
    */
-  protected GenericAssert<T> isIn(Collection<T> values) {
-    if (values == null) { throw new NullPointerException( formattedErrorMessage("expecting values parameter not to be null")); }
-    if (assertThatActualIsIn(values)) { return this; }
+  public final S isIn(Collection<?> values) {
+    if (values == null) throw new NullPointerException(formattedErrorMessage("expecting values parameter not to be null"));
+    if (assertThatActualIsIn(values)) return myself;
     failIfCustomMessageIsSet();
     throw failure(unexpectedNotIn(customErrorMessage(), actual, values));
   }
 
-  /**
-   * Return true if values collection contains actual, false otherwise.</br>
-   * Works also when T is an array by comparing values elements (arrays !) with actual.
-   * @param values the collection to search actual in
-   * @return true if values collection contains actual, false otherwise.
-   */
-  protected boolean assertThatActualIsIn(Collection<T> values) {
-    if (values.isEmpty()) { return false; }
+  private boolean assertThatActualIsIn(Collection<?> values) {
+    if (values.isEmpty()) return false;
     if (Arrays.isArray(values.iterator().next())) {
-      // Using values.contains(actual) doesn't work when T is an array since contains relies on equals and array equals only compare references. 
+      // Using values.contains(actual) doesn't work when T is an array since contains relies on equals and array equals
+      // only compare references.
       // We solve that with Objects.areEquals that compare array elements
-      for (T value : values) {
-        if (areEqual(actual, value)) { return true; }
-      }
+      for (Object value : values)
+        if (areEqual(actual, value)) return true;
     }
     // T is not an array, using contains works
     return values.contains(actual);
@@ -240,9 +307,9 @@ public abstract class GenericAssert<T> extends Assert {
    * @param values the given values to search the actual value in.
    * @return this assertion object.
    * @throws AssertionError if the actual value is not in the given values.
-   * @throws NullPointerException if the given vararg parameter is null.
+   * @throws NullPointerException if the given parameter is null.
    */
-  protected GenericAssert<T> isNotIn(T... values) {
+  public final S isNotIn(Object... values) {
     return isNotIn(list(values));
   }
 
@@ -253,147 +320,24 @@ public abstract class GenericAssert<T> extends Assert {
    * @throws AssertionError if the actual value is not in the given collection.
    * @throws NullPointerException if the given collection is null.
    */
-  protected GenericAssert<T> isNotIn(Collection<T> values) {
-    if (values == null) { throw new NullPointerException( formattedErrorMessage("expecting values parameter not to be null")); }
-    if (assertThatActualIsNotIn(values)) { return this; }
+  public final S isNotIn(Collection<?> values) {
+    if (values == null) throw new NullPointerException(formattedErrorMessage("expecting values parameter not to be null"));
+    if (assertThatActualIsNotIn(values)) return myself;
     failIfCustomMessageIsSet();
     throw failure(unexpectedIn(customErrorMessage(), actual, values));
   }
 
-  /**
-   * Return true if values collection does not contain actual, false otherwise.</br>
-   * Works also when T is an array by comparing values elements (arrays !) with actual.
-   * @param values the collection to search actual in
-   * @return true if values collection does not contain actual, false otherwise.
-   */
-  protected boolean assertThatActualIsNotIn(Collection<T> values) {
-    if (values.isEmpty()) { return false; }
+  private boolean assertThatActualIsNotIn(Collection<?> values) {
+    if (values.isEmpty()) return false;
     if (Arrays.isArray(values.iterator().next())) {
-      // Using values.contains(actual) doesn't work when T is an array since contains relies on equals and array equals only compare references. 
+      // Using values.contains(actual) doesn't work when T is an array since contains relies on equals and array equals
+      // only compare references.
       // We solve that with Objects.areEquals that compare array elements
-      for (T value : values) {
-        if (areEqual(actual, value)) { return false; }
-      }
+      for (Object value : values)
+        if (areEqual(actual, value)) return false;
     }
     // T is not an array, using contains works
     return !values.contains(actual);
-  }
-
-  /**
-   * Verifies that the actual value satisfies the given condition.
-   * @param condition the condition to check.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual value does not satisfy the given condition.
-   */
-  protected final void assertSatisfies(Condition<T> condition) {
-    if (matches(condition)) return;
-    failIfCustomMessageIsSet();
-    fail(errorMessageIfConditionNotSatisfied(condition));
-  }
-
-  private String errorMessageIfConditionNotSatisfied(Condition<T> condition) {
-    return condition.addDescriptionTo(format("actual value:<%s> should satisfy condition", actual));
-  }
-
-  /**
-   * Verifies that the actual value satisfies the given condition.
-   * @param condition the condition to check.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual value does not satisfy the given condition.
-   */
-  protected final void assertIs(Condition<T> condition) {
-    if (matches(condition)) return;
-    failIfCustomMessageIsSet();
-    fail(errorMessageIfIsNot(condition));
-  }
-
-  private String errorMessageIfIsNot(Condition<T> condition) {
-    return condition.addDescriptionTo(format("actual value:<%s> should be", actual));
-  }
-
-  /**
-   * Verifies that the actual value does not satisfy the given condition.
-   * @param condition the condition to check.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual value satisfies the given condition.
-   */
-  protected final void assertDoesNotSatisfy(Condition<T> condition) {
-    if (!matches(condition)) return;
-    failIfCustomMessageIsSet();
-    fail(errorMessageIfConditionSatisfied(condition));
-  }
-
-  private String errorMessageIfConditionSatisfied(Condition<T> condition) {
-    return condition.addDescriptionTo(format("actual value:<%s> should not satisfy condition", actual));
-  }
-
-  /**
-   * Verifies that the actual value does not satisfy the given condition.
-   * @param condition the condition to check.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual value satisfies the given condition.
-   */
-  protected final void assertIsNot(Condition<T> condition) {
-    if (!matches(condition)) return;
-    failIfCustomMessageIsSet();
-    fail(errorMessageIfIs(condition));
-  }
-
-  private boolean matches(Condition<T> condition) {
-    validateIsNotNull(condition);
-    return condition.matches(actual);
-  }
-
-  private void validateIsNotNull(Condition<T> condition) {
-    if (condition == null) throw new NullPointerException("Condition to check should not be null");
-  }
-
-  private String errorMessageIfIs(Condition<T> condition) {
-    return condition.addDescriptionTo(format("actual value:<%s> should not be", actual));
-  }
-
-  /**
-   * Verifies that the actual value is equal to the given one.
-   * @param expected the value to compare the actual value to.
-   * @throws AssertionError if the actual value is not equal to the given one.
-   */
-  protected final void assertEqualTo(T expected) {
-    failIfNotEqual(customErrorMessage(), rawDescription(), actual, expected);
-  }
-
-  /**
-   * Verifies that the actual value is not equal to the given one.
-   * @param other the value to compare the actual value to.
-   * @throws AssertionError if the actual value is equal to the given one.
-   */
-  protected final void assertNotEqualTo(T other) {
-    failIfEqual(customErrorMessage(), rawDescription(), actual, other);
-  }
-
-  /**
-   * Verifies that the actual value is not {@code null}.
-   * @throws AssertionError if the actual value is {@code null}.
-   */
-  protected final void assertNotNull() {
-    failIfActualIsNull(customErrorMessage(), rawDescription(), actual);
-  }
-
-  /**
-   * Verifies that the actual value is the same as the given one.
-   * @param expected the value to compare the actual value to.
-   * @throws AssertionError if the actual value is not the same as the given one.
-   */
-  protected final void assertSameAs(T expected) {
-    failIfNotSame(customErrorMessage(), rawDescription(), actual, expected);
-  }
-
-  /**
-   * Verifies that the actual value is not the same as the given one.
-   * @param expected the value to compare the actual value to.
-   * @throws AssertionError if the actual value is the same as the given one.
-   */
-  protected final void assertNotSameAs(T expected) {
-    failIfSame(customErrorMessage(), rawDescription(), actual, expected);
   }
 
   /**
@@ -416,5 +360,8 @@ public abstract class GenericAssert<T> extends Assert {
    * @return this assertion.
    * @since 1.2
    */
-  protected abstract GenericAssert<T> overridingErrorMessage(String message);
+  public S overridingErrorMessage(String message) {
+    replaceDefaultErrorMessagesWith(message);
+    return myself;
+  }
 }

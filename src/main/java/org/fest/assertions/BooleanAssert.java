@@ -29,14 +29,14 @@ import static java.lang.Boolean.valueOf;
  * @author David DIDIER
  * @author Ansgar Konermann
  */
-public class BooleanAssert extends GenericAssert<Boolean> {
+public class BooleanAssert extends GenericAssert<BooleanAssert, Boolean> {
 
   /**
    * Creates a new <code>{@link BooleanAssert}</code>.
    * @param actual the actual value to verify.
    */
   protected BooleanAssert(boolean actual) {
-    super(actual);
+    super(BooleanAssert.class, actual);
   }
 
   /**
@@ -44,29 +44,7 @@ public class BooleanAssert extends GenericAssert<Boolean> {
    * @param actual the actual value to verify.
    */
   protected BooleanAssert(Boolean actual) {
-    super(actual);
-  }
-
-  /** {@inheritDoc} */
-  @Override public BooleanAssert as(String description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public BooleanAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /** {@inheritDoc} */
-  @Override public BooleanAssert as(Description description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public BooleanAssert describedAs(Description description) {
-    return as(description);
+    super(BooleanAssert.class, actual);
   }
 
   /**
@@ -96,18 +74,6 @@ public class BooleanAssert extends GenericAssert<Boolean> {
   }
 
   /**
-   * Verifies that the actual {@code Boolean} value is equal to the given one.
-   * @param expected the given {@code Boolean} value to compare the actual {@code Boolean} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Boolean} value is not equal to the given one.
-   * @since 1.3
-   */
-  @Override public BooleanAssert isEqualTo(Boolean expected) {
-    assertEqualTo(expected);
-    return this;
-  }
-
-  /**
    * Verifies that the actual {@code Boolean} is not equal to the given one.
    * @param other the given {@code boolean} to compare the actual {@code Boolean} to.
    * @return this assertion object.
@@ -115,112 +81,5 @@ public class BooleanAssert extends GenericAssert<Boolean> {
    */
   public BooleanAssert isNotEqualTo(boolean other) {
     return isNotEqualTo(valueOf(other));
-  }
-
-  /**
-   * Verifies that the actual {@code Boolean} is not equal to the given one.
-   * @param other the given {@code Boolean} to compare the actual {@code Boolean} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Boolean} value is equal to the given one.
-   * @since 1.3
-   */
-  @Override public BooleanAssert isNotEqualTo(Boolean other) {
-    assertNotEqualTo(other);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Boolean} satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Boolean} does not satisfy the given condition.
-   * @see #is(Condition)
-   * @since 1.3
-   */
-  @Override public BooleanAssert satisfies(Condition<Boolean> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Boolean} does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual value does satisfies the given condition.
-   * @see #isNot(Condition)
-   * @since 1.3
-   */
-  @Override public BooleanAssert doesNotSatisfy(Condition<Boolean> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #satisfies(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Boolean} does not satisfy the given condition.
-   * @since 1.3
-   */
-  @Override public BooleanAssert is(Condition<Boolean> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Boolean} does not satisfy the given condition.
-   * @since 1.3
-   */
-  @Override public BooleanAssert isNot(Condition<Boolean> condition) {
-    assertIsNot(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Boolean} is not {@code null}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Boolean} value is {@code null}.
-   * @since 1.3
-   */
-  @Override public BooleanAssert isNotNull() {
-    assertNotNull();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Boolean} is the same object as the given one.
-   * @param expected the given {@code Boolean} to compare the actual {@code Boolean} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Boolean} value is not the same as the given one.
-   * @since 1.3
-   */
-  @Override public BooleanAssert isSameAs(Boolean expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Boolean} is not the same object as the given one.
-   * @param other the given {@code Boolean} to compare the actual {@code Boolean} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Boolean} value is the same as the given one.
-   * @since 1.3
-   */
-  @Override public BooleanAssert isNotSameAs(Boolean other) {
-    assertNotSameAs(other);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public BooleanAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
-    return this;
   }
 }

@@ -32,36 +32,14 @@ import org.fest.util.IntrospectionError;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
+public class ObjectArrayAssert extends ObjectGroupAssert<ObjectArrayAssert, Object[]> {
 
   /**
    * Creates a new </code>{@link ObjectArrayAssert}</code>.
    * @param actual the target to verify.
    */
   protected ObjectArrayAssert(Object... actual) {
-    super(actual);
-  }
-
-  /** {@inheritDoc} */
-  @Override public ObjectArrayAssert as(String description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ObjectArrayAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /** {@inheritDoc} */
-  @Override public ObjectArrayAssert as(Description description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ObjectArrayAssert describedAs(Description description) {
-    return as(description);
+    super(ObjectArrayAssert.class, actual);
   }
 
   /**
@@ -118,130 +96,6 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
   }
 
   /**
-   * Verifies that the actual {@code Object} array contains the given objects.
-   * @param objects the objects to look for.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Object} array is {@code null}.
-   * @throws NullPointerException if the given {@code Object} array is {@code null}.
-   * @throws AssertionError if the actual {@code Object} array does not contain the given objects.
-   */
-  @Override public ObjectArrayAssert contains(Object... objects) {
-    assertContains(objects);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Object} array contains the given objects <strong>only</strong>.
-   * @param objects the objects to look for.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Object} array is {@code null}.
-   * @throws NullPointerException if the given {@code Object} array is {@code null}.
-   * @throws AssertionError if the actual {@code Object} array does not contain the given objects, or if the actual
-   * {@code Object} array contains elements other than the ones specified.
-   */
-  @Override public ObjectArrayAssert containsOnly(Object... objects) {
-    assertContainsOnly(objects);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Object} array does not contain the given objects.
-   * @param objects the objects the array should exclude.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Object} array is {@code null}.
-   * @throws NullPointerException if the given {@code Object} array is {@code null}.
-   * @throws AssertionError if the actual {@code Object} array contains any of the given objects.
-   */
-  @Override public ObjectArrayAssert excludes(Object... objects) {
-    assertExcludes(objects);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Object} array does not have duplicates.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Object} array is {@code null}.
-   * @throws AssertionError if the actual {@code Object} array has duplicates.
-   */
-  @Override public ObjectArrayAssert doesNotHaveDuplicates() {
-    assertDoesNotHaveDuplicates();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Object} array satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Object} array does not satisfy the given condition.
-   * @see #is(Condition)
-   */
-  @Override public ObjectArrayAssert satisfies(Condition<Object[]> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Object} array does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Object} array satisfies the given condition.
-   * @see #isNot(Condition)
-   */
-  @Override public ObjectArrayAssert doesNotSatisfy(Condition<Object[]> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #satisfies(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Object} array does not satisfy the given condition.
-   * @since 1.2
-   */
-  @Override public ObjectArrayAssert is(Condition<Object[]> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Object} array satisfies the given condition.
-   * @since 1.2
-   */
-  @Override public ObjectArrayAssert isNot(Condition<Object[]> condition) {
-    assertIsNot(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Object} array is not {@code null}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Object} array is {@code null}.
-   */
-  @Override public ObjectArrayAssert isNotNull() {
-    assertNotNull();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Object} array contains at least on element.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Object} array is {@code null}.
-   * @throws AssertionError if the actual {@code Object} array is empty.
-   */
-  @Override public ObjectArrayAssert isNotEmpty() {
-    assertIsNotEmpty();
-    return this;
-  }
-
-  /**
    * Verifies that the actual {@code Object} array is equal to the given array. Array equality is checked by
    * <code>{@link Arrays#deepEquals(Object[], Object[])}</code>.
    * @param expected the given array to compare the actual array to.
@@ -265,47 +119,6 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
     if (!Arrays.deepEquals(actual, array)) return this;
     failIfCustomMessageIsSet();
     throw failure(unexpectedEqual(actual, array));
-  }
-
-  /**
-   * Verifies that the number of elements in the actual {@code Object} array is equal to the given one.
-   * @param expected the expected number of elements in the actual {@code Object} array.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Object} array is {@code null}.
-   * @throws AssertionError if the number of elements in the actual {@code Object} array is not equal to the given
-   * one.
-   */
-  @Override public ObjectArrayAssert hasSize(int expected) {
-    assertHasSize(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Object} array is the same as the given array.
-   * @param expected the given array to compare the actual array to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Object} array is not the same as the given one.
-   */
-  @Override public ObjectArrayAssert isSameAs(Object[] expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Object} array is not the same as the given array.
-   * @param expected the given array to compare the actual array to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Object} array is the same as the given one.
-   */
-  @Override public ObjectArrayAssert isNotSameAs(Object[] expected) {
-    assertNotSameAs(expected);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ObjectArrayAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
-    return this;
   }
 
   /**

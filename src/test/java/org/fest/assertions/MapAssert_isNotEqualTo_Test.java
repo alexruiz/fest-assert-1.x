@@ -28,7 +28,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class MapAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<Map<?, ?>> {
+public class MapAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<MapAssert, Map<?, ?>> {
 
   private static Map<?, ?> notNullValue;
   private static Map<?, ?> unequalValue;

@@ -22,7 +22,7 @@ import java.util.Collection;
  * @author Joel Costigliola
  * @author Alex Ruiz
  */
-public class ObjectArrayAssert_onProperty_Test extends ObjectGroupAssert_onProperty_Test<Object[]> {
+public class ObjectArrayAssert_onProperty_Test extends ObjectGroupAssert_onProperty_Test<ObjectArrayAssert, Object[]> {
 
   @Override protected ObjectArrayAssert assertions(Collection<?> data) {
     Object[] actual = data != null ? data.toArray() : null;

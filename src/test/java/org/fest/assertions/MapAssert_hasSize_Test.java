@@ -67,7 +67,7 @@ public class MapAssert_hasSize_Test implements Assert_hasSize_TestCase {
 
   @Test
   public void should_fail_if_actual_does_not_have_expected_size() {
-    expectAssertionError("expected size:<3> but was:<2> for map:<{'key1'=1, 'key2'=2}>").on(new CodeToTest() {
+    expectAssertionError("expected size:<3> but was:<2> for <{'key1'=1, 'key2'=2}>").on(new CodeToTest() {
       public void run() {
         new MapAssert(map).hasSize(3);
       }
@@ -76,7 +76,7 @@ public class MapAssert_hasSize_Test implements Assert_hasSize_TestCase {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_does_not_have_expected_size() {
-    expectAssertionError("[A Test] expected size:<3> but was:<2> for map:<{'key1'=1, 'key2'=2}>").on(new CodeToTest() {
+    expectAssertionError("[A Test] expected size:<3> but was:<2> for <{'key1'=1, 'key2'=2}>").on(new CodeToTest() {
       public void run() {
         new MapAssert(map).as("A Test")
                           .hasSize(3);
