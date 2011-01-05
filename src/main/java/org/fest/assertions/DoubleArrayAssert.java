@@ -30,36 +30,14 @@ import java.util.Arrays;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class DoubleArrayAssert extends ArrayAssert<double[]> {
+public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> {
 
   /**
    * Creates a new </code>{@link DoubleArrayAssert}</code>.
    * @param actual the target to verify.
    */
   protected DoubleArrayAssert(double... actual) {
-    super(actual);
-  }
-
-  /** {@inheritDoc} */
-  @Override public DoubleArrayAssert as(String description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public DoubleArrayAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /** {@inheritDoc} */
-  @Override public DoubleArrayAssert as(Description description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public DoubleArrayAssert describedAs(Description description) {
-    return as(description);
+    super(DoubleArrayAssert.class, actual);
   }
 
   /**
@@ -99,79 +77,6 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    */
   public DoubleArrayAssert excludes(double... values) {
     assertExcludes(copy(values));
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code double} array satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code double} array does not satisfy the given condition.
-   * @see #is(Condition)
-   */
-  @Override public DoubleArrayAssert satisfies(Condition<double[]> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code double} array does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code double} array satisfies the given condition.
-   * @see #isNot(Condition)
-   */
-  @Override public DoubleArrayAssert doesNotSatisfy(Condition<double[]> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #satisfies(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code double} array does not satisfy the given condition.
-   * @since 1.2
-   */
-  @Override public DoubleArrayAssert is(Condition<double[]> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code double} array satisfies the given condition.
-   * @since 1.2
-   */
-  @Override public DoubleArrayAssert isNot(Condition<double[]> condition) {
-    assertIsNot(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code double} array is not {@code null}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code double} array is {@code null}.
-   */
-  @Override public DoubleArrayAssert isNotNull() {
-    assertNotNull();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code double} array contains at least on element.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code double} array is {@code null}.
-   * @throws AssertionError if the actual {@code double} array is empty.
-   */
-  @Override public DoubleArrayAssert isNotEmpty() {
-    assertIsNotEmpty();
     return this;
   }
 
@@ -227,46 +132,5 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
     if (!Arrays.equals(actual, array)) return this;
     failIfCustomMessageIsSet();
     throw failure(unexpectedEqual(actual, array));
-  }
-
-  /**
-   * Verifies that the number of elements in the actual {@code double} array is equal to the given one.
-   * @param expected the expected number of elements in the actual {@code double} array.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code double} array is {@code null}.
-   * @throws AssertionError if the number of elements in the actual {@code double} array is not equal to the given
-   * one.
-   */
-  @Override public DoubleArrayAssert hasSize(int expected) {
-    assertHasSize(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code double} array is the same as the given array.
-   * @param expected the given array to compare the actual array to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code double} array is not the same as the given one.
-   */
-  @Override public DoubleArrayAssert isSameAs(double[] expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code double} array is not the same as the given array.
-   * @param expected the given array to compare the actual array to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code double} array is the same as the given one.
-   */
-  @Override public DoubleArrayAssert isNotSameAs(double[] expected) {
-    assertNotSameAs(expected);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public DoubleArrayAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
-    return this;
   }
 }

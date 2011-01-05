@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class DoubleAssert_isEqualTo_Double_Test extends GenericAssert_isEqualTo_TestCase<Double> {
+public class DoubleAssert_isEqualTo_Double_Test extends GenericAssert_isEqualTo_TestCase<DoubleAssert, Double> {
 
   private static Double notNullValue;
   private static Double unequalValue;

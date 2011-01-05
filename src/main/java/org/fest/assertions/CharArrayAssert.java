@@ -29,84 +29,14 @@ import java.util.Arrays;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CharArrayAssert extends ArrayAssert<char[]> {
+public class CharArrayAssert extends ArrayAssert<CharArrayAssert, char[]> {
 
   /**
    * Creates a new </code>{@link CharArrayAssert}</code>.
    * @param actual the target to verify.
    */
   protected CharArrayAssert(char... actual) {
-    super(actual);
-  }
-
-  /**
-   * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
-   * thrown when an assertion fails. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description.
-   * <p>
-   * For example:
-   * <pre>
-   * assertThat(values).<strong>as</strong>(&quot;Some values&quot;).isNotEmpty();
-   * </pre>
-   * </p>
-   * @param description the description of the actual value.
-   * @return this assertion object.
-   */
-  @Override public CharArrayAssert as(String description) {
-    description(description);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #as(String)}</code>, since "as" is a keyword in
-   * <a href="http://groovy.codehaus.org/" target="_blank">Groovy</a>. This method should be called before any assertion
-   * method, otherwise any assertion failure will not show the provided description.
-   * <p>
-   * For example:
-   * <pre>
-   * assertThat(values).<strong>describedAs</strong>(&quot;Some values&quot;).isNotEmpty();
-   * </pre>
-   * </p>
-   * @param description the description of the actual value.
-   * @return this assertion object.
-   */
-  @Override public CharArrayAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /**
-   * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
-   * thrown when an assertion fails. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description.
-   * <p>
-   * For example:
-   * <pre>
-   * assertThat(values).<strong>as</strong>(new BasicDescription(&quot;Some values&quot;)).isNotEmpty();
-   * </pre>
-   * </p>
-   * @param description the description of the actual value.
-   * @return this assertion object.
-   */
-  @Override public CharArrayAssert as(Description description) {
-    description(description);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #as(Description)}</code>, since "as" is a keyword in
-   * <a href="http://groovy.codehaus.org/" target="_blank">Groovy</a>. This method should be called before any assertion
-   * method, otherwise any assertion failure will not show the provided description.
-   * <p>
-   * For example:
-   * <pre>
-   * assertThat(values).<strong>describedAs</strong>(new BasicDescription(&quot;Some values&quot;)).isNotEmpty();
-   * </pre>
-   * </p>
-   * @param description the description of the actual value.
-   * @return this assertion object.
-   */
-  @Override public CharArrayAssert describedAs(Description description) {
-    return as(description);
+    super(CharArrayAssert.class, actual);
   }
 
   /**
@@ -150,79 +80,6 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
   }
 
   /**
-   * Verifies that the actual {@code char} array satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code char} array does not satisfy the given condition.
-   * @see #is(Condition)
-   */
-  @Override public CharArrayAssert satisfies(Condition<char[]> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code char} array does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code char} array satisfies the given condition.
-   * @see #isNot(Condition)
-   */
-  @Override public CharArrayAssert doesNotSatisfy(Condition<char[]> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #satisfies(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code char} array does not satisfy the given condition.
-   * @since 1.2
-   */
-  @Override public CharArrayAssert is(Condition<char[]> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code char} array satisfies the given condition.
-   * @since 1.2
-   */
-  @Override public CharArrayAssert isNot(Condition<char[]> condition) {
-    assertIsNot(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code char} array is not {@code null}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code char} array is {@code null}.
-   */
-  @Override public CharArrayAssert isNotNull() {
-    assertNotNull();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code char} array contains at least on element.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code char} array is {@code null}.
-   * @throws AssertionError if the actual {@code char} array is empty.
-   */
-  @Override public CharArrayAssert isNotEmpty() {
-    assertIsNotEmpty();
-    return this;
-  }
-
-  /**
    * Verifies that the actual {@code char} array is equal to the given array. Array equality is checked by
    * <code>{@link Arrays#equals(char[], char[])}</code>.
    * @param expected the given array to compare the actual array to.
@@ -246,46 +103,5 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
     if (!Arrays.equals(actual, array)) return this;
     failIfCustomMessageIsSet();
     throw failure(unexpectedEqual(actual, array));
-  }
-
-  /**
-   * Verifies that the number of elements in the actual {@code char} array is equal to the given one.
-   * @param expected the expected number of elements in the actual {@code char} array.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code char} array is {@code null}.
-   * @throws AssertionError if the number of elements in the actual {@code char} array is not equal to the given
-   * one.
-   */
-  @Override public CharArrayAssert hasSize(int expected) {
-    assertHasSize(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code char} array is the same as the given array.
-   * @param expected the given array to compare the actual array to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code char} array is not the same as the given one.
-   */
-  @Override public CharArrayAssert isSameAs(char[] expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code char} array is not the same as the given array.
-   * @param expected the given array to compare the actual array to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code char} array is the same as the given one.
-   */
-  @Override public CharArrayAssert isNotSameAs(char[] expected) {
-    assertNotSameAs(expected);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public CharArrayAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
-    return this;
   }
 }

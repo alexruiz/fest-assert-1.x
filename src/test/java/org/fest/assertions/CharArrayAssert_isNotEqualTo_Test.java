@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CharArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<char[]> {
+public class CharArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<CharArrayAssert, char[]> {
 
   private static char[] notNullValue;
   private static char[] unequalValue;

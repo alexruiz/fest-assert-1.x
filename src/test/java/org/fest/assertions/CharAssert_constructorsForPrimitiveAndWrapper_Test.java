@@ -21,7 +21,7 @@ package org.fest.assertions;
  * @author Alex Ruiz
  */
 public class CharAssert_constructorsForPrimitiveAndWrapper_Test extends
-    GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<Character> {
+    GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<CharAssert, Character> {
 
   @Override protected Class<CharAssert> assertionType() {
     return CharAssert.class;

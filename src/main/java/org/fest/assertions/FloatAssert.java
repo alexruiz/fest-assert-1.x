@@ -17,7 +17,6 @@ package org.fest.assertions;
 import static java.lang.Float.*;
 import static java.lang.Math.abs;
 import static org.fest.assertions.ErrorMessages.*;
-import static org.fest.assertions.Fail.comparisonFailed;
 import static org.fest.assertions.Formatting.format;
 
 /**
@@ -31,7 +30,7 @@ import static org.fest.assertions.Formatting.format;
  * @author Alex Ruiz
  * @author Ansgar Konermann
  */
-public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
+public class FloatAssert extends GenericAssert<FloatAssert, Float> implements NumberAssert {
 
   private static final float ZERO = 0f;
 
@@ -40,7 +39,7 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
    * @param actual the actual value to verify.
    */
   protected FloatAssert(float actual) {
-    super(actual);
+    super(FloatAssert.class, actual);
   }
 
   /**
@@ -48,29 +47,7 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
    * @param actual the actual value to verify.
    */
   protected FloatAssert(Float actual) {
-    super(actual);
-  }
-
-  /** {@inheritDoc} */
-  @Override public FloatAssert as(String description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public FloatAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /** {@inheritDoc} */
-  @Override public FloatAssert as(Description description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public FloatAssert describedAs(Description description) {
-    return as(description);
+    super(FloatAssert.class, actual);
   }
 
   /**
@@ -81,23 +58,6 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
    */
   public FloatAssert isEqualTo(float expected) {
     return isEqualTo(valueOf(expected));
-  }
-
-  /**
-   * Verifies that the actual {@code Float} is equal to the given one.
-   * @param expected the given value to compare the actual to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Float} is not equal to the given one.
-   * @since 1.3
-   */
-  @Override public FloatAssert isEqualTo(Float expected) {
-    if (actual == null || expected == null) {
-      assertEqualTo(expected);
-      return this;
-    }
-    if (actual.compareTo(expected) == 0) return this;
-    failIfCustomMessageIsSet();
-    throw comparisonFailed(rawDescription(), actual, expected);
   }
 
   /**
@@ -144,7 +104,7 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
 
   private FloatAssert isEqualTo(Float expected, float deltaValue) {
     if (actual == null || expected == null) {
-      assertEqualTo(expected);
+      isEqualTo(expected);
       return this;
     }
     if (actual.compareTo(expected) == 0) return this;
@@ -279,113 +239,6 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
     private Delta(float value) {
       this.value = value;
     }
-  }
-
-  /** {@inheritDoc} */
-  @Override public FloatAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Float}</code> satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Float} does not satisfy the given condition.
-   * @see #is(Condition)
-   * @since 1.3
-   */
-  @Override public FloatAssert satisfies(Condition<Float> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Float}</code> does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual value does satisfies the given condition.
-   * @see #isNot(Condition)
-   * @since 1.3
-   */
-  @Override public FloatAssert doesNotSatisfy(Condition<Float> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #satisfies(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Float} does not satisfy the given condition.
-   * @since 1.3
-   */
-  @Override public FloatAssert is(Condition<Float> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Float} does not satisfy the given condition.
-   * @since 1.3
-   */
-  @Override public FloatAssert isNot(Condition<Float> condition) {
-    assertIsNot(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Float}</code> is not equal to the given one.
-   * @param other the given {@code Float} to compare the actual {@code Float} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Float} is equal to the given one.
-   * @since 1.3
-   */
-  @Override public FloatAssert isNotEqualTo(Float other) {
-    assertNotEqualTo(other);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Float}</code> is not {@code null}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Float} is {@code null}.
-   * @since 1.3
-   */
-  @Override public FloatAssert isNotNull() {
-    assertNotNull();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Float}</code> is the same object as the given one.
-   * @param expected the given {@code Float} to compare the actual {@code Float} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Float} is not the same as the given one.
-   * @since 1.3
-   */
-  @Override public FloatAssert isSameAs(Float expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Float}</code> is not the same object as the given one.
-   * @param other the given {@code Float} to compare the actual <code>BigDecimal</code> to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Float} is the same as the given one.
-   * @since 1.3
-   */
-  @Override public FloatAssert isNotSameAs(Float other) {
-    assertNotSameAs(other);
-    return this;
   }
 }
 

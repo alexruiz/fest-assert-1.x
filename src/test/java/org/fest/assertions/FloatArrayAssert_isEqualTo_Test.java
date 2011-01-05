@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class FloatArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<float[]> {
+public class FloatArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<FloatArrayAssert, float[]> {
 
   private static float[] notNullValue;
   private static float[] unequalValue;

@@ -29,7 +29,7 @@ import static org.fest.assertions.ErrorMessages.*;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class LongAssert extends GenericAssert<Long> implements NumberAssert {
+public class LongAssert extends GenericAssert<LongAssert, Long> implements NumberAssert {
 
   private static final long ZERO = 0L;
 
@@ -38,7 +38,7 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
    * @param actual the actual value to verify.
    */
   protected LongAssert(long actual) {
-    super(actual);
+    super(LongAssert.class, actual);
   }
 
   /**
@@ -46,29 +46,7 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
    * @param actual the actual value to verify.
    */
   protected LongAssert(Long actual) {
-    super(actual);
-  }
-
-  /** {@inheritDoc} */
-  @Override public LongAssert as(String description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public LongAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /** {@inheritDoc} */
-  @Override public LongAssert as(Description description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public LongAssert describedAs(Description description) {
-    return as(description);
+    super(LongAssert.class, actual);
   }
 
   /**
@@ -82,18 +60,6 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
   }
 
   /**
-   * Verifies that the actual {@code Long} is equal to the given one.
-   * @param expected the value to compare the actual {@code Long} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Long} is not equal to the given one.
-   * @since 1.3
-   */
-  @Override public LongAssert isEqualTo(Long expected) {
-    assertEqualTo(expected);
-    return this;
-  }
-
-  /**
    * Verifies that the actual {@code Long} is not equal to the given one.
    * @param other the given value.
    * @return this assertion object.
@@ -101,18 +67,6 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
    */
   public LongAssert isNotEqualTo(long other) {
     return isNotEqualTo(valueOf(other));
-  }
-
-  /**
-   * Verifies that the actual {@code Long} is not equal to the given one.
-   * @param other the value to compare the actual {@code Long} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Long} is equal to the given one.
-   * @since 1.3
-   */
-  @Override public LongAssert isNotEqualTo(Long other) {
-    assertNotEqualTo(other);
-    return this;
   }
 
   /**
@@ -188,101 +142,5 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
    */
   public LongAssert isNegative() {
     return isLessThan(ZERO);
-  }
-
-  /** {@inheritDoc} */
-  @Override public LongAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Long} satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Long} does not satisfy the given condition.
-   * @see #is(Condition)
-   * @since 1.3
-   */
-  @Override public LongAssert satisfies(Condition<Long> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Long} does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual value does satisfies the given condition.
-   * @see #isNot(Condition)
-   * @since 1.3
-   */
-  @Override public LongAssert doesNotSatisfy(Condition<Long> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #satisfies(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Long} does not satisfy the given condition.
-   * @since 1.3
-   */
-  @Override public LongAssert is(Condition<Long> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-
-  /**
-   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Long} does not satisfy the given condition.
-   * @since 1.3
-   */
-  @Override public LongAssert isNot(Condition<Long> condition) {
-    assertIsNot(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Long} is not {@code null}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Long} is {@code null}.
-   * @since 1.3
-   */
-  @Override public LongAssert isNotNull() {
-    assertNotNull();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Long} is the same object as the given one.
-   * @param expected the value to compare the actual {@code Long} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Long} is not the same as the given one.
-   * @since 1.3
-   */
-  @Override public LongAssert isSameAs(Long expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Long} is not the same object as the given one.
-   * @param other the value to compare the actual {@code Long} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Long} is the same as the given one.
-   * @since 1.3
-   */
-  @Override public LongAssert isNotSameAs(Long other) {
-    assertNotSameAs(other);
-    return this;
   }
 }

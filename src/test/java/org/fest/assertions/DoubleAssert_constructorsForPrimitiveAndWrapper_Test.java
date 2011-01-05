@@ -22,7 +22,7 @@ package org.fest.assertions;
  * @author Alex Ruiz
  */
 public class DoubleAssert_constructorsForPrimitiveAndWrapper_Test extends
-  GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<Double> {
+  GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<DoubleAssert, Double> {
 
   @Override protected Class<DoubleAssert> assertionType() {
     return DoubleAssert.class;

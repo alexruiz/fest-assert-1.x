@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ShortArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<short[]> {
+public class ShortArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<ShortArrayAssert, short[]> {
 
   private static short[] notNullValue;
   private static short[] unequalValue;

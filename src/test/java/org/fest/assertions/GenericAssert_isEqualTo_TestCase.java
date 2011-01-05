@@ -23,18 +23,21 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Base class for testing <code>{@link GenericAssert#isEqualTo(Object)}.</code>
- * @param <T> The type supported by the implementation of the {@code GenericAssert} to test.
+ * Base class for testing <code>{@link GenericAssert#isEqualTo(Object)}</code>.
+ * @param <S> used to simulate "self types." For more information please read &quot;<a
+ * href="http://passion.forco.de/content/emulating-self-types-using-java-generics-simplify-fluent-api-implementation"
+ * target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ * @param <A> The type supported by the implementation of the {@code GenericAssert} to test.
  *
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public abstract class GenericAssert_isEqualTo_TestCase<T> extends GenericAssert_TestCase<T> implements
-    Assert_isEqualTo_TestCase {
+public abstract class GenericAssert_isEqualTo_TestCase<S extends GenericAssert<S, A>, A> extends
+    GenericAssert_TestCase<S, A> implements Assert_isEqualTo_TestCase {
 
-  private T actual;
-  private GenericAssert<T> assertions;
-  private T unequalValue;
+  private A actual;
+  private GenericAssert<S, A> assertions;
+  private A unequalValue;
 
   @Before
   public final void setUp() {
@@ -43,7 +46,7 @@ public abstract class GenericAssert_isEqualTo_TestCase<T> extends GenericAssert_
     unequalValue = unequalValue();
   }
 
-  protected abstract T unequalValue();
+  protected abstract A unequalValue();
 
   @Test
   public final void should_pass_if_actual_and_expected_are_equal() {

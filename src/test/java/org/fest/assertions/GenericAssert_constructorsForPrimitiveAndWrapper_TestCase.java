@@ -25,16 +25,19 @@ import org.junit.Test;
 /**
  * Tests that implementations of <code>{@link GenericAssert}</code> that handle primitive wrappers provide a constructor
  * that takes a primitive value.
- * @param <T> the generic type of the <code>GenericAssert</code> to test.
+ * @param <S> used to simulate "self types." For more information please read &quot;<a
+ * href="http://passion.forco.de/content/emulating-self-types-using-java-generics-simplify-fluent-api-implementation"
+ * target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ * @param <A> the generic type of the <code>GenericAssert</code> to test.
  *
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public abstract class GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<T> {
+public abstract class GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<S extends GenericAssert<S, A>, A> {
 
-  private Class<? extends GenericAssert<T>> assertionType;
+  private Class<? extends GenericAssert<S, A>> assertionType;
   private Class<?> primitiveType;
-  private Class<T> primitiveWrapperType;
+  private Class<A> primitiveWrapperType;
 
   @Before
   public final void setUp() {
@@ -44,11 +47,11 @@ public abstract class GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<
     primitiveWrapperType = primitiveWrapperType();
   }
 
-  protected abstract Class<? extends GenericAssert<T>> assertionType();
+  protected abstract Class<? extends GenericAssert<S, A>> assertionType();
 
   protected abstract Class<?> primitiveType();
 
-  protected abstract Class<T> primitiveWrapperType();
+  protected abstract Class<A> primitiveWrapperType();
 
   @Test
   public final void should_provide_constructor_that_takes_primitive() {

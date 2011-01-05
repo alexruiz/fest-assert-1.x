@@ -32,8 +32,7 @@ public class LongArrayAssert_isNullOrEmpty_Test implements GroupAssert_isNullOrE
 
   private static long[] array;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass  public static void setUpOnce() {
     array = longArray(8);
   }
 

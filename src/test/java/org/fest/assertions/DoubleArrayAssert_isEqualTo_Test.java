@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class DoubleArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<double[]> {
+public class DoubleArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<DoubleArrayAssert, double[]> {
 
   private static double[] notNullValue;
   private static double[] unequalValue;

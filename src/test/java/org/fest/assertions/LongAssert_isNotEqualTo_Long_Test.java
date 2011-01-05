@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class LongAssert_isNotEqualTo_Long_Test extends GenericAssert_isNotEqualTo_TestCase<Long> {
+public class LongAssert_isNotEqualTo_Long_Test extends GenericAssert_isNotEqualTo_TestCase<LongAssert, Long> {
 
   private static Long notNullValue;
   private static Long unequalValue;

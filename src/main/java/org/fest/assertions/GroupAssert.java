@@ -19,26 +19,30 @@ import static org.fest.assertions.Formatting.format;
 
 /**
  * Template for assertions for classes representing groups of values.
- * @param <T> the type of object implementations of this template can verify.
+ * @param <S> used to simulate "self types." For more information please read &quot;<a
+ * href="http://passion.forco.de/content/emulating-self-types-using-java-generics-simplify-fluent-api-implementation"
+ * target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ * @param <A> the type the "actual" value.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class GroupAssert<T> extends GenericAssert<T> {
+public abstract class GroupAssert<S, A> extends GenericAssert<S, A> {
 
   /**
    * Creates a new <code>{@link GroupAssert}</code>.
+   * @param selfType the "self type."
    * @param actual the target to verify.
    */
-  protected GroupAssert(T actual) {
-    super(actual);
+  protected GroupAssert(Class<S> selfType, A actual) {
+    super(selfType, actual);
   }
 
   /**
    * Verifies that the actual group of values is {@code null} or empty.
    * @throws AssertionError if the actual group of values is not {@code null} or not empty.
    */
-  public void isNullOrEmpty() {
+  public final void isNullOrEmpty() {
     if (actual == null || !hasElements()) return;
     failIfCustomMessageIsSet();
     fail(format("expecting null or empty, but was:<%s>", actual));
@@ -48,7 +52,7 @@ public abstract class GroupAssert<T> extends GenericAssert<T> {
    * Verifies that the actual group of values is empty.
    * @throws AssertionError if the actual group of values is {@code null} or not empty.
    */
-  public void isEmpty() {
+  public final void isEmpty() {
     isNotNull();
     if (!hasElements()) return;
     failIfCustomMessageIsSet();
@@ -64,16 +68,9 @@ public abstract class GroupAssert<T> extends GenericAssert<T> {
    * @return this assertion object.
    * @throws AssertionError if the actual group is {@code null} or empty.
    */
-  protected abstract GroupAssert<T> isNotEmpty();
-
-  /**
-   * Verifies that the actual group of values contains at least one element.
-   * @throws AssertionError if the actual group of values is {@code null}.
-   * @throws AssertionError if the actual group of values is empty.
-   */
-  protected final void assertIsNotEmpty() {
+  public final S isNotEmpty() {
     isNotNull();
-    if (hasElements()) return;
+    if (hasElements()) return myself;
     failIfCustomMessageIsSet();
     throw failure("expecting non-empty, but it was empty");
   }
@@ -84,18 +81,10 @@ public abstract class GroupAssert<T> extends GenericAssert<T> {
    * @return this assertion object.
    * @throws AssertionError if the number of values of the actual group is not equal to the given one.
    */
-  protected abstract GroupAssert<T> hasSize(int expected);
-
-  /**
-   * Verifies that the number of elements in the actual group of values is equal to the given one.
-   * @param expected the expected number of elements in the actual group of values.
-   * @throws AssertionError if the actual group of values is {@code null}.
-   * @throws AssertionError if the number of elements of the actual group of values is not equal to the given one.
-   */
-  protected final void assertHasSize(int expected) {
+  public final S hasSize(int expected) {
     isNotNull();
     int size = actualGroupSize();
-    if (size == expected) return;
+    if (size == expected) return myself;
     failIfCustomMessageIsSet();
     throw failure(format("expected size:<%s> but was:<%s> for <%s>", expected, size, actual));
   }
@@ -105,19 +94,4 @@ public abstract class GroupAssert<T> extends GenericAssert<T> {
    * @return the size of the actual group of values.
    */
   protected abstract int actualGroupSize();
-
-  /** {@inheritDoc} */
-  @Override protected abstract GroupAssert<T> as(String description);
-
-  /** {@inheritDoc} */
-  @Override protected abstract GroupAssert<T> describedAs(String description);
-
-  /** {@inheritDoc} */
-  @Override protected abstract GroupAssert<T> as(Description description);
-
-  /** {@inheritDoc} */
-  @Override protected abstract GroupAssert<T> describedAs(Description description);
-
-  /** {@inheritDoc} */
-  @Override protected abstract GroupAssert<T> overridingErrorMessage(String message);
 }

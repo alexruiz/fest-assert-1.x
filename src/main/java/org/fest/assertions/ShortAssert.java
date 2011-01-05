@@ -31,7 +31,7 @@ import org.fest.util.VisibleForTesting;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
+public class ShortAssert extends GenericAssert<ShortAssert, Short> implements NumberAssert {
 
   private static final short ZERO = (short) 0;
 
@@ -45,7 +45,7 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
    * @param actual the actual value to verify.
    */
   protected ShortAssert(short actual) {
-    super(actual);
+    super(ShortAssert.class, actual);
   }
 
   /**
@@ -53,29 +53,7 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
    * @param actual the actual value to verify.
    */
   protected ShortAssert(Short actual) {
-    super(actual);
-  }
-
-  /** {@inheritDoc} */
-  @Override public ShortAssert as(String description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ShortAssert describedAs(String description) {
-    return as(description);
-  }
-
-  /** {@inheritDoc} */
-  @Override public ShortAssert as(Description description) {
-    description(description);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override public ShortAssert describedAs(Description description) {
-    return as(description);
+    super(ShortAssert.class, actual);
   }
 
   /**
@@ -89,18 +67,6 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
   }
 
   /**
-   * Verifies that the actual {@code Short} is equal to the given one.
-   * @param expected the given value to compare the actual {@code Short} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Short} is not equal to the given one.
-   * @since 1.3
-   */
-  @Override public ShortAssert isEqualTo(Short expected) {
-    assertEqualTo(expected);
-    return this;
-  }
-
-  /**
    * Verifies that the actual {@code Short} is not equal to the given one.
    * @param other the given value.
    * @return this assertion object.
@@ -108,18 +74,6 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
    */
   public ShortAssert isNotEqualTo(short other) {
     return isNotEqualTo(valueOf(other));
-  }
-
-  /**
-   * Verifies that the actual {@code Short} is not equal to the given one.
-   * @param other the given value to compare the actual {@code Short} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Short} is equal to the given one.
-   * @since 1.3
-   */
-  @Override public ShortAssert isNotEqualTo(Short other) {
-    assertNotEqualTo(other);
-    return this;
   }
 
   /**
@@ -195,101 +149,5 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
    */
   public ShortAssert isNegative() {
     return isLessThan(ZERO);
-  }
-
-  /** {@inheritDoc} */
-  @Override public ShortAssert overridingErrorMessage(String message) {
-    replaceDefaultErrorMessagesWith(message);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Short} satisfies the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Short} does not satisfy the given condition.
-   * @see #is(Condition)
-   * @since 1.3
-   */
-  @Override public ShortAssert satisfies(Condition<Short> condition) {
-    assertSatisfies(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Short} does not satisfy the given condition.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual value does satisfies the given condition.
-   * @see #isNot(Condition)
-   * @since 1.3
-   */
-  @Override public ShortAssert doesNotSatisfy(Condition<Short> condition) {
-    assertDoesNotSatisfy(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #satisfies(Condition)}</code>.
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Short} does not satisfy the given condition.
-   * @since 1.3
-   */
-  @Override public ShortAssert is(Condition<Short> condition) {
-    assertIs(condition);
-    return this;
-  }
-
-  /**
-   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   *
-   * @param condition the given condition.
-   * @return this assertion object.
-   * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual {@code Short} does not satisfy the given condition.
-   * @since 1.3
-   */
-  @Override public ShortAssert isNot(Condition<Short> condition) {
-    assertIsNot(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Short} is not {@code null}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Short} is {@code null}.
-   * @since 1.3
-   */
-  @Override public ShortAssert isNotNull() {
-    assertNotNull();
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Short} is the same object as the given one.
-   * @param expected the given value to compare the actual {@code Short} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Short} is not the same as the given one.
-   * @since 1.3
-   */
-  @Override public ShortAssert isSameAs(Short expected) {
-    assertSameAs(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual {@code Short} is not the same object as the given one.
-   * @param other the given value to compare the actual <code>BigDecimal</code> to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Short} is the same as the given one.
-   * @since 1.3
-   */
-  @Override public ShortAssert isNotSameAs(Short other) {
-    assertNotSameAs(other);
-    return this;
   }
 }

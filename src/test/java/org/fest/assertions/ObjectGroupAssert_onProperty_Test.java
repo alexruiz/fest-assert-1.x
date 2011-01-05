@@ -15,28 +15,29 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
-
 import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
 import static org.fest.assertions.Title.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
-
 import static org.junit.Assert.*;
 
 import java.util.*;
 
-import org.junit.*;
-
 import org.fest.test.CodeToTest;
 import org.fest.util.IntrospectionError;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Base class for testing implementations of <code>{@link ObjectGroupAssert#onProperty(String)}</code>.
- * @param <T> The type supported by the implementation of the {@code ObjectGroupAssert} to test.
+ * @param <S> used to simulate "self types." For more information please read &quot;<a
+ * href="http://passion.forco.de/content/emulating-self-types-using-java-generics-simplify-fluent-api-implementation"
+ * target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ * @param <A> The type supported by the implementation of the {@code ObjectGroupAssert} to test.
  *
- * @author Joel Costigliola 
+ * @author Joel Costigliola
  * @author Alex Ruiz
  */
-public abstract class ObjectGroupAssert_onProperty_Test<T> {
+public abstract class ObjectGroupAssert_onProperty_Test<S extends ObjectGroupAssert<S, A>, A> {
 
   private List<Person> persons;
 
@@ -126,14 +127,14 @@ public abstract class ObjectGroupAssert_onProperty_Test<T> {
 
   @Test
   public final void should_pass_on_primitive_type_char_property() {
-    ObjectGroupAssert<T> assertions = assertions(persons);
+    ObjectGroupAssert<S, A> assertions = assertions(persons);
     assertions.onProperty("favoriteAlphabetLetter").contains('P', 'K');
     assertions.onProperty("favoriteAlphabetLetter").containsOnly('O', 'J', 'P', 'K');
   }
 
   @Test
   public final void should_pass_on_non_primitive_type_nested_property() {
-    ObjectGroupAssert<T> assertions = assertions(persons);
+    ObjectGroupAssert<S, A> assertions = assertions(persons);
     assertions.onProperty("name.firstName").contains("Pier", "Paula", "Jack");
     assertions.onProperty("father.name.firstName")
               .containsOnly("PierFather", "PaulaFather", "JackFather", "OtherJackFather");
@@ -234,7 +235,7 @@ public abstract class ObjectGroupAssert_onProperty_Test<T> {
       assertEquals("No public getter for property 'adult' in org.fest.assertions.Person", e.getMessage());
     }
   }
-  
+
   @Test
   public final void should_fail_because_of_no_getter() {
     try {
@@ -245,7 +246,7 @@ public abstract class ObjectGroupAssert_onProperty_Test<T> {
       assertEquals("No getter for property 'favoriteSport' in org.fest.assertions.Person", e.getMessage());
     }
   }
-  
+
   @Test
   public final void should_pass_even_if_actual_contains_null_elements() {
     persons.add(null);
@@ -290,14 +291,12 @@ public abstract class ObjectGroupAssert_onProperty_Test<T> {
       }
     });
   }
-  
+
   @Test
   public void should_pass_on_property_defined_at_object_class_level() {
     assertions(persons).onProperty("class").containsOnly(Person.class);
   }
 
-  
-
-  protected abstract ObjectGroupAssert<T> assertions(Collection<?> data);
+  protected abstract ObjectGroupAssert<S, A> assertions(Collection<?> data);
 }
 

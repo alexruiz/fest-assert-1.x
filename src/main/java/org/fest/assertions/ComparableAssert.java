@@ -19,19 +19,23 @@ import static org.fest.assertions.Fail.comparisonFailed;
 
 /**
  * Template for assertions applicable to <code>{@link Comparable}</code>s.
- * @param <T> the type of {@code Comparable} this template can verify.
+ * @param <S> used to simulate "self types." For more information please read &quot;<a
+ * href="http://passion.forco.de/content/emulating-self-types-using-java-generics-simplify-fluent-api-implementation"
+ * target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ * @param <T> the type of the "actual" value.
  *
  * @author Alex Ruiz
  * @author Ted M. Young
  */
-public abstract class ComparableAssert<T extends Comparable<T>> extends GenericAssert<T> {
+public abstract class ComparableAssert<S, T extends Comparable<T>> extends GenericAssert<S, T> {
 
   /**
    * Creates a new </code>{@link ComparableAssert}</code>.
+   * @param selfType the "self type."
    * @param actual the target to verify.
    */
-  protected ComparableAssert(T actual) {
-    super(actual);
+  protected ComparableAssert(Class<S> selfType, T actual) {
+    super(selfType, actual);
   }
 
   /**
@@ -41,62 +45,9 @@ public abstract class ComparableAssert<T extends Comparable<T>> extends GenericA
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.
    * @throws AssertionError if the actual {@code Comparable} is not equal to the given one.
    */
-  protected abstract ComparableAssert<T> isEqualByComparingTo(T expected);
-
-  /**
-   * Verifies that the actual <code>{@link Comparable}</code> is <b>not</b> equal to the given one.
-   * @param expected the given {@code Comparable} to use to compare to the actual {@code Comparable}.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Comparable} is {@code null}.
-   * @throws AssertionError if the actual {@code Comparable} is equal to the given one.
-   */
-  protected abstract ComparableAssert<T> isNotEqualByComparingTo(T expected);
-
-  /**
-   * Verifies that the actual <code>{@link Comparable}</code> is less than the given one.
-   * @param other the given value.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Comparable} is {@code null}.
-   * @throws AssertionError if the actual {@code Comparable} is not less than the given one.
-   */
-  protected abstract ComparableAssert<T> isLessThan(T other);
-
-  /**
-   * Verifies that the actual <code>{@link Comparable}</code> is greater than the given one.
-   * @param other the given value.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Comparable} is {@code null}.
-   * @throws AssertionError if the actual {@code Comparable} is not greater than the given one.
-   */
-  protected abstract ComparableAssert<T> isGreaterThan(T other);
-
-  /**
-   * Verifies that the actual <code>{@link Comparable}</code> is less than or equal to the given one.
-   * @param other the given value.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Comparable} is {@code null}.
-   * @throws AssertionError if the actual {@code Comparable} is not less than or equal to the given one.
-   */
-  protected abstract ComparableAssert<T> isLessThanOrEqualTo(T other);
-
-  /**
-   * Verifies that the actual <code>{@link Comparable}</code> is greater than or equal to the given one.
-   * @param other the given value.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Comparable} is {@code null}.
-   * @throws AssertionError if the actual {@code Comparable} is not greater than or equal to the given one.
-   */
-  protected abstract ComparableAssert<T> isGreaterThanOrEqualTo(T other);
-
-  /**
-   * Verifies that the actual <code>{@link Comparable}</code> is equal to the given one.
-   * @param expected the given {@code Comparable} to compare the actual {@code Comparable} to.
-   * @throws AssertionError if the actual {@code Comparable} value is {@code null}.
-   * @throws AssertionError if the actual {@code Comparable} value is not equal to the given one.
-   */
-  protected final void assertIsEqualByComparingTo(T expected) {
+  public final S isEqualByComparingTo(T expected) {
     isNotNull();
-    if (actual.compareTo(expected) == 0) return;
+    if (actual.compareTo(expected) == 0) return myself;
     failIfCustomMessageIsSet();
     throw comparisonFailed(rawDescription(), actual, expected);
   }
@@ -104,65 +55,70 @@ public abstract class ComparableAssert<T extends Comparable<T>> extends GenericA
   /**
    * Verifies that the actual <code>{@link Comparable}</code> is <b>not</b> equal to the given one.
    * @param expected the given {@code Comparable} to use to compare to the actual {@code Comparable}.
+   * @return this assertion object.
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.
    * @throws AssertionError if the actual {@code Comparable} is equal to the given one.
    */
-  protected final void assertIsNotEqualByComparingTo(T expected) {
+  public final S isNotEqualByComparingTo(T expected) {
     isNotNull();
-    if (actual.compareTo(expected) != 0) return;
+    if (actual.compareTo(expected) != 0) return myself;
     failIfCustomMessageIsSet();
-    fail(unexpectedEqual(actual, expected));
+    throw failure(unexpectedEqual(actual, expected));
   }
 
   /**
    * Verifies that the actual <code>{@link Comparable}</code> is less than the given one.
    * @param other the given value.
+   * @return this assertion object.
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.
    * @throws AssertionError if the actual {@code Comparable} is not less than the given one.
    */
-  protected final void assertIsLessThan(T other) {
+  public final S isLessThan(T other) {
     isNotNull();
-    if (actual.compareTo(other) < 0) return;
+    if (actual.compareTo(other) < 0) return myself;
     failIfCustomMessageIsSet();
-    fail(unexpectedGreaterThanOrEqualTo(actual, other));
+    throw failure(unexpectedGreaterThanOrEqualTo(actual, other));
   }
 
   /**
    * Verifies that the actual <code>{@link Comparable}</code> is greater than the given one.
    * @param other the given value.
+   * @return this assertion object.
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.
    * @throws AssertionError if the actual {@code Comparable} is not greater than the given one.
    */
-  protected final void assertIsGreaterThan(T other) {
+  public final S isGreaterThan(T other) {
     isNotNull();
-    if (actual.compareTo(other) > 0) return;
+    if (actual.compareTo(other) > 0) return myself;
     failIfCustomMessageIsSet();
-    fail(unexpectedLessThanOrEqualTo(actual, other));
+    throw failure(unexpectedLessThanOrEqualTo(actual, other));
   }
 
   /**
    * Verifies that the actual <code>{@link Comparable}</code> is less than or equal to the given one.
    * @param other the given value.
+   * @return this assertion object.
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.
    * @throws AssertionError if the actual {@code Comparable} is not less than or equal to the given one.
    */
-  protected final void assertIsLessThanOrEqualTo(T other) {
+  public final S isLessThanOrEqualTo(T other) {
     isNotNull();
-    if (actual.compareTo(other) <= 0) return;
+    if (actual.compareTo(other) <= 0) return myself;
     failIfCustomMessageIsSet();
-    fail(unexpectedGreaterThan(actual, other));
+    throw failure(unexpectedGreaterThan(actual, other));
   }
 
   /**
    * Verifies that the actual <code>{@link Comparable}</code> is greater than or equal to the given one.
    * @param other the given value.
+   * @return this assertion object.
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.
    * @throws AssertionError if the actual {@code Comparable} is not greater than or equal to the given one.
    */
-  protected final void assertIsGreaterThanOrEqualTo(T other) {
+  public final S isGreaterThanOrEqualTo(T other) {
     isNotNull();
-    if (actual.compareTo(other) >= 0) return;
+    if (actual.compareTo(other) >= 0) return myself;
     failIfCustomMessageIsSet();
-    fail(unexpectedLessThan(actual, other));
+    throw failure(unexpectedLessThan(actual, other));
   }
 }

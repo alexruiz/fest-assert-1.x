@@ -22,11 +22,14 @@ import org.junit.Test;
 
 /**
  * Test case for implementations of <code>{@link GroupAssert#isNotEmpty()}</code>.
- * @param <T> The type supported by the implementation of the {@code GroupAssert} to test.
+ * @param <S> used to simulate "self types." For more information please read &quot;<a
+ * href="http://passion.forco.de/content/emulating-self-types-using-java-generics-simplify-fluent-api-implementation"
+ * target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ * @param <A> The type supported by the implementation of the {@code GroupAssert} to test.
  *
  * @author Alex Ruiz
  */
-public abstract class GroupAssert_isNotEmpty_TestCase<T> {
+public abstract class GroupAssert_isNotEmpty_TestCase<S extends GroupAssert<S, A>, A> {
 
   @Test
   public final void should_pass_if_actual_is_not_empty() {
@@ -92,7 +95,7 @@ public abstract class GroupAssert_isNotEmpty_TestCase<T> {
     });
   }
 
-  protected abstract GroupAssert<T> assertionsFor(T actual);
-  protected abstract T emptyGroup();
-  protected abstract T notEmptyGroup();
+  protected abstract GroupAssert<S, A> assertionsFor(A actual);
+  protected abstract A emptyGroup();
+  protected abstract A notEmptyGroup();
 }

@@ -19,20 +19,24 @@ import org.fest.util.IntrospectionError;
 
 /**
  * Template for assertions for arrays or collections.
- * @param <T> the type of object implementations of this template can verify.
+ * @param <S> used to simulate "self types." For more information please read &quot;<a
+ * href="http://passion.forco.de/content/emulating-self-types-using-java-generics-simplify-fluent-api-implementation"
+ * target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ * @param <A> the type the "actual" value.
  *
  * @author Yvonne Wang
  *
  * @since 1.3
  */
-public abstract class ObjectGroupAssert<T> extends ItemGroupAssert<T> {
+public abstract class ObjectGroupAssert<S, A> extends ItemGroupAssert<S, A> {
 
   /**
    * Creates a new </code>{@link ObjectGroupAssert}</code>.
+   * @param selfType the "self type."
    * @param actual the target to verify.
    */
-  protected ObjectGroupAssert(T actual) {
-    super(actual);
+  protected ObjectGroupAssert(Class<S> selfType, A actual) {
+    super(selfType, actual);
   }
 
   /**
@@ -43,7 +47,10 @@ public abstract class ObjectGroupAssert<T> extends ItemGroupAssert<T> {
    * @throws NullPointerException if the given array is {@code null}.
    * @throws AssertionError if the actual group of objects does not contain the given objects.
    */
-  protected abstract ObjectGroupAssert<T> contains(Object... objects);
+  public final S contains(Object... objects) {
+    assertContains(objects);
+    return myself;
+  }
 
   /**
    * Verifies that the actual group of objects contains the given objects <strong>only</strong>, in any order.
@@ -54,7 +61,10 @@ public abstract class ObjectGroupAssert<T> extends ItemGroupAssert<T> {
    * @throws AssertionError if the actual group of objects does not contain the given objects, or if the actual group of
    * objects contains elements other than the ones specified.
    */
-  protected abstract ObjectGroupAssert<T> containsOnly(Object... objects);
+  public final S containsOnly(Object... objects) {
+    assertContainsOnly(objects);
+    return myself;
+  }
 
   /**
    * Verifies that the actual group of objects does not contain the given objects.
@@ -64,7 +74,10 @@ public abstract class ObjectGroupAssert<T> extends ItemGroupAssert<T> {
    * @throws NullPointerException if the given array is {@code null}.
    * @throws AssertionError if the actual group of objects contains any of the given objects.
    */
-  protected abstract ObjectGroupAssert<T> excludes(Object... objects);
+  public final S excludes(Object... objects) {
+    assertExcludes(objects);
+    return myself;
+  }
 
   /**
    * Verifies that the actual group of objects does not have duplicates.
@@ -72,7 +85,10 @@ public abstract class ObjectGroupAssert<T> extends ItemGroupAssert<T> {
    * @throws AssertionError if the actual group of objects is {@code null}.
    * @throws AssertionError if the actual group of objects has duplicates.
    */
-  protected abstract ObjectGroupAssert<T> doesNotHaveDuplicates();
+  public final S doesNotHaveDuplicates() {
+    assertDoesNotHaveDuplicates();
+    return myself;
+  }
 
   /**
    * Creates a new group of objects whose target collection contains the values of the given property name from the
@@ -91,21 +107,7 @@ public abstract class ObjectGroupAssert<T> extends ItemGroupAssert<T> {
    * @throws AssertionError if the actual group of objects is {@code null}.
    * @throws IntrospectionError if an element in the given collection does not have a matching property.
    * @since 1.3
+   * TODO revisit
    */
-  protected abstract ObjectGroupAssert<T> onProperty(String propertyName);
-
-  /** {@inheritDoc} */
-  @Override protected abstract ObjectGroupAssert<T> as(String description);
-
-  /** {@inheritDoc} */
-  @Override protected abstract ObjectGroupAssert<T> describedAs(String description);
-
-  /** {@inheritDoc} */
-  @Override protected abstract ObjectGroupAssert<T> as(Description description);
-
-  /** {@inheritDoc} */
-  @Override protected abstract ObjectGroupAssert<T> describedAs(Description description);
-
-  /** {@inheritDoc} */
-  @Override protected abstract ObjectGroupAssert<T> overridingErrorMessage(String message);
+  protected abstract S onProperty(String propertyName);
 }

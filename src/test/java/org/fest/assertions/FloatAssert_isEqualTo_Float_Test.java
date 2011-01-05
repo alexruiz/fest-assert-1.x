@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class FloatAssert_isEqualTo_Float_Test extends GenericAssert_isEqualTo_TestCase<Float> {
+public class FloatAssert_isEqualTo_Float_Test extends GenericAssert_isEqualTo_TestCase<FloatAssert, Float> {
 
   private static Float notNullValue;
   private static Float unequalValue;

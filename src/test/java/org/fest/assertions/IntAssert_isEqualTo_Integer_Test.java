@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class IntAssert_isEqualTo_Integer_Test extends GenericAssert_isEqualTo_TestCase<Integer> {
+public class IntAssert_isEqualTo_Integer_Test extends GenericAssert_isEqualTo_TestCase<IntAssert, Integer> {
 
   private static Integer notNullValue;
   private static Integer unequalValue;

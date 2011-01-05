@@ -24,12 +24,15 @@ import org.junit.*;
 
 /**
  * Base class for testing implementations of <code>{@link ObjectGroupAssert#containsOnly(Object...)}</code>.
- * @param <T> The type supported by the implementation of the {@code ObjectGroupAssert} to test.
+ * @param <S> used to simulate "self types." For more information please read &quot;<a
+ * href="http://passion.forco.de/content/emulating-self-types-using-java-generics-simplify-fluent-api-implementation"
+ * target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ * @param <A> The type supported by the implementation of the {@code ObjectGroupAssert} to test.
  *
  * @author Yvonne Wang
  */
-public abstract class ObjectGroupAssert_containsOnly_TestCase<T> extends ObjectGroupAssert_TestCase<T> implements
-    GroupAssert_containsOnly_TestCase {
+public abstract class ObjectGroupAssert_containsOnly_TestCase<S extends ObjectGroupAssert<S, A>, A> extends
+    ObjectGroupAssert_TestCase<S, A> implements GroupAssert_containsOnly_TestCase {
 
   private static Object[] actualValues;
   private static Object[] emptyValues;
@@ -40,9 +43,9 @@ public abstract class ObjectGroupAssert_containsOnly_TestCase<T> extends ObjectG
     emptyValues = new Object[0];
   }
 
-  private T actual;
-  private ObjectGroupAssert<T> assertions;
-  private T empty;
+  private A actual;
+  private ObjectGroupAssert<S, A> assertions;
+  private A empty;
 
   @Before
   public final void setUp() {

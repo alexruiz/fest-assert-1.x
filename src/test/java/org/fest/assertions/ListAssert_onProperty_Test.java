@@ -22,7 +22,7 @@ import java.util.*;
  * @author Joel Costigliola
  * @author Alex Ruiz
  */
-public class ListAssert_onProperty_Test extends ObjectGroupAssert_onProperty_Test<List<?>> {
+public class ListAssert_onProperty_Test extends ObjectGroupAssert_onProperty_Test<ListAssert, List<?>> {
 
   @Override protected ListAssert assertions(Collection<?> data) {
     List<?> actual = data != null ? new ArrayList<Object>(data) : null;

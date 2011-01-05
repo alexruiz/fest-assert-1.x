@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BooleanArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<boolean[]> {
+public class BooleanArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<BooleanArrayAssert, boolean[]> {
 
   private static boolean[] notNullValue;
   private static boolean[] unequalValue;

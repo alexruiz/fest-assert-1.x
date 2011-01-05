@@ -21,7 +21,7 @@ package org.fest.assertions;
  * @author Alex Ruiz
  */
 public class LongAssert_constructorsForPrimitiveAndWrapper_Test extends
-    GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<Long> {
+    GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<LongAssert, Long> {
 
   @Override protected Class<LongAssert> assertionType() {
     return LongAssert.class;

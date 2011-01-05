@@ -22,7 +22,7 @@ package org.fest.assertions;
  * @author Alex Ruiz
  */
 public class FloatAssert_constructorsForPrimitiveAndWrapper_Test extends
-  GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<Float> {
+  GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<FloatAssert, Float> {
 
   @Override protected Class<FloatAssert> assertionType() {
     return FloatAssert.class;

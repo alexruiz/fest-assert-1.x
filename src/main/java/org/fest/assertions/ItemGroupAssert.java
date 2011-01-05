@@ -22,20 +22,24 @@ import java.util.*;
 
 /**
  * Template for assertions for groups of items (e.g. collections or arrays.)
- * @param <T> the type of object implementations of this template can verify.
+ * @param <S> used to simulate "self types." For more information please read &quot;<a
+ * href="http://passion.forco.de/content/emulating-self-types-using-java-generics-simplify-fluent-api-implementation"
+ * target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ * @param <A> the type the "actual" value.
  *
  * @author Yvonne Wang
  *
  * @since 1.3
  */
-public abstract class ItemGroupAssert<T> extends GroupAssert<T> {
+public abstract class ItemGroupAssert<S, A> extends GroupAssert<S, A> {
 
   /**
    * Creates a new </code>{@link ItemGroupAssert}</code>.
-   * @param actual
+   * @param selfType the "self type."
+   * @param actual the actual group.
    */
-  public ItemGroupAssert(T actual) {
-    super(actual);
+  public ItemGroupAssert(Class<S> selfType, A actual) {
+    super(selfType, actual);
   }
 
   /**

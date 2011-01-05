@@ -17,13 +17,16 @@ package org.fest.assertions;
 
 /**
  * Base class for testing implementations of <code>{@link GenericAssert}</code>.
- * @param <T> The type supported by the implementation of the {@code GenericAssert} to test.
+ * @param <S> used to simulate "self types." For more information please read &quot;<a
+ * href="http://passion.forco.de/content/emulating-self-types-using-java-generics-simplify-fluent-api-implementation"
+ * target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ * @param <A> The type supported by the implementation of the {@code GenericAssert} to test.
  *
  * @author Alex Ruiz
  */
-public abstract class GenericAssert_TestCase<T> {
+public abstract class GenericAssert_TestCase<S extends GenericAssert<S, A>, A> {
 
-  protected abstract T notNullValue();
+  protected abstract A notNullValue();
 
-  protected abstract GenericAssert<T> assertionsFor(T actual);
+  protected abstract GenericAssert<S, A> assertionsFor(A actual);
 }

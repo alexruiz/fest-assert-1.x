@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class ByteAssert_isEqualTo_Byte_Test extends GenericAssert_isEqualTo_TestCase<Byte> {
+public class ByteAssert_isEqualTo_Byte_Test extends GenericAssert_isEqualTo_TestCase<ByteAssert, Byte> {
 
   private static Byte notNullValue;
   private static Byte unequalValue;
