@@ -29,8 +29,7 @@ public class FloatArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqual
   private static float[] notNullValue;
   private static float[] unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = floatArray(6f);
     unequalValue = floatArray(8f);
   }
@@ -43,7 +42,7 @@ public class FloatArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqual
     return notNullValue;
   }
 
-  @Override protected float[] unequalValue() {
+  @Override protected float[] notEqualValue() {
     return unequalValue;
   }
 }

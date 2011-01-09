@@ -15,10 +15,10 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.byteArray;
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.actualIsNull;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -29,46 +29,31 @@ import org.junit.Test;
  */
 public class ByteArrayAssert_hasSize_Test {
 
-  @Test
-  public void should_pass_if_actual_has_expected_size() {
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_pass_if_actual_has_expected_size() {
     new ByteArrayAssert(byteArray(6, 8)).hasSize(2);
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new ByteArrayAssert(null).hasSize(2);
-      }
-    });
+  @Test public void should_fail_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull());
+    new ByteArrayAssert(null).hasSize(2);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new ByteArrayAssert(null).as("A Test")
-                                 .hasSize(2);
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull("A Test"));
+    new ByteArrayAssert(null).as("A Test")
+                             .hasSize(2);
   }
 
-  @Test
-  public void should_fail_if_actual_does_not_have_expected_size() {
-    expectAssertionError("expected size:<2> but was:<1> for <[8]>").on(new CodeToTest() {
-      public void run() {
-        new ByteArrayAssert(byteArray(8)).hasSize(2);
-      }
-    });
+  @Test public void should_fail_if_actual_does_not_have_expected_size() {
+    thrown.expectAssertionError("expected size:<2> but was:<1> for <[8]>");
+    new ByteArrayAssert(byteArray(8)).hasSize(2);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_does_not_have_expected_size() {
-    expectAssertionError("[A Test] expected size:<2> but was:<1> for <[8]>").on(new CodeToTest() {
-      public void run() {
-        new ByteArrayAssert(byteArray(8)).as("A Test")
-                                         .hasSize(2);
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_does_not_have_expected_size() {
+    thrown.expectAssertionError("[A Test] expected size:<2> but was:<1> for <[8]>");
+    new ByteArrayAssert(byteArray(8)).as("A Test")
+                                     .hasSize(2);
   }
 }

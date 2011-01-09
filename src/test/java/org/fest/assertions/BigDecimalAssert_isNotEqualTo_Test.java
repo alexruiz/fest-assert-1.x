@@ -28,13 +28,13 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BigDecimalAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<BigDecimalAssert, BigDecimal> {
+public class BigDecimalAssert_isNotEqualTo_Test extends
+    GenericAssert_isNotEqualTo_TestCase<BigDecimalAssert, BigDecimal> {
 
   private static BigDecimal notNullValue;
   private static BigDecimal unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = eight();
     unequalValue = seven();
   }
@@ -47,7 +47,7 @@ public class BigDecimalAssert_isNotEqualTo_Test extends GenericAssert_isNotEqual
     return notNullValue;
   }
 
-  @Override protected BigDecimal unequalValue() {
+  @Override protected BigDecimal notEqualValue() {
     return unequalValue;
   }
 }

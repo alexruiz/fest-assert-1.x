@@ -14,11 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ShortAssert#isNegative()}</code>.
@@ -29,99 +27,65 @@ import org.junit.Test;
  */
 public class ShortAssert_isNegative_Test implements NumberAssert_isNegative_TestCase {
 
+  @Rule public ExpectedException thrown = none();
+
   private static byte positive;
   private static byte zero;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     positive = 6;
     zero = 0;
   }
 
-  @Test
-  public void should_pass_if_actual_is_negative() {
+  @Test public void should_pass_if_actual_is_negative() {
     new ShortAssert(-6).isNegative();
   }
 
-  @Test
-  public void should_fail_if_actual_is_positive() {
-    expectAssertionError("actual value:<6> should be less than:<0>").on(new CodeToTest() {
-      public void run() {
-        new ShortAssert(positive).isNegative();
-      }
-    });
+  @Test public void should_fail_if_actual_is_positive() {
+    thrown.expectAssertionError("actual value:<6> should be less than:<0>");
+    new ShortAssert(positive).isNegative();
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_positive() {
-    expectAssertionError("[A Test] actual value:<6> should be less than:<0>").on(new CodeToTest() {
-      public void run() {
-        new ShortAssert(positive).as("A Test")
-                                 .isNegative();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_positive() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ShortAssert(positive).overridingErrorMessage("My custom message")
-                                 .isNegative();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_positive() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ShortAssert(positive).as("A Test")
-                                 .overridingErrorMessage("My custom message")
-                                 .isNegative();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_actual_is_zero() {
-    expectAssertionError("actual value:<0> should be less than:<0>").on(new CodeToTest() {
-      public void run() {
-        new ShortAssert(zero).isNegative();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_zero() {
-    expectAssertionError("[A Test] actual value:<0> should be less than:<0>").on(new CodeToTest() {
-      public void run() {
-        new ShortAssert(zero).as("A Test")
+  @Test public void should_fail_and_display_description_if_actual_is_positive() {
+    thrown.expectAssertionError("[A Test] actual value:<6> should be less than:<0>");
+    new ShortAssert(positive).as("A Test")
                              .isNegative();
-      }
-    });
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_zero() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ShortAssert(zero).overridingErrorMessage("My custom message")
+  @Test public void should_fail_with_custom_message_if_actual_is_positive() {
+    thrown.expectAssertionError("My custom message");
+    new ShortAssert(positive).overridingErrorMessage("My custom message")
                              .isNegative();
-      }
-    });
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_zero() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ShortAssert(zero).as("A Test")
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_is_positive() {
+    thrown.expectAssertionError("My custom message");
+    new ShortAssert(positive).as("A Test")
                              .overridingErrorMessage("My custom message")
                              .isNegative();
-      }
-    });
   }
 
+  @Test public void should_fail_if_actual_is_zero() {
+    thrown.expectAssertionError("actual value:<0> should be less than:<0>");
+    new ShortAssert(zero).isNegative();
+  }
 
+  @Test public void should_fail_and_display_description_if_actual_is_zero() {
+    thrown.expectAssertionError("[A Test] actual value:<0> should be less than:<0>");
+    new ShortAssert(zero).as("A Test")
+                         .isNegative();
+  }
+
+  @Test public void should_fail_with_custom_message_if_actual_is_zero() {
+    thrown.expectAssertionError("My custom message");
+    new ShortAssert(zero).overridingErrorMessage("My custom message")
+                         .isNegative();
+  }
+
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_is_zero() {
+    thrown.expectAssertionError("My custom message");
+    new ShortAssert(zero).as("A Test")
+                         .overridingErrorMessage("My custom message")
+                         .isNegative();
+  }
 }

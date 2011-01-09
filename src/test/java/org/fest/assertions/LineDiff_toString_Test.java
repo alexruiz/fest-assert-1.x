@@ -30,13 +30,11 @@ public class LineDiff_toString_Test {
 
   private LineDiff diff;
 
-  @Before
-  public void setUp() {
+  @Before public void setUp() {
     diff = LineDiff.lineDiff(1, "hello", "world");
   }
 
-  @Test
-  public void should_implement_toString() {
+  @Test public void should_implement_toString() {
     assertEquals("LineDiff [actual='hello', expected='world', lineNumber=1]", diff.toString());
   }
 

@@ -29,8 +29,7 @@ public class ShortArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Tes
   private static short[] notNullValue;
   private static short[] unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = shortArray(6, 8);
     unequalValue = shortArray(6);
   }
@@ -43,7 +42,7 @@ public class ShortArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Tes
     return notNullValue;
   }
 
-  @Override protected short[] unequalValue() {
+  @Override protected short[] notEqualValue() {
     return unequalValue;
   }
 }

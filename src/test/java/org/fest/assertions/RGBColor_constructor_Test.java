@@ -27,8 +27,7 @@ import org.junit.Test;
  */
 public class RGBColor_constructor_Test {
 
-  @Test
-  public void should_separate_red_green_and_blue() {
+  @Test public void should_separate_red_green_and_blue() {
     Color awtColor = new Color(6, 8, 10);
     RGBColor color = new RGBColor(awtColor.getRGB());
     assertEquals(awtColor.getRed(), color.r());

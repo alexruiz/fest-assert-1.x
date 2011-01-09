@@ -28,8 +28,7 @@ public class ShortAssert_isNotEqualTo_Short_Test extends GenericAssert_isNotEqua
   private static Short notNullValue;
   private static Short unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = 6;
     unequalValue = 8;
   }
@@ -42,7 +41,7 @@ public class ShortAssert_isNotEqualTo_Short_Test extends GenericAssert_isNotEqua
     return notNullValue;
   }
 
-  @Override protected Short unequalValue() {
+  @Override protected Short notEqualValue() {
     return unequalValue;
   }
 }

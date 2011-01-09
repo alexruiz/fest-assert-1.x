@@ -14,10 +14,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.actualIsNull;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -31,68 +31,45 @@ import org.junit.Test;
  */
 public abstract class GroupAssert_isNotEmpty_TestCase<S extends GroupAssert<S, A>, A> {
 
-  @Test
-  public final void should_pass_if_actual_is_not_empty() {
+  @Rule public ExpectedException thrown = none();
+
+  @Test public final void should_pass_if_actual_is_not_empty() {
     assertionsFor(notEmptyGroup()).isNotEmpty();
   }
 
-  @Test
-  public final void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        assertionsFor(null).isNotEmpty();
-      }
-    });
+  @Test public final void should_fail_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull());
+    assertionsFor(null).isNotEmpty();
   }
 
-  @Test
-  public final void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        assertionsFor(null).as("A Test")
-                           .isNotEmpty();
-      }
-    });
+  @Test public final void should_fail_and_display_description_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull("A Test"));
+    assertionsFor(null).as("A Test")
+                       .isNotEmpty();
   }
 
-  @Test
-  public final void should_fail_if_actual_is_empty() {
-    expectAssertionError("expecting non-empty, but it was empty").on(new CodeToTest() {
-      public void run() {
-        assertionsFor(emptyGroup()).isNotEmpty();
-      }
-    });
+  @Test public final void should_fail_if_actual_is_empty() {
+    thrown.expectAssertionError("expecting non-empty, but it was empty");
+    assertionsFor(emptyGroup()).isNotEmpty();
   }
 
-  @Test
-  public final void should_fail_and_display_description_of_assertion_if_actual_is_empty() {
-    expectAssertionError("[A Test] expecting non-empty, but it was empty").on(new CodeToTest() {
-      public void run() {
-        assertionsFor(emptyGroup()).as("A Test")
-                                   .isNotEmpty();
-      }
-    });
+  @Test public final void should_fail_and_display_description_if_actual_is_empty() {
+    thrown.expectAssertionError("[A Test] expecting non-empty, but it was empty");
+    assertionsFor(emptyGroup()).as("A Test")
+                               .isNotEmpty();
   }
 
-  @Test
-  public final void should_fail_with_custom_message_if_actual_is_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertionsFor(emptyGroup()).overridingErrorMessage("My custom message")
-                                   .isNotEmpty();
-      }
-    });
+  @Test public final void should_fail_with_custom_message_if_actual_is_empty() {
+    thrown.expectAssertionError("My custom message");
+    assertionsFor(emptyGroup()).overridingErrorMessage("My custom message")
+                               .isNotEmpty();
   }
 
-  @Test
-  public final void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertionsFor(emptyGroup()).as("A Test")
-                                   .overridingErrorMessage("My custom message")
-                                   .isNotEmpty();
-      }
-    });
+  @Test public final void should_fail_with_custom_message_ignoring_description_if_actual_is_empty() {
+    thrown.expectAssertionError("My custom message");
+    assertionsFor(emptyGroup()).as("A Test")
+                               .overridingErrorMessage("My custom message")
+                               .isNotEmpty();
   }
 
   protected abstract GroupAssert<S, A> assertionsFor(A actual);

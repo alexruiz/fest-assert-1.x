@@ -15,13 +15,10 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.ExpectedException.none;
 import static org.fest.assertions.Formatter.format;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-import static org.fest.util.Strings.concat;
 
-import org.fest.test.CodeToTest;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Base class for testing <code>{@link GenericAssert#isSameAs(Object)}</code>.
@@ -36,12 +33,13 @@ import org.junit.Test;
 public abstract class GenericAssert_isSameAs_TestCase<S extends GenericAssert<S, A>, A> extends
     GenericAssert_TestCase<S, A> {
 
+  @Rule public ExpectedException thrown = none();
+
   private A actual;
   private GenericAssert<S, A> assertions;
   private A notSameValue;
 
-  @Before
-  public void setUp() {
+  @Before public void setUp() {
     actual = notNullValue();
     assertions = assertionsFor(actual);
     notSameValue = notSameValue();
@@ -49,50 +47,33 @@ public abstract class GenericAssert_isSameAs_TestCase<S extends GenericAssert<S,
 
   protected abstract A notSameValue();
 
-  @Test
-  public final void should_pass_if_actual_and_expected_are_same() {
+  @Test public final void should_pass_if_actual_and_expected_are_same() {
     assertions.isSameAs(actual);
   }
 
-  @Test
-  public final void should_fail_if_actual_and_expected_are_not_same() {
-    String msg = concat("expected same instance but found:<", format(actual), "> and:<", format(notSameValue), ">");
-    expectAssertionError(msg).on(new CodeToTest() {
-      public void run() {
-        assertions.isSameAs(notSameValue);
-      }
-    });
+  @Test public final void should_fail_if_actual_and_expected_are_not_same() {
+    String msg = String.format("expected same instance but found:<%s> and:<%s>", format(actual), format(notSameValue));
+    thrown.expectAssertionError(msg);
+    assertions.isSameAs(notSameValue);
   }
 
-  @Test
-  public final void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_same() {
-    String msg = concat("[A Test] expected same instance but found:<", format(actual), "> and:<", format(notSameValue), ">");
-    expectAssertionError(msg).on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test")
-                  .isSameAs(notSameValue);
-      }
-    });
+  @Test public final void should_fail_and_display_description_if_actual_and_expected_are_not_same() {
+    String msg = String.format("[A Test] expected same instance but found:<%s> and:<%s>", format(actual), format(notSameValue));
+    thrown.expectAssertionError(msg);
+    assertions.as("A Test")
+              .isSameAs(notSameValue);
   }
 
-  @Test
-  public final void should_fail_with_custom_message_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.overridingErrorMessage("My custom message")
-                  .isSameAs(notSameValue);
-      }
-    });
+  @Test public final void should_fail_with_custom_message_if_actual_and_expected_are_not_same() {
+    thrown.expectAssertionError("My custom message");
+    assertions.overridingErrorMessage("My custom message")
+              .isSameAs(notSameValue);
   }
 
-  @Test
-  public final void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test")
-                  .overridingErrorMessage("My custom message")
-                  .isSameAs(notSameValue);
-      }
-    });
+  @Test public final void should_fail_with_custom_message_ignoring_description_if_actual_and_expected_are_not_same() {
+    thrown.expectAssertionError("My custom message");
+    assertions.as("A Test")
+              .overridingErrorMessage("My custom message")
+              .isSameAs(notSameValue);
   }
 }

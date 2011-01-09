@@ -14,9 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -27,26 +27,19 @@ import org.junit.Test;
  */
 public class Fail_failIfEqual_Test {
 
-  @Test
-  public void should_fail_if_values_are_equal() {
-    expectAssertionError("[A message] actual value:<'Yoda'> should not be equal to:<'Yoda'>").on(new CodeToTest() {
-      public void run() {
-        Fail.failIfEqual(null, new BasicDescription("A message"), "Yoda", "Yoda");
-      }
-    });
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_fail_if_values_are_equal() {
+    thrown.expectAssertionError("[A message] actual value:<'Yoda'> should not be equal to:<'Yoda'>");
+    Fail.failIfEqual(null, new BasicDescription("A message"), "Yoda", "Yoda");
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_values_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        Fail.failIfEqual("My custom message", null, "Yoda", "Yoda");
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_values_are_equal() {
+    thrown.expectAssertionError("My custom message");
+    Fail.failIfEqual("My custom message", null, "Yoda", "Yoda");
   }
 
-  @Test
-  public void should_pass_if_values_are_not_equal() {
+  @Test public void should_pass_if_values_are_not_equal() {
     Fail.failIfEqual(null, null, "Yoda", "Ben");
   }
 }

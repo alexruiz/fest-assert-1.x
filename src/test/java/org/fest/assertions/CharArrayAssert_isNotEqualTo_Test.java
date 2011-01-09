@@ -29,8 +29,7 @@ public class CharArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualT
   private static char[] notNullValue;
   private static char[] unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = charArray('a', 'b');
     unequalValue = charArray('a');
   }
@@ -43,7 +42,7 @@ public class CharArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualT
     return notNullValue;
   }
 
-  @Override protected char[] unequalValue() {
+  @Override protected char[] notEqualValue() {
     return unequalValue;
   }
 }

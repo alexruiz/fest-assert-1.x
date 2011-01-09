@@ -33,8 +33,7 @@ public class BigDecimalAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Tes
   private static BigDecimal notNullValue;
   private static BigDecimal unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = eight();
     unequalValue = seven();
   }
@@ -47,7 +46,7 @@ public class BigDecimalAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Tes
     return notNullValue;
   }
 
-  @Override protected BigDecimal unequalValue() {
+  @Override protected BigDecimal notEqualValue() {
     return unequalValue;
   }
 }

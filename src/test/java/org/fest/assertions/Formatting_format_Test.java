@@ -26,18 +26,15 @@ import org.junit.Test;
  */
 public class Formatting_format_Test {
 
-  @Test
-  public void should_return_empty_String_if_message_is_null() {
+  @Test public void should_return_empty_String_if_message_is_null() {
     assertEquals("", Formatting.format(null));
   }
 
-  @Test
-  public void should_return_empty_String_if_message_is_empty() {
+  @Test public void should_return_empty_String_if_message_is_empty() {
     assertEquals("", Formatting.format(""));
   }
 
-  @Test
-  public void should_format_non_empty_message() {
+  @Test public void should_format_non_empty_message() {
     assertEquals("[some message] ", Formatting.format("some message"));
   }
 }

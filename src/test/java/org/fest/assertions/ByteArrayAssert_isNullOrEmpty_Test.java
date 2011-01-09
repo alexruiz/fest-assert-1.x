@@ -16,11 +16,9 @@ package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.byteArray;
 import static org.fest.assertions.EmptyArrays.emptyByteArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ByteArrayAssert#isNullOrEmpty()}</code>.
@@ -30,60 +28,43 @@ import org.junit.Test;
  */
 public class ByteArrayAssert_isNullOrEmpty_Test implements GroupAssert_isNullOrEmpty_TestCase {
 
+  @Rule public ExpectedException thrown = none();
+
   private static byte[] array;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     array = byteArray(6);
   }
 
-  @Test
-  public void should_pass_if_actual_is_null() {
+  @Test public void should_pass_if_actual_is_null() {
     new ByteArrayAssert(null).isNullOrEmpty();
   }
 
-  @Test
-  public void should_pass_if_actual_is_empty() {
+  @Test public void should_pass_if_actual_is_empty() {
     new ByteArrayAssert(emptyByteArray()).isNullOrEmpty();
   }
 
-  @Test
-  public void should_fail_if_actual_has_content() {
-    expectAssertionError("expecting null or empty, but was:<[6]>").on(new CodeToTest() {
-      public void run() {
-        new ByteArrayAssert(array).isNullOrEmpty();
-      }
-    });
+  @Test public void should_fail_if_actual_has_content() {
+    thrown.expectAssertionError("expecting null or empty, but was:<[6]>");
+    new ByteArrayAssert(array).isNullOrEmpty();
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_has_content() {
-    expectAssertionError("[A Test] expecting null or empty, but was:<[6]>").on(new CodeToTest() {
-      public void run() {
-        new ByteArrayAssert(array).as("A Test")
-                                  .isNullOrEmpty();
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_has_content() {
+    thrown.expectAssertionError("[A Test] expecting null or empty, but was:<[6]>");
+    new ByteArrayAssert(array).as("A Test")
+                              .isNullOrEmpty();
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_has_content() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ByteArrayAssert(array).overridingErrorMessage("My custom message")
-                                  .isNullOrEmpty();
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_has_content() {
+    thrown.expectAssertionError("My custom message");
+    new ByteArrayAssert(array).overridingErrorMessage("My custom message")
+                              .isNullOrEmpty();
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_has_content() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ByteArrayAssert(array).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .isNullOrEmpty();
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_has_content() {
+    thrown.expectAssertionError("My custom message");
+    new ByteArrayAssert(array).as("A Test")
+                              .overridingErrorMessage("My custom message")
+                              .isNullOrEmpty();
   }
 }

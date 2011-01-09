@@ -29,8 +29,7 @@ public abstract class FileAssert_TestCase {
 
   FileStub file;
 
-  @Before
-  public final void setUp() {
+  @Before public final void setUp() {
     file = newFile("c:\\f.txt");
   }
 }

@@ -27,9 +27,9 @@ public interface Assert_isGreaterThanOrEqualTo_TestCase {
 
   void should_fail_if_actual_is_less_than_expected();
 
-  void should_fail_and_display_description_of_assertion_if_actual_is_less_than_expected();
+  void should_fail_and_display_description_if_actual_is_less_than_expected();
 
   void should_fail_with_custom_message_if_actual_is_less_than_expected();
 
-  void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_less_than_expected();
+  void should_fail_with_custom_message_ignoring_description_if_actual_is_less_than_expected();
 }

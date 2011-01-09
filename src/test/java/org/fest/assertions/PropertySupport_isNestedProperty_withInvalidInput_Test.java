@@ -27,34 +27,28 @@ import org.junit.Test;
  */
 public class PropertySupport_isNestedProperty_withInvalidInput_Test {
 
-  @Test
-  public void should_return_true_if_property_is_nested() {
+  @Test public void should_return_true_if_property_is_nested() {
     assertTrue(PropertySupport.isNestedProperty("person.name"));
     assertTrue(PropertySupport.isNestedProperty("adress.street.name"));
   }
 
-  @Test
-  public void should_return_false_if_property_name_does_not_contain_separator() {
+  @Test public void should_return_false_if_property_name_does_not_contain_separator() {
     assertFalse(PropertySupport.isNestedProperty("person"));
   }
 
-  @Test
-  public void should_return_false_if_property_name_starts_with_separator() {
+  @Test public void should_return_false_if_property_name_starts_with_separator() {
     assertFalse(PropertySupport.isNestedProperty(".name"));
   }
 
-  @Test
-  public void should_return_false_if_property_name_ends_with_separator() {
+  @Test public void should_return_false_if_property_name_ends_with_separator() {
     assertFalse(PropertySupport.isNestedProperty("person."));
   }
 
-  @Test
-  public void should_return_false_if_property_name_contains_separator_only() {
+  @Test public void should_return_false_if_property_name_contains_separator_only() {
     assertFalse(PropertySupport.isNestedProperty("."));
   }
 
-  @Test
-  public void should_return_false_if_property_name_is_empty() {
+  @Test public void should_return_false_if_property_name_is_empty() {
     assertFalse(PropertySupport.isNestedProperty(""));
   }
 

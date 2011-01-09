@@ -34,8 +34,7 @@ public class BigDecimalAssert_isZero_Test extends NumberAssert_isZero_TestCase<B
   private static BigDecimal notZero;
   private static BigDecimal zero;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notZero = eight();
     zero = ZERO;
   }

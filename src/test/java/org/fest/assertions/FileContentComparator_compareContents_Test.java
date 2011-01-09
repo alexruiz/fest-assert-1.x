@@ -42,8 +42,7 @@ public class FileContentComparator_compareContents_Test {
 
   private final String fileName;
 
-  @Parameters
-  public static Collection<Object[]> files() {
+  @Parameters public static Collection<Object[]> files() {
     return list(new Object[][] {
         { "fileAssertTest2.txt" },
         { "fileAssertTest3.txt" },
@@ -56,13 +55,11 @@ public class FileContentComparator_compareContents_Test {
     this.fileName = fileName;
   }
 
-  @Before
-  public void setUp() {
+  @Before public void setUp() {
     comparator = new FileContentComparator();
   }
 
-  @Test
-  public void should_not_return_any_diffs_for_equal_files() throws Exception {
+  @Test public void should_not_return_any_diffs_for_equal_files() throws Exception {
     LineDiff[] diffs = comparator.compareContents(file(fileName), file(fileName));
     assertEquals(0, diffs.length);
   }

@@ -27,8 +27,7 @@ import org.junit.Test;
  */
 public class PropertySupport_removeFirstPropertyIfNested_withInvalidInput_Test {
 
-  @Test
-  public void should_return_empty_string_if_given_property_is_not_nested() {
+  @Test public void should_return_empty_string_if_given_property_is_not_nested() {
     assertEquals("", PropertySupport.removeFirstPropertyIfNested("address"));
   }
 

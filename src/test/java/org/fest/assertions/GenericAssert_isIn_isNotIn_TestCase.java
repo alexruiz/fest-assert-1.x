@@ -14,9 +14,8 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectNullPointerException;
+import static org.fest.assertions.ExpectedException.none;
 import static org.fest.assertions.FailureMessages.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Arrays.copyOf;
 import static org.fest.util.Collections.list;
 import static org.fest.util.Objects.areEqual;
@@ -24,9 +23,7 @@ import static org.fest.util.Objects.areEqual;
 import java.lang.reflect.Array;
 import java.util.Collection;
 
-import org.fest.test.CodeToTest;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Base class for testing <b>isIn</b> assertions :
@@ -44,10 +41,14 @@ import org.junit.Test;
  * target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
  * @param <A> The type of the {@code GenericAssert} to test.
  *
+ * TODO separate this test classes into 2: one for array and one for collection.
+ *
  * @author Joel Costigliola
  */
 public abstract class GenericAssert_isIn_isNotIn_TestCase<S extends GenericAssert<S, A>, A> extends
     GenericAssert_TestCase<S, A> implements Assert_isIn_TestCase, Assert_isNotIn_TestCase {
+
+  @Rule public ExpectedException thrown = none();
 
   private A actual;
   private GenericAssert<S, A> assertions;
@@ -61,8 +62,7 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<S extends GenericAsser
   private Collection<A> collectionContainingNull;
   private Collection<A> collectionNotContainingNull;
 
-  @Before
-  public void setUp() {
+  @Before public void setUp() {
     actual = notNullValue();
     assertions = assertionsFor(actual);
     assertionsForNull = assertionsFor(null);
@@ -80,16 +80,16 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<S extends GenericAsser
   }
 
   /**
-   * implements this method by calling {@link #initValuesContainingActual(A ... values)} with non null values including
-   * the actual value returned by {@link #notNullValue()}
+   * Implement this method by calling {@link #initValuesContainingActual(A ... values)} with non {@code null} values
+   * including the actual value returned by {@link #notNullValue()}.
    */
   protected abstract void setUpValuesContainingActual();
 
   /**
-   * used to init the array valuesContainingActual, don't put null values as all test cases involving null are handled
-   * automatically.
-   * @param values values used in tests (null elements are not permitted)
-   * @throws NullPointerException if one ot the given values is null
+   * Used to initialize the array {@code valuesContainingActual}. Don't put {@code null} values as all test cases
+   * involving {@code null} are handled automatically.
+   * @param values values used in tests ({@code null} elements are not permitted)
+   * @throws NullPointerException if one to the given values is {@code null}
    */
   protected void initValuesContainingActual(A... values) {
     for (A value : values) {
@@ -99,21 +99,15 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<S extends GenericAsser
     this.valuesContainingActual = values;
   }
 
-  /**
-   * build valuesContainingNull = valuesContainingActual + null
-   */
   private void setUpValuesContainingNull() {
     valuesContainingNull = copyOf(valuesContainingActual, valuesContainingActual.length + 1);
     valuesContainingNull[valuesContainingActual.length] = null;
   }
 
-  /**
-   * build valuesNotContainingActual = valuesContainingActual - actual value
-   */
   @SuppressWarnings("unchecked")
   private void setUpValuesNotContainingActual() {
-    valuesNotContainingActual = (A[]) Array.newInstance(valuesContainingActual.getClass().getComponentType(),
-        valuesContainingActual.length - 1);
+    Class<?> arrayType = valuesContainingActual.getClass().getComponentType();
+    valuesNotContainingActual = (A[]) Array.newInstance(arrayType, valuesContainingActual.length - 1);
     int j = 0;
     for (int i = 0; i < valuesContainingActual.length; i++) {
       if (!areEqual(valuesContainingActual[i], actual)) {
@@ -123,268 +117,167 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<S extends GenericAsser
     }
   }
 
-  @Test
-  public final void isIn_should_pass_if_actual_is_in_given_values() {
+  @Test public final void isIn_should_pass_if_actual_is_in_given_values() {
     assertions.isIn(valuesContainingActual);
     assertions.isIn(collectionContainingActual);
   }
 
-  @Test
-  public final void isIn_should_pass_if_actual_is_null_and_is_in_given_values() {
+  @Test public final void isIn_should_pass_if_actual_is_null_and_is_in_given_values() {
     assertionsForNull.isIn(valuesContainingNull);
     assertionsForNull.isIn(collectionContainingNull);
   }
 
-  @Test
-  public final void isIn_should_fail_if_actual_is_not_in_given_values() {
-    expectAssertionError(unexpectedNotIn(null, actual, valuesNotContainingActual)).on(new CodeToTest() {
-      public void run() {
-        assertions.isIn(valuesNotContainingActual);
-      }
-    });
-    expectAssertionError(unexpectedNotIn(null, actual, collectionNotContainingActual)).on(new CodeToTest() {
-      public void run() {
-        assertions.isIn(collectionNotContainingActual);
-      }
-    });
+  @Test public final void isIn_should_fail_if_actual_is_not_in_given_values() {
+    thrown.expectAssertionError(notIn(null, actual, valuesNotContainingActual));
+    assertions.isIn(valuesNotContainingActual);
+    thrown.expectAssertionError(notIn(null, actual, collectionNotContainingActual));
+    assertions.isIn(collectionNotContainingActual);
   }
 
-  @Test
-  public final void isIn_should_fail_if_actual_is_null_and_is_not_in_given_values() {
-    expectAssertionError(unexpectedNotIn(null, null, valuesContainingActual)).on(new CodeToTest() {
-      public void run() {
-        assertionsForNull.isIn(valuesContainingActual);
-      }
-    });
-    expectAssertionError(unexpectedNotIn(null, null, collectionContainingActual)).on(new CodeToTest() {
-      public void run() {
-        assertionsForNull.isIn(collectionContainingActual);
-      }
-    });
+  @Test public final void isIn_should_fail_if_actual_is_null_and_is_not_in_given_values() {
+    thrown.expectAssertionError(notIn(null, null, valuesContainingActual));
+    assertionsForNull.isIn(valuesContainingActual);
+    thrown.expectAssertionError(notIn(null, null, collectionContainingActual));
+    assertionsForNull.isIn(collectionContainingActual);
   }
 
-  @Test
-  public final void isIn_should_fail_if_given_values_parameter_is_null() {
-    expectNullPointerException("expecting values parameter not to be null").on(new CodeToTest() {
-      public void run() {
-        A[] nullArray = null;
-        assertionsForNull.isIn(nullArray);
-      }
-    });
-    expectNullPointerException("expecting values parameter not to be null").on(new CodeToTest() {
-      public void run() {
-        Collection<A> nullCollection = null;
-        assertionsForNull.isIn(nullCollection);
-      }
-    });
+  @Test public final void isIn_should_fail_if_given_values_parameter_is_null() {
+    thrown.expectNullPointerException("expecting values parameter not to be null");
+    A[] nullArray = null;
+    assertionsForNull.isIn(nullArray);
+    thrown.expectNullPointerException("expecting values parameter not to be null");
+    Collection<A> nullCollection = null;
+    assertionsForNull.isIn(nullCollection);
   }
 
-  @Test
-  public final void isIn_should_throw_error_if_given_values_parameter_is_null() {
-    expectNullPointerException("expecting values parameter not to be null").on(new CodeToTest() {
-      public void run() {
-        A[] nullArray = null;
-        assertions.isIn(nullArray);
-      }
-    });
-    expectNullPointerException("expecting values parameter not to be null").on(new CodeToTest() {
-      public void run() {
-        Collection<A> nullCollection = null;
-        assertions.isIn(nullCollection);
-      }
-    });
+  @Test public final void isIn_should_throw_error_if_given_values_parameter_is_null() {
+    thrown.expectNullPointerException("expecting values parameter not to be null");
+    A[] nullArray = null;
+    assertions.isIn(nullArray);
+    thrown.expectNullPointerException("expecting values parameter not to be null");
+    Collection<A> nullCollection = null;
+    assertions.isIn(nullCollection);
   }
 
-  @Test
-  public final void isIn_should_throw_error_and_display_description_of_assertion_if_given_values_parameter_is_null() {
-    expectNullPointerException("[A Test] expecting values parameter not to be null").on(new CodeToTest() {
-      public void run() {
-        A[] nullArray = null;
-        assertions.as("A Test").isIn(nullArray);
-      }
-    });
-    expectNullPointerException("[A Test] expecting values parameter not to be null").on(new CodeToTest() {
-      public void run() {
-        Collection<A> nullCollection = null;
-        assertions.as("A Test").isIn(nullCollection);
-      }
-    });
+  @Test public final void isIn_should_throw_error_and_display_description_if_given_values_parameter_is_null() {
+    thrown.expectNullPointerException("[A Test] expecting values parameter not to be null");
+    A[] nullArray = null;
+    assertions.as("A Test").isIn(nullArray);
+    thrown.expectNullPointerException("[A Test] expecting values parameter not to be null");
+    Collection<A> nullCollection = null;
+    assertions.as("A Test").isIn(nullCollection);
   }
 
-  @Test
-  public final void isIn_should_fail_and_display_description_of_assertion_if_actual_is_not_in_given_values() {
-    expectAssertionError(unexpectedNotIn("A Test", actual, valuesNotContainingActual)).on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test").isIn(valuesNotContainingActual);
-      }
-    });
-    expectAssertionError(unexpectedNotIn("A Test", actual, collectionNotContainingActual)).on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test").isIn(collectionNotContainingActual);
-      }
-    });
+  @Test public final void isIn_should_fail_and_display_description_if_actual_is_not_in_given_values() {
+    thrown.expectAssertionError(notIn("A Test", actual, valuesNotContainingActual));
+    assertions.as("A Test").isIn(valuesNotContainingActual);
+    thrown.expectAssertionError(notIn("A Test", actual, collectionNotContainingActual));
+    assertions.as("A Test").isIn(collectionNotContainingActual);
   }
 
-  @Test
-  public final void isIn_should_fail_with_custom_message_if_actual_is_not_in_given_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.overridingErrorMessage("My custom message").isIn(valuesNotContainingActual);
-      }
-    });
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.overridingErrorMessage("My custom message").isIn(collectionNotContainingActual);
-      }
-    });
+  @Test public final void isIn_should_fail_with_custom_message_if_actual_is_not_in_given_values() {
+    thrown.expectAssertionError("My custom message");
+    assertions.overridingErrorMessage("My custom message")
+              .isIn(valuesNotContainingActual);
+    thrown.expectAssertionError("My custom message");
+    assertions.overridingErrorMessage("My custom message")
+              .isIn(collectionNotContainingActual);
   }
 
-  @Test
-  public final void isIn_should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_in_given_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test").overridingErrorMessage("My custom message").isIn(valuesNotContainingActual);
-      }
-    });
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test").overridingErrorMessage("My custom message").isIn(collectionNotContainingActual);
-      }
-    });
+  @Test public final void isIn_should_fail_with_custom_message_ignoring_description_if_actual_is_not_in_given_values() {
+    thrown.expectAssertionError("My custom message");
+    assertions.as("A Test")
+              .overridingErrorMessage("My custom message")
+              .isIn(valuesNotContainingActual);
+    thrown.expectAssertionError("My custom message");
+    assertions.as("A Test")
+              .overridingErrorMessage("My custom message")
+              .isIn(collectionNotContainingActual);
   }
 
   // ----------------------------------------------------------------------------------------------
   // isNotIn tests
   // ----------------------------------------------------------------------------------------------
 
-  @Test
-  public final void isNotIn_should_pass_if_actual_is_not_in_given_values() {
+  @Test public final void isNotIn_should_pass_if_actual_is_not_in_given_values() {
     assertions.isNotIn(valuesNotContainingActual);
     assertions.isNotIn(collectionNotContainingActual);
   }
 
-  @Test
-  public final void isNotIn_should_pass_if_actual_is_null_and_is_not_in_given_values() {
+  @Test public final void isNotIn_should_pass_if_actual_is_null_and_is_not_in_given_values() {
     assertionsForNull.isNotIn(valuesNotContainingNull);
     assertionsForNull.isNotIn(collectionNotContainingNull);
   }
 
-  @Test
-  public final void isNotIn_should_fail_if_actual_is_in_given_values() {
-    expectAssertionError(unexpectedIn(null, actual, valuesContainingActual)).on(new CodeToTest() {
-      public void run() {
-        assertions.isNotIn(valuesContainingActual);
-      }
-    });
-    expectAssertionError(unexpectedIn(null, actual, collectionContainingActual)).on(new CodeToTest() {
-      public void run() {
-        assertions.isNotIn(collectionContainingActual);
-      }
-    });
+  @Test public final void isNotIn_should_fail_if_actual_is_in_given_values() {
+    thrown.expectAssertionError(in(null, actual, valuesContainingActual));
+    assertions.isNotIn(valuesContainingActual);
+    thrown.expectAssertionError(in(null, actual, collectionContainingActual));
+    assertions.isNotIn(collectionContainingActual);
   }
 
-  @Test
-  public final void isNotIn_should_fail_if_actual_is_null_and_is_in_given_values() {
-    expectAssertionError(unexpectedIn(null, null, valuesContainingNull)).on(new CodeToTest() {
-      public void run() {
-        assertionsForNull.isNotIn(valuesContainingNull);
-      }
-    });
-    expectAssertionError(unexpectedIn(null, null, collectionContainingNull)).on(new CodeToTest() {
-      public void run() {
-        assertionsForNull.isNotIn(collectionContainingNull);
-      }
-    });
+  @Test public final void isNotIn_should_fail_if_actual_is_null_and_is_in_given_values() {
+    thrown.expectAssertionError(in(null, null, valuesContainingNull));
+    assertionsForNull.isNotIn(valuesContainingNull);
+    thrown.expectAssertionError(in(null, null, collectionContainingNull));
+    assertionsForNull.isNotIn(collectionContainingNull);
   }
 
-  @Test
-  public final void isNotIn_should_fail_if_given_values_parameter_is_null() {
-    expectNullPointerException("expecting values parameter not to be null").on(new CodeToTest() {
-      public void run() {
-        A[] nullArray = null;
-        assertionsForNull.isNotIn(nullArray);
-      }
-    });
-    expectNullPointerException("expecting values parameter not to be null").on(new CodeToTest() {
-      public void run() {
-        Collection<A> nullCollection = null;
-        assertionsForNull.isNotIn(nullCollection);
-      }
-    });
+  @Test public final void isNotIn_should_fail_if_given_values_parameter_is_null() {
+    thrown.expectNullPointerException("expecting values parameter not to be null");
+    A[] nullArray = null;
+    assertionsForNull.isNotIn(nullArray);
+    thrown.expectNullPointerException("expecting values parameter not to be null");
+    Collection<A> nullCollection = null;
+    assertionsForNull.isNotIn(nullCollection);
   }
 
-  @Test
-  public final void isNotIn_should_throw_error_if_given_values_parameter_is_null() {
-    expectNullPointerException("expecting values parameter not to be null").on(new CodeToTest() {
-      public void run() {
-        A[] nullArray = null;
-        assertions.isNotIn(nullArray);
-      }
-    });
-    expectNullPointerException("expecting values parameter not to be null").on(new CodeToTest() {
-      public void run() {
-        Collection<A> nullCollection = null;
-        assertions.isNotIn(nullCollection);
-      }
-    });
+  @Test public final void isNotIn_should_throw_error_if_given_values_parameter_is_null() {
+    thrown.expectNullPointerException("expecting values parameter not to be null");
+    A[] nullArray = null;
+    assertions.isNotIn(nullArray);
+    thrown.expectNullPointerException("expecting values parameter not to be null");
+    Collection<A> nullCollection = null;
+    assertions.isNotIn(nullCollection);
   }
 
-  @Test
-  public final void isNotIn_should_throw_error_and_display_description_of_assertion_if_given_values_parameter_is_null() {
-    expectNullPointerException("[A Test] expecting values parameter not to be null").on(new CodeToTest() {
-      public void run() {
-        A[] nullArray = null;
-        assertions.as("A Test").isNotIn(nullArray);
-      }
-    });
-    expectNullPointerException("[A Test] expecting values parameter not to be null").on(new CodeToTest() {
-      public void run() {
-        Collection<A> nullCollection = null;
-        assertions.as("A Test").isNotIn(nullCollection);
-      }
-    });
+  @Test public final void isNotIn_should_throw_error_and_display_description_if_given_values_parameter_is_null() {
+    thrown.expectNullPointerException("[A Test] expecting values parameter not to be null");
+    A[] nullArray = null;
+    assertions.as("A Test")
+              .isNotIn(nullArray);
+    thrown.expectNullPointerException("[A Test] expecting values parameter not to be null");
+    Collection<A> nullCollection = null;
+    assertions.as("A Test")
+              .isNotIn(nullCollection);
   }
 
-  @Test
-  public final void isNotIn_should_fail_and_display_description_of_assertion_if_actual_is_in_given_values() {
-    expectAssertionError(unexpectedIn("A Test", actual, valuesContainingActual)).on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test").isNotIn(valuesContainingActual);
-      }
-    });
-    expectAssertionError(unexpectedIn("A Test", actual, collectionContainingActual)).on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test").isNotIn(collectionContainingActual);
-      }
-    });
+  @Test public final void isNotIn_should_fail_and_display_description_if_actual_is_in_given_values() {
+    thrown.expectAssertionError(in("A Test", actual, valuesContainingActual));
+    assertions.as("A Test")
+              .isNotIn(valuesContainingActual);
+    thrown.expectAssertionError(in("A Test", actual, collectionContainingActual));
+    assertions.as("A Test")
+              .isNotIn(collectionContainingActual);
   }
 
-  @Test
-  public final void isNotIn_should_fail_with_custom_message_if_actual_is_in_given_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.overridingErrorMessage("My custom message").isNotIn(valuesContainingActual);
-      }
-    });
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.overridingErrorMessage("My custom message").isNotIn(collectionContainingActual);
-      }
-    });
+  @Test public final void isNotIn_should_fail_with_custom_message_if_actual_is_in_given_values() {
+    thrown.expectAssertionError("My custom message");
+    assertions.overridingErrorMessage("My custom message")
+              .isNotIn(valuesContainingActual);
+    thrown.expectAssertionError("My custom message");
+    assertions.overridingErrorMessage("My custom message")
+              .isNotIn(collectionContainingActual);
   }
 
-  @Test
-  public final void isNotIn_should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_in_given_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test").overridingErrorMessage("My custom message").isNotIn(valuesContainingActual);
-      }
-    });
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test").overridingErrorMessage("My custom message").isNotIn(collectionContainingActual);
-      }
-    });
+  @Test public final void isNotIn_should_fail_with_custom_message_ignoring_description_if_actual_is_in_given_values() {
+    thrown.expectAssertionError("My custom message");
+    assertions.as("A Test")
+              .overridingErrorMessage("My custom message")
+              .isNotIn(valuesContainingActual);
+    thrown.expectAssertionError("My custom message");
+    assertions.as("A Test")
+              .overridingErrorMessage("My custom message")
+              .isNotIn(collectionContainingActual);
   }
-
 }

@@ -15,15 +15,13 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.ExpectedException.none;
 import static org.fest.assertions.MapAssert.entry;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.fest.test.CodeToTest;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for bug <a href="http://jira.codehaus.org/browse/FEST-329" target="_blank">FEST-329</a>.
@@ -32,23 +30,20 @@ import org.junit.Test;
  */
 public class FEST329_containsEntryFails_Test {
 
+  @Rule public ExpectedException thrown = none();
+
   private Map<Integer, String> map;
   private MapAssert mapAssert;
 
-  @Before
-  public void setUp() {
+  @Before public void setUp() {
     map = new LinkedHashMap<Integer, String>();
     map.put(1, "foo");
     map.put(2, "bar");
     mapAssert = new MapAssert(map);
   }
 
-  @Test
-  public void should_return_false_if_key_and_value_exist_in_map_but_not_as_entry() {
-    expectAssertionError("the map:<{1='foo', 2='bar'}> does not contain the entry:<[1='bar']>").on(new CodeToTest() {
-      public void run() {
-        mapAssert.includes(entry(1, "bar"));
-      }
-    });
+  @Test public void should_return_false_if_key_and_value_exist_in_map_but_not_as_entry() {
+    thrown.expectAssertionError("the map:<{1='foo', 2='bar'}> does not contain the entry:<[1='bar']>");
+    mapAssert.includes(entry(1, "bar"));
   }
 }

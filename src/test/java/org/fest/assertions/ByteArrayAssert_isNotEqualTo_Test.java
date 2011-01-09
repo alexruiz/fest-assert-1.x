@@ -29,8 +29,7 @@ public class ByteArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualT
   private static byte[] notNullValue;
   private static byte[] unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = byteArray(6, 8);
     unequalValue = byteArray(8);
   }
@@ -43,7 +42,7 @@ public class ByteArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualT
     return notNullValue;
   }
 
-  @Override protected byte[] unequalValue() {
+  @Override protected byte[] notEqualValue() {
     return unequalValue;
   }
 }

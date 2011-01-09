@@ -14,12 +14,12 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.actualIsNull;
 
 import java.io.IOException;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -30,71 +30,48 @@ import org.junit.Test;
  */
 public class ThrowableAssert_hasNoCause_Test {
 
-  @Test
-  public void should_pass_if_actual_does_not_have_cause() {
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_pass_if_actual_does_not_have_cause() {
     new ThrowableAssert(new Exception()).hasNoCause();
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new ThrowableAssert(null).hasNoCause();
-      }
-    });
+  @Test public void should_fail_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull());
+    new ThrowableAssert(null).hasNoCause();
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new ThrowableAssert(null).as("A Test")
-                                 .hasNoCause();
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull("A Test"));
+    new ThrowableAssert(null).as("A Test")
+                             .hasNoCause();
   }
 
-  @Test
-  public void should_fail_if_actual_has_cause() {
-    expectAssertionError("expected exception without cause, but cause was:<java.io.IOException>").on(new CodeToTest() {
-      public void run() {
-        new ThrowableAssert(new Exception(new IOException())).hasNoCause();
-      }
-    });
+  @Test public void should_fail_if_actual_has_cause() {
+    thrown.expectAssertionError("expected exception without cause, but cause was:<java.io.IOException>");
+    new ThrowableAssert(new Exception(new IOException())).hasNoCause();
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_has_cause() {
+  @Test public void should_fail_and_display_description_if_actual_has_cause() {
     String message = "[A Test] expected exception without cause, but cause was:<java.io.IOException>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        Exception e = new Exception(new IOException());
-        new ThrowableAssert(e).as("A Test")
-                              .hasNoCause();
-      }
-    });
+    thrown.expectAssertionError(message);
+    Exception e = new Exception(new IOException());
+    new ThrowableAssert(e).as("A Test")
+                          .hasNoCause();
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_has_cause() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        Exception e = new Exception(new IOException());
-        new ThrowableAssert(e).overridingErrorMessage("My custom message")
-                              .hasNoCause();
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_has_cause() {
+    thrown.expectAssertionError("My custom message");
+    Exception e = new Exception(new IOException());
+    new ThrowableAssert(e).overridingErrorMessage("My custom message")
+                          .hasNoCause();
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_has_cause() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        Exception e = new Exception(new IOException());
-        new ThrowableAssert(e).as("A Test")
-                              .overridingErrorMessage("My custom message")
-                              .hasNoCause();
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_has_cause() {
+    thrown.expectAssertionError("My custom message");
+    Exception e = new Exception(new IOException());
+    new ThrowableAssert(e).as("A Test")
+                          .overridingErrorMessage("My custom message")
+                          .hasNoCause();
   }
 }

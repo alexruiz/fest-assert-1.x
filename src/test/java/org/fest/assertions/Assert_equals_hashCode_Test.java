@@ -29,13 +29,11 @@ public class Assert_equals_hashCode_Test {
 
   private Assert assertion;
 
-  @Before
-  public void setUp() {
+  @Before public void setUp() {
     assertion = new Assert() {};
   }
 
-  @Test
-  public void should_throw_error_if_equals_is_called() {
+  @Test public void should_throw_error_if_equals_is_called() {
     try {
       assertion.equals(null);
       fail("expecting an UnsupportedOperationException");
@@ -44,8 +42,7 @@ public class Assert_equals_hashCode_Test {
     }
   }
 
-  @Test
-  public void shouldReturnOneAsHashCode() {
+  @Test public void shouldReturnOneAsHashCode() {
     assertEquals(1, assertion.hashCode());
   }
 }

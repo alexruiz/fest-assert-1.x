@@ -14,9 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -27,26 +27,19 @@ import org.junit.Test;
  */
 public class Fail_failIfNotNull_Test {
 
-  @Test
-  public void should_fail_if_value_is_not_null() {
-    expectAssertionError("[A message] <'Leia'> should be null").on(new CodeToTest() {
-      public void run() {
-        Fail.failIfNotNull(null, new BasicDescription("A message"), "Leia");
-      }
-    });
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_fail_if_value_is_not_null() {
+    thrown.expectAssertionError("[A message] <'Leia'> should be null");
+    Fail.failIfNotNull(null, new BasicDescription("A message"), "Leia");
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_value_is_not_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        Fail.failIfNotNull("My custom message", null, "Leia");
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_value_is_not_null() {
+    thrown.expectAssertionError("My custom message");
+    Fail.failIfNotNull("My custom message", null, "Leia");
   }
 
-  @Test
-  public void should_pass_if_value_is_not_null() {
+  @Test public void should_pass_if_value_is_not_null() {
     Fail.failIfNotNull(null, null, null);
   }
 }

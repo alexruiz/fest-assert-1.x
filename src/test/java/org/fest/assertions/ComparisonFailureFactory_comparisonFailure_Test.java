@@ -27,22 +27,19 @@ import org.junit.Test;
  */
 public class ComparisonFailureFactory_comparisonFailure_Test {
 
-  @Test
-  public void should_create_exception_if_actual_or_expected_are_not_String() {
+  @Test public void should_create_exception_if_actual_or_expected_are_not_String() {
     AssertionError failure = ComparisonFailureFactory.comparisonFailure("message", new Jedi("Luke"), new Jedi("Ben"));
     assertThatIsComparisonFailure(failure);
     assertEquals("[message] expected:<Jedi [name=[Luke]]> but was:<Jedi [name=[Ben]]>", failure.getMessage());
   }
 
-  @Test
-  public void should_create_exception_if_actual_and_expected_are_String() {
+  @Test public void should_create_exception_if_actual_and_expected_are_String() {
     AssertionError failure = ComparisonFailureFactory.comparisonFailure("message", "expected", "actual");
     assertThatIsComparisonFailure(failure);
     assertEquals("[message] expected:<'[expected]'> but was:<'[actual]'>", failure.getMessage());
   }
 
-  @Test
-  public void should_create_exception_if_actual_or_expected_are_equal_to_null() {
+  @Test public void should_create_exception_if_actual_or_expected_are_equal_to_null() {
     AssertionError failure = ComparisonFailureFactory.comparisonFailure("message", null, "actual");
     assertThatIsComparisonFailure(failure);
     assertEquals("[message] expected:<null> but was:<'actual'>", failure.getMessage());

@@ -29,8 +29,7 @@ public class BooleanArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqu
   private static boolean[] notNullValue;
   private static boolean[] unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = booleanArray(true);
     unequalValue = booleanArray(false);
   }
@@ -43,7 +42,7 @@ public class BooleanArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqu
     return notNullValue;
   }
 
-  @Override protected boolean[] unequalValue() {
+  @Override protected boolean[] notEqualValue() {
     return unequalValue;
   }
 }

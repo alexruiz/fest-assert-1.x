@@ -28,8 +28,7 @@ public class DoubleAssert_isZero_Test extends NumberAssert_isZero_TestCase<Doubl
   private static Double notZero;
   private static Double zero;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notZero = 6d;
     zero = 0d;
   }

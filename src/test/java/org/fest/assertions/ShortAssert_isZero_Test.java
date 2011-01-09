@@ -28,8 +28,7 @@ public class ShortAssert_isZero_Test extends NumberAssert_isZero_TestCase<Short>
   private static Short notZero;
   private static Short zero;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notZero = 6;
     zero = 0;
   }

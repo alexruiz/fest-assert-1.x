@@ -15,9 +15,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -27,12 +27,10 @@ import org.junit.Test;
  */
 public class FEST228_inconsistentErrorMessage_Test {
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("[A Test] expected:<'L[eia]'> but was:<'L[uke]'>").on(new CodeToTest() {
-      public void run() {
-        Fail.failIfNotEqual(null, new BasicDescription("A Test"), "Luke", "Leia");
-      }
-    });
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_fail_and_display_description_if_actual_and_expected_are_not_equal() {
+    thrown.expectAssertionError("[A Test] expected:<'L[eia]'> but was:<'L[uke]'>");
+    Fail.failIfNotEqual(null, new BasicDescription("A Test"), "Luke", "Leia");
   }
 }

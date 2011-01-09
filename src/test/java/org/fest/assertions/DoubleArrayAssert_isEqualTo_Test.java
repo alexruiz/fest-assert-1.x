@@ -29,8 +29,7 @@ public class DoubleArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Te
   private static double[] notNullValue;
   private static double[] unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = doubleArray(6d, 8d);
     unequalValue = doubleArray(6d);
   }
@@ -43,7 +42,7 @@ public class DoubleArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Te
     return notNullValue;
   }
 
-  @Override protected double[] unequalValue() {
+  @Override protected double[] notEqualValue() {
     return unequalValue;
   }
 }

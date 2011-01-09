@@ -26,16 +26,15 @@ import org.junit.Test;
  */
 public class Fail_fail_withMessageAndCause_Test {
 
-  @Test
-  public void shouldThrowErrorWithGivenMessageAndCause() {
+  @Test public void shouldThrowErrorWithGivenMessageAndCause() {
     String message = "Some Throwable";
     Throwable cause = new Throwable();
     try {
       Fail.fail(message, cause);
       fail("AssertionError should have been thrown");
     } catch (AssertionError e) {
-      assertSame(e.getCause(), cause);
       assertEquals(e.getMessage(), message);
+      assertSame(e.getCause(), cause);
     }
   }
 }

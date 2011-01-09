@@ -50,8 +50,7 @@ public class PropertySupport_firstPropertyIfNested_withNestedProperties_Test {
     this.firstProperty = firstProperty;
   }
 
-  @Test
-  public void should_return_first_property_name() {
+  @Test public void should_return_first_property_name() {
     assertEquals(firstProperty, PropertySupport.firstPropertyIfNested(nestedPropertyName));
   }
 }

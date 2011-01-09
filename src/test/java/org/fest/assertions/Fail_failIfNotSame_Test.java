@@ -14,9 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -27,26 +27,19 @@ import org.junit.Test;
  */
 public class Fail_failIfNotSame_Test {
 
-  @Test
-  public void should_fail_if_values_are_not_same() {
-    expectAssertionError("[A message] expected same instance but found:<'Ben'> and:<'Han'>").on(new CodeToTest() {
-      public void run() {
-        Fail.failIfNotSame(null, new BasicDescription("A message"), "Ben", "Han");
-      }
-    });
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_fail_if_values_are_not_same() {
+    thrown.expectAssertionError("[A message] expected same instance but found:<'Ben'> and:<'Han'>");
+    Fail.failIfNotSame(null, new BasicDescription("A message"), "Ben", "Han");
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_values_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        Fail.failIfNotSame("My custom message", null, "Ben", "Han");
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_values_are_not_same() {
+    thrown.expectAssertionError("My custom message");
+    Fail.failIfNotSame("My custom message", null, "Ben", "Han");
   }
 
-  @Test
-  public void should_pass_if_values_are_same() {
+  @Test public void should_pass_if_values_are_same() {
     Object o = new Object();
     Fail.failIfNotSame(null, null, o, o);
   }

@@ -16,10 +16,9 @@ package org.fest.assertions;
 
 import static java.math.BigDecimal.ZERO;
 import static org.fest.assertions.BigDecimals.*;
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -32,109 +31,68 @@ import org.junit.Test;
  */
 public class BigDecimalAssert_isNegative_Test implements NumberAssert_isNegative_TestCase {
 
-  @Test
-  public void should_pass_if_actual_is_negative() {
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_pass_if_actual_is_negative() {
     new BigDecimalAssert(negativeEight()).isNegative();
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(null).isNegative();
-      }
-    });
+  @Test public void should_fail_if_actual_is_null() {
+    thrown.expectAssertionError(FailureMessages.actualIsNull());
+    new BigDecimalAssert(null).isNegative();
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(null).as("A Test")
-                                  .isNegative();
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_null() {
+    thrown.expectAssertionError(FailureMessages.actualIsNull("A Test"));
+    new BigDecimalAssert(null).as("A Test")
+                              .isNegative();
   }
 
-  @Test
-  public void should_fail_if_actual_is_positive() {
-    expectAssertionError("actual value:<8.0> should be less than:<0>").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(eight()).isNegative();
-      }
-    });
+  @Test public void should_fail_if_actual_is_positive() {
+    thrown.expectAssertionError("actual value:<8.0> should be less than:<0>");
+    new BigDecimalAssert(eight()).isNegative();
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_positive() {
-    expectAssertionError("[A Test] actual value:<8.0> should be less than:<0>").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(eight()).as("A Test")
-                                     .isNegative();
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_positive() {
+    thrown.expectAssertionError("[A Test] actual value:<8.0> should be less than:<0>");
+    new BigDecimalAssert(eight()).as("A Test")
+                                 .isNegative();
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_positive() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(eight()).overridingErrorMessage("My custom message")
-                                     .isNegative();
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_is_positive() {
+    thrown.expectAssertionError("My custom message");
+    new BigDecimalAssert(eight()).overridingErrorMessage("My custom message")
+                                 .isNegative();
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_positive() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(eight()).as("A Test")
-                                     .overridingErrorMessage("My custom message")
-                                     .isNegative();
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_is_positive() {
+    thrown.expectAssertionError("My custom message");
+    new BigDecimalAssert(eight()).as("A Test")
+                                 .overridingErrorMessage("My custom message")
+                                 .isNegative();
   }
 
-  @Test
-  public void should_fail_if_actual_is_zero() {
-    expectAssertionError("actual value:<0> should be less than:<0>").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(ZERO).isNegative();
-      }
-    });
+  @Test public void should_fail_if_actual_is_zero() {
+    thrown.expectAssertionError("actual value:<0> should be less than:<0>");
+    new BigDecimalAssert(ZERO).isNegative();
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_zero() {
-    expectAssertionError("[A Test] actual value:<0> should be less than:<0>").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(ZERO).as("A Test")
-                                  .isNegative();
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_zero() {
+    thrown.expectAssertionError("[A Test] actual value:<0> should be less than:<0>");
+    new BigDecimalAssert(ZERO).as("A Test")
+                              .isNegative();
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_zero() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(ZERO).overridingErrorMessage("My custom message")
-                                  .isNegative();
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_is_zero() {
+    thrown.expectAssertionError("My custom message");
+    new BigDecimalAssert(ZERO).overridingErrorMessage("My custom message")
+                              .isNegative();
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_zero() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(ZERO).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .isNegative();
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_is_zero() {
+    thrown.expectAssertionError("My custom message");
+    new BigDecimalAssert(ZERO).as("A Test")
+                              .overridingErrorMessage("My custom message")
+                              .isNegative();
   }
-
-
 }

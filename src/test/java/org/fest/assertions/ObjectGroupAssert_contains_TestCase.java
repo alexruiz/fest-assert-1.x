@@ -15,10 +15,9 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.objectArray;
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.actualIsNull;
 
-import org.fest.test.CodeToTest;
 import org.junit.*;
 
 /**
@@ -33,109 +32,75 @@ import org.junit.*;
 public abstract class ObjectGroupAssert_contains_TestCase<S extends ObjectGroupAssert<S, A>, A> extends
     ObjectGroupAssert_TestCase<S, A> implements GroupAssert_contains_TestCase {
 
+  @Rule public ExpectedException thrown = none();
+
   private static Object[] actualValues;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     actualValues = objectArray("Leia", "Luke");
   }
 
   private A actual;
   private ObjectGroupAssert<S, A> assertions;
 
-  @Before
-  public final void setUp() {
+  @Before public final void setUp() {
     actual = actualFrom(actualValues);
     assertions = assertionsFor(actual);
   }
 
-  @Test
-  public final void should_pass_if_actual_contains_given_value() {
+  @Test public final void should_pass_if_actual_contains_given_value() {
     assertions.contains("Leia");
   }
 
-  @Test
-  public final void should_pass_if_actual_contains_given_values() {
+  @Test public final void should_pass_if_actual_contains_given_values() {
     assertions.contains("Leia", "Luke");
   }
 
-  @Test
-  public final void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        assertionsFor(null).contains("Leia", "Luke");
-      }
-    });
+  @Test public final void should_fail_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull());
+    assertionsFor(null).contains("Leia", "Luke");
   }
 
-  @Test
-  public final void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        assertionsFor(null).as("A Test")
-                           .contains("Leia", "Luke");
-      }
-    });
+  @Test public final void should_fail_and_display_description_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull("A Test"));
+    assertionsFor(null).as("A Test")
+                       .contains("Leia", "Luke");
   }
 
-  @Test
-  public final void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("The given array should not be null").on(new CodeToTest() {
-      public void run() {
-        Object[] expected = null;
-        assertions.contains(expected);
-      }
-    });
+  @Test public final void should_throw_error_if_expected_is_null() {
+    thrown.expectNullPointerException("The given array should not be null");
+    Object[] expected = null;
+    assertions.contains(expected);
   }
 
-  @Test
-  public final void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] The given array should not be null").on(new CodeToTest() {
-      public void run() {
-        Object[] expected = null;
-        assertions.as("A Test")
-                  .contains(expected);
-      }
-    });
+  @Test public final void should_throw_error_and_display_description_if_expected_is_null() {
+    thrown.expectNullPointerException("[A Test] The given array should not be null");
+    Object[] expected = null;
+    assertions.as("A Test")
+              .contains(expected);
   }
 
-  @Test
-  public final void should_fail_if_actual_does_not_contain_given_values() {
-    expectAssertionError("<['Leia', 'Luke']> does not contain element(s):<['Han']>").on(new CodeToTest() {
-      public void run() {
-        assertions.contains("Han");
-      }
-    });
+  @Test public final void should_fail_if_actual_does_not_contain_given_values() {
+    thrown.expectAssertionError("<['Leia', 'Luke']> does not contain element(s):<['Han']>");
+    assertions.contains("Han");
   }
 
-  @Test
-  public final void should_fail_and_display_description_of_assertion_if_actual_does_not_contain_given_values() {
-    expectAssertionError("[A Test] <['Leia', 'Luke']> does not contain element(s):<['Han']>").on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test")
-                  .contains("Han");
-      }
-    });
+  @Test public final void should_fail_and_display_description_if_actual_does_not_contain_given_values() {
+    thrown.expectAssertionError("[A Test] <['Leia', 'Luke']> does not contain element(s):<['Han']>");
+    assertions.as("A Test")
+              .contains("Han");
   }
 
-  @Test
-  public final void should_fail_with_custom_message_if_actual_does_not_contain_given_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.overridingErrorMessage("My custom message")
-                  .contains("Han");
-      }
-    });
+  @Test public final void should_fail_with_custom_message_if_actual_does_not_contain_given_values() {
+    thrown.expectAssertionError("My custom message");
+    assertions.overridingErrorMessage("My custom message")
+              .contains("Han");
   }
 
-  @Test
-  public final void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_does_not_contain_given_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test")
-                  .overridingErrorMessage("My custom message")
-                  .contains("Han");
-      }
-    });
+  @Test public final void should_fail_with_custom_message_ignoring_description_if_actual_does_not_contain_given_values() {
+    thrown.expectAssertionError("My custom message");
+    assertions.as("A Test")
+              .overridingErrorMessage("My custom message")
+              .contains("Han");
   }
 }

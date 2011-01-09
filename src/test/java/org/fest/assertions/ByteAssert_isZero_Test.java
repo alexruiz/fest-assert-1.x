@@ -28,8 +28,7 @@ public class ByteAssert_isZero_Test extends NumberAssert_isZero_TestCase<Byte> {
   private static Byte notZero;
   private static Byte zero;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notZero = 6;
     zero = 0;
   }

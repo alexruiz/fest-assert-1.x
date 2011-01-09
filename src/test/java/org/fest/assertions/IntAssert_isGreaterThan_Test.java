@@ -14,9 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -27,88 +27,57 @@ import org.junit.Test;
  */
 public class IntAssert_isGreaterThan_Test implements Assert_isGreaterThan_TestCase {
 
-  @Test
-  public void should_pass_if_actual_is_greater_than_expected() {
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_pass_if_actual_is_greater_than_expected() {
     new IntAssert(6).isGreaterThan(2);
   }
 
-  @Test
-  public void should_fail_if_actual_is_equal_to_expected() {
-    expectAssertionError("actual value:<6> should be greater than:<6>").on(new CodeToTest() {
-      public void run() {
-        new IntAssert(6).isGreaterThan(6);
-      }
-    });
+  @Test public void should_fail_if_actual_is_equal_to_expected() {
+    thrown.expectAssertionError("actual value:<6> should be greater than:<6>");
+    new IntAssert(6).isGreaterThan(6);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_equal_to_expected() {
-    expectAssertionError("[A Test] actual value:<6> should be greater than:<6>").on(new CodeToTest() {
-      public void run() {
-        new IntAssert(6).as("A Test")
-                        .isGreaterThan(6);
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_equal_to_expected() {
+    thrown.expectAssertionError("[A Test] actual value:<6> should be greater than:<6>");
+    new IntAssert(6).as("A Test")
+                    .isGreaterThan(6);
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_equal_to_expected() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new IntAssert(6).overridingErrorMessage("My custom message")
-                        .isGreaterThan(6);
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_is_equal_to_expected() {
+    thrown.expectAssertionError("My custom message");
+    new IntAssert(6).overridingErrorMessage("My custom message")
+                    .isGreaterThan(6);
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_equal_to_expected() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new IntAssert(6).as("A Test")
-                        .overridingErrorMessage("My custom message")
-                        .isGreaterThan(6);
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_is_equal_to_expected() {
+    thrown.expectAssertionError("My custom message");
+    new IntAssert(6).as("A Test")
+                    .overridingErrorMessage("My custom message")
+                    .isGreaterThan(6);
   }
 
-  @Test
-  public void should_fail_if_actual_is_less_than_expected() {
-    expectAssertionError("actual value:<6> should be greater than:<10>").on(new CodeToTest() {
-      public void run() {
-        new IntAssert(6).isGreaterThan(10);
-      }
-    });
+  @Test public void should_fail_if_actual_is_less_than_expected() {
+    thrown.expectAssertionError("actual value:<6> should be greater than:<10>");
+    new IntAssert(6).isGreaterThan(10);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_less_than_expected() {
-    expectAssertionError("[A Test] actual value:<6> should be greater than:<10>").on(new CodeToTest() {
-      public void run() {
-        new IntAssert(6).as("A Test")
-                        .isGreaterThan(10);
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_less_than_expected() {
+    thrown.expectAssertionError("[A Test] actual value:<6> should be greater than:<10>");
+    new IntAssert(6).as("A Test")
+                    .isGreaterThan(10);
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_less_than_expected() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new IntAssert(6).overridingErrorMessage("My custom message")
-                        .isGreaterThan(10);
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_is_less_than_expected() {
+    thrown.expectAssertionError("My custom message");
+    new IntAssert(6).overridingErrorMessage("My custom message")
+                    .isGreaterThan(10);
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_less_than_expected() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new IntAssert(6).as("A Test")
-                        .overridingErrorMessage("My custom message")
-                        .isGreaterThan(10);
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_is_less_than_expected() {
+    thrown.expectAssertionError("My custom message");
+    new IntAssert(6).as("A Test")
+                    .overridingErrorMessage("My custom message")
+                    .isGreaterThan(10);
   }
 }

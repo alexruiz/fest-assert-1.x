@@ -33,8 +33,7 @@ public class MapAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<M
   private static Map<?, ?> notNullValue;
   private static Map<?, ?> unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = map(entry("key1", 1), entry("key2", 2));
     unequalValue = map(entry("key6", 6), entry("key8", 8));
   }
@@ -47,7 +46,7 @@ public class MapAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<M
     return notNullValue;
   }
 
-  @Override protected Map<?, ?> unequalValue() {
+  @Override protected Map<?, ?> notEqualValue() {
     return unequalValue;
   }
 }

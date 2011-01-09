@@ -45,8 +45,7 @@ public class FileContentComparator_compareContents_withDifferentFiles_Test {
   private final String expected;
   private final LineDiff[] diffs;
 
-  @Parameters
-  public static Collection<Object[]> differentFiles() {
+  @Parameters public static Collection<Object[]> differentFiles() {
     return Collections.list(new Object[][] {
         { "fileAssertTest2.txt", "fileAssertTest3.txt",
           diffs(lineDiff(1, "abcde fghij abcde fghij", "abcde fghij abcde fghij z")) },
@@ -67,13 +66,11 @@ public class FileContentComparator_compareContents_withDifferentFiles_Test {
     this.diffs = diffs;
   }
 
-  @Before
-  public void setUp() {
+  @Before public void setUp() {
     comparator = new FileContentComparator();
   }
 
-  @Test
-  public void shouldReturnDiffsForNotEqualFiles() throws Exception {
+  @Test public void shouldReturnDiffsForNotEqualFiles() throws Exception {
     LineDiff[] actualDiffs = comparator.compareContents(file(actual), file(expected));
     verifyIfEqual(actualDiffs, diffs);
   }

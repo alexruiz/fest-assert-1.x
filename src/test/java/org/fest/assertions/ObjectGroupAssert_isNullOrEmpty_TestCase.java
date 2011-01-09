@@ -15,9 +15,8 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.objectArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
 import org.junit.*;
 
 /**
@@ -33,11 +32,12 @@ import org.junit.*;
 public abstract class ObjectGroupAssert_isNullOrEmpty_TestCase<S extends ObjectGroupAssert<S, A>, A> extends
     ObjectGroupAssert_TestCase<S, A> implements GroupAssert_isNullOrEmpty_TestCase {
 
+  @Rule public ExpectedException thrown = none();
+
   private static Object[] actualValues;
   private static Object[] emptyValues;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     actualValues = objectArray(8);
     emptyValues = new Object[0];
   }
@@ -45,59 +45,40 @@ public abstract class ObjectGroupAssert_isNullOrEmpty_TestCase<S extends ObjectG
   private A actual;
   private GroupAssert<S, A> assertions;
 
-  @Before
-  public final void setUp() {
+  @Before public final void setUp() {
     actual = actualFrom(actualValues);
     assertions = assertionsFor(actual);
   }
 
-  @Test
-  public final void should_pass_if_actual_is_null() {
+  @Test public final void should_pass_if_actual_is_null() {
     assertionsFor(null).isNullOrEmpty();
   }
 
-  @Test
-  public final void should_pass_if_actual_is_empty() {
+  @Test public final void should_pass_if_actual_is_empty() {
     assertionsFor(actualFrom(emptyValues)).isNullOrEmpty();
   }
 
-  @Test
-  public final void should_fail_if_actual_has_content() {
-    expectAssertionError("expecting null or empty, but was:<[8]>").on(new CodeToTest() {
-      public void run() {
-        assertions.isNullOrEmpty();
-      }
-    });
+  @Test public final void should_fail_if_actual_has_content() {
+    thrown.expectAssertionError("expecting null or empty, but was:<[8]>");
+    assertions.isNullOrEmpty();
   }
 
-  @Test
-  public final void should_fail_and_display_description_of_assertion_if_actual_has_content() {
-    expectAssertionError("[A Test] expecting null or empty, but was:<[8]>").on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test")
-                  .isNullOrEmpty();
-      }
-    });
+  @Test public final void should_fail_and_display_description_if_actual_has_content() {
+    thrown.expectAssertionError("[A Test] expecting null or empty, but was:<[8]>");
+    assertions.as("A Test")
+              .isNullOrEmpty();
   }
 
-  @Test
-  public final void should_fail_with_custom_message_if_actual_has_content() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.overridingErrorMessage("My custom message")
-                  .isNullOrEmpty();
-      }
-    });
+  @Test public final void should_fail_with_custom_message_if_actual_has_content() {
+    thrown.expectAssertionError("My custom message");
+    assertions.overridingErrorMessage("My custom message")
+              .isNullOrEmpty();
   }
 
-  @Test
-  public final void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_has_content() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test")
-                  .overridingErrorMessage("My custom message")
-                  .isNullOrEmpty();
-      }
-    });
+  @Test public final void should_fail_with_custom_message_ignoring_description_if_actual_has_content() {
+    thrown.expectAssertionError("My custom message");
+    assertions.as("A Test")
+              .overridingErrorMessage("My custom message")
+              .isNullOrEmpty();
   }
 }

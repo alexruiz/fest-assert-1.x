@@ -14,9 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -27,48 +27,33 @@ import org.junit.Test;
  */
 public class BooleanAssert_isFalse_Test {
 
-  @Test
-  public void should_pass_if_actual_is_false() {
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_pass_if_actual_is_false() {
     new BooleanAssert(false).isFalse();
   }
 
-  @Test
-  public void should_fail_if_actual_is_true() {
-    expectAssertionError("expected:<[fals]e> but was:<[tru]e>").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(true).isFalse();
-      }
-    });
+  @Test public void should_fail_if_actual_is_true() {
+    thrown.expectAssertionError("expected:<[fals]e> but was:<[tru]e>");
+    new BooleanAssert(true).isFalse();
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_true() {
-    expectAssertionError("[A Test] expected:<[fals]e> but was:<[tru]e>").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(true).as("A Test")
-                               .isFalse();
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_true() {
+    thrown.expectAssertionError("[A Test] expected:<[fals]e> but was:<[tru]e>");
+    new BooleanAssert(true).as("A Test")
+                           .isFalse();
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_true() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(true).overridingErrorMessage("My custom message")
-                               .isFalse();
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_is_true() {
+    thrown.expectAssertionError("My custom message");
+    new BooleanAssert(true).overridingErrorMessage("My custom message")
+                           .isFalse();
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_true() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(true).as("A Test")
-                               .overridingErrorMessage("My custom message")
-                               .isFalse();
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_is_true() {
+    thrown.expectAssertionError("My custom message");
+    new BooleanAssert(true).as("A Test")
+                           .overridingErrorMessage("My custom message")
+                           .isFalse();
   }
 }

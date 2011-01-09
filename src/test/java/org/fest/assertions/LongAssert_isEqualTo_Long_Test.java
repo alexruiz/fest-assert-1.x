@@ -28,8 +28,7 @@ public class LongAssert_isEqualTo_Long_Test extends GenericAssert_isEqualTo_Test
   private static Long notNullValue;
   private static Long unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = 6L;
     unequalValue = 8L;
   }
@@ -42,7 +41,7 @@ public class LongAssert_isEqualTo_Long_Test extends GenericAssert_isEqualTo_Test
     return notNullValue;
   }
 
-  @Override protected Long unequalValue() {
+  @Override protected Long notEqualValue() {
     return unequalValue;
   }
 }
