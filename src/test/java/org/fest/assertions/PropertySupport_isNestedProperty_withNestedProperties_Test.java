@@ -48,8 +48,7 @@ public class PropertySupport_isNestedProperty_withNestedProperties_Test {
     this.propertyName = propertyName;
   }
 
-  @Test
-  public void should_return_true_if_property_is_nested() {
+  @Test public void should_return_true_if_property_is_nested() {
     assertTrue(PropertySupport.isNestedProperty(propertyName));
   }
 }

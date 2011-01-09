@@ -28,8 +28,7 @@ public class FloatAssert_isZero_Test extends NumberAssert_isZero_TestCase<Float>
   private static Float notZero;
   private static Float zero;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notZero = 6f;
     zero = 0f;
   }

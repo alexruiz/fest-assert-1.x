@@ -16,10 +16,10 @@ package org.fest.assertions;
 
 import static java.math.BigDecimal.ZERO;
 import static org.fest.assertions.BigDecimals.*;
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.actualIsNull;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -32,72 +32,48 @@ import org.junit.Test;
  */
 public class BigDecimalAssert_isGreaterThanOrEqualTo_Test implements Assert_isGreaterThanOrEqualTo_TestCase {
 
-  @Test
-  public void should_pass_if_actual_is_greater_than_expected() {
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_pass_if_actual_is_greater_than_expected() {
     new BigDecimalAssert(eight()).isGreaterThanOrEqualTo(ZERO);
   }
 
-  @Test
-  public void should_pass_if_actual_is_equal_to_expected() {
+  @Test public void should_pass_if_actual_is_equal_to_expected() {
     new BigDecimalAssert(seven()).isGreaterThanOrEqualTo(seven());
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(null).isGreaterThanOrEqualTo(eight());
-      }
-    });
+  @Test public void should_fail_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull());
+    new BigDecimalAssert(null).isGreaterThanOrEqualTo(eight());
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(null).as("A Test")
-                                  .isGreaterThanOrEqualTo(eight());
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull("A Test"));
+    new BigDecimalAssert(null).as("A Test")
+                              .isGreaterThanOrEqualTo(eight());
   }
 
-  @Test
-  public void should_fail_if_actual_is_less_than_expected() {
-    expectAssertionError("actual value:<0> should be greater than or equal to:<8.0>").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(ZERO).isGreaterThanOrEqualTo(eight());
-      }
-    });
+  @Test public void should_fail_if_actual_is_less_than_expected() {
+    thrown.expectAssertionError("actual value:<0> should be greater than or equal to:<8.0>");
+    new BigDecimalAssert(ZERO).isGreaterThanOrEqualTo(eight());
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_less_than_expected() {
-    expectAssertionError("[A Test] actual value:<0> should be greater than or equal to:<8.0>").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(ZERO).as("A Test")
-                                  .isGreaterThanOrEqualTo(eight());
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_less_than_expected() {
+    thrown.expectAssertionError("[A Test] actual value:<0> should be greater than or equal to:<8.0>");
+    new BigDecimalAssert(ZERO).as("A Test")
+                              .isGreaterThanOrEqualTo(eight());
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_less_than_expected() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(ZERO).overridingErrorMessage("My custom message")
-                                  .isGreaterThanOrEqualTo(eight());
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_is_less_than_expected() {
+    thrown.expectAssertionError("My custom message");
+    new BigDecimalAssert(ZERO).overridingErrorMessage("My custom message")
+                              .isGreaterThanOrEqualTo(eight());
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_less_than_expected() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(ZERO).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .isGreaterThanOrEqualTo(eight());
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_is_less_than_expected() {
+    thrown.expectAssertionError("My custom message");
+    new BigDecimalAssert(ZERO).as("A Test")
+                              .overridingErrorMessage("My custom message")
+                              .isGreaterThanOrEqualTo(eight());
   }
 }

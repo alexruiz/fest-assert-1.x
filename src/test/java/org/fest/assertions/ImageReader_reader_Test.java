@@ -34,13 +34,11 @@ public class ImageReader_reader_Test {
 
   private static ImageReader imageReader;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     imageReader = new ImageReader();
   }
 
-  @Test
-  public void should_read_image_file() throws IOException {
+  @Test public void should_read_image_file() throws IOException {
     final File imageFile = file("red.png");
     BufferedImage image = imageReader.read(imageFile);
     assertNotNull(image);

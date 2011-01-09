@@ -29,8 +29,7 @@ public class LongArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Test
   private static long[] notNullValue;
   private static long[] unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = longArray(6L, 8L);
     unequalValue = longArray(6L);
   }
@@ -43,7 +42,7 @@ public class LongArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Test
     return notNullValue;
   }
 
-  @Override protected long[] unequalValue() {
+  @Override protected long[] notEqualValue() {
     return unequalValue;
   }
 }

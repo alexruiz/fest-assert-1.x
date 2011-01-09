@@ -14,10 +14,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.actualIsNull;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -29,67 +29,44 @@ import org.junit.Test;
  */
 public class StringAssert_matches_Test {
 
-  @Test
-  public void should_pass_if_actual_matches_given_pattern() {
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_pass_if_actual_matches_given_pattern() {
     new StringAssert("Luke 001").matches("^.*\\d+$");
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new StringAssert(null).matches("");
-      }
-    });
+  @Test public void should_fail_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull());
+    new StringAssert(null).matches("");
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new StringAssert(null).as("A Test")
-                              .matches("");
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull("A Test"));
+    new StringAssert(null).as("A Test")
+                          .matches("");
   }
 
-  @Test
-  public void should_fail_if_actual_does_not_match_given_pattern() {
-    expectAssertionError("<'Luke 001'> should match the regular expression:<'^\\d+.*$'>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("Luke 001").matches("^\\d+.*$");
-      }
-    });
+  @Test public void should_fail_if_actual_does_not_match_given_pattern() {
+    thrown.expectAssertionError("<'Luke 001'> should match the regular expression:<'^\\d+.*$'>");
+    new StringAssert("Luke 001").matches("^\\d+.*$");
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_does_not_match_given_pattern() {
-    expectAssertionError("[A Test] <'Luke 001'> should match the regular expression:<'^\\d+.*$'>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("Luke 001").as("A Test")
-                                    .matches("^\\d+.*$");
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_does_not_match_given_pattern() {
+    thrown.expectAssertionError("[A Test] <'Luke 001'> should match the regular expression:<'^\\d+.*$'>");
+    new StringAssert("Luke 001").as("A Test")
+                                .matches("^\\d+.*$");
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_does_not_match_given_pattern() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("Luke 001").overridingErrorMessage("My custom message")
-                                    .matches("^\\d+.*$");
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_does_not_match_given_pattern() {
+    thrown.expectAssertionError("My custom message");
+    new StringAssert("Luke 001").overridingErrorMessage("My custom message")
+                                .matches("^\\d+.*$");
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_does_not_match_given_pattern() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("Luke 001").as("A Test")
-                                    .overridingErrorMessage("My custom message")
-                                    .matches("^\\d+.*$");
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_does_not_match_given_pattern() {
+    thrown.expectAssertionError("My custom message");
+    new StringAssert("Luke 001").as("A Test")
+                                .overridingErrorMessage("My custom message")
+                                .matches("^\\d+.*$");
   }
 }

@@ -28,8 +28,7 @@ public class StringAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCas
   private static String notNullValue;
   private static String unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = "Luke";
     unequalValue = "Yoda";
   }
@@ -42,7 +41,7 @@ public class StringAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCas
     return notNullValue;
   }
 
-  @Override protected String unequalValue() {
+  @Override protected String notEqualValue() {
     return unequalValue;
   }
 }

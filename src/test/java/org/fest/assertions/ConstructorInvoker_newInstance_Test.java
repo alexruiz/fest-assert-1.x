@@ -28,13 +28,11 @@ public class ConstructorInvoker_newInstance_Test {
 
   private ConstructorInvoker invoker;
 
-  @Before
-  public void setUp() {
+  @Before public void setUp() {
     invoker = new ConstructorInvoker();
   }
 
-  @Test
-  public void should_create_Object_using_reflection() throws Exception {
+  @Test public void should_create_Object_using_reflection() throws Exception {
     Object o = invoker.newInstance("java.lang.Exception", new Class<?>[] { String.class }, new Object[] { "Hi" });
     assertTrue(o instanceof Exception);
     Exception e = (Exception) o;

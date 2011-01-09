@@ -27,8 +27,7 @@ public class ThrowableAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualT
   private static Throwable notNullValue;
   private static Throwable unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = new Exception();
     unequalValue = new NullPointerException();
   }
@@ -41,7 +40,7 @@ public class ThrowableAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualT
     return notNullValue;
   }
 
-  @Override protected Throwable unequalValue() {
+  @Override protected Throwable notEqualValue() {
     return unequalValue;
   }
 }

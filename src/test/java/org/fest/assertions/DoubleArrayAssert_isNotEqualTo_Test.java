@@ -24,13 +24,13 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class DoubleArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<DoubleArrayAssert, double[]> {
+public class DoubleArrayAssert_isNotEqualTo_Test extends
+    GenericAssert_isNotEqualTo_TestCase<DoubleArrayAssert, double[]> {
 
   private static double[] notNullValue;
   private static double[] unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = doubleArray(6d, 8d);
     unequalValue = doubleArray(8d);
   }
@@ -43,7 +43,7 @@ public class DoubleArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqua
     return notNullValue;
   }
 
-  @Override protected double[] unequalValue() {
+  @Override protected double[] notEqualValue() {
     return unequalValue;
   }
 }

@@ -15,12 +15,10 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.intArray;
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.actualIsNull;
 
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link IntArrayAssert#contains(int...)}</code>.
@@ -30,100 +28,65 @@ import org.junit.Test;
  */
 public class IntArrayAssert_contains_Test implements GroupAssert_contains_TestCase {
 
+  @Rule public ExpectedException thrown = none();
+
   private static int[] array;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     array = intArray(6, 8);
   }
 
-  @Test
-  public void should_pass_if_actual_contains_given_value() {
+  @Test public void should_pass_if_actual_contains_given_value() {
     new IntArrayAssert(array).contains(6);
   }
 
-  @Test
-  public void should_pass_if_actual_contains_given_values() {
+  @Test public void should_pass_if_actual_contains_given_values() {
     new IntArrayAssert(array).contains(6, 8);
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new IntArrayAssert(null).contains(6, 8);
-      }
-    });
+  @Test public void should_fail_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull());
+    new IntArrayAssert(null).contains(6, 8);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new IntArrayAssert(null).as("A Test")
-                                .contains(6, 8);
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull("A Test"));
+    new IntArrayAssert(null).as("A Test")
+                            .contains(6, 8);
   }
 
-  @Test
-  public void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("The given array should not be null").on(new CodeToTest() {
-      public void run() {
-        new IntArrayAssert(array).contains(null);
-      }
-    });
+  @Test public void should_throw_error_if_expected_is_null() {
+    thrown.expectNullPointerException("The given array should not be null");
+    new IntArrayAssert(array).contains(null);
   }
 
-  @Test
-  public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] The given array should not be null").on(new CodeToTest() {
-      public void run() {
-        new IntArrayAssert(array).as("A Test")
-                                 .contains(null);
-      }
-    });
+  @Test public void should_throw_error_and_display_description_if_expected_is_null() {
+    thrown.expectNullPointerException("[A Test] The given array should not be null");
+    new IntArrayAssert(array).as("A Test")
+                             .contains(null);
   }
 
-  @Test
-  public void should_fail_if_actual_does_not_contain_given_values() {
-    expectAssertionError("<[6, 8]> does not contain element(s):<[10]>").on(new CodeToTest() {
-      public void run() {
-        new IntArrayAssert(array).contains(10);
-      }
-    });
+  @Test public void should_fail_if_actual_does_not_contain_given_values() {
+    thrown.expectAssertionError("<[6, 8]> does not contain element(s):<[10]>");
+    new IntArrayAssert(array).contains(10);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_does_not_contain_given_values() {
-    expectAssertionError("[A Test] <[6, 8]> does not contain element(s):<[10]>").on(new CodeToTest() {
-      public void run() {
-        new IntArrayAssert(array).as("A Test")
-                                 .contains(10);
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_does_not_contain_given_values() {
+    thrown.expectAssertionError("[A Test] <[6, 8]> does not contain element(s):<[10]>");
+    new IntArrayAssert(array).as("A Test")
+                             .contains(10);
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_does_not_contain_given_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new IntArrayAssert(array).overridingErrorMessage("My custom message")
-                                 .contains(10);
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_does_not_contain_given_values() {
+    thrown.expectAssertionError("My custom message");
+    new IntArrayAssert(array).overridingErrorMessage("My custom message")
+                             .contains(10);
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_does_not_contain_given_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new IntArrayAssert(array).as("A Test")
-                                 .overridingErrorMessage("My custom message")
-                                 .contains(10);
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_does_not_contain_given_values() {
+    thrown.expectAssertionError("My custom message");
+    new IntArrayAssert(array).as("A Test")
+                             .overridingErrorMessage("My custom message")
+                             .contains(10);
   }
-
-
 }

@@ -14,10 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FailureMessages.unexpectedEqual;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.equal;
 
-import org.fest.test.CodeToTest;
 import org.junit.*;
 
 /**
@@ -29,62 +28,45 @@ import org.junit.*;
  */
 public class CharAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCase {
 
+  @Rule public ExpectedException thrown = none();
+
   private static Character actual;
 
   private CharAssert assertObject;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     actual = 'a';
   }
 
-  @Before
-  public void setUp() {
+  @Before public void setUp() {
     assertObject = new CharAssert(actual);
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_not_equal() {
+  @Test public void should_pass_if_actual_and_expected_are_not_equal() {
     assertObject.isNotEqualTo('b');
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_equal() {
-    expectAssertionError(unexpectedEqual(actual, actual)).on(new CodeToTest() {
-      public void run() {
-        assertObject.isNotEqualTo(actual);
-      }
-    });
+  @Test public void should_fail_if_actual_and_expected_are_equal() {
+    thrown.expectAssertionError(equal(actual, actual));
+    assertObject.isNotEqualTo(actual);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError(unexpectedEqual("A Test", actual, actual)).on(new CodeToTest() {
-      public void run() {
-        assertObject.as("A Test")
-                    .isNotEqualTo(actual);
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_and_expected_are_equal() {
+    thrown.expectAssertionError(equal("A Test", actual, actual));
+    assertObject.as("A Test")
+                .isNotEqualTo(actual);
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertObject.overridingErrorMessage("My custom message")
-                    .isNotEqualTo(actual);
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_and_expected_are_equal() {
+    thrown.expectAssertionError("My custom message");
+    assertObject.overridingErrorMessage("My custom message")
+                .isNotEqualTo(actual);
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertObject.as("A Test")
-                    .overridingErrorMessage("My custom message")
-                    .isNotEqualTo(actual);
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_and_expected_are_equal() {
+    thrown.expectAssertionError("My custom message");
+    assertObject.as("A Test")
+                .overridingErrorMessage("My custom message")
+                .isNotEqualTo(actual);
   }
 }

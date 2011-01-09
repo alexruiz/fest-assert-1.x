@@ -31,8 +31,7 @@ public class ListAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<
   private static List<?> notNullValue;
   private static List<?> unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = list("Luke", "Leia");
     unequalValue = list("Anakin");
   }
@@ -45,7 +44,7 @@ public class ListAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<
     return notNullValue;
   }
 
-  @Override protected List<?> unequalValue() {
+  @Override protected List<?> notEqualValue() {
     return unequalValue;
   }
 }

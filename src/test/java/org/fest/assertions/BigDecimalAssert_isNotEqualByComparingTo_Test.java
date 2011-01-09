@@ -15,12 +15,12 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.BigDecimals.*;
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.actualIsNull;
 
 import java.math.BigDecimal;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -33,46 +33,31 @@ import org.junit.Test;
  */
 public class BigDecimalAssert_isNotEqualByComparingTo_Test {
 
-  @Test
-  public void should_pass_if_values_are_not_equal() {
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_pass_if_values_are_not_equal() {
     new BigDecimalAssert(eight()).isNotEqualByComparingTo(seven());
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(null).isNotEqualByComparingTo(eight());
-      }
-    });
+  @Test public void should_fail_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull());
+    new BigDecimalAssert(null).isNotEqualByComparingTo(eight());
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(null).as("A Test")
-                                  .isNotEqualByComparingTo(eight());
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull("A Test"));
+    new BigDecimalAssert(null).as("A Test")
+                              .isNotEqualByComparingTo(eight());
   }
 
-  @Test
-  public void should_fail_if_values_are_not_equal() {
-    expectAssertionError("actual value:<8.0> should not be equal to:<8.0>").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(eight()).isNotEqualByComparingTo(eight());
-      }
-    });
+  @Test public void should_fail_if_values_are_not_equal() {
+    thrown.expectAssertionError("actual value:<8.0> should not be equal to:<8.0>");
+    new BigDecimalAssert(eight()).isNotEqualByComparingTo(eight());
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_values_are_not_equal() {
-    expectAssertionError("[A Test] actual value:<8.0> should not be equal to:<8.0>").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(eight()).as("A Test")
-                                     .isNotEqualByComparingTo(eight());
-      }
-    });
+  @Test public void should_fail_and_display_description_if_values_are_not_equal() {
+    thrown.expectAssertionError("[A Test] actual value:<8.0> should not be equal to:<8.0>");
+    new BigDecimalAssert(eight()).as("A Test")
+                                 .isNotEqualByComparingTo(eight());
   }
 }

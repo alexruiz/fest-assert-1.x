@@ -14,9 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -28,88 +28,57 @@ import org.junit.Test;
  */
 public class CharAssert_isGreaterThan_Test implements Assert_isGreaterThan_TestCase {
 
-  @Test
-  public void should_pass_if_actual_is_greater_than_expected() {
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_pass_if_actual_is_greater_than_expected() {
     new CharAssert('a').isGreaterThan('A');
   }
 
-  @Test
-  public void should_fail_if_actual_is_equal_to_expected() {
-    expectAssertionError("actual value:<a> should be greater than:<a>").on(new CodeToTest() {
-      public void run() {
-        new CharAssert('a').isGreaterThan('a');
-      }
-    });
+  @Test public void should_fail_if_actual_is_equal_to_expected() {
+    thrown.expectAssertionError("actual value:<a> should be greater than:<a>");
+    new CharAssert('a').isGreaterThan('a');
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_equal_to_expected() {
-    expectAssertionError("[A Test] actual value:<a> should be greater than:<a>").on(new CodeToTest() {
-      public void run() {
-        new CharAssert('a').as("A Test")
-                           .isGreaterThan('a');
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_equal_to_expected() {
+    thrown.expectAssertionError("[A Test] actual value:<a> should be greater than:<a>");
+    new CharAssert('a').as("A Test")
+                       .isGreaterThan('a');
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_equal_to_expected() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CharAssert('a').overridingErrorMessage("My custom message")
-                           .isGreaterThan('a');
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_is_equal_to_expected() {
+    thrown.expectAssertionError("My custom message");
+    new CharAssert('a').overridingErrorMessage("My custom message")
+                       .isGreaterThan('a');
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_equal_to_expected() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CharAssert('a').as("A Test")
-                           .overridingErrorMessage("My custom message")
-                           .isGreaterThan('a');
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_is_equal_to_expected() {
+    thrown.expectAssertionError("My custom message");
+    new CharAssert('a').as("A Test")
+                       .overridingErrorMessage("My custom message")
+                       .isGreaterThan('a');
   }
 
-  @Test
-  public void should_fail_if_actual_is_less_than_expected() {
-    expectAssertionError("actual value:<A> should be greater than:<a>").on(new CodeToTest() {
-      public void run() {
-        new CharAssert('A').isGreaterThan('a');
-      }
-    });
+  @Test public void should_fail_if_actual_is_less_than_expected() {
+    thrown.expectAssertionError("actual value:<A> should be greater than:<a>");
+    new CharAssert('A').isGreaterThan('a');
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_less_than_expected() {
-    expectAssertionError("[A Test] actual value:<A> should be greater than:<a>").on(new CodeToTest() {
-      public void run() {
-        new CharAssert('A').as("A Test")
-                           .isGreaterThan('a');
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_less_than_expected() {
+    thrown.expectAssertionError("[A Test] actual value:<A> should be greater than:<a>");
+    new CharAssert('A').as("A Test")
+                       .isGreaterThan('a');
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_less_than_expected() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CharAssert('A').overridingErrorMessage("My custom message")
-                           .isGreaterThan('a');
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_is_less_than_expected() {
+    thrown.expectAssertionError("My custom message");
+    new CharAssert('A').overridingErrorMessage("My custom message")
+                       .isGreaterThan('a');
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_less_than_expected() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CharAssert('A').as("A Test")
-                           .overridingErrorMessage("My custom message")
-                           .isGreaterThan('a');
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_is_less_than_expected() {
+    thrown.expectAssertionError("My custom message");
+    new CharAssert('A').as("A Test")
+                       .overridingErrorMessage("My custom message")
+                       .isGreaterThan('a');
   }
 }

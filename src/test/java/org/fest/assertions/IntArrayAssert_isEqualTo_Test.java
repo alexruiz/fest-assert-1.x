@@ -29,8 +29,7 @@ public class IntArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestC
   private static int[] notNullValue;
   private static int[] unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = intArray(6, 8);
     unequalValue = intArray(6);
   }
@@ -43,7 +42,7 @@ public class IntArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestC
     return notNullValue;
   }
 
-  @Override protected int[] unequalValue() {
+  @Override protected int[] notEqualValue() {
     return unequalValue;
   }
 }

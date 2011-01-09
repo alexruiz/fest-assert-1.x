@@ -15,15 +15,12 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfConditionIsNull;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.conditionIsNull;
 import static org.fest.assertions.Formatter.format;
 import static org.fest.assertions.NotNull.notNull;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-import static org.fest.util.Strings.concat;
 
-import org.fest.test.CodeToTest;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Base class for testing <code>{@link GenericAssert#doesNotSatisfy(Condition)}</code>.
@@ -38,100 +35,68 @@ import org.junit.Test;
 public abstract class GenericAssert_doesNotSatisfy_TestCase<S extends GenericAssert<S, A>, A> extends
     GenericAssert_TestCase<S, A> implements GenericAssert_doesNotSatisfy_orAlias_TestCase {
 
+  @Rule public ExpectedException thrown = none();
+
   private GenericAssert<S, A> assertions;
   private A actual;
   private Condition<A> notNull;
 
-  @Before
-  public final void setUp() {
+  @Before public final void setUp() {
     actual = notNullValue();
     assertions = assertionsFor(actual);
     notNull = notNull();
   }
 
-  @Test
-  public final void should_pass_if_condition_is_not_satisfied() {
+  @Test public final void should_pass_if_condition_is_not_satisfied() {
     assertionsFor(null).doesNotSatisfy(notNull);
   }
 
-  @Test
-  public final void should_throw_error_if_condition_is_null() {
-    expectErrorIfConditionIsNull().on(new CodeToTest() {
-      public void run() {
-        assertions.doesNotSatisfy(null);
-      }
-    });
+  @Test public final void should_throw_error_if_condition_is_null() {
+    thrown.expectNullPointerException(conditionIsNull());
+    assertions.doesNotSatisfy(null);
   }
 
-  @Test
-  public final void should_fail_if_condition_is_satisfied() {
-    String msg = concat("actual value:<", format(actual), "> should not satisfy condition:<NotNull>");
-    expectAssertionError(msg).on(new CodeToTest() {
-      public void run() {
-        assertions.doesNotSatisfy(notNull);
-      }
-    });
+  @Test public final void should_fail_if_condition_is_satisfied() {
+    String msg = String.format("actual value:<%s> should not satisfy condition:<NotNull>", format(actual));
+    thrown.expectAssertionError(msg);
+    assertions.doesNotSatisfy(notNull);
   }
 
-  @Test
-  public final void should_fail_and_display_description_of_assertion_if_condition_is_satisfied() {
-    String msg = concat("[A Test] actual value:<", format(actual), "> should not satisfy condition:<NotNull>");
-    expectAssertionError(msg).on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test")
-                  .doesNotSatisfy(notNull);
-      }
-    });
+  @Test public final void should_fail_and_display_description_if_condition_is_satisfied() {
+    String msg = String.format("[A Test] actual value:<%s> should not satisfy condition:<NotNull>", format(actual));
+    thrown.expectAssertionError(msg);
+    assertions.as("A Test")
+              .doesNotSatisfy(notNull);
   }
 
-  @Test
-  public final void should_fail_and_display_description_of_condition_if_condition_is_satisfied() {
-    String msg = concat("actual value:<", format(actual), "> should not satisfy condition:<Not Null>");
-    expectAssertionError(msg).on(new CodeToTest() {
-      public void run() {
-        assertions.doesNotSatisfy(notNull.as("Not Null"));
-      }
-    });
+  @Test public final void should_fail_and_display_description_of_condition_if_condition_is_satisfied() {
+    String msg = String.format("actual value:<%s> should not satisfy condition:<Not Null>", format(actual));
+    thrown.expectAssertionError(msg);
+    assertions.doesNotSatisfy(notNull.as("Not Null"));
   }
 
-  @Test
-  public final void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_satisfied() {
-    String msg = concat("[A Test] actual value:<", format(actual), "> should not satisfy condition:<Not Null>");
-    expectAssertionError(msg).on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test")
-                  .doesNotSatisfy(notNull.as("Not Null"));
-      }
-    });
+  @Test public final void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_satisfied() {
+    String msg = String.format("[A Test] actual value:<%s> should not satisfy condition:<Not Null>", format(actual));
+    thrown.expectAssertionError(msg);
+    assertions.as("A Test")
+              .doesNotSatisfy(notNull.as("Not Null"));
   }
 
-  @Test
-  public final void should_fail_with_custom_message_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.overridingErrorMessage("My custom message")
-                  .doesNotSatisfy(notNull);
-      }
-    });
+  @Test public final void should_fail_with_custom_message_if_condition_is_satisfied() {
+    thrown.expectAssertionError("My custom message");
+    assertions.overridingErrorMessage("My custom message")
+              .doesNotSatisfy(notNull);
   }
 
-  @Test
-  public final void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test").overridingErrorMessage("My custom message")
-                  .doesNotSatisfy(notNull);
-      }
-    });
+  @Test public final void should_fail_with_custom_message_ignoring_description_if_condition_is_satisfied() {
+    thrown.expectAssertionError("My custom message");
+    assertions.as("A Test").overridingErrorMessage("My custom message")
+              .doesNotSatisfy(notNull);
   }
 
-  @Test
-  public final void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.overridingErrorMessage("My custom message")
-                  .doesNotSatisfy(notNull.as("Not Null"));
-      }
-    });
+  @Test public final void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_satisfied() {
+    thrown.expectAssertionError("My custom message");
+    assertions.overridingErrorMessage("My custom message")
+              .doesNotSatisfy(notNull.as("Not Null"));
   }
 }

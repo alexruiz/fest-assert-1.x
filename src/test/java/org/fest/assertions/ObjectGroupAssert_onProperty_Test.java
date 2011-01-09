@@ -15,17 +15,15 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.actualIsNull;
 import static org.fest.assertions.Title.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.*;
 
-import org.fest.test.CodeToTest;
 import org.fest.util.IntrospectionError;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Base class for testing implementations of <code>{@link ObjectGroupAssert#onProperty(String)}</code>.
@@ -39,10 +37,11 @@ import org.junit.Test;
  */
 public abstract class ObjectGroupAssert_onProperty_Test<S extends ObjectGroupAssert<S, A>, A> {
 
+  @Rule public ExpectedException thrown = none();
+
   private List<Person> persons;
 
-  @Before
-  public void setUp() {
+  @Before public void setUp() {
     persons = new ArrayList<Person>(populateData());
   }
 
@@ -79,139 +78,101 @@ public abstract class ObjectGroupAssert_onProperty_Test<S extends ObjectGroupAss
     return persons;
   }
 
-  @Test
-  public final void should_pass_on_non_primitive_type_property() {
+  @Test public final void should_pass_on_non_primitive_type_property() {
     assertions(persons).onProperty("id").contains(1L, 2L, 4L);
     assertions(persons).onProperty("homeTown").contains("Paris", "Roma", "London", "Madrid");
   }
 
-  @Test
-  public final void should_pass_on_enum_type_property() {
+  @Test public final void should_pass_on_enum_type_property() {
     assertions(persons).onProperty("title").contains(Mr, Miss);
   }
 
-  @Test
-  public final void should_pass_on_primitive_type_int_property() {
+  @Test public final void should_pass_on_primitive_type_int_property() {
     assertions(persons).onProperty("age").containsOnly(25, 16, 44, 32);
   }
 
-  @Test
-  public final void should_pass_on_primitive_type_long_property() {
+  @Test public final void should_pass_on_primitive_type_long_property() {
     assertions(persons).onProperty("socialSecurityNumber").containsOnly(6L, 67L, 678L, 6789L);
   }
 
-  @Test
-  public final void should_pass_on_primitive_type_short_property() {
+  @Test public final void should_pass_on_primitive_type_short_property() {
     assertions(persons).onProperty("yearOfBirth").containsOnly((short)1974, (short)1975, (short)1976, (short)1977);
   }
 
-  @Test
-  public final void should_pass_on_primitive_type_float_property() {
+  @Test public final void should_pass_on_primitive_type_float_property() {
     assertions(persons).onProperty("height").containsOnly(1.90f, 1.80f, 1.70f, 1.60f);
   }
 
-  @Test
-  public final void should_pass_on_primitive_type_double_property() {
+  @Test public final void should_pass_on_primitive_type_double_property() {
     assertions(persons).onProperty("weight").containsOnly(80.1, 90.2, 100.3, 110.4);
   }
 
-  @Test
-  public final void should_pass_on_primitive_type_boolean_property() {
+  @Test public final void should_pass_on_primitive_type_boolean_property() {
     assertions(persons).onProperty("male").containsOnly(true, false, false, true);
   }
 
-  @Test
-  public final void should_pass_on_primitive_type_byte_property() {
+  @Test public final void should_pass_on_primitive_type_byte_property() {
     assertions(persons).onProperty("favoriteByte").containsOnly((byte)1, (byte)2, (byte)4, (byte)8);
   }
 
-  @Test
-  public final void should_pass_on_primitive_type_char_property() {
+  @Test public final void should_pass_on_primitive_type_char_property() {
     ObjectGroupAssert<S, A> assertions = assertions(persons);
     assertions.onProperty("favoriteAlphabetLetter").contains('P', 'K');
     assertions.onProperty("favoriteAlphabetLetter").containsOnly('O', 'J', 'P', 'K');
   }
 
-  @Test
-  public final void should_pass_on_non_primitive_type_nested_property() {
+  @Test public final void should_pass_on_non_primitive_type_nested_property() {
     ObjectGroupAssert<S, A> assertions = assertions(persons);
     assertions.onProperty("name.firstName").contains("Pier", "Paula", "Jack");
     assertions.onProperty("father.name.firstName")
               .containsOnly("PierFather", "PaulaFather", "JackFather", "OtherJackFather");
   }
 
-  @Test
-  public final void should_pass_on_enum_type_nested_property() {
+  @Test public final void should_pass_on_enum_type_nested_property() {
     assertions(persons).onProperty("father.title").containsOnly(Mr, Mr, Mr, Mr);
   }
 
-  @Test
-  public final void should_pass_on_primitive_type_nested_property() {
+  @Test public final void should_pass_on_primitive_type_nested_property() {
     assertions(persons).onProperty("father.age").containsOnly(55, 46, 74, 62);
   }
 
-  @Test
-  public final void should_fail_on_non_primitive_type_property() {
+  @Test public final void should_fail_on_non_primitive_type_property() {
     String message = "<['Paris', 'Madrid', 'London', 'Roma']> does not contain element(s):<['Rome', 'Londres']>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() throws Throwable {
-        assertions(persons).onProperty("homeTown").contains("Paris", "Rome", "Londres", "Madrid");
-      }
-    });
+    thrown.expectAssertionError(message);
+    assertions(persons).onProperty("homeTown").contains("Paris", "Rome", "Londres", "Madrid");
   }
 
-  @Test
-  public final void should_fail_on_non_primitive_type_nested_property() {
+  @Test public final void should_fail_on_non_primitive_type_nested_property() {
     String message = "<['Pier', 'Paula', 'Jack', 'Jack']> does not contain element(s):<['TOTO']>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() throws Throwable {
-        assertions(persons).onProperty("name.firstName").contains("Jack", "Pier", "TOTO", "Paula");
-      }
-    });
+    thrown.expectAssertionError(message);
+    assertions(persons).onProperty("name.firstName").contains("Jack", "Pier", "TOTO", "Paula");
   }
 
-  @Test
-  public final void should_fail_on_enum_type_property() {
+  @Test public final void should_fail_on_enum_type_property() {
     String message = "<[Mr, Miss, Mr, Mr]> does not contain element(s):<[Ms]>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() throws Throwable {
-        assertions(persons).onProperty("title").contains(Mr, Ms);
-      }
-    });
+    thrown.expectAssertionError(message);
+    assertions(persons).onProperty("title").contains(Mr, Ms);
   }
 
-  @Test
-  public final void should_fail_on_enum_type_nested_property() {
+  @Test public final void should_fail_on_enum_type_nested_property() {
     String message = "<[Mr, Mr, Mr, Mr]> does not contain element(s):<[Miss]>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() throws Throwable {
-        assertions(persons).onProperty("father.title").contains(Miss);
-      }
-    });
+    thrown.expectAssertionError(message);
+    assertions(persons).onProperty("father.title").contains(Miss);
   }
 
-  @Test
-  public final void should_fail_on_primitive_type_property() {
+  @Test public final void should_fail_on_primitive_type_property() {
     String message = "<[25, 32, 16, 44]> does not contain element(s):<[777]>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() throws Throwable {
-        assertions(persons).onProperty("age").contains(777);
-      }
-    });
+    thrown.expectAssertionError(message);
+    assertions(persons).onProperty("age").contains(777);
   }
 
-  @Test
-  public final void should_fail_on_primitive_type_nested_property() {
+  @Test public final void should_fail_on_primitive_type_nested_property() {
     String message = "<[55, 62, 46, 74]> does not contain element(s):<[888]>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() throws Throwable {
-        assertions(persons).onProperty("father.age").contains(888);
-      }
-    });
+    thrown.expectAssertionError(message);
+    assertions(persons).onProperty("father.age").contains(888);
   }
 
-  @Test
-  public final void should_fail_because_of_unknown_property() {
+  @Test public final void should_fail_because_of_unknown_property() {
     try {
       // expected failure: Person.name does not have a 'nickname' property
       assertions(persons).onProperty("name.nickname").containsOnly("PaulaFather", "JackFather", "OtherJackFather");
@@ -220,49 +181,31 @@ public abstract class ObjectGroupAssert_onProperty_Test<S extends ObjectGroupAss
     }
   }
 
-  @Test
-  public final void should_fail_because_of_non_public_getter() {
-    try {
-      assertions(persons).onProperty("country").containsOnly("Spain");
-      fail("IntrospectionError expected");
-    } catch (IntrospectionError e) {
-      assertEquals("No public getter for property 'country' in org.fest.assertions.Person", e.getMessage());
-    }
-    try {
-      assertions(persons).onProperty("adult").containsOnly(true);
-      fail("IntrospectionError expected");
-    } catch (IntrospectionError e) {
-      assertEquals("No public getter for property 'adult' in org.fest.assertions.Person", e.getMessage());
-    }
+  @Test public final void should_fail_because_of_non_public_getter() {
+    thrown.expectIntrospectionError("No public getter for property 'country' in org.fest.assertions.Person");
+    assertions(persons).onProperty("country")
+                       .containsOnly("Spain");
   }
 
-  @Test
-  public final void should_fail_because_of_no_getter() {
-    try {
-      // expected failure: Person does not have a public getter for 'country'
-      assertions(persons).onProperty("favoriteSport").containsOnly("soccer");
-      fail("IntrospectionError expected");
-    } catch (IntrospectionError e) {
-      assertEquals("No getter for property 'favoriteSport' in org.fest.assertions.Person", e.getMessage());
-    }
+  @Test public final void should_fail_because_of_no_getter() {
+    thrown.expectIntrospectionError("No getter for property 'favoriteSport' in org.fest.assertions.Person");
+    assertions(persons).onProperty("favoriteSport")
+                       .containsOnly("soccer");
   }
 
-  @Test
-  public final void should_pass_even_if_actual_contains_null_elements() {
+  @Test public final void should_pass_even_if_actual_contains_null_elements() {
     persons.add(null);
     assertions(persons).onProperty("father.name.firstName")
                        .containsOnly("PierFather", "PaulaFather", "JackFather", "OtherJackFather");
   }
 
-  @Test
-  public final void should_pass_with_null_nested_property_in_actual_elements() {
+  @Test public final void should_pass_with_null_nested_property_in_actual_elements() {
     persons.iterator().next().setFather(null);
     assertions(persons).onProperty("father.name.firstName")
                        .containsOnly("PaulaFather", "JackFather", "OtherJackFather");
   }
 
-  @Test
-  public final void should_pass_with_null_property_in_actual_elements() {
+  @Test public final void should_pass_with_null_property_in_actual_elements() {
     nullifyIdsEqualTo(1);
     assertions(persons).onProperty("id").contains(2L, 3L, 4L);
     assertions(persons).onProperty("id").containsOnly(2L, 3L, 4L, null);
@@ -278,22 +221,16 @@ public abstract class ObjectGroupAssert_onProperty_Test<S extends ObjectGroupAss
     for (Person person : persons) person.setId(null);
   }
 
-  @Test
-  public final void should_pass_if_actual_is_empty() {
+  @Test public final void should_pass_if_actual_is_empty() {
     assertions(emptyList()).onProperty("id").isEmpty();
   }
 
-  @Test
-  public final void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        assertions(null).onProperty("homeTown").contains("Paris", "Roma", "London", "Madrid");
-      }
-    });
+  @Test public final void should_fail_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull());
+    assertions(null).onProperty("homeTown").contains("Paris", "Roma", "London", "Madrid");
   }
 
-  @Test
-  public void should_pass_on_property_defined_at_object_class_level() {
+  @Test public void should_pass_on_property_defined_at_object_class_level() {
     assertions(persons).onProperty("class").containsOnly(Person.class);
   }
 

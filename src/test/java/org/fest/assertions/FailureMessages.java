@@ -21,17 +21,35 @@ import static org.fest.util.Strings.*;
 import org.junit.ComparisonFailure;
 
 /**
- * Understands messages related to comparison failures.
- *
  * @author Alex Ruiz
  */
-final class FailureMessages {   
+final class FailureMessages {
 
-  static String unexpectedNotEqual(Object actual, Object expected) {
-    return unexpectedNotEqual(null, actual, expected);
+  static String actualIsNull() {
+    return "expecting actual value not to be null";
   }
 
-  static String unexpectedNotEqual(String description, Object actual, Object expected) {
+  static String actualIsNull(String description) {
+    return String.format("[%s] expecting actual value not to be null", description);
+  }
+
+  static String conditionIsNull() {
+    return "Condition to check should not be null";
+  }
+
+  static String typeIsNull() {
+    return "expected type should not be null";
+  }
+
+  static String typeIsNull(String description) {
+    return String.format("[%s] expected type should not be null", description);
+  }
+
+  static String notEqual(Object actual, Object expected) {
+    return notEqual(null, actual, expected);
+  }
+
+  static String notEqual(String description, Object actual, Object expected) {
     String d = inBrackets(description);
     String a = format(actual);
     String e = format(expected);
@@ -41,34 +59,34 @@ final class FailureMessages {
     return concat(d, "expected:<", e, "> but was:<", a, ">");
   }
 
-  static String unexpectedEqual(Object actual, Object other) {
-    return unexpectedEqual(null, actual, other);
+  static String equal(Object actual, Object other) {
+    return equal(null, actual, other);
   }
 
-  static String unexpectedEqual(String description, Object actual, Object other) {
+  static String equal(String description, Object actual, Object other) {
     String d = addSpaceIfNotEmpty(inBrackets(description));
     return concat(d, "actual value:<", format(actual), "> should not be equal to:<", format(other), ">");
   }
 
-  static String unexpectedEqualOrLess(Object actual, Object other) {
-    return unexpectedEqualOrLess(null, actual, other);
+  static String equalOrLess(Object actual, Object other) {
+    return equalOrLess(null, actual, other);
   }
 
-  static String unexpectedEqualOrLess(String description, Object actual, Object other) {
+  static String equalOrLess(String description, Object actual, Object other) {
     String d = addSpaceIfNotEmpty(inBrackets(description));
     return concat(d, "actual value:<", format(actual), "> should be greater than:<", format(other), ">");
   }
 
-  static String unexpectedNotIn(String description, Object actual, Object other) {
+  static String notIn(String description, Object actual, Object other) {
     String d = addSpaceIfNotEmpty(inBrackets(description));
     return concat(d, "actual value:<", format(actual), "> should be in:<", format(other), ">");
   }
 
-  static String unexpectedIn(String description, Object actual, Object other) {
+  static String in(String description, Object actual, Object other) {
     String d = addSpaceIfNotEmpty(inBrackets(description));
     return concat(d, "actual value:<", format(actual), "> should not be in:<", format(other), ">");
   }
-  
+
   private static String inBrackets(String s) {
     if (isEmpty(s)) return "";
     return concat("[", s, "]");

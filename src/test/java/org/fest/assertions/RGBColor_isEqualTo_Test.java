@@ -30,50 +30,41 @@ public class RGBColor_isEqualTo_Test {
   private static int b;
   private RGBColor color;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     r = 6;
     g = 8;
     b = 10;
   }
 
-  @Before
-  public final void setUp() {
+  @Before public final void setUp() {
     color = new RGBColor(r, g, b);
   }
 
-  @Test
-  public void should_return_true_if_colors_are_exactly_equal() {
+  @Test public void should_return_true_if_colors_are_exactly_equal() {
     assertTrue(color.isEqualTo(new RGBColor(r, g, b), 0));
   }
 
-  @Test
-  public void should_return_true_if_reds_are_similar_using_threshold() {
+  @Test public void should_return_true_if_reds_are_similar_using_threshold() {
     assertTrue(color.isEqualTo(new RGBColor(r++, g, b), 1));
   }
 
-  @Test
-  public void should_return_true_if_greens_are_similar_using_threshold() {
+  @Test public void should_return_true_if_greens_are_similar_using_threshold() {
     assertTrue(color.isEqualTo(new RGBColor(r, g++, b), 1));
   }
 
-  @Test
-  public void should_return_true_if_blues_are_similar_using_threshold() {
+  @Test public void should_return_true_if_blues_are_similar_using_threshold() {
     assertTrue(color.isEqualTo(new RGBColor(r, g, b++), 1));
   }
 
-  @Test
-  public void should_return_false_if_reds_are_not_equal() {
+  @Test public void should_return_false_if_reds_are_not_equal() {
     assertFalse(color.isEqualTo(new RGBColor(0, g, b), 0));
   }
 
-  @Test
-  public void should_return_false_if_greens_are_not_equal() {
+  @Test public void should_return_false_if_greens_are_not_equal() {
     assertFalse(color.isEqualTo(new RGBColor(r, 0, b), 0));
   }
 
-  @Test
-  public void should_return_false_if_blues_are_not_equal() {
+  @Test public void should_return_false_if_blues_are_not_equal() {
     assertFalse(color.isEqualTo(new RGBColor(r, g, 0), 0));
   }
 }

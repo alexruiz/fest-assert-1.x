@@ -29,8 +29,7 @@ public class ObjectArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqua
   private static Object[] notNullValue;
   private static Object[] unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = objectArray(6, 8);
     unequalValue = objectArray(6);
   }
@@ -43,7 +42,7 @@ public class ObjectArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqua
     return notNullValue;
   }
 
-  @Override protected Object[] unequalValue() {
+  @Override protected Object[] notEqualValue() {
     return unequalValue;
   }
 }

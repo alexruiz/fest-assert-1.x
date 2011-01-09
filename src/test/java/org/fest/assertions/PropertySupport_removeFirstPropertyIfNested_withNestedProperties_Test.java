@@ -51,8 +51,7 @@ public class PropertySupport_removeFirstPropertyIfNested_withNestedProperties_Te
     this.withoutFirstProperty = withoutFirstProperty;
   }
 
-  @Test
-  public void should_remove_first_property() {
+  @Test public void should_remove_first_property() {
     assertEquals(withoutFirstProperty, PropertySupport.removeFirstPropertyIfNested(propertyName));
   }
 }

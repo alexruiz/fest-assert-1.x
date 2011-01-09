@@ -14,10 +14,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.*;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -28,88 +28,57 @@ import org.junit.Test;
  */
 public class ObjectAssert_isInstanceOf_Test implements Assert_isInstanceOf_TestCase {
 
-  @Test
-  public void should_pass_if_actual_is_instance_of_expected() {
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_pass_if_actual_is_instance_of_expected() {
     new ObjectAssert(6).isInstanceOf(Integer.class);
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(null).isInstanceOf(String.class);
-      }
-    });
+  @Test public void should_fail_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull());
+    new ObjectAssert(null).isInstanceOf(String.class);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(null).as("A Test")
-                              .isInstanceOf(String.class);
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull("A Test"));
+    new ObjectAssert(null).as("A Test")
+                          .isInstanceOf(String.class);
   }
 
-  @Test
-  public void should_throw_error_if_expected_is_null() {
-    expectErrorIfTypeIsNull(new CodeToTest() {
-      public void run() {
-        new ObjectAssert("Yoda").isInstanceOf(null);
-      }
-    });
+  @Test public void should_throw_error_if_expected_is_null() {
+    thrown.expectNullPointerException(typeIsNull());
+    new ObjectAssert("Yoda").isInstanceOf(null);
   }
 
-  @Test
-  public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectErrorWithDescriptionIfTypeIsNull(new CodeToTest() {
-      public void run() {
-        new ObjectAssert("Yoda").as("A Test")
-                                .isInstanceOf(null);
-      }
-    });
+  @Test public void should_throw_error_and_display_description_if_expected_is_null() {
+    thrown.expectNullPointerException(typeIsNull("A Test"));
+    new ObjectAssert("Yoda").as("A Test")
+                            .isInstanceOf(null);
   }
 
-  @Test
-  public void should_fail_if_actual_is_not_instance_of_expected() {
-    final String message = "expected instance of:<java.lang.String> but was instance of:<java.lang.Integer>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(2).isInstanceOf(String.class);
-      }
-    });
+  @Test public void should_fail_if_actual_is_not_instance_of_expected() {
+    String message = "expected instance of:<java.lang.String> but was instance of:<java.lang.Integer>";
+    thrown.expectAssertionError(message);
+    new ObjectAssert(2).isInstanceOf(String.class);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_not_instance_of_expected() {
-    final String message = "[A Test] expected instance of:<java.lang.String> but was instance of:<java.lang.Integer>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(2).as("A Test")
-                           .isInstanceOf(String.class);
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_not_instance_of_expected() {
+    String message = "[A Test] expected instance of:<java.lang.String> but was instance of:<java.lang.Integer>";
+    thrown.expectAssertionError(message);
+    new ObjectAssert(2).as("A Test")
+                       .isInstanceOf(String.class);
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_not_instance_of_expected() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(2).overridingErrorMessage("My custom message")
-                           .isInstanceOf(String.class);
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_is_not_instance_of_expected() {
+    thrown.expectAssertionError("My custom message");
+    new ObjectAssert(2).overridingErrorMessage("My custom message")
+                       .isInstanceOf(String.class);
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_instance_of_expected() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(2).as("A Test")
-                           .overridingErrorMessage("My custom message")
-                           .isInstanceOf(String.class);
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_is_not_instance_of_expected() {
+    thrown.expectAssertionError("My custom message");
+    new ObjectAssert(2).as("A Test")
+                       .overridingErrorMessage("My custom message")
+                       .isInstanceOf(String.class);
   }
 }

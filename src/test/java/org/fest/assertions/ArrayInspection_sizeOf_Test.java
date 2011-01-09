@@ -26,8 +26,7 @@ import org.junit.Test;
  */
 public class ArrayInspection_sizeOf_Test {
 
-  @Test
-  public void should_throw_error_if_array_is_null() {
+  @Test public void should_throw_error_if_array_is_null() {
     try {
       ArrayInspection.sizeOf(null);
       fail("Expecting NullPointerException");
@@ -36,8 +35,7 @@ public class ArrayInspection_sizeOf_Test {
     }
   }
 
-  @Test
-  public void should_throw_error_if_object_is_not_array() {
+  @Test public void should_throw_error_if_object_is_not_array() {
     try {
       ArrayInspection.sizeOf("Hello");
       fail("Expecting IllegalArgumentException");
@@ -46,8 +44,7 @@ public class ArrayInspection_sizeOf_Test {
     }
   }
 
-  @Test
-  public void should_return_size_of_array() {
+  @Test public void should_return_size_of_array() {
     boolean[] array = { true, false };
     assertEquals(2, ArrayInspection.sizeOf(array));
   }

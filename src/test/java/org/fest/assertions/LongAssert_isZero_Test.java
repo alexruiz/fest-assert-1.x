@@ -28,8 +28,7 @@ public class LongAssert_isZero_Test extends NumberAssert_isZero_TestCase<Long> {
   private static Long notZero;
   private static Long zero;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notZero = 6L;
     zero = 0L;
   }

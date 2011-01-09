@@ -39,8 +39,7 @@ public abstract class GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<
   private Class<?> primitiveType;
   private Class<A> primitiveWrapperType;
 
-  @Before
-  public final void setUp() {
+  @Before public final void setUp() {
     assertionType = assertionType();
     primitiveType = primitiveType();
     assertTrue("is primitive type", primitiveType.isPrimitive());
@@ -53,13 +52,11 @@ public abstract class GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<
 
   protected abstract Class<A> primitiveWrapperType();
 
-  @Test
-  public final void should_provide_constructor_that_takes_primitive() {
+  @Test public final void should_provide_constructor_that_takes_primitive() {
     verifyAssertionTypeHasConstructorWithParameterType(primitiveType);
   }
 
-  @Test
-  public final void should_provide_constructor_that_takes_primitive_wrapper() {
+  @Test public final void should_provide_constructor_that_takes_primitive_wrapper() {
     verifyAssertionTypeHasConstructorWithParameterType(primitiveWrapperType);
   }
 

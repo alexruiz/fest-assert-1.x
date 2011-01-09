@@ -26,12 +26,11 @@ import org.junit.BeforeClass;
 public class StringAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<StringAssert, String> {
 
   private static String notNullValue;
-  private static String unequalValue;
+  private static String notEqualValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = "Anakin";
-    unequalValue = "Vader";
+    notEqualValue = "Vader";
   }
 
   @Override protected StringAssert assertionsFor(String actual) {
@@ -42,7 +41,7 @@ public class StringAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_T
     return notNullValue;
   }
 
-  @Override protected String unequalValue() {
-    return unequalValue;
+  @Override protected String notEqualValue() {
+    return notEqualValue;
   }
 }

@@ -14,10 +14,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.actualIsNull;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -29,68 +29,45 @@ import org.junit.Test;
  */
 public class FileAssert_isFile_Test extends FileAssert_TestCase {
 
-  @Test
-  public void should_pass_if_actual_is_file() {
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_pass_if_actual_is_file() {
     file.ensureIsFile();
     new FileAssert(file).isFile();
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new FileAssert(null).isFile();
-      }
-    });
+  @Test public void should_fail_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull());
+    new FileAssert(null).isFile();
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new FileAssert(null).as("A Test")
-                            .isFile();
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull("A Test"));
+    new FileAssert(null).as("A Test")
+                        .isFile();
   }
 
-  @Test
-  public void should_fail_if_actual_is_not_file() {
-    expectAssertionError("file:<c:\\f.txt> should be a file").on(new CodeToTest() {
-      public void run() {
-        new FileAssert(file).isFile();
-      }
-    });
+  @Test public void should_fail_if_actual_is_not_file() {
+    thrown.expectAssertionError("file:<c:\\f.txt> should be a file");
+    new FileAssert(file).isFile();
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_not_file() {
-    expectAssertionError("[A Test] file:<c:\\f.txt> should be a file").on(new CodeToTest() {
-      public void run() {
-        new FileAssert(file).as("A Test")
-                            .isFile();
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_not_file() {
+    thrown.expectAssertionError("[A Test] file:<c:\\f.txt> should be a file");
+    new FileAssert(file).as("A Test")
+                        .isFile();
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_not_file() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FileAssert(file).overridingErrorMessage("My custom message")
-                            .isFile();
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_is_not_file() {
+    thrown.expectAssertionError("My custom message");
+    new FileAssert(file).overridingErrorMessage("My custom message")
+                        .isFile();
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_file() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FileAssert(file).as("A Test")
-                            .overridingErrorMessage("My custom message")
-                            .isFile();
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_is_not_file() {
+    thrown.expectAssertionError("My custom message");
+    new FileAssert(file).as("A Test")
+                        .overridingErrorMessage("My custom message")
+                        .isFile();
   }
 }

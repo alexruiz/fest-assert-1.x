@@ -25,9 +25,9 @@ public interface Assert_isEqualTo_TestCase {
 
   void should_fail_if_actual_and_expected_are_not_equal();
 
-  void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal();
+  void should_fail_and_display_description_if_actual_and_expected_are_not_equal();
 
   void should_fail_with_custom_message_if_actual_and_expected_are_not_equal();
 
-  void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_equal();
+  void should_fail_with_custom_message_ignoring_description_if_actual_and_expected_are_not_equal();
 }

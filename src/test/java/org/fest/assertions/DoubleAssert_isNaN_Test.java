@@ -14,9 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -28,48 +28,33 @@ import org.junit.Test;
  */
 public class DoubleAssert_isNaN_Test {
 
-  @Test
-  public void should_pass_if_actual_is_NaN() {
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_pass_if_actual_is_NaN() {
     new DoubleAssert(Double.NaN).isNaN();
   }
 
-  @Test
-  public void should_fail_if_actual_is_not_NaN() {
-    expectAssertionError("expected:<[NaN]> but was:<[6.68]>").on(new CodeToTest() {
-      public void run() {
-        new DoubleAssert(6.68).isNaN();
-      }
-    });
+  @Test public void should_fail_if_actual_is_not_NaN() {
+    thrown.expectAssertionError("expected:<[NaN]> but was:<[6.68]>");
+    new DoubleAssert(6.68).isNaN();
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_not_NaN() {
-    expectAssertionError("[A Test] expected:<[NaN]> but was:<[6.68]>").on(new CodeToTest() {
-      public void run() {
-        new DoubleAssert(6.68).as("A Test")
-                              .isNaN();
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_not_NaN() {
+    thrown.expectAssertionError("[A Test] expected:<[NaN]> but was:<[6.68]>");
+    new DoubleAssert(6.68).as("A Test")
+                          .isNaN();
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_not_NaN() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new DoubleAssert(6.68).overridingErrorMessage("My custom message")
-                              .isNaN();
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_is_not_NaN() {
+    thrown.expectAssertionError("My custom message");
+    new DoubleAssert(6.68).overridingErrorMessage("My custom message")
+                          .isNaN();
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_NaN() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new DoubleAssert(6.68).as("A Test")
-                              .overridingErrorMessage("My custom message")
-                              .isNaN();
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_is_not_NaN() {
+    thrown.expectAssertionError("My custom message");
+    new DoubleAssert(6.68).as("A Test")
+                          .overridingErrorMessage("My custom message")
+                          .isNaN();
   }
 }

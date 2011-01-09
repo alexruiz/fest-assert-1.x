@@ -14,9 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -27,13 +27,11 @@ import org.junit.Test;
  */
 public class Fail_fail_withMessage_Test {
 
-  @Test
-  public void shouldIncludeMessageWhenFailing() {
-    final String message = "Failed :(";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        Fail.fail(message);
-      }
-    });
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void shouldIncludeMessageWhenFailing() {
+    String message = "Failed :(";
+    thrown.expectAssertionError(message);
+    Fail.fail(message);
   }
 }

@@ -14,9 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -27,90 +27,57 @@ import org.junit.Test;
  */
 public class FloatAssert_isPositive_Test implements NumberAssert_isPositive_TestCase {
 
-  @Test
-  public void should_pass_if_actual_is_positive() {
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_pass_if_actual_is_positive() {
     new FloatAssert(6.68f).isPositive();
   }
 
-  @Test
-  public void should_fail_if_actual_is_negative() {
-    expectAssertionError("actual value:<-6.68> should be greater than:<0.0>").on(new CodeToTest() {
-      public void run() {
-        new FloatAssert(-6.68f).isPositive();
-      }
-    });
+  @Test public void should_fail_if_actual_is_negative() {
+    thrown.expectAssertionError("actual value:<-6.68> should be greater than:<0.0>");
+    new FloatAssert(-6.68f).isPositive();
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_negative() {
-    expectAssertionError("[A Test] actual value:<-6.68> should be greater than:<0.0>").on(new CodeToTest() {
-      public void run() {
-        new FloatAssert(-6.68f).as("A Test")
-                               .isPositive();
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_negative() {
+    thrown.expectAssertionError("[A Test] actual value:<-6.68> should be greater than:<0.0>");
+    new FloatAssert(-6.68f).as("A Test")
+                           .isPositive();
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_negative() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FloatAssert(-6.68f).overridingErrorMessage("My custom message")
-                               .isPositive();
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_is_negative() {
+    thrown.expectAssertionError("My custom message");
+    new FloatAssert(-6.68f).overridingErrorMessage("My custom message")
+                           .isPositive();
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_negative() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FloatAssert(-6.68f).as("A Test")
-                               .overridingErrorMessage("My custom message")
-                               .isPositive();
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_is_negative() {
+    thrown.expectAssertionError("My custom message");
+    new FloatAssert(-6.68f).as("A Test")
+                           .overridingErrorMessage("My custom message")
+                           .isPositive();
   }
 
-  @Test
-  public void should_fail_if_actual_is_zero() {
-    expectAssertionError("actual value:<0.0> should be greater than:<0.0>").on(new CodeToTest() {
-      public void run() {
-        new FloatAssert(0.0f).isPositive();
-      }
-    });
+  @Test public void should_fail_if_actual_is_zero() {
+    thrown.expectAssertionError("actual value:<0.0> should be greater than:<0.0>");
+    new FloatAssert(0.0f).isPositive();
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_zero() {
-    expectAssertionError("[A Test] actual value:<0.0> should be greater than:<0.0>").on(new CodeToTest() {
-      public void run() {
-        new FloatAssert(0.0f).as("A Test")
-                             .isPositive();
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_zero() {
+    thrown.expectAssertionError("[A Test] actual value:<0.0> should be greater than:<0.0>");
+    new FloatAssert(0.0f).as("A Test")
+                         .isPositive();
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_zero() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FloatAssert(0.0f).overridingErrorMessage("My custom message")
-                             .isPositive();
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_is_zero() {
+    thrown.expectAssertionError("My custom message");
+    new FloatAssert(0.0f).overridingErrorMessage("My custom message")
+                         .isPositive();
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_zero() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FloatAssert(0.0f).as("A Test")
-                             .overridingErrorMessage("My custom message")
-                             .isPositive();
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_is_zero() {
+    thrown.expectAssertionError("My custom message");
+    new FloatAssert(0.0f).as("A Test")
+                         .overridingErrorMessage("My custom message")
+                         .isPositive();
   }
-
-
 }

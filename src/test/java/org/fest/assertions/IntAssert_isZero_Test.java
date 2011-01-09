@@ -28,8 +28,7 @@ public class IntAssert_isZero_Test extends NumberAssert_isZero_TestCase<Integer>
   private static Integer notZero;
   private static Integer zero;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notZero = 6;
     zero = 0;
   }

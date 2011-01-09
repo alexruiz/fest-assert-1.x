@@ -14,9 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -28,48 +28,33 @@ import org.junit.Test;
  */
 public class CharAssert_isLowerCase_Test {
 
-  @Test
-  public void should_pass_if_actual_is_lowercase() {
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_pass_if_actual_is_lowercase() {
     new CharAssert('a').isLowerCase();
   }
 
-  @Test
-  public void should_fail_if_actual_is_not_lowercase() {
-    expectAssertionError("<A> should be a lower-case character").on(new CodeToTest() {
-      public void run() {
-        new CharAssert('A').isLowerCase();
-      }
-    });
+  @Test public void should_fail_if_actual_is_not_lowercase() {
+    thrown.expectAssertionError("<A> should be a lower-case character");
+    new CharAssert('A').isLowerCase();
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_not_lowercase() {
-    expectAssertionError("[A Test] <A> should be a lower-case character").on(new CodeToTest() {
-      public void run() {
-        new CharAssert('A').as("A Test")
-                           .isLowerCase();
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_not_lowercase() {
+    thrown.expectAssertionError("[A Test] <A> should be a lower-case character");
+    new CharAssert('A').as("A Test")
+                       .isLowerCase();
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_not_lowercase() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CharAssert('A').overridingErrorMessage("My custom message")
-                           .isLowerCase();
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_is_not_lowercase() {
+    thrown.expectAssertionError("My custom message");
+    new CharAssert('A').overridingErrorMessage("My custom message")
+                       .isLowerCase();
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_lowercase() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CharAssert('A').as("A Test")
-                           .overridingErrorMessage("My custom message")
-                           .isLowerCase();
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_is_not_lowercase() {
+    thrown.expectAssertionError("My custom message");
+    new CharAssert('A').as("A Test")
+                       .overridingErrorMessage("My custom message")
+                       .isLowerCase();
   }
 }

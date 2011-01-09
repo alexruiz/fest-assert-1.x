@@ -14,13 +14,10 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.ExpectedException.none;
 import static org.fest.assertions.Formatter.format;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-import static org.fest.util.Strings.concat;
 
-import org.fest.test.CodeToTest;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Base class for testing <code>{@link GenericAssert#isNull()}</code>.
@@ -34,57 +31,41 @@ import org.junit.Test;
 public abstract class GenericAssert_isNull_TestCase<S extends GenericAssert<S, A>, A> extends
     GenericAssert_TestCase<S, A> {
 
+  @Rule public ExpectedException thrown = none();
+
   private A actual;
   private GenericAssert<S, A> assertions;
 
-  @Before
-  public final void setUp() {
+  @Before public final void setUp() {
     actual = notNullValue();
     assertions = assertionsFor(actual);
   }
 
-  @Test
-  public final void should_pass_if_actual_is_null() {
+  @Test public final void should_pass_if_actual_is_null() {
     assertionsFor(null).isNull();
   }
 
-  @Test
-  public final void should_fail_if_actual_is_not_null() {
-    expectAssertionError(concat("<", format(actual), "> should be null")).on(new CodeToTest() {
-      public void run() {
-        assertions.isNull();
-      }
-    });
+  @Test public final void should_fail_if_actual_is_not_null() {
+    thrown.expectAssertionError(String.format("<%s> should be null", format(actual)));
+    assertions.isNull();
   }
 
-  @Test
-  public final void should_fail_and_display_description_of_assertion_if_actual_is_not_null() {
-    expectAssertionError(concat("[A Test] <", format(actual), "> should be null")).on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test")
-                  .isNull();
-      }
-    });
+  @Test public final void should_fail_and_display_description_if_actual_is_not_null() {
+    thrown.expectAssertionError(String.format("[A Test] <%s> should be null", format(actual)));
+    assertions.as("A Test")
+              .isNull();
   }
 
-  @Test
-  public final void should_fail_with_custom_message_if_actual_is_not_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.overridingErrorMessage("My custom message")
-                  .isNull();
-      }
-    });
+  @Test public final void should_fail_with_custom_message_if_actual_is_not_null() {
+    thrown.expectAssertionError("My custom message");
+    assertions.overridingErrorMessage("My custom message")
+              .isNull();
   }
 
-  @Test
-  public final void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        assertions.as("A Test")
-                  .overridingErrorMessage("My custom message")
-                  .isNull();
-      }
-    });
+  @Test public final void should_fail_with_custom_message_ignoring_description_if_actual_is_not_null() {
+    thrown.expectAssertionError("My custom message");
+    assertions.as("A Test")
+              .overridingErrorMessage("My custom message")
+              .isNull();
   }
 }

@@ -15,12 +15,10 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.charArray;
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.actualIsNull;
 
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link CharArrayAssert#hasSize(int)}</code>.
@@ -30,75 +28,51 @@ import org.junit.Test;
  */
 public class CharArrayAssert_hasSize_Test implements Assert_hasSize_TestCase {
 
+  @Rule public ExpectedException thrown = none();
+
   private static char[] array;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     array = charArray('a', 'b', 'c');
   }
 
-  @Test
-  public void should_pass_if_actual_has_expected_size() {
+  @Test public void should_pass_if_actual_has_expected_size() {
     new CharArrayAssert(array).hasSize(3);
   }
 
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new CharArrayAssert(null).hasSize(1);
-      }
-    });
+  @Test public void should_fail_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull());
+    new CharArrayAssert(null).hasSize(1);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new CharArrayAssert(null).as("A Test")
-                                 .hasSize(1);
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull("A Test"));
+    new CharArrayAssert(null).as("A Test")
+                             .hasSize(1);
   }
 
-  @Test
-  public void should_fail_if_actual_does_not_have_expected_size() {
-    expectAssertionError("expected size:<2> but was:<3> for <[a, b, c]>").on(new CodeToTest() {
-      public void run() {
-        new CharArrayAssert(array).hasSize(2);
-      }
-    });
+  @Test public void should_fail_if_actual_does_not_have_expected_size() {
+    thrown.expectAssertionError("expected size:<2> but was:<3> for <[a, b, c]>");
+    new CharArrayAssert(array).hasSize(2);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_does_not_have_expected_size() {
-    expectAssertionError("[A Test] expected size:<2> but was:<3> for <[a, b, c]>").on(new CodeToTest() {
-      public void run() {
-        new CharArrayAssert(array).as("A Test")
-                                  .hasSize(2);
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_does_not_have_expected_size() {
+    thrown.expectAssertionError("[A Test] expected size:<2> but was:<3> for <[a, b, c]>");
+    new CharArrayAssert(array).as("A Test")
+                              .hasSize(2);
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_does_not_have_expected_size() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CharArrayAssert(array).overridingErrorMessage("My custom message")
-                                  .hasSize(2);
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_does_not_have_expected_size() {
+    thrown.expectAssertionError("My custom message");
+    new CharArrayAssert(array).overridingErrorMessage("My custom message")
+                              .hasSize(2);
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_does_not_have_expected_size() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CharArrayAssert(array).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .hasSize(2);
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_does_not_have_expected_size() {
+    thrown.expectAssertionError("My custom message");
+    new CharArrayAssert(array).as("A Test")
+                              .overridingErrorMessage("My custom message")
+                              .hasSize(2);
   }
 }

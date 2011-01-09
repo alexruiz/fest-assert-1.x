@@ -33,8 +33,7 @@ public class FileAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<
   private static File notNullValue;
   private static File unequalValue;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     notNullValue = temporaryFolder();
     unequalValue = aFile();
   }
@@ -47,7 +46,7 @@ public class FileAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<
     return notNullValue;
   }
 
-  @Override protected File unequalValue() {
+  @Override protected File notEqualValue() {
     return unequalValue;
   }
 }

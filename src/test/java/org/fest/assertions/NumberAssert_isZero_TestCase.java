@@ -14,13 +14,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
-import static org.fest.assertions.FailureMessages.unexpectedNotEqual;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.*;
 
-import org.fest.test.CodeToTest;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Test case for implementations of <code>{@link NumberAssert#isZero()}</code>.
@@ -32,12 +29,13 @@ public abstract class NumberAssert_isZero_TestCase<T extends Number> {
 
   // TODO make NumberAssert a subclass of ComparableAssert
 
+  @Rule public ExpectedException thrown = none();
+
   private T notZero;
   private T zero;
   private NumberAssert assertions;
 
-  @Before
-  public final void setUp() {
+  @Before public final void setUp() {
     notZero = notZero();
     zero = zero();
     assertions = assertionsFor(notZero);
@@ -49,23 +47,18 @@ public abstract class NumberAssert_isZero_TestCase<T extends Number> {
 
   protected abstract NumberAssert assertionsFor(T actual);
 
-  @Test
-  public final void should_pass_if_actual_is_zero() {
+  @Test public final void should_pass_if_actual_is_zero() {
     assertionsFor(zero).isZero();
   }
 
-  @Test
-  public final void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
+  @Test public final void should_fail_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull());
         new BigDecimalAssert(null).isZero();
-      }
-    });
   }
 
 //  @Test
-//  public final void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-//    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
+//  public final void should_fail_and_display_description_if_actual_is_null() {
+//    thrown.expectAssertionError(actualIsNull("A Test"));
 //      public void run() {
 //        assertionsFor(null).as("A Test")
 //                           .isZero();
@@ -73,18 +66,14 @@ public abstract class NumberAssert_isZero_TestCase<T extends Number> {
 //    });
 //  }
 
-  @Test
-  public final void should_fail_if_actual_is_not_zero() {
-    expectAssertionError(unexpectedNotEqual(notZero, zero)).on(new CodeToTest() {
-      public void run() {
+  @Test public final void should_fail_if_actual_is_not_zero() {
+    thrown.expectAssertionError(notEqual(notZero, zero));
         assertions.isZero();
-      }
-    });
   }
 //
 //  @Test
-//  public final void should_fail_and_display_description_of_assertion_if_actual_is_not_zero() {
-//    expectAssertionError("[A Test] expected:<0> but was:<8.0>").on(new CodeToTest() {
+//  public final void should_fail_and_display_description_if_actual_is_not_zero() {
+//    thrown.expectAssertionError("[A Test] expected:<0> but was:<8.0>");
 //      public void run() {
 //        assertions.as("A Test")
 //                  .isZero();
@@ -94,7 +83,7 @@ public abstract class NumberAssert_isZero_TestCase<T extends Number> {
 //
 //  @Test
 //  public final void should_fail_with_custom_message_if_actual_is_not_zero() {
-//    expectAssertionError("My custom message").on(new CodeToTest() {
+//    thrown.expectAssertionError("My custom message");
 //      public void run() {
 //        assertions.overridingErrorMessage("My custom message")
 //                  .isZero();
@@ -103,8 +92,8 @@ public abstract class NumberAssert_isZero_TestCase<T extends Number> {
 //  }
 //
 //  @Test
-//  public final void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_zero() {
-//    expectAssertionError("My custom message").on(new CodeToTest() {
+//  public final void should_fail_with_custom_message_ignoring_description_if_actual_is_not_zero() {
+//    thrown.expectAssertionError("My custom message");
 //      public void run() {
 //        assertions.as("A Test")
 //                  .overridingErrorMessage("My custom message")

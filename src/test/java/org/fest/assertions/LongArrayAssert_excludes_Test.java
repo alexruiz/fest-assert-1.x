@@ -15,12 +15,10 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.longArray;
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.actualIsNull;
 
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link LongArrayAssert#excludes(long...)}</code>.
@@ -30,98 +28,65 @@ import org.junit.Test;
  */
 public class LongArrayAssert_excludes_Test implements GroupAssert_excludes_TestCase {
 
+  @Rule public ExpectedException thrown = none();
+
   private static long[] array;
 
-  @BeforeClass
-  public static void setUpOnce() {
+  @BeforeClass public static void setUpOnce() {
     array = longArray(6, 8);
   }
 
-  @Test
-  public void should_pass_if_actual_excludes_given_value() {
+  @Test public void should_pass_if_actual_excludes_given_value() {
     new LongArrayAssert(array).excludes(10);
   }
 
-  @Test
-  public void should_pass_if_actual_excludes_given_values() {
+  @Test public void should_pass_if_actual_excludes_given_values() {
     new LongArrayAssert(array).excludes(10, 2);
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(null).excludes(6, 8);
-      }
-    });
+  @Test public void should_fail_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull());
+    new LongArrayAssert(null).excludes(6, 8);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(null).as("A Test")
-                                 .excludes(6, 8);
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull("A Test"));
+    new LongArrayAssert(null).as("A Test")
+                             .excludes(6, 8);
   }
 
-  @Test
-  public void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("The given array should not be null").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).excludes(null);
-      }
-    });
+  @Test public void should_throw_error_if_expected_is_null() {
+    thrown.expectNullPointerException("The given array should not be null");
+    new LongArrayAssert(array).excludes(null);
   }
 
-  @Test
-  public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] The given array should not be null").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).as("A Test")
-                                  .excludes(null);
-      }
-    });
+  @Test public void should_throw_error_and_display_description_if_expected_is_null() {
+    thrown.expectNullPointerException("[A Test] The given array should not be null");
+    new LongArrayAssert(array).as("A Test")
+                              .excludes(null);
   }
 
-  @Test
-  public void should_fail_if_actual_contains_given_values() {
-    expectAssertionError("<[6, 8]> does not exclude element(s):<[6]>").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).excludes(6);
-      }
-    });
+  @Test public void should_fail_if_actual_contains_given_values() {
+    thrown.expectAssertionError("<[6, 8]> does not exclude element(s):<[6]>");
+    new LongArrayAssert(array).excludes(6);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_contains_given_values() {
-    expectAssertionError("[A Test] <[6, 8]> does not exclude element(s):<[6]>").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).as("A Test")
-                                  .excludes(6);
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_contains_given_values() {
+    thrown.expectAssertionError("[A Test] <[6, 8]> does not exclude element(s):<[6]>");
+    new LongArrayAssert(array).as("A Test")
+                              .excludes(6);
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_contains_given_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).overridingErrorMessage("My custom message")
-                                  .excludes(6);
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_contains_given_values() {
+    thrown.expectAssertionError("My custom message");
+    new LongArrayAssert(array).overridingErrorMessage("My custom message")
+                              .excludes(6);
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_contains_given_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .excludes(6);
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_contains_given_values() {
+    thrown.expectAssertionError("My custom message");
+    new LongArrayAssert(array).as("A Test")
+                              .overridingErrorMessage("My custom message")
+                              .excludes(6);
   }
 }

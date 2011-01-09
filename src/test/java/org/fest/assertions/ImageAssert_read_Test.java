@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
+import static org.fest.assertions.ExpectedException.none;
 import static org.fest.assertions.Images.fivePixelBlueImage;
 import static org.fest.assertions.Resources.file;
 import static org.junit.Assert.*;
@@ -23,9 +23,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import org.fest.test.CodeToTest;
-import org.junit.After;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ImageAssert#read(String)}</code>.
@@ -36,13 +34,13 @@ import org.junit.Test;
  */
 public class ImageAssert_read_Test {
 
-  @After
-  public void tearDown() {
+  @Rule public ExpectedException thrown = none();
+
+  @After public void tearDown() {
     ImageAssert.imageReader(new ImageReader());
   }
 
-  @Test
-  public void should_read_image_file_using_ImageReader() throws IOException {
+  @Test public void should_read_image_file_using_ImageReader() throws IOException {
     ImageReaderStub imageReader = new ImageReaderStub();
     BufferedImage toRead = fivePixelBlueImage();
     imageReader.imageToRead(toRead);
@@ -51,8 +49,7 @@ public class ImageAssert_read_Test {
     assertSame(toRead, image);
   }
 
-  @Test
-  public void should_rethrow_error_catched_from_ImageReader() {
+  @Test public void should_rethrow_error_catched_from_ImageReader() {
     ImageReaderStub imageReader = new ImageReaderStub();
     IOException toThrow = new IOException();
     imageReader.toThrow(toThrow);
@@ -69,22 +66,14 @@ public class ImageAssert_read_Test {
     return file(fileName).getPath();
   }
 
-  @Test
-  public void should_throw_error_if_path_of_image_to_read_does_not_belong_to_a_file() {
-    expectIllegalArgumentException("The path <'blah'> does not belong to a file").on(new CodeToTest() {
-      public void run() throws IOException {
-        ImageAssert.read("blah");
-      }
-    });
+  @Test public void should_throw_error_if_path_of_image_to_read_does_not_belong_to_a_file() throws IOException {
+    thrown.expectIllegalArgumentException("The path <'blah'> does not belong to a file");
+    ImageAssert.read("blah");
   }
 
-  @Test
-  public void should_throw_error_if_path_is_null() {
-    expectNullPointerException("The path of the image to read should not be null").on(new CodeToTest() {
-      public void run() throws IOException {
-        ImageAssert.read(null);
-      }
-    });
+  @Test public void should_throw_error_if_path_is_null() throws IOException {
+    thrown.expectNullPointerException("The path of the image to read should not be null");
+    ImageAssert.read(null);
   }
 
   private static class ImageReaderStub extends ImageReader {

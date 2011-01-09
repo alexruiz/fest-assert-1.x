@@ -16,8 +16,6 @@
 package org.fest.assertions;
 
 /**
- * Understands empty arrays.
- *
  * @author Alex Ruiz
  */
 final class EmptyArrays {

@@ -38,34 +38,29 @@ public abstract class GenericAssert_description_TestCase<S extends GenericAssert
 
   private GenericAssert<S, A> assertion;
 
-  @Before
-  public final void setUp() {
+  @Before public final void setUp() {
     assertion = assertionToTest();
     assertNull(assertion.description());
   }
 
   protected abstract GenericAssert<S, A> assertionToTest();
 
-  @Test
-  public void should_set_description_as_text() {
+  @Test public void should_set_description_as_text() {
     assertion.as("A Test");
     assertEquals("A Test", assertion.description());
   }
 
-  @Test
-  public void should_set_description_as_text_safely_for_Groovy() {
+  @Test public void should_set_description_as_text_safely_for_Groovy() {
     assertion.describedAs("A Test");
     assertEquals("A Test", assertion.description());
   }
 
-  @Test
-  public void should_set_description() {
+  @Test public void should_set_description() {
     assertion.as(new BasicDescription("A Test"));
     assertEquals("A Test", assertion.description());
   }
 
-  @Test
-  public void should_set_description_safely_for_Groovy() {
+  @Test public void should_set_description_safely_for_Groovy() {
     assertion.describedAs(new BasicDescription("A Test"));
     assertEquals("A Test", assertion.description());
   }

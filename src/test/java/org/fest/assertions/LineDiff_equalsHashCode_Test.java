@@ -32,65 +32,54 @@ public class LineDiff_equalsHashCode_Test implements EqualsHashCodeContractTestC
 
   private LineDiff diff;
 
-  @Before
-  public void setUp() {
+  @Before public void setUp() {
     diff = LineDiff.lineDiff(1, "hello", "world");
   }
 
-  @Test
-  public void should_have_consistent_equals() {
+  @Test public void equals_should_be_consistent() {
     LineDiff other = LineDiff.lineDiff(1, "hello", "world");
     assertEquals(other, diff);
   }
 
-  @Test
-  public void should_have_reflexive_equals() {
+  @Test public void equals_should_be_reflexive() {
     assertEqualsIsReflexive(diff);
   }
 
-  @Test
-  public void should_have_symmetric_equals() {
+  @Test public void equals_should_be_symmetric() {
     LineDiff other = LineDiff.lineDiff(1, "hello", "world");
     assertEqualsIsSymmetric(diff, other);
   }
 
-  @Test
-  public void should_have_transitive_equals() {
+  @Test public void equals_should_be_transitive() {
     LineDiff other1 = LineDiff.lineDiff(1, "hello", "world");
     LineDiff other2 = LineDiff.lineDiff(1, "hello", "world");
     assertEqualsIsTransitive(diff, other1, other2);
   }
 
-  @Test
-  public void should_maintain_equals_and_hashCode_contract() {
+  @Test public void should_maintain_equals_and_hashCode_contract() {
     LineDiff other = LineDiff.lineDiff(1, "hello", "world");
     assertMaintainsEqualsAndHashCodeContract(diff, other);
   }
 
-  @Test
-  public void should_not_be_equal_to_Object_not_being_of_same_type() {
+  @Test public void should_not_be_equal_to_Object_of_different_type() {
     assertFalse(diff.equals("hello"));
   }
 
-  @Test
-  public void should_not_be_equal_to_null() {
+  @Test public void should_not_be_equal_to_null() {
     assertIsNotEqualToNull(diff);
   }
 
-  @Test
-  public void should_not_be_equal_if_line_numbers_are_not_equal() {
+  @Test public void should_not_be_equal_if_line_numbers_are_not_equal() {
     LineDiff other = LineDiff.lineDiff(2, "hello", "world");
     assertFalse(diff.equals(other));
   }
 
-  @Test
-  public void should_not_be_equal_if_actual_values_are_not_equal() {
+  @Test public void should_not_be_equal_if_actual_values_are_not_equal() {
     LineDiff other = LineDiff.lineDiff(1, "hi", "world");
     assertFalse(diff.equals(other));
   }
 
-  @Test
-  public void should_not_be_equal_if_expected_values_are_not_equal() {
+  @Test public void should_not_be_equal_if_expected_values_are_not_equal() {
     LineDiff other = LineDiff.lineDiff(1, "hello", "everybody");
     assertFalse(diff.equals(other));
   }

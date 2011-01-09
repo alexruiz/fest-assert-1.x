@@ -14,10 +14,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.actualIsNull;
 import static org.fest.assertions.FileContentComparator.LineDiff.lineDiff;
 import static org.fest.assertions.FileStub.newFile;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Strings.concat;
 import static org.fest.util.Systems.LINE_SEPARATOR;
 import static org.junit.Assert.*;
@@ -25,9 +25,7 @@ import static org.junit.Assert.*;
 import java.io.File;
 import java.io.IOException;
 
-import org.fest.test.CodeToTest;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link FileAssert#hasSameContentAs(File)}</code>.
@@ -38,100 +36,76 @@ import org.junit.Test;
  */
 public class FileAssert_hasSameContentsAs_Test extends FileAssert_TestCase {
 
+  @Rule public ExpectedException thrown = none();
+
   private FileContentComparatorStub comparator;
 
-  @Before
-  public void onSetUp() {
+  @Before public void onSetUp() {
     comparator = new FileContentComparatorStub();
   }
 
-  @Test
-  public void should_pass_is_actual_and_expected_have_same_content() {
+  @Test public void should_pass_is_actual_and_expected_have_same_content() {
     file.ensureExists();
     FileStub expected = newFile("c:\\temp\\expected.txt").ensureExists();
     new FileAssert(file, comparator).hasSameContentAs(expected);
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new FileAssert(null).hasSameContentAs(file);
-      }
-    });
+  @Test public void should_fail_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull());
+    new FileAssert(null).hasSameContentAs(file);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new FileAssert(null).as("A Test").hasSameContentAs(file);
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull("A Test"));
+    new FileAssert(null).as("A Test")
+                        .hasSameContentAs(file);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_do_not_have_same_content() {
+  @Test public void should_fail_if_actual_and_expected_do_not_have_same_content() {
     file.ensureExists();
     comparator.expectedLineDiffs(lineDiff(6, "abc", "xyz"), lineDiff(8, "xyz", "abc"));
     final String message = concat(
         "file:<c:\\f.txt> and file:<c:\\temp\\expected.txt> do not have same contents:", LINE_SEPARATOR,
         "line:<6>, expected:<'xyz'> but was:<'abc'>", LINE_SEPARATOR,
         "line:<8>, expected:<'abc'> but was:<'xyz'>");
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        FileStub expected = newFile("c:\\temp\\expected.txt").ensureExists();
-        new FileAssert(file, comparator).hasSameContentAs(expected);
-      }
-    });
+    thrown.expectAssertionError(message);
+    FileStub expected = newFile("c:\\temp\\expected.txt").ensureExists();
+    new FileAssert(file, comparator).hasSameContentAs(expected);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_do_not_have_same_content() {
+  @Test public void should_fail_and_display_description_if_actual_and_expected_do_not_have_same_content() {
     file.ensureExists();
     comparator.expectedLineDiffs(lineDiff(6, "abc", "xyz"), lineDiff(8, "xyz", "abc"));
     final String message = concat(
         "[A Test] file:<c:\\f.txt> and file:<c:\\temp\\expected.txt> do not have same contents:", LINE_SEPARATOR,
         "line:<6>, expected:<'xyz'> but was:<'abc'>", LINE_SEPARATOR,
         "line:<8>, expected:<'abc'> but was:<'xyz'>");
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        FileStub expected = newFile("c:\\temp\\expected.txt").ensureExists();
-        new FileAssert(file, comparator).as("A Test")
-                                        .hasSameContentAs(expected);
-      }
-    });
+    thrown.expectAssertionError(message);
+    FileStub expected = newFile("c:\\temp\\expected.txt").ensureExists();
+    new FileAssert(file, comparator).as("A Test")
+                                    .hasSameContentAs(expected);
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_do_not_have_same_content() {
+  @Test public void should_fail_with_custom_message_if_actual_and_expected_do_not_have_same_content() {
     file.ensureExists();
     comparator.expectedLineDiffs(lineDiff(6, "abc", "xyz"), lineDiff(8, "xyz", "abc"));
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        FileStub expected = newFile("c:\\temp\\expected.txt").ensureExists();
-        new FileAssert(file, comparator).overridingErrorMessage("My custom message")
-                                        .hasSameContentAs(expected);
-      }
-    });
+    thrown.expectAssertionError("My custom message");
+    FileStub expected = newFile("c:\\temp\\expected.txt").ensureExists();
+    new FileAssert(file, comparator).overridingErrorMessage("My custom message")
+                                    .hasSameContentAs(expected);
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_do_not_have_same_content() {
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_and_expected_do_not_have_same_content() {
     file.ensureExists();
     comparator.expectedLineDiffs(lineDiff(6, "abc", "xyz"), lineDiff(8, "xyz", "abc"));
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        FileStub expected = newFile("c:\\temp\\expected.txt").ensureExists();
-        new FileAssert(file, comparator).as("A Test")
-                                        .overridingErrorMessage("My custom message")
-                                        .hasSameContentAs(expected);
-      }
-    });
+    thrown.expectAssertionError("My custom message");
+    FileStub expected = newFile("c:\\temp\\expected.txt").ensureExists();
+    new FileAssert(file, comparator).as("A Test")
+                                    .overridingErrorMessage("My custom message")
+                                    .hasSameContentAs(expected);
   }
 
-  @Test
-  public void should_fail_if_IO_error_is_thrown() {
+  @Test public void should_fail_if_IO_error_is_thrown() {
     file.ensureExists();
     IOException toThrow = new IOException();
     comparator.exceptionToThrow(toThrow);
@@ -145,8 +119,7 @@ public class FileAssert_hasSameContentsAs_Test extends FileAssert_TestCase {
     }
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_IO_error_is_thrown() {
+  @Test public void should_fail_and_display_description_if_IO_error_is_thrown() {
     file.ensureExists();
     IOException toThrow = new IOException();
     comparator.exceptionToThrow(toThrow);
@@ -162,8 +135,7 @@ public class FileAssert_hasSameContentsAs_Test extends FileAssert_TestCase {
     }
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_IO_error_is_thrown() {
+  @Test public void should_fail_with_custom_message_if_IO_error_is_thrown() {
     file.ensureExists();
     IOException toThrow = new IOException();
     comparator.exceptionToThrow(toThrow);
@@ -178,8 +150,7 @@ public class FileAssert_hasSameContentsAs_Test extends FileAssert_TestCase {
     }
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_IO_error_is_thrown() {
+  @Test public void should_fail_with_custom_message_ignoring_description_if_IO_error_is_thrown() {
     file.ensureExists();
     IOException toThrow = new IOException();
     comparator.exceptionToThrow(toThrow);
@@ -195,23 +166,15 @@ public class FileAssert_hasSameContentsAs_Test extends FileAssert_TestCase {
     }
   }
 
-  @Test
-  public void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("File to compare to should not be null").on(new CodeToTest() {
-      public void run() {
-        new FileAssert(file).hasSameContentAs(null);
-      }
-    });
+  @Test public void should_throw_error_if_expected_is_null() {
+    thrown.expectNullPointerException("File to compare to should not be null");
+    new FileAssert(file).hasSameContentAs(null);
   }
 
-  @Test
-  public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] File to compare to should not be null").on(new CodeToTest() {
-      public void run() {
-        new FileAssert(file).as("A Test")
-                            .hasSameContentAs(null);
-      }
-    });
+  @Test public void should_throw_error_and_display_description_if_expected_is_null() {
+    thrown.expectNullPointerException("[A Test] File to compare to should not be null");
+    new FileAssert(file).as("A Test")
+                        .hasSameContentAs(null);
   }
 
   static class FileContentComparatorStub extends FileContentComparator {

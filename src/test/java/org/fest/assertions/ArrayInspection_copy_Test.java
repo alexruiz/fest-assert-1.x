@@ -26,13 +26,11 @@ import org.junit.Test;
  */
 public class ArrayInspection_copy_Test {
 
-  @Test
-  public void should_return_null_if_array_is_null() {
+  @Test public void should_return_null_if_array_is_null() {
     assertNull(ArrayInspection.copy(null));
   }
 
-  @Test
-  public void should_throw_error_if_object_is_not_array() {
+  @Test public void should_throw_error_if_object_is_not_array() {
     try {
       ArrayInspection.copy("Hello");
       fail("Expecting IllegalArgumentException");
@@ -41,16 +39,14 @@ public class ArrayInspection_copy_Test {
     }
   }
 
-  @Test
-  public void should_copy_boolean_array() {
+  @Test public void should_copy_boolean_array() {
     boolean[] array = { true, false };
     Object[] a = ArrayInspection.copy(array);
     Object[] e = { true, false };
     assertArrayEquals(e, a);
   }
 
-  @Test
-  public void should_copy_int_array() {
+  @Test public void should_copy_int_array() {
     int[] array = { 6, 8, 10, 12 };
     Object[] a = ArrayInspection.copy(array);
     Object[] e = { 6, 8, 10, 12 };

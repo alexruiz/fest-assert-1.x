@@ -15,10 +15,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ExpectedException.none;
+import static org.fest.assertions.FailureMessages.actualIsNull;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -29,67 +29,44 @@ import org.junit.Test;
  */
 public class StringAssert_excludes_Test {
 
-  @Test
-  public void should_pass_if_actual_excludes_given_String() {
+  @Rule public ExpectedException thrown = none();
+
+  @Test public void should_pass_if_actual_excludes_given_String() {
     new StringAssert("Luke").excludes("Yoda");
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new StringAssert(null).excludes("Leia");
-      }
-    });
+  @Test public void should_fail_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull());
+    new StringAssert(null).excludes("Leia");
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new StringAssert(null).as("A Test")
-                              .excludes("Leia");
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_is_null() {
+    thrown.expectAssertionError(actualIsNull("A Test"));
+    new StringAssert(null).as("A Test")
+                          .excludes("Leia");
   }
 
-  @Test
-  public void should_fail_if_actual_contains_given_String() {
-    expectAssertionError("<'Anakin'> should not contain the String:<'akin'>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("Anakin").excludes("akin");
-      }
-    });
+  @Test public void should_fail_if_actual_contains_given_String() {
+    thrown.expectAssertionError("<'Anakin'> should not contain the String:<'akin'>");
+    new StringAssert("Anakin").excludes("akin");
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_contains_given_String() {
-    expectAssertionError("[A Test] <'Anakin'> should not contain the String:<'akin'>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("Anakin").as("A Test")
-                                  .excludes("akin");
-      }
-    });
+  @Test public void should_fail_and_display_description_if_actual_contains_given_String() {
+    thrown.expectAssertionError("[A Test] <'Anakin'> should not contain the String:<'akin'>");
+    new StringAssert("Anakin").as("A Test")
+                              .excludes("akin");
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_contains_given_String() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("Anakin").overridingErrorMessage("My custom message")
-                                  .excludes("akin");
-      }
-    });
+  @Test public void should_fail_with_custom_message_if_actual_contains_given_String() {
+    thrown.expectAssertionError("My custom message");
+    new StringAssert("Anakin").overridingErrorMessage("My custom message")
+                              .excludes("akin");
   }
 
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_contains_given_String() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("Anakin").as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .excludes("akin");
-      }
-    });
+  @Test public void should_fail_with_custom_message_ignoring_description_if_actual_contains_given_String() {
+    thrown.expectAssertionError("My custom message");
+    new StringAssert("Anakin").as("A Test")
+                              .overridingErrorMessage("My custom message")
+                              .excludes("akin");
   }
 }
