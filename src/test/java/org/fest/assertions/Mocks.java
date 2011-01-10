@@ -18,8 +18,6 @@ package org.fest.assertions;
 import static org.easymock.EasyMock.*;
 
 /**
- * Understands utility methods related to mocks.
- *
  * @author Alex Ruiz
  */
 final class Mocks {

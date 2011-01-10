@@ -21,8 +21,6 @@ import java.util.Map;
 import org.fest.assertions.MapAssert.Entry;
 
 /**
- * Understands creation of <code>{@link Map}</code>s.
- *
  * @author Alex Ruiz
  */
 final class MapFactory {

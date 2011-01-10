@@ -18,8 +18,6 @@ package org.fest.assertions;
 import java.io.File;
 
 /**
- * Understands a <code>{@link File}</code> stub.
- *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */

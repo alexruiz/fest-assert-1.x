@@ -15,7 +15,7 @@
 package org.fest.assertions;
 
 /**
- * Understands a test case for implementations of <code>containsOnly</code>.
+ * Test case for implementations of {@code containsOnly}.
  *
  * @author Alex Ruiz
  */

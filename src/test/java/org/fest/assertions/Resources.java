@@ -18,8 +18,6 @@ package org.fest.assertions;
 import java.io.File;
 
 /**
- * Understands test-related resources.
- *
  * @author Yvonne Wang
  */
 public final class Resources {

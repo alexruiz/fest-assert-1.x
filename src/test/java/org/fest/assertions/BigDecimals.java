@@ -18,7 +18,7 @@ package org.fest.assertions;
 import java.math.BigDecimal;
 
 /**
- * Understands some <code>{@link BigDecimal}</code> values used for testing.
+ * Some <code>{@link BigDecimal}</code> values used for testing.
  *
  * @author Alex Ruiz
  */

@@ -34,6 +34,8 @@ import org.junit.*;
  *
  * @author Joel Costigliola
  * @author Alex Ruiz
+ *
+ * TODO recover implementations
  */
 public abstract class ObjectGroupAssert_onProperty_Test<S extends ObjectGroupAssert<S, A>, A> {
 

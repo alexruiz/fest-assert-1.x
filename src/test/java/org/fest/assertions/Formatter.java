@@ -25,7 +25,7 @@ import org.fest.util.*;
 import org.fest.util.Collections;
 
 /**
- * Understands how to create the {@code String} representation of an object.
+ * Creates the {@code String} representation of an object.
  *
  * @author Alex Ruiz
  */

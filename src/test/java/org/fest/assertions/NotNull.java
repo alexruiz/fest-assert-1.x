@@ -16,7 +16,8 @@
 package org.fest.assertions;
 
 /**
- * Understands a <code>{@link Condition}</code> that verifies that a value is not <code>null</code>.
+ * d
+ * <code>{@link Condition}</code> that verifies that a value is not <code>null</code>.
  *
  * @author Alex Ruiz
  */

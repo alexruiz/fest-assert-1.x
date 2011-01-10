@@ -45,8 +45,8 @@ import org.junit.*;
  *
  * @author Joel Costigliola
  */
-public abstract class GenericAssert_isIn_isNotIn_TestCase<S extends GenericAssert<S, A>, A> extends
-    GenericAssert_TestCase<S, A> implements Assert_isIn_TestCase, Assert_isNotIn_TestCase {
+public abstract class GenericAssert_isIn_isNotIn_TestCase<S extends GenericAssert<S, A>, A> implements
+    Assert_isIn_TestCase, Assert_isNotIn_TestCase {
 
   @Rule public ExpectedException thrown = none();
 
@@ -78,6 +78,10 @@ public abstract class GenericAssert_isIn_isNotIn_TestCase<S extends GenericAsser
     collectionContainingNull = list(valuesContainingActual); // a check is done on valuesContainingActual to avoid null elements
     collectionContainingNull.add(null);
   }
+
+  protected abstract GenericAssert<S, A> assertionsFor(A actualValue);
+
+  protected abstract A notNullValue();
 
   /**
    * Implement this method by calling {@link #initValuesContainingActual(A ... values)} with non {@code null} values

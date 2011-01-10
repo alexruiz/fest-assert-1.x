@@ -16,8 +16,6 @@
 package org.fest.assertions;
 
 /**
- * Understands creation of arrays.
- *
  * @author Alex Ruiz
  */
 final class ArrayFactory {

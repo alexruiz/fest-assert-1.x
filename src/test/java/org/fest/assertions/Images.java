@@ -23,8 +23,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 /**
- * Understands images used for testing.
- *
  * @author Alex Ruiz
  */
 final class Images {

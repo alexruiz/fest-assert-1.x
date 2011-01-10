@@ -119,7 +119,7 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
   }
 
   /**
-   * Understands an entry in a <code>{@link Map}</code>.
+   * An entry in a <code>{@link Map}</code>.
    *
    * @author Yvonne Wang
    */

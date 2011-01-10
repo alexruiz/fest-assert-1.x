@@ -15,7 +15,7 @@
 package org.fest.assertions;
 
 /**
- * Understands a test case for implementations of <code>excludes</code>.
+ * Test case for implementations of {@code excludes}.
  *
  * @author Alex Ruiz
  */
