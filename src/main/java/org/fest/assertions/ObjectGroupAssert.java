@@ -107,7 +107,6 @@ public abstract class ObjectGroupAssert<S, A> extends ItemGroupAssert<S, A> {
    * @throws AssertionError if the actual group of objects is {@code null}.
    * @throws IntrospectionError if an element in the given collection does not have a matching property.
    * @since 1.3
-   * TODO revisit
    */
   protected abstract S onProperty(String propertyName);
 }
