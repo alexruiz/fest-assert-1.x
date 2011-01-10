@@ -30,8 +30,7 @@ public class TestObjectGroupAssert extends ObjectGroupAssert<TestObjectGroupAsse
   }
 
   @Override protected TestObjectGroupAssert onProperty(String propertyName) {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   /** {@inheritDoc} */

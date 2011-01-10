@@ -21,20 +21,20 @@ package org.fest.assertions;
  */
 public interface Assert_isNotIn_TestCase {
 
-  void isNotIn_should_pass_if_actual_is_not_in_given_values();
+  void should_pass_if_actual_is_not_in_given_values();
 
-  void isNotIn_should_pass_if_actual_is_null_and_is_not_in_given_values();
+  void should_pass_if_actual_is_null_and_is_not_in_given_values();
 
-  void isNotIn_should_fail_if_actual_is_in_given_values();
+  void should_fail_if_actual_is_in_given_values();
 
-  void isNotIn_should_fail_and_display_description_if_actual_is_in_given_values();
+  void should_fail_and_display_description_if_actual_is_in_given_values();
 
-  void isNotIn_should_fail_with_custom_message_if_actual_is_in_given_values();
+  void should_fail_with_custom_message_if_actual_is_in_given_values();
 
-  void isNotIn_should_fail_with_custom_message_ignoring_description_if_actual_is_in_given_values();
+  void should_fail_with_custom_message_ignoring_description_if_actual_is_in_given_values();
   
-  void isNotIn_should_throw_error_if_given_values_parameter_is_null();
+  void should_throw_error_if_given_values_parameter_is_null();
   
-  void isNotIn_should_throw_error_and_display_description_if_given_values_parameter_is_null();
+  void should_throw_error_and_display_description_if_given_values_parameter_is_null();
   
 }
