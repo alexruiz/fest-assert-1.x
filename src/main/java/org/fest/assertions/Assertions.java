@@ -41,12 +41,6 @@ import java.util.*;
  */
 public class Assertions {
 
-  private static <T> Collection<T> asCollection(Iterator<T> iterator) {
-    List<T> list = new ArrayList<T>();
-    while (iterator.hasNext()) list.add(iterator.next());
-    return list;
-  }
-
   /**
    * Creates a new instance of <code>{@link BigDecimalAssert}</code>.
    * @param actual the value to be the target of the assertions methods.
@@ -256,22 +250,22 @@ public class Assertions {
   }
 
   /**
-   * Creates a new instance of <code>{@link CollectionAssert}</code>.
+   * Creates a new instance of <code>{@link IteratorAssert}</code>.
    * @param actual an {@code Iterable} whose contents will be added to a new {@code Collection}.
    * @return the created assertion object.
    */
-  public static CollectionAssert assertThat(Iterable<?> actual) {
-    if (actual == null) return new CollectionAssert(null);
-    return assertThat(asCollection(actual.iterator()));
+  public static IteratorAssert assertThat(Iterable<?> actual) {
+    Iterator<?> iterator = actual == null ? null : actual.iterator();
+    return assertThat(iterator);
   }
 
   /**
-   * Creates a new instance of <code>{@link CollectionAssert}</code>.
+   * Creates a new instance of <code>{@link IteratorAssert}</code>.
    * @param actual an {@code Iterator} whose contents will be added to a new {@code Collection}.
    * @return the created assertion object.
    */
-  public static CollectionAssert assertThat(Iterator<?> actual) {
-    return assertThat(asCollection(actual));
+  public static IteratorAssert assertThat(Iterator<?> actual) {
+    return new IteratorAssert(actual);
   }
 
   /**

@@ -183,26 +183,24 @@ public abstract class ObjectGroupAssert_onProperty_Test<S extends ObjectGroupAss
 
   @Test public final void should_fail_because_of_non_public_getter() {
     thrown.expectIntrospectionError("No public getter for property 'country' in org.fest.assertions.Person");
-    assertionsFor(persons).onProperty("country")
-                       .containsOnly("Spain");
+    assertionsFor(persons).onProperty("country").containsOnly("Spain");
   }
 
   @Test public final void should_fail_because_of_no_getter() {
     thrown.expectIntrospectionError("No getter for property 'favoriteSport' in org.fest.assertions.Person");
-    assertionsFor(persons).onProperty("favoriteSport")
-                       .containsOnly("soccer");
+    assertionsFor(persons).onProperty("favoriteSport").containsOnly("soccer");
   }
 
   @Test public final void should_pass_even_if_actual_contains_null_elements() {
     persons.add(null);
     assertionsFor(persons).onProperty("father.name.firstName")
-                       .containsOnly("PierFather", "PaulaFather", "JackFather", "OtherJackFather");
+                          .containsOnly("PierFather", "PaulaFather", "JackFather", "OtherJackFather");
   }
 
   @Test public final void should_pass_with_null_nested_property_in_actual_elements() {
     persons.iterator().next().setFather(null);
     assertionsFor(persons).onProperty("father.name.firstName")
-                       .containsOnly("PaulaFather", "JackFather", "OtherJackFather");
+                          .containsOnly("PaulaFather", "JackFather", "OtherJackFather");
   }
 
   @Test public final void should_pass_with_null_property_in_actual_elements() {

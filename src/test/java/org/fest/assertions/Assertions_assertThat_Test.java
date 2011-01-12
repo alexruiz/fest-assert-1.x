@@ -87,11 +87,11 @@ public class Assertions_assertThat_Test {
     assertObjectIsInstanceOfType(Assertions.assertThat(new ArrayList<Object>()), ListAssert.class);
   }
 
-  @Test public void should_return_CollectionAssert_if_argument_is_Iterator() {
+  @Test public void should_return_IteratorAssert_if_argument_is_Iterator() {
     List<String> list = new ArrayList<String>();
     list.add("Frodo");
-    CollectionAssert assertion = Assertions.assertThat(list.iterator());
-    assertEquals(list, assertion.actual);
+    IteratorAssert assertion = Assertions.assertThat(list.iterator());
+    assertObjectIsInstanceOfType(assertion, IteratorAssert.class);
   }
 
   @Test public void should_return_DoubleArrayAssert_if_argument_is_array_of_double() {
