@@ -15,7 +15,6 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
-import static org.fest.assertions.PropertySupport.propertyValues;
 
 import java.util.*;
 
@@ -71,12 +70,12 @@ public class CollectionAssert extends ObjectGroupAssert<CollectionAssert, Collec
   @Override public CollectionAssert onProperty(String propertyName) {
     isNotNull();
     if (actual.isEmpty()) return new CollectionAssert(emptyList());
-    return new CollectionAssert(propertyValues(propertyName, actual));
+    return new CollectionAssert(PropertySupport.instance().propertyValues(propertyName, actual));
   }
 
   /** {@inheritDoc} */
   @Override protected Set<Object> actualAsSet() {
-    return new HashSet<Object>(actual);
+    return new LinkedHashSet<Object>(actual);
   }
 
   /** {@inheritDoc} */

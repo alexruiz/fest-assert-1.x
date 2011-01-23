@@ -124,7 +124,7 @@ public class Person {
   public void setTitle(Title title) {
     this.title = title;
   }
-  
+
   // not public on purpose for test should_fail_because_of_non_public_getter
   String getCountry() {
     return country;
@@ -134,5 +134,4 @@ public class Person {
   boolean isAdult() {
     return adult;
   }
-
 }

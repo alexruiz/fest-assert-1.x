@@ -16,8 +16,7 @@ package org.fest.assertions;
 
 import static org.fest.assertions.ErrorMessages.*;
 import static org.fest.assertions.Formatting.format;
-import static org.fest.assertions.PropertySupport.propertyValues;
-import static org.fest.util.Collections.list;
+import static org.fest.util.Collections.*;
 
 import java.util.*;
 
@@ -143,12 +142,13 @@ public class ObjectArrayAssert extends ObjectGroupAssert<ObjectArrayAssert, Obje
   @Override public ObjectArrayAssert onProperty(String propertyName) {
     isNotNull();
     if (actual.length == 0) return new ObjectArrayAssert(new Object[0]);
-    return new ObjectArrayAssert(propertyValues(propertyName, list(actual)).toArray());
+    List<Object> values = PropertySupport.instance().propertyValues(propertyName, list(actual));
+    return new ObjectArrayAssert(values.toArray());
   }
 
   /** {@inheritDoc} */
   @Override protected Set<Object> actualAsSet() {
-    return asSet(actual);
+    return set(actual);
   }
 
   /** {@inheritDoc} */

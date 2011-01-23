@@ -16,7 +16,6 @@ package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
 import static org.fest.assertions.Formatting.format;
-import static org.fest.assertions.PropertySupport.propertyValues;
 import static org.fest.util.Collections.list;
 import static org.fest.util.Objects.areEqual;
 
@@ -216,12 +215,12 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
   @Override public ListAssert onProperty(String propertyName) {
     isNotNull();
     if (actual.isEmpty()) return new ListAssert(emptyList());
-    return new ListAssert(propertyValues(propertyName, actual));
+    return new ListAssert(PropertySupport.instance().propertyValues(propertyName, actual));
   }
 
   /** {@inheritDoc} */
   @Override protected Set<Object> actualAsSet() {
-    return new HashSet<Object>(actual);
+    return new LinkedHashSet<Object>(actual);
   }
 
   /** {@inheritDoc} */

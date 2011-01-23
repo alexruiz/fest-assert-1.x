@@ -17,6 +17,7 @@ package org.fest.assertions;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -27,12 +28,18 @@ import org.junit.Test;
  */
 public class PropertySupport_removeFirstPropertyIfNested_withInvalidInput_Test {
 
+  private static PropertySupport propertySupport;
+
+  @BeforeClass public static void setUpOnce() {
+    propertySupport = PropertySupport.instance();
+  }
+
   @Test public void should_return_empty_string_if_given_property_is_not_nested() {
-    assertEquals("", PropertySupport.removeFirstPropertyIfNested("address"));
+    assertEquals("", propertySupport.removeFirstPropertyIfNested("address"));
   }
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_property_is_null() {
-    PropertySupport.removeFirstPropertyIfNested(null);
+    propertySupport.removeFirstPropertyIfNested(null);
   }
 }

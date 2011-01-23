@@ -23,6 +23,7 @@ import java.beans.PropertyDescriptor;
 import java.util.*;
 
 import org.fest.util.IntrospectionError;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Utility methods for properties access.
@@ -35,6 +36,22 @@ import org.fest.util.IntrospectionError;
 final class PropertySupport {
 
   private static final String SEPARATOR = ".";
+
+  private static final PropertySupport INSTANCE = new PropertySupport();
+
+  static PropertySupport instance() {
+    return INSTANCE;
+  }
+
+  private final JavaBeanDescriptor javaBeanDescriptor;
+
+  private PropertySupport() {
+    this(new JavaBeanDescriptor());
+  }
+
+  PropertySupport(JavaBeanDescriptor javaBeanDescriptor) {
+    this.javaBeanDescriptor = javaBeanDescriptor;
+  }
 
   /**
    * Returns a list containing the values of the given property name, from the elements of the given collection. If the
@@ -53,7 +70,7 @@ final class PropertySupport {
    * @throws NullPointerException if given property name is {@code null}.
    * @throws IntrospectionError if an element in the given collection does not have a matching property.
    */
-  static List<Object> propertyValues(String propertyName, Collection<?> target) {
+  List<Object> propertyValues(String propertyName, Collection<?> target) {
     if (isEmpty(target) || hasOnlyNullElements(target)) return emptyList();
     // ignore null elements as we can't extract a property from a null object
     Collection<?> nonNullElements = nonNullElements(target);
@@ -64,6 +81,13 @@ final class PropertySupport {
       return propertyValues(removeFirstPropertyIfNested(propertyName), firstPropertyValues);
     }
     return simplePropertyValues(propertyName, nonNullElements);
+  }
+
+  private List<Object> simplePropertyValues(String propertyName, Collection<?> target) {
+    List<Object> propertyValues = new ArrayList<Object>();
+    for (Object e : target)
+      propertyValues.add(propertyValue(propertyName, e));
+    return propertyValues;
   }
 
   /**
@@ -85,7 +109,7 @@ final class PropertySupport {
    * @return {@code true} if property is nested, {@code false} otherwise.
    * @throws NullPointerException if given property name is {@code null}.
    */
-  static boolean isNestedProperty(String propertyName) {
+  boolean isNestedProperty(String propertyName) {
     if (propertyName == null) throw new NullPointerException("The property name to verify should not be null");
     return propertyName.contains(SEPARATOR) && !propertyName.startsWith(SEPARATOR) && !propertyName.endsWith(SEPARATOR);
   }
@@ -99,7 +123,7 @@ final class PropertySupport {
    * otherwise, it will return an empty {@code String}.
    * @throws NullPointerException if given property name is {@code null}.
    */
-  static String removeFirstPropertyIfNested(String propertyName) {
+  String removeFirstPropertyIfNested(String propertyName) {
     if (!isNestedProperty(propertyName)) return "";
     return propertyName.substring(propertyName.indexOf(SEPARATOR) + 1);
   }
@@ -113,26 +137,21 @@ final class PropertySupport {
    * otherwise, it will return the given property name unchanged.
    * @throws NullPointerException if given property name is {@code null}.
    */
-  static String firstPropertyIfNested(String propertyName) {
+  String firstPropertyIfNested(String propertyName) {
     if (!isNestedProperty(propertyName)) return propertyName;
     return propertyName.substring(0, propertyName.indexOf(SEPARATOR));
   }
 
-  private static List<Object> simplePropertyValues(String propertyName, Collection<?> target) {
-    List<Object> propertyValues = new ArrayList<Object>();
-    for (Object e : target)
-      propertyValues.add(propertyValue(propertyName, e));
-    return propertyValues;
+  private Object propertyValue(String propertyName, Object target) {
+    PropertyDescriptor descriptor = descriptorForProperty(propertyName, target);
+    return propertyValue(descriptor, propertyName, target);
   }
 
-  private static Object propertyValue(String propertyName, Object target) {
-    PropertyDescriptor descriptor = descriptorForProperty(propertyName, target);
+  @VisibleForTesting Object propertyValue(PropertyDescriptor descriptor, String propertyName, Object target) {
     try {
-      return descriptor.getReadMethod().invoke(target);
+      return javaBeanDescriptor.invokeReadMethod(descriptor, target);
     } catch (Exception e) {
       throw new IntrospectionError("Unable to obtain the value in property " + quote(propertyName), e);
     }
   }
-
-  private PropertySupport() {}
 }

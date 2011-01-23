@@ -23,8 +23,6 @@ import static org.fest.util.Objects.areEqual;
 
 import java.util.Collection;
 
-import org.fest.util.Arrays;
-
 /**
  * Template for assertions.
  * @param <S> used to simulate "self types." For more information please read &quot;<a
@@ -271,7 +269,6 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @throws NullPointerException if the given parameter is null.
    */
   public final S isIn(Object... values) {
-    // TODO check for null.
     return isIn(list(values));
   }
 
@@ -284,22 +281,9 @@ public abstract class GenericAssert<S, A> extends Assert {
    */
   public final S isIn(Collection<?> values) {
     if (values == null) throw new NullPointerException(formattedErrorMessage("expecting values parameter not to be null"));
-    if (assertThatActualIsIn(values)) return myself;
+    if (isActualIn(values)) return myself;
     failIfCustomMessageIsSet();
     throw failure(unexpectedNotIn(customErrorMessage(), actual, values));
-  }
-
-  private boolean assertThatActualIsIn(Collection<?> values) {
-    if (values.isEmpty()) return false;
-    if (Arrays.isArray(values.iterator().next())) {
-      // Using values.contains(actual) doesn't work when T is an array since contains relies on equals and array equals
-      // only compare references.
-      // We solve that with Objects.areEquals that compare array elements
-      for (Object value : values)
-        if (areEqual(actual, value)) return true;
-    }
-    // T is not an array, using contains works
-    return values.contains(actual);
   }
 
   /**
@@ -322,22 +306,16 @@ public abstract class GenericAssert<S, A> extends Assert {
    */
   public final S isNotIn(Collection<?> values) {
     if (values == null) throw new NullPointerException(formattedErrorMessage("expecting values parameter not to be null"));
-    if (assertThatActualIsNotIn(values)) return myself;
+    if (!isActualIn(values)) return myself;
     failIfCustomMessageIsSet();
     throw failure(unexpectedIn(customErrorMessage(), actual, values));
   }
 
-  private boolean assertThatActualIsNotIn(Collection<?> values) {
+  private boolean isActualIn(Collection<?> values) {
     if (values.isEmpty()) return false;
-    if (Arrays.isArray(values.iterator().next())) {
-      // Using values.contains(actual) doesn't work when T is an array since contains relies on equals and array equals
-      // only compare references.
-      // We solve that with Objects.areEquals that compare array elements
-      for (Object value : values)
-        if (areEqual(actual, value)) return false;
-    }
-    // T is not an array, using contains works
-    return !values.contains(actual);
+    for (Object value : values)
+      if (areEqual(actual, value)) return true;
+    return false;
   }
 
   /**

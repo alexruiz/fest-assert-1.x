@@ -36,4 +36,6 @@ public interface Assert_isIn_TestCase {
   void should_throw_error_if_given_values_parameter_is_null();
 
   void should_throw_error_and_display_description_if_given_values_parameter_is_null();
+
+  void should_fail_if_values_is_empty();
 }

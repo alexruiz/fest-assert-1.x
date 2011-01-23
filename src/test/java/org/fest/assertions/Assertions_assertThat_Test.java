@@ -196,6 +196,17 @@ public class Assertions_assertThat_Test {
     assertObjectIsInstanceOfType(Assertions.assertThat(new Exception()), ThrowableAssert.class);
   }
 
+  @Test public void should_return_IteratorAssert_if_actual_is_Iterable() {
+    Iterable<?> iterable = new ArrayList<Object>();
+    assertObjectIsInstanceOfType(Assertions.assertThat(iterable), IteratorAssert.class);
+  }
+
+  @Test public void should_return_IteratorAssert_with_null_Iterator_if_actual_is_a_null_Iterable() {
+    Iterable<?> iterable = null;
+    IteratorAssert assertions = Assertions.assertThat(iterable);
+    assertNull(assertions.actual);
+  }
+
   private void assertObjectIsInstanceOfType(Object object, Class<?> type) {
     assertEquals(type, object.getClass());
   }

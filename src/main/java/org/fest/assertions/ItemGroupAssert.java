@@ -16,7 +16,7 @@ package org.fest.assertions;
 
 import static org.fest.assertions.Collections.*;
 import static org.fest.assertions.Formatting.format;
-import static org.fest.util.Collections.duplicatesFrom;
+import static org.fest.util.Collections.*;
 
 import java.util.*;
 
@@ -73,7 +73,7 @@ public abstract class ItemGroupAssert<S, A> extends GroupAssert<S, A> {
     isNotNull();
     validateIsNotNull(objects);
     Set<Object> copy = actualAsSet();
-    List<Object> notFound = notFoundInCopy(copy, asSet(objects));
+    List<Object> notFound = notFoundInCopy(copy, set(objects));
     if (!notFound.isEmpty()) throw failureIfExpectedElementsNotFound(notFound);
     if (copy.isEmpty()) return;
     throw failureIfUnexpectedElementsFound(copy);
@@ -84,17 +84,6 @@ public abstract class ItemGroupAssert<S, A> extends GroupAssert<S, A> {
    * @return the actual value as a {@code Set}.
    */
   protected abstract Set<Object> actualAsSet();
-
-  /**
-   * Returns a set containing all the elements in the given array.
-   * @param objects the given array.
-   * @return a set containing all the elements in the given array.
-   */
-  protected static Set<Object> asSet(Object[] objects) {
-    Set<Object> s = new LinkedHashSet<Object>();
-    for (Object o : objects) s.add(o);
-    return s;
-  }
 
   private List<Object> notFoundInCopy(Set<Object> copy, Set<Object> objects) {
     List<Object> notFound = new ArrayList<Object>();

@@ -31,11 +31,11 @@ public class PropertySupport_firstPropertyIfNested_withInvalidInput_Test {
   @Rule public ExpectedException thrown = none();
 
   @Test public void should_return_given_property_if_not_a_nested_property() {
-    assertEquals("name", PropertySupport.firstPropertyIfNested("name"));
+    assertEquals("name", PropertySupport.instance().firstPropertyIfNested("name"));
   }
 
   @Test public void should_throw_error_if_property_is_null() {
     thrown.expect(NullPointerException.class);
-    PropertySupport.firstPropertyIfNested(null);
+    PropertySupport.instance().firstPropertyIfNested(null);
   }
 }

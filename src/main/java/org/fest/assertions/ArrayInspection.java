@@ -58,7 +58,7 @@ public final class ArrayInspection {
    * @since 1.3.
    */
   public static Set<Object> toSet(Object array) {
-    return copy(array, new HashSet<Object>());
+    return copy(array, new LinkedHashSet<Object>());
   }
 
   private static <T extends Collection<Object>> T copy(Object array, T destination) {

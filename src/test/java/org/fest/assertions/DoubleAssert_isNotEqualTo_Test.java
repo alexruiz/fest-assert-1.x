@@ -48,25 +48,25 @@ public class DoubleAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestC
 
   @Test public void should_fail_if_actual_and_expected_are_equal() {
     thrown.expectAssertionError(equal(actual, actual));
-    assertObject.isNotEqualTo(actual);
+    assertObject.isNotEqualTo(actual.doubleValue());
   }
 
   @Test public void should_fail_and_display_description_if_actual_and_expected_are_equal() {
     thrown.expectAssertionError(equal("A Test", actual, actual));
     assertObject.as("A Test")
-                .isNotEqualTo(actual);
+                .isNotEqualTo(actual.doubleValue());
   }
 
   @Test public void should_fail_with_custom_message_if_actual_and_expected_are_equal() {
     thrown.expectAssertionError("My custom message");
     assertObject.overridingErrorMessage("My custom message")
-                .isNotEqualTo(actual);
+                .isNotEqualTo(actual.doubleValue());
   }
 
   @Test public void should_fail_with_custom_message_ignoring_description_if_actual_and_expected_are_equal() {
     thrown.expectAssertionError("My custom message");
     assertObject.as("A Test")
                 .overridingErrorMessage("My custom message")
-                .isNotEqualTo(actual);
+                .isNotEqualTo(actual.doubleValue());
   }
 }

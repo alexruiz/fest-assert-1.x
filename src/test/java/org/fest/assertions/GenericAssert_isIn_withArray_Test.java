@@ -101,4 +101,10 @@ public final class GenericAssert_isIn_withArray_Test implements Assert_isIn_Test
               .overridingErrorMessage("My custom message")
               .isIn(notContainingActual);
   }
+
+  @Test public void should_fail_if_values_is_empty() {
+    Object[] values = new Object[0];
+    thrown.expectAssertionError(notIn(null, actual, values));
+    assertions.isIn(values);
+  }
 }

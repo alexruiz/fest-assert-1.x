@@ -14,10 +14,11 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.PropertySupport.propertyValues;
 import static org.fest.util.ToString.toStringOf;
 
 import java.util.*;
+
+import org.fest.util.VisibleForTesting;
 
 /**
  * Assertions for <code>{@link Iterator}</code>s.
@@ -47,7 +48,7 @@ public class IteratorAssert extends ObjectGroupAssert<IteratorAssert, Iterator<?
   /** {@inheritDoc} */
   @Override protected IteratorAssert onProperty(String propertyName) {
     isNotNull();
-    List<Object> subset = propertyValues(propertyName, contentOfActual());
+    List<Object> subset = PropertySupport.instance().propertyValues(propertyName, contentOfActual());
     return new IteratorAssert(subset.iterator());
   }
 
@@ -68,12 +69,11 @@ public class IteratorAssert extends ObjectGroupAssert<IteratorAssert, Iterator<?
   }
 
   private List<Object> contentOfActual() {
-    if (actual == null) return null;
     PrettyPrintIterator wrapped = (PrettyPrintIterator) actual;
     return wrapped.contents();
   }
 
-  private static class PrettyPrintIterator implements Iterator<Object> {
+  @VisibleForTesting static class PrettyPrintIterator implements Iterator<Object> {
     private final Iterator<?> wrapped;
 
     boolean wrappedWasConsumed;
@@ -84,7 +84,7 @@ public class IteratorAssert extends ObjectGroupAssert<IteratorAssert, Iterator<?
       this.wrapped = wrapped;
     }
 
-    public List<Object> contents() {
+    List<Object> contents() {
       consumeIterator();
       return wrappedContents;
     }

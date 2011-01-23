@@ -20,6 +20,7 @@ import static org.fest.assertions.Images.*;
 import java.awt.image.BufferedImage;
 
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link ImageAssert#isNotEqualTo(BufferedImage)}</code>.
@@ -47,5 +48,19 @@ public class ImageAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_Te
 
   @Override protected BufferedImage notEqualValue() {
     return notEqualValue;
+  }
+
+  @Test public void should_pass_if_other_is_null() {
+    assertionsFor(notNullValue).isNotEqualTo(null);
+  }
+
+  @Test public void should_pass_if_other_has_equal_size_but_different_color() {
+    assertionsFor(notNullValue).isNotEqualTo(fivePixelYellowImage());
+  }
+
+  @Test public void should_fail_if_images_have_equal_size_and_color() {
+    BufferedImage other = fivePixelBlueImage();
+    thrown.expectAssertionError("images are equal");
+    assertionsFor(notNullValue).isNotEqualTo(other);
   }
 }

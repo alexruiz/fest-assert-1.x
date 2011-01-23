@@ -103,10 +103,7 @@ public class FloatAssert extends GenericAssert<FloatAssert, Float> implements Nu
   }
 
   private FloatAssert isEqualTo(Float expected, float deltaValue) {
-    if (actual == null || expected == null) {
-      isEqualTo(expected);
-      return this;
-    }
+    if (actual == null || expected == null) return isEqualTo(expected);
     if (actual.compareTo(expected) == 0) return this;
     if (abs(expected - actual) <= deltaValue) return this;
     failIfCustomMessageIsSet();

@@ -133,4 +133,10 @@ public class ListAssert_containsSequence_Test {
         new ListAssert(emptyList()).as("A Test")
                                    .containsSequence(objects);
   }
+
+  @Test public void should_fail_if_actual_contains_first_elements_of_sequence_and_sequence_is_longer_than_actual() {
+    String message = "list:<['Anakin', 'Leia', 'Han']> does not contain the sequence:<['Anakin', 'Leia', 'Han', 'Ben', 'R2-D2']>";
+    thrown.expectAssertionError(message);
+    new ListAssert(list).containsSequence("Anakin", "Leia", "Han", "Ben", "R2-D2");
+  }
 }

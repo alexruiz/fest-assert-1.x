@@ -18,6 +18,7 @@ import static org.fest.assertions.ExpectedException.none;
 import static org.fest.assertions.FailureMessages.notIn;
 import static org.fest.util.Collections.list;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.junit.*;
@@ -102,5 +103,11 @@ public final class GenericAssert_isIn_withCollection_Test implements Assert_isIn
     assertions.as("A Test")
               .overridingErrorMessage("My custom message")
               .isIn(notContainingActual);
+  }
+
+  @Test public void should_fail_if_values_is_empty() {
+    Collection<?> values = new ArrayList<Object>();
+    thrown.expectAssertionError(notIn(null, actual, values));
+    assertions.isIn(values);
   }
 }

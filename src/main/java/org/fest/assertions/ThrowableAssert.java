@@ -17,6 +17,8 @@ package org.fest.assertions;
 import static org.fest.assertions.Fail.failIfNotEqual;
 import static org.fest.assertions.Formatting.format;
 
+import org.fest.util.VisibleForTesting;
+
 /**
  * Assertions for <code>{@link Throwable}</code>.
  * <p>
@@ -29,7 +31,7 @@ import static org.fest.assertions.Formatting.format;
 public class ThrowableAssert extends GenericAssert<ThrowableAssert, Throwable> {
 
   // TODO remove dependency on ObjectAssert.
-  private final ObjectAssert objectAssert;
+  @VisibleForTesting final ObjectAssert objectAssert;
 
   /**
    * Creates a new <code>ThrowableAssert</code>.

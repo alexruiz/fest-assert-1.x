@@ -104,10 +104,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
   }
 
   private DoubleAssert isEqualTo(Double expected, double deltaValue) {
-    if (actual == null || expected == null) {
-      isEqualTo(expected);
-      return this;
-    }
+    if (actual == null || expected == null) return isEqualTo(expected);
     if (actual.compareTo(expected) == 0) return this;
     if (abs(expected - actual) <= deltaValue) return this;
     failIfCustomMessageIsSet();
