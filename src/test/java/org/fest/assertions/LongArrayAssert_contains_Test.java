@@ -76,14 +76,14 @@ public class LongArrayAssert_contains_Test implements GroupAssert_contains_TestC
   @Override
   @Test
   public void should_fail_if_actual_does_not_contain_given_values() {
-    thrown.expect(AssertionError.class, "<[6, 8]> does not contain element(s):<[10]>");
+    thrown.expect(AssertionError.class, "<[6L, 8L]> does not contain element(s):<[10L]>");
     new LongArrayAssert(array).contains(10);
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_does_not_contain_given_values() {
-    thrown.expect(AssertionError.class, "[A Test] <[6, 8]> does not contain element(s):<[10]>");
+    thrown.expect(AssertionError.class, "[A Test] <[6L, 8L]> does not contain element(s):<[10L]>");
     new LongArrayAssert(array).as("A Test").contains(10);
   }
 

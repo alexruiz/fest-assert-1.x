@@ -77,14 +77,14 @@ public class FloatArrayAssert_containsOnly_Test implements GroupAssert_containsO
   @Override
   @Test
   public void should_fail_if_actual_is_empty_and_expecting_at_least_one_element() {
-    thrown.expect(AssertionError.class, "<[]> does not contain element(s):<[7.0]>");
+    thrown.expect(AssertionError.class, "<[]> does not contain element(s):<[7.0f]>");
     new FloatArrayAssert(emptyFloatArray()).containsOnly(7f);
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_is_empty_and_expecting_at_least_one_element() {
-    thrown.expect(AssertionError.class, "[A Test] <[]> does not contain element(s):<[7.0]>");
+    thrown.expect(AssertionError.class, "[A Test] <[]> does not contain element(s):<[7.0f]>");
     new FloatArrayAssert(emptyFloatArray()).as("A Test").containsOnly(7f);
   }
 
@@ -105,14 +105,14 @@ public class FloatArrayAssert_containsOnly_Test implements GroupAssert_containsO
   @Override
   @Test
   public void should_fail_if_actual_contains_unexpected_values() {
-    thrown.expect(AssertionError.class, "unexpected element(s):<[6.0]> in <[8.0, 6.0]>");
+    thrown.expect(AssertionError.class, "unexpected element(s):<[6.0f]> in <[8.0f, 6.0f]>");
     new FloatArrayAssert(array).containsOnly(floatArray(8));
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_contains_unexpected_values() {
-    thrown.expect(AssertionError.class, "[A Test] unexpected element(s):<[6.0]> in <[8.0, 6.0]>");
+    thrown.expect(AssertionError.class, "[A Test] unexpected element(s):<[6.0f]> in <[8.0f, 6.0f]>");
     new FloatArrayAssert(array).as("A Test").containsOnly(floatArray(8));
   }
 
@@ -133,14 +133,14 @@ public class FloatArrayAssert_containsOnly_Test implements GroupAssert_containsO
   @Override
   @Test
   public void should_fail_if_actual_does_not_contain_all_the_expected_values() {
-    thrown.expect(AssertionError.class, "<[8.0, 6.0]> does not contain element(s):<[7.0]>");
+    thrown.expect(AssertionError.class, "<[8.0f, 6.0f]> does not contain element(s):<[7.0f]>");
     new FloatArrayAssert(array).containsOnly(7f);
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_does_not_contain_all_the_expected_values() {
-    thrown.expect(AssertionError.class, "[A Test] <[8.0, 6.0]> does not contain element(s):<[7.0]>");
+    thrown.expect(AssertionError.class, "[A Test] <[8.0f, 6.0f]> does not contain element(s):<[7.0f]>");
     new FloatArrayAssert(array).as("A Test").containsOnly(7f);
   }
 

@@ -15,6 +15,7 @@
 package org.fest.assertions;
 
 import static java.lang.Math.abs;
+import static org.fest.assertions.ArrayInspection.copy;
 import static org.fest.assertions.ErrorMessages.unexpectedEqual;
 import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
 import static org.fest.assertions.Formatting.format;
@@ -55,7 +56,7 @@ public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> 
    * @throws AssertionError if the actual {@code double} array does not contain the given values.
    */
   public @Nonnull DoubleArrayAssert contains(@Nonnull double... values) {
-    assertContains(values);
+    assertContains(copy(values));
     return this;
   }
 
@@ -70,7 +71,7 @@ public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> 
    *           {@code double} array contains elements other than the ones specified.
    */
   public @Nonnull DoubleArrayAssert containsOnly(@Nonnull double... values) {
-    assertContainsOnly(values);
+    assertContainsOnly(copy(values));
     return this;
   }
 
@@ -84,7 +85,7 @@ public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> 
    * @throws AssertionError if the actual {@code double} array contains any of the given values.
    */
   public @Nonnull DoubleArrayAssert excludes(@Nonnull double... values) {
-    assertExcludes(values);
+    assertExcludes(copy(values));
     return this;
   }
 

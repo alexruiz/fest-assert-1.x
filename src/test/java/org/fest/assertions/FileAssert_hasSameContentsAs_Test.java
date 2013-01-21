@@ -27,6 +27,8 @@ import static org.junit.Assert.fail;
 import java.io.File;
 import java.io.IOException;
 
+import javax.annotation.Nonnull;
+
 import org.fest.test.ExpectedException;
 import org.junit.Before;
 import org.junit.Rule;
@@ -193,7 +195,7 @@ public class FileAssert_hasSameContentsAs_Test extends FileAssert_TestCase {
     }
 
     @Override
-    LineDiff[] compareContents(File actual, File expected) throws IOException {
+    @Nonnull LineDiff[] compareContents(@Nonnull File actual, @Nonnull File expected) throws IOException {
       if (toThrow != null) {
         throw toThrow;
       }

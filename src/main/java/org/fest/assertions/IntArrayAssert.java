@@ -14,6 +14,7 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.ArrayInspection.copy;
 import static org.fest.assertions.ErrorMessages.unexpectedEqual;
 import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
 
@@ -51,7 +52,7 @@ public class IntArrayAssert extends ArrayAssert<IntArrayAssert, int[]> {
    * @throws AssertionError if the actual {@code int} array does not contain the given values.
    */
   public @Nonnull IntArrayAssert contains(@Nonnull int... values) {
-    assertContains(values);
+    assertContains(copy(values));
     return this;
   }
 
@@ -66,7 +67,7 @@ public class IntArrayAssert extends ArrayAssert<IntArrayAssert, int[]> {
    *           {@code int} array contains elements other than the ones specified.
    */
   public @Nonnull IntArrayAssert containsOnly(@Nonnull int... values) {
-    assertContainsOnly(values);
+    assertContainsOnly(copy(values));
     return this;
   }
 
@@ -80,7 +81,7 @@ public class IntArrayAssert extends ArrayAssert<IntArrayAssert, int[]> {
    * @throws AssertionError if the actual {@code int} array contains any of the given values.
    */
   public @Nonnull IntArrayAssert excludes(@Nonnull int... values) {
-    assertExcludes(values);
+    assertExcludes(copy(values));
     return this;
   }
 

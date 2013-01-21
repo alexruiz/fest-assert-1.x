@@ -65,14 +65,14 @@ public class FileAssert_hasSize_Test implements Assert_hasSize_TestCase {
   @Override
   @Test
   public void should_fail_if_actual_does_not_have_expected_size() {
-    thrown.expect(AssertionError.class, "size of file:<c:\\f.txt> expected:<6> but was:<8>");
+    thrown.expect(AssertionError.class, "size of file:<c:\\f.txt> expected:<6L> but was:<8L>");
     new FileAssert(file).hasSize(6);
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_does_not_have_expected_size() {
-    thrown.expect(AssertionError.class, "[A Test] size of file:<c:\\f.txt> expected:<6> but was:<8>");
+    thrown.expect(AssertionError.class, "[A Test] size of file:<c:\\f.txt> expected:<6L> but was:<8L>");
     new FileAssert(file).as("A Test").hasSize(6);
   }
 

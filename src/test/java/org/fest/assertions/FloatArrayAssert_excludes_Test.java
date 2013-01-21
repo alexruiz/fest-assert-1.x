@@ -77,14 +77,14 @@ public class FloatArrayAssert_excludes_Test implements GroupAssert_excludes_Test
   @Override
   @Test
   public void should_fail_if_actual_contains_given_values() {
-    thrown.expect(AssertionError.class, "<[8.0]> does not exclude element(s):<[8.0]>");
+    thrown.expect(AssertionError.class, "<[8.0f]> does not exclude element(s):<[8.0f]>");
     new FloatArrayAssert(array).excludes(8f);
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_contains_given_values() {
-    thrown.expect(AssertionError.class, "[A Test] <[8.0]> does not exclude element(s):<[8.0]>");
+    thrown.expect(AssertionError.class, "[A Test] <[8.0f]> does not exclude element(s):<[8.0f]>");
     new FloatArrayAssert(array).as("A Test").excludes(8f);
   }
 

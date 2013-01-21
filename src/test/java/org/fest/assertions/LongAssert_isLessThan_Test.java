@@ -39,14 +39,14 @@ public class LongAssert_isLessThan_Test implements Assert_isLessThan_TestCase {
   @Override
   @Test
   public void should_fail_if_actual_is_equal_to_expected() {
-    thrown.expect(AssertionError.class, "actual value:<6> should be less than:<6>");
+    thrown.expect(AssertionError.class, "actual value:<6L> should be less than:<6L>");
     new LongAssert(6).isLessThan(6);
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_is_equal_to_expected() {
-    thrown.expect(AssertionError.class, "[A Test] actual value:<6> should be less than:<6>");
+    thrown.expect(AssertionError.class, "[A Test] actual value:<6L> should be less than:<6L>");
     new LongAssert(6).as("A Test").isLessThan(6);
   }
 
@@ -67,14 +67,14 @@ public class LongAssert_isLessThan_Test implements Assert_isLessThan_TestCase {
   @Override
   @Test
   public void should_fail_if_actual_is_greater_than_expected() {
-    thrown.expect(AssertionError.class, "actual value:<10> should be less than:<6>");
+    thrown.expect(AssertionError.class, "actual value:<10L> should be less than:<6L>");
     new LongAssert(10).isLessThan(6);
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_is_greater_than_expected() {
-    thrown.expect(AssertionError.class, "[A Test] actual value:<10> should be less than:<6>");
+    thrown.expect(AssertionError.class, "[A Test] actual value:<10L> should be less than:<6L>");
     new LongAssert(10).as("A Test").isLessThan(6);
   }
 

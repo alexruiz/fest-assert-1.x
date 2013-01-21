@@ -39,14 +39,14 @@ public class FloatAssert_isPositive_Test implements NumberAssert_isPositive_Test
   @Override
   @Test
   public void should_fail_if_actual_is_negative() {
-    thrown.expect(AssertionError.class, "actual value:<-6.68> should be greater than:<0.0>");
+    thrown.expect(AssertionError.class, "actual value:<-6.68f> should be greater than:<0.0f>");
     new FloatAssert(-6.68f).isPositive();
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_is_negative() {
-    thrown.expect(AssertionError.class, "[A Test] actual value:<-6.68> should be greater than:<0.0>");
+    thrown.expect(AssertionError.class, "[A Test] actual value:<-6.68f> should be greater than:<0.0f>");
     new FloatAssert(-6.68f).as("A Test").isPositive();
   }
 
@@ -67,14 +67,14 @@ public class FloatAssert_isPositive_Test implements NumberAssert_isPositive_Test
   @Override
   @Test
   public void should_fail_if_actual_is_zero() {
-    thrown.expect(AssertionError.class, "actual value:<0.0> should be greater than:<0.0>");
+    thrown.expect(AssertionError.class, "actual value:<0.0f> should be greater than:<0.0f>");
     new FloatAssert(0.0f).isPositive();
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_is_zero() {
-    thrown.expect(AssertionError.class, "[A Test] actual value:<0.0> should be greater than:<0.0>");
+    thrown.expect(AssertionError.class, "[A Test] actual value:<0.0f> should be greater than:<0.0f>");
     new FloatAssert(0.0f).as("A Test").isPositive();
   }
 

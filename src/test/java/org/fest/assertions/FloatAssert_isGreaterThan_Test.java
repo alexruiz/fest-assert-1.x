@@ -39,14 +39,14 @@ public class FloatAssert_isGreaterThan_Test implements Assert_isGreaterThan_Test
   @Override
   @Test
   public void should_fail_if_actual_is_equal_to_expected() {
-    thrown.expect(AssertionError.class, "actual value:<8.68> should be greater than:<8.68>");
+    thrown.expect(AssertionError.class, "actual value:<8.68f> should be greater than:<8.68f>");
     new FloatAssert(8.68f).isGreaterThan(8.68f);
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_is_equal_to_expected() {
-    thrown.expect(AssertionError.class, "[A Test] actual value:<8.68> should be greater than:<8.68>");
+    thrown.expect(AssertionError.class, "[A Test] actual value:<8.68f> should be greater than:<8.68f>");
     new FloatAssert(8.68f).as("A Test").isGreaterThan(8.68f);
   }
 
@@ -67,14 +67,14 @@ public class FloatAssert_isGreaterThan_Test implements Assert_isGreaterThan_Test
   @Override
   @Test
   public void should_fail_if_actual_is_less_than_expected() {
-    thrown.expect(AssertionError.class, "actual value:<8.68> should be greater than:<8.88>");
+    thrown.expect(AssertionError.class, "actual value:<8.68f> should be greater than:<8.88f>");
     new FloatAssert(8.68f).isGreaterThan(8.88f);
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_is_less_than_expected() {
-    thrown.expect(AssertionError.class, "[A Test] actual value:<8.68> should be greater than:<8.88>");
+    thrown.expect(AssertionError.class, "[A Test] actual value:<8.68f> should be greater than:<8.88f>");
     new FloatAssert(8.68f).as("A Test").isGreaterThan(8.88f);
   }
 

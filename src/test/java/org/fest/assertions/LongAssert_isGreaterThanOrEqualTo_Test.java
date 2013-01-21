@@ -45,14 +45,14 @@ public class LongAssert_isGreaterThanOrEqualTo_Test implements Assert_isGreaterT
   @Override
   @Test
   public void should_fail_if_actual_is_less_than_expected() {
-    thrown.expect(AssertionError.class, "actual value:<6> should be greater than or equal to:<8>");
+    thrown.expect(AssertionError.class, "actual value:<6L> should be greater than or equal to:<8L>");
     new LongAssert(6).isGreaterThanOrEqualTo(8);
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_is_less_than_expected() {
-    thrown.expect(AssertionError.class, "[A Test] actual value:<6> should be greater than or equal to:<8>");
+    thrown.expect(AssertionError.class, "[A Test] actual value:<6L> should be greater than or equal to:<8L>");
     new LongAssert(6).as("A Test").isGreaterThanOrEqualTo(8);
   }
 

@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.ErrorMessages.unexpectedEqual;
 import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
+import static org.fest.assertions.Fail.comparisonFailed;
+import static org.fest.assertions.Fail.failWithMessage;
 import static org.fest.assertions.Formatting.format;
 import static org.fest.assertions.Threshold.threshold;
 import static org.fest.util.Objects.areEqual;
@@ -126,7 +128,7 @@ public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
       return;
     }
     failIfCustomMessageIsSet();
-    fail(format("image size: expected:<%s> but was:<%s>", e, a));
+    fail(format("image size: expected:<%s> but was:<%s>", new DimensionFormatter(e), new DimensionFormatter(a)));
   }
 
   private void failIfNotEqualColor(@Nonnull BufferedImage expected, @Nonnull Threshold threshold) {
@@ -204,12 +206,32 @@ public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
     isNotNull();
     checkNotNull(expected);
     Dimension actualDimension = new Dimension(actual.getWidth(), actual.getHeight());
-    Fail.failIfNotEqual(customErrorMessage(), rawDescription(), actualDimension, expected);
-    return this;
+    if (areEqual(actualDimension, expected)) {
+      return this;
+    }
+    failWithMessage(customErrorMessage());
+    throw comparisonFailed(rawDescription(), new DimensionFormatter(actualDimension), new DimensionFormatter(expected));
   }
 
   @VisibleForTesting
   static void imageReader(@Nonnull ImageReader newImageReader) {
     imageReader = newImageReader;
+  }
+
+  private static class DimensionFormatter {
+    private final Dimension dimension;
+
+    DimensionFormatter(@Nullable Dimension dimension) {
+      this.dimension = dimension;
+    }
+
+    @Override
+    public String toString() {
+      if (dimension == null) {
+        return null;
+      }
+      String format = "(w=%d, h=%d)";
+      return String.format(format, dimension.width, dimension.height);
+    }
   }
 }

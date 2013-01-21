@@ -76,14 +76,14 @@ public class FloatArrayAssert_contains_Test implements GroupAssert_contains_Test
   @Override
   @Test
   public void should_fail_if_actual_does_not_contain_given_values() {
-    thrown.expect(AssertionError.class, "<[8.0, 6.0]> does not contain element(s):<[10.0]>");
+    thrown.expect(AssertionError.class, "<[8.0f, 6.0f]> does not contain element(s):<[10.0f]>");
     new FloatArrayAssert(array).contains(10f);
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_does_not_contain_given_values() {
-    thrown.expect(AssertionError.class, "[A Test] <[8.0, 6.0]> does not contain element(s):<[10.0]>");
+    thrown.expect(AssertionError.class, "[A Test] <[8.0f, 6.0f]> does not contain element(s):<[10.0f]>");
     new FloatArrayAssert(array).as("A Test").contains(10f);
   }
 

@@ -77,14 +77,14 @@ public class LongArrayAssert_containsOnly_Test implements GroupAssert_containsOn
   @Override
   @Test
   public void should_fail_if_actual_is_empty_and_expecting_at_least_one_element() {
-    thrown.expect(AssertionError.class, "<[]> does not contain element(s):<[10, 2]>");
+    thrown.expect(AssertionError.class, "<[]> does not contain element(s):<[10L, 2L]>");
     new LongArrayAssert(emptyLongArray()).containsOnly(longArray(10, 2));
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_is_empty_and_expecting_at_least_one_element() {
-    thrown.expect(AssertionError.class, "[A Test] <[]> does not contain element(s):<[10, 2]>");
+    thrown.expect(AssertionError.class, "[A Test] <[]> does not contain element(s):<[10L, 2L]>");
     new LongArrayAssert(emptyLongArray()).as("A Test").containsOnly(longArray(10, 2));
   }
 
@@ -106,14 +106,14 @@ public class LongArrayAssert_containsOnly_Test implements GroupAssert_containsOn
   @Override
   @Test
   public void should_fail_if_actual_contains_unexpected_values() {
-    thrown.expect(AssertionError.class, "unexpected element(s):<[8]> in <[6, 8]>");
+    thrown.expect(AssertionError.class, "unexpected element(s):<[8L]> in <[6L, 8L]>");
     new LongArrayAssert(array).containsOnly(longArray(6));
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_contains_unexpected_values() {
-    thrown.expect(AssertionError.class, "[A Test] unexpected element(s):<[8]> in <[6, 8]>");
+    thrown.expect(AssertionError.class, "[A Test] unexpected element(s):<[8L]> in <[6L, 8L]>");
     new LongArrayAssert(array).as("A Test").containsOnly(longArray(6));
   }
 
@@ -134,14 +134,14 @@ public class LongArrayAssert_containsOnly_Test implements GroupAssert_containsOn
   @Override
   @Test
   public void should_fail_if_actual_does_not_contain_all_the_expected_values() {
-    thrown.expect(AssertionError.class, "<[6, 8]> does not contain element(s):<[10]>");
+    thrown.expect(AssertionError.class, "<[6L, 8L]> does not contain element(s):<[10L]>");
     new LongArrayAssert(array).containsOnly(longArray(10));
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_does_not_contain_all_the_expected_values() {
-    thrown.expect(AssertionError.class, "[A Test] <[6, 8]> does not contain element(s):<[10]>");
+    thrown.expect(AssertionError.class, "[A Test] <[6L, 8L]> does not contain element(s):<[10L]>");
     new LongArrayAssert(array).as("A Test").containsOnly(longArray(10));
   }
 

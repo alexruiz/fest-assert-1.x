@@ -27,8 +27,8 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class ArrayInspection_copy_Test {
-  @Test
-  public void should_return_null_if_array_is_null() {
+  @Test(expected = NullPointerException.class)
+  public void should_throw_error_if_array_is_null() {
     assertNull(ArrayInspection.copy(null));
   }
 

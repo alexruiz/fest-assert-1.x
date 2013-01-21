@@ -39,14 +39,14 @@ public class LongAssert_isPositive_Test implements NumberAssert_isPositive_TestC
   @Override
   @Test
   public void should_fail_if_actual_is_negative() {
-    thrown.expect(AssertionError.class, "actual value:<-2> should be greater than:<0>");
+    thrown.expect(AssertionError.class, "actual value:<-2L> should be greater than:<0L>");
     new LongAssert(-2).isPositive();
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_is_negative() {
-    thrown.expect(AssertionError.class, "[A Test] actual value:<-2> should be greater than:<0>");
+    thrown.expect(AssertionError.class, "[A Test] actual value:<-2L> should be greater than:<0L>");
     new LongAssert(-2).as("A Test").isPositive();
   }
 
@@ -67,14 +67,14 @@ public class LongAssert_isPositive_Test implements NumberAssert_isPositive_TestC
   @Override
   @Test
   public void should_fail_if_actual_is_zero() {
-    thrown.expect(AssertionError.class, "actual value:<0> should be greater than:<0>");
+    thrown.expect(AssertionError.class, "actual value:<0L> should be greater than:<0L>");
     new LongAssert(0).isPositive();
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_is_zero() {
-    thrown.expect(AssertionError.class, "[A Test] actual value:<0> should be greater than:<0>");
+    thrown.expect(AssertionError.class, "[A Test] actual value:<0L> should be greater than:<0L>");
     new LongAssert(0).as("A Test").isPositive();
   }
 

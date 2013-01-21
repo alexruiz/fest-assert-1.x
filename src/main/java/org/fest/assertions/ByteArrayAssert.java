@@ -14,6 +14,7 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.ArrayInspection.copy;
 import static org.fest.assertions.ErrorMessages.unexpectedEqual;
 import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
 
@@ -51,7 +52,7 @@ public class ByteArrayAssert extends ArrayAssert<ByteArrayAssert, byte[]> {
    * @throws AssertionError if the actual {@code byte} array does not contain the given values.
    */
   public @Nonnull ByteArrayAssert contains(@Nonnull byte... values) {
-    assertContains(values);
+    assertContains(copy(values));
     return this;
   }
 
@@ -66,7 +67,7 @@ public class ByteArrayAssert extends ArrayAssert<ByteArrayAssert, byte[]> {
    *           {@code byte} array contains elements other than the ones specified.
    */
   public @Nonnull ByteArrayAssert containsOnly(@Nonnull byte... values) {
-    assertContainsOnly(values);
+    assertContainsOnly(copy(values));
     return this;
   }
 
@@ -80,7 +81,7 @@ public class ByteArrayAssert extends ArrayAssert<ByteArrayAssert, byte[]> {
    * @throws AssertionError if the actual {@code byte} array contains any of the given values.
    */
   public @Nonnull ByteArrayAssert excludes(@Nonnull byte... values) {
-    assertExcludes(values);
+    assertExcludes(copy(values));
     return this;
   }
 

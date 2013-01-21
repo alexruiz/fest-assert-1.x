@@ -14,9 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Formatter.format;
 import static org.fest.util.Strings.concat;
 import static org.fest.util.Strings.isNullOrEmpty;
+import static org.fest.util.ToString.toStringOf;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -31,7 +31,7 @@ final class FailureMessages {
     return "expecting actual value not to be null";
   }
 
-  static String actualIsNull(String description) {
+  static @Nonnull String actualIsNull(String description) {
     return String.format("[%s] expecting actual value not to be null", description);
   }
 
@@ -41,8 +41,8 @@ final class FailureMessages {
 
   static @Nonnull String notEqual(String description, Object actual, Object expected) {
     String d = inBrackets(description);
-    String a = format(actual);
-    String e = format(expected);
+    String a = toStringOf(actual);
+    String e = toStringOf(expected);
     boolean isArray = isArray(actual) || isArray(expected);
     if (!isArray) {
       return new ComparisonFailure(d, e, a).getMessage();
@@ -57,7 +57,7 @@ final class FailureMessages {
 
   static @Nonnull String equal(String description, Object actual, Object other) {
     String d = addSpaceIfNotEmpty(inBrackets(description));
-    return concat(d, "actual value:<", format(actual), "> should not be equal to:<", format(other), ">");
+    return concat(d, "actual value:<", toStringOf(actual), "> should not be equal to:<", toStringOf(other), ">");
   }
 
   static @Nonnull String equalOrLess(Object actual, Object other) {
@@ -66,17 +66,17 @@ final class FailureMessages {
 
   static @Nonnull String equalOrLess(String description, Object actual, Object other) {
     String d = addSpaceIfNotEmpty(inBrackets(description));
-    return concat(d, "actual value:<", format(actual), "> should be greater than:<", format(other), ">");
+    return concat(d, "actual value:<", toStringOf(actual), "> should be greater than:<", toStringOf(other), ">");
   }
 
   static @Nonnull String notIn(String description, Object actual, Object other) {
     String d = addSpaceIfNotEmpty(inBrackets(description));
-    return concat(d, "actual value:<", format(actual), "> should be in:<", format(other), ">");
+    return concat(d, "actual value:<", toStringOf(actual), "> should be in:<", toStringOf(other), ">");
   }
 
   static @Nonnull String in(String description, Object actual, Object other) {
     String d = addSpaceIfNotEmpty(inBrackets(description));
-    return concat(d, "actual value:<", format(actual), "> should not be in:<", format(other), ">");
+    return concat(d, "actual value:<", toStringOf(actual), "> should not be in:<", toStringOf(other), ">");
   }
 
   private static @Nullable String inBrackets(@Nullable String s) {

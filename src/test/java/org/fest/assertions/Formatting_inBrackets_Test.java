@@ -81,7 +81,7 @@ public class Formatting_inBrackets_Test {
   @Test
   public void should_surround_array_of_floats_with_brackets() {
     Object o = floatArray(6.1f, 8.6f);
-    assertEquals("<[6.1, 8.6]>", Formatting.inBrackets(o));
+    assertEquals("<[6.1f, 8.6f]>", Formatting.inBrackets(o));
   }
 
   @Test
@@ -93,7 +93,7 @@ public class Formatting_inBrackets_Test {
   @Test
   public void should_surround_array_of_longs_with_brackets() {
     Object o = longArray(160l, 98l);
-    assertEquals("<[160, 98]>", Formatting.inBrackets(o));
+    assertEquals("<[160L, 98L]>", Formatting.inBrackets(o));
   }
 
   @Test

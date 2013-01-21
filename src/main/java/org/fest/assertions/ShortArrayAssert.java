@@ -14,6 +14,7 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.ArrayInspection.copy;
 import static org.fest.assertions.ErrorMessages.unexpectedEqual;
 import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
 
@@ -51,7 +52,7 @@ public class ShortArrayAssert extends ArrayAssert<ShortArrayAssert, short[]> {
    * @throws AssertionError if the actual {@code short} array does not contain the given values.
    */
   public @Nonnull ShortArrayAssert contains(@Nonnull short... values) {
-    assertContains(values);
+    assertContains(copy(values));
     return this;
   }
 
@@ -66,7 +67,7 @@ public class ShortArrayAssert extends ArrayAssert<ShortArrayAssert, short[]> {
    *           {@code short} array contains elements other than the ones specified.
    */
   public @Nonnull ShortArrayAssert containsOnly(@Nonnull short... values) {
-    assertContainsOnly(values);
+    assertContainsOnly(copy(values));
     return this;
   }
 
@@ -80,7 +81,7 @@ public class ShortArrayAssert extends ArrayAssert<ShortArrayAssert, short[]> {
    * @throws AssertionError if the actual {@code Object} array contains any of the given values.
    */
   public @Nonnull ShortArrayAssert excludes(short... values) {
-    assertExcludes(values);
+    assertExcludes(copy(values));
     return this;
   }
 

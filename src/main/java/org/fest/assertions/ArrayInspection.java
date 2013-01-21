@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 /**
  * Utility methods for arrays.
@@ -40,11 +39,11 @@ public final class ArrayInspection {
    * 
    * @param array the array to copy.
    * @return an array of objects containing the contents of the array.
+   * @throws NullPointerException if the given object is {@code null}.
    * @throws IllegalArgumentException if the given object is not an array.
    */
-  public static @Nullable Object[] copy(@Nullable Object array) {
-    List<Object> list = copyToList(array);
-    return list == null ? null : list.toArray();
+  public static @Nonnull Object[] copy(@Nonnull Object array) {
+    return copyToList(checkNotNull(array)).toArray();
   }
 
   /**
@@ -55,8 +54,8 @@ public final class ArrayInspection {
    * @throws IllegalArgumentException if the given object is not an array.
    * @since 1.3.
    */
-  public static @Nullable List<Object> copyToList(@Nullable Object array) {
-    return copy(array, newArrayList());
+  public static @Nonnull List<Object> copyToList(@Nonnull Object array) {
+    return copy(checkNotNull(array), newArrayList());
   }
 
   /**
@@ -67,14 +66,11 @@ public final class ArrayInspection {
    * @throws IllegalArgumentException if the given object is not an array.
    * @since 1.3.
    */
-  public static @Nullable Set<Object> copyToSet(@Nullable Object array) {
-    return copy(array, newLinkedHashSet());
+  public static @Nonnull Set<Object> copyToSet(@Nonnull Object array) {
+    return copy(checkNotNull(array), newLinkedHashSet());
   }
 
-  private static @Nullable <T extends Collection<Object>> T copy(@Nullable Object array, @Nonnull T destination) {
-    if (array == null) {
-      return null;
-    }
+  private static @Nonnull <T extends Collection<Object>> T copy(@Nonnull Object array, @Nonnull T destination) {
     int length = sizeOf(array);
     for (int i = 0; i < length; i++) {
       destination.add(get(array, i));

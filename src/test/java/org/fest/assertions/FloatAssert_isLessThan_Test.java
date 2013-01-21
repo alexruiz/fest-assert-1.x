@@ -39,14 +39,14 @@ public class FloatAssert_isLessThan_Test implements Assert_isLessThan_TestCase {
   @Override
   @Test
   public void should_fail_if_actual_is_equal_to_expected() {
-    thrown.expect(AssertionError.class, "actual value:<6.68> should be less than:<6.68>");
+    thrown.expect(AssertionError.class, "actual value:<6.68f> should be less than:<6.68f>");
     new FloatAssert(6.68f).isLessThan(6.68f);
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_is_equal_to_expected() {
-    thrown.expect(AssertionError.class, "[A Test] actual value:<6.68> should be less than:<6.68>");
+    thrown.expect(AssertionError.class, "[A Test] actual value:<6.68f> should be less than:<6.68f>");
     new FloatAssert(6.68f).as("A Test").isLessThan(6.68f);
   }
 
@@ -67,14 +67,14 @@ public class FloatAssert_isLessThan_Test implements Assert_isLessThan_TestCase {
   @Override
   @Test
   public void should_fail_if_actual_is_greater_than_expected() {
-    thrown.expect(AssertionError.class, "actual value:<6.88> should be less than:<6.68>");
+    thrown.expect(AssertionError.class, "actual value:<6.88f> should be less than:<6.68f>");
     new FloatAssert(6.88f).isLessThan(6.68f);
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_is_greater_than_expected() {
-    thrown.expect(AssertionError.class, "[A Test] actual value:<6.88> should be less than:<6.68>");
+    thrown.expect(AssertionError.class, "[A Test] actual value:<6.88f> should be less than:<6.68f>");
     new FloatAssert(6.88f).as("A Test").isLessThan(6.68f);
   }
 

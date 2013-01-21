@@ -39,14 +39,14 @@ public class LongAssert_isNegative_Test implements NumberAssert_isNegative_TestC
   @Override
   @Test
   public void should_fail_if_actual_is_positive() {
-    thrown.expect(AssertionError.class, "actual value:<6> should be less than:<0>");
+    thrown.expect(AssertionError.class, "actual value:<6L> should be less than:<0L>");
     new LongAssert(6).isNegative();
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_is_positive() {
-    thrown.expect(AssertionError.class, "[A Test] actual value:<6> should be less than:<0>");
+    thrown.expect(AssertionError.class, "[A Test] actual value:<6L> should be less than:<0L>");
     new LongAssert(6).as("A Test").isNegative();
   }
 
@@ -67,14 +67,14 @@ public class LongAssert_isNegative_Test implements NumberAssert_isNegative_TestC
   @Override
   @Test
   public void should_fail_if_actual_is_zero() {
-    thrown.expect(AssertionError.class, "actual value:<0> should be less than:<0>");
+    thrown.expect(AssertionError.class, "actual value:<0L> should be less than:<0L>");
     new LongAssert(0).isNegative();
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_is_zero() {
-    thrown.expect(AssertionError.class, "[A Test] actual value:<0> should be less than:<0>");
+    thrown.expect(AssertionError.class, "[A Test] actual value:<0L> should be less than:<0L>");
     new LongAssert(0).as("A Test").isNegative();
   }
 

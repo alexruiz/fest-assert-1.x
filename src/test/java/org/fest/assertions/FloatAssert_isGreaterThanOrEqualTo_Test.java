@@ -45,14 +45,14 @@ public class FloatAssert_isGreaterThanOrEqualTo_Test implements Assert_isGreater
   @Override
   @Test
   public void should_fail_if_actual_is_less_than_expected() {
-    thrown.expect(AssertionError.class, "actual value:<6.6> should be greater than or equal to:<8.8>");
+    thrown.expect(AssertionError.class, "actual value:<6.6f> should be greater than or equal to:<8.8f>");
     new FloatAssert(6.6f).isGreaterThanOrEqualTo(8.8f);
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_actual_is_less_than_expected() {
-    thrown.expect(AssertionError.class, "[A Test] actual value:<6.6> should be greater than or equal to:<8.8>");
+    thrown.expect(AssertionError.class, "[A Test] actual value:<6.6f> should be greater than or equal to:<8.8f>");
     new FloatAssert(6.6f).as("A Test").isGreaterThanOrEqualTo(8.8f);
   }
 

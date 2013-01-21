@@ -37,13 +37,13 @@ public class FloatAssert_isNaN_Test {
 
   @Test
   public void should_fail_if_actual_is_not_NaN() {
-    thrown.expect(AssertionError.class, "expected:<[NaN]> but was:<[6.68]>");
+    thrown.expect(AssertionError.class, "expected:<[NaN]> but was:<[6.68f]>");
     new FloatAssert(6.68f).isNaN();
   }
 
   @Test
   public void should_fail_and_display_description_if_actual_is_not_NaN() {
-    thrown.expect(AssertionError.class, "[A Test] expected:<[NaN]> but was:<[6.68]>");
+    thrown.expect(AssertionError.class, "[A Test] expected:<[NaN]> but was:<[6.68f]>");
     new FloatAssert(6.68f).as("A Test").isNaN();
   }
 

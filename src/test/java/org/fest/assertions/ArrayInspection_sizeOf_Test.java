@@ -25,14 +25,9 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class ArrayInspection_sizeOf_Test {
-  @Test
+  @Test(expected = NullPointerException.class)
   public void should_throw_error_if_array_is_null() {
-    try {
-      ArrayInspection.sizeOf(null);
-      fail("Expecting NullPointerException");
-    } catch (NullPointerException e) {
-      assertEquals("The given array should not be null", e.getMessage());
-    }
+    ArrayInspection.sizeOf(null);
   }
 
   @Test
