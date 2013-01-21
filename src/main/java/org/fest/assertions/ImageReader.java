@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2011 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.assertions;
 
@@ -19,6 +19,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.imageio.ImageIO;
 
 /**
@@ -27,9 +29,7 @@ import javax.imageio.ImageIO;
  * @author Yvonne Wang
  */
 class ImageReader {
-
-  BufferedImage read(File imageFile) throws IOException {
+  @Nullable BufferedImage read(@Nonnull File imageFile) throws IOException {
     return ImageIO.read(imageFile);
   }
-
 }

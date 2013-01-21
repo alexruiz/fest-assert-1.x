@@ -1,72 +1,82 @@
 /*
  * Created on Sep 17, 2007
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
- * Copyright @2007-2011 the original author or authors.
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.assertions;
 
-import static org.fest.util.Strings.isEmpty;
+import static org.fest.util.Preconditions.checkNotNull;
+import static org.fest.util.Strings.isNullOrEmpty;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
- * Condition to be met by an <code>{@link Object}</code>.
+ * Condition to be met by an {@link Object}.
+ * 
  * @param <T> the type of {@code Object} this condition accepts.
- *
+ * 
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public abstract class Condition<T> {
-
   private String description;
 
   /**
-   * Creates a new <code>{@link Condition}</code>.
+   * Creates a new {@link Condition}.
    */
   public Condition() {}
 
   /**
-   * Creates a new <code>{@link Condition}</code>.
+   * Creates a new {@link Condition}.
+   * 
    * @param description the description of this condition.
    */
-  public Condition(String description) {
+  public Condition(@Nullable String description) {
     as(description);
   }
 
   /**
    * Sets the description of this condition.
+   * 
    * @param newDescription the description to set.
    * @return this condition.
    */
-  public final Condition<T> as(String newDescription) {
+  public final @Nonnull Condition<T> as(@Nullable String newDescription) {
     description = newDescription;
     return this;
   }
 
-  final String addDescriptionTo(String s) {
+  final @Nonnull String addDescriptionTo(@Nonnull String s) {
+    checkNotNull(s);
     String descriptionToAdd = description();
-    if (isEmpty(descriptionToAdd)) descriptionToAdd = getClass().getSimpleName();
+    if (isNullOrEmpty(descriptionToAdd)) {
+      descriptionToAdd = getClass().getSimpleName();
+    }
     return String.format("%s:<%s>", s, descriptionToAdd);
   }
 
   /**
-   * Returns the description of this condition, if any.
    * @return the description of this condition.
    */
-  public final String description() { return description; }
+  public final @Nullable String description() {
+    return description;
+  }
 
   /**
    * Verifies that the given value satisfies this condition.
+   * 
    * @param value the value to verify.
    * @return {@code true} if the given value satisfies this condition, {@code false} otherwise.
    */
-  public abstract boolean matches(T value);
+  public abstract boolean matches(@Nullable T value);
 }

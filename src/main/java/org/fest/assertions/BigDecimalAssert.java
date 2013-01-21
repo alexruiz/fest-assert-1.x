@@ -1,17 +1,16 @@
 /*
  * Created on Dec 27, 2006
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
- * Copyright @2006-2011 the original author or authors.
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
+ * Copyright @2006-2013 the original author or authors.
  */
 package org.fest.assertions;
 
@@ -19,68 +18,78 @@ import static java.math.BigDecimal.ZERO;
 
 import java.math.BigDecimal;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 /**
- * Assertions for <code>{@link BigDecimal}</code>s.
+ * Assertions for {@link BigDecimal}s.
  * <p>
- * To create a new instance of this class invoke <code>{@link Assertions#assertThat(BigDecimal)}</code>.
+ * To create a new instance of this class invoke {@link Assertions#assertThat(BigDecimal)}.
  * </p>
- *
+ * 
  * @author David DIDIER
  * @author Ted M. Young
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class BigDecimalAssert extends ComparableAssert<BigDecimalAssert, BigDecimal> implements NumberAssert {
-
   /**
-   * Creates a new </code>{@link BigDecimalAssert}</code>.
+   * Creates a new {@link BigDecimalAssert}.
+   * 
    * @param actual the target to verify.
    */
-  protected BigDecimalAssert(BigDecimal actual) {
+  protected BigDecimalAssert(@Nullable BigDecimal actual) {
     super(BigDecimalAssert.class, actual);
   }
 
   /**
-   * Verifies that the actual <code>{@link BigDecimal}</code> is positive.
+   * Verifies that the actual {@link BigDecimal} is positive.
+   * 
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>BigDecimal</code> value is {@code null}.
-   * @throws AssertionError if the actual <code>BigDecimal</code> value is not positive.
+   * @throws AssertionError if the actual {@code BigDecimal} value is {@code null}.
+   * @throws AssertionError if the actual {@code BigDecimal} value is not positive.
    */
-  public BigDecimalAssert isPositive() {
+  @Override
+  public @Nonnull BigDecimalAssert isPositive() {
     return isGreaterThan(ZERO);
   }
 
   /**
-   * Verifies that the actual <code>{@link BigDecimal}</code> is negative.
+   * Verifies that the actual {@link BigDecimal} is negative.
+   * 
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>BigDecimal</code> value is {@code null}.
-   * @throws AssertionError if the actual <code>BigDecimal</code> value is not negative.
+   * @throws AssertionError if the actual {@code BigDecimal} value is {@code null}.
+   * @throws AssertionError if the actual {@code BigDecimal} value is not negative.
    */
-  public BigDecimalAssert isNegative() {
+  @Override
+  public @Nonnull BigDecimalAssert isNegative() {
     return isLessThan(ZERO);
   }
 
   /**
-   * Verifies that the actual <code>{@link BigDecimal}</code> is equal to zero, regardless of precision.
-   * Essentially, this is the same as
-   * <code>{@link #isEqualByComparingTo(BigDecimal) isEqualByComparingTo}</code>(<code>{@link BigDecimal#ZERO BigDecimal.ZERO}</code>).
+   * Verifies that the actual {@link BigDecimal} is equal to zero, regardless of precision. Essentially,
+   * this is the same as
+   * {@link #isEqualByComparingTo(BigDecimal) isEqualByComparingTo}({@link BigDecimal#ZERO BigDecimal.ZERO}).
+   * 
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>BigDecimal</code> value is {@code null}.
-   * @throws AssertionError if the actual <code>BigDecimal</code> value is not equal to zero.
+   * @throws AssertionError if the actual {@code BigDecimal} value is {@code null}.
+   * @throws AssertionError if the actual {@code BigDecimal} value is not equal to zero.
    */
-  public BigDecimalAssert isZero() {
+  @Override
+  public @Nonnull BigDecimalAssert isZero() {
     return isEqualByComparingTo(ZERO);
   }
 
   /**
-   * Verifies that the actual <code>{@link BigDecimal}</code> is not equal to zero, regardless of precision.
+   * Verifies that the actual {@link BigDecimal} is not equal to zero, regardless of precision.
    * Essentially, this is the same as
-   * <code>{@link #isEqualByComparingTo(BigDecimal) isNotEqualByComparingTo}</code>(<code>{@link BigDecimal#ZERO BigDecimal.ZERO}</code>).
+   * {@link #isEqualByComparingTo(BigDecimal) isNotEqualByComparingTo}({@link BigDecimal#ZERO BigDecimal.ZERO}).
+   * 
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>BigDecimal</code> is {@code null}.
-   * @throws AssertionError if the actual <code>BigDecimal</code> is equal to zero.
+   * @throws AssertionError if the actual {@code BigDecimal} is {@code null}.
+   * @throws AssertionError if the actual {@code BigDecimal} is equal to zero.
    */
-  public BigDecimalAssert isNotZero() {
+  public @Nonnull BigDecimalAssert isNotZero() {
     return isNotEqualByComparingTo(ZERO);
   }
 }

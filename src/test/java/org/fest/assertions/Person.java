@@ -1,32 +1,31 @@
 /*
  * Created on May 26, 2010
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- *
- * Copyright @2010-2011 the original author or authors.
+ * 
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.assertions;
 
 import static org.fest.assertions.Title.Mr;
 
 /**
- *
+ * 
  * A simple class to test "onProperty" collection/list/array assertions.
  * <p>
  * The point here is to have all kind of properties: primitive type, primitive wrapper and Object.
  * </p>
- *
+ * 
  * @author Joel Costigliola
  */
 public class Person {
-
   private Long id;
   private final String homeTown;
   private final Name name;
@@ -40,11 +39,11 @@ public class Person {
   private final float height;
   private final double weight;
   private Person father;
-  private String country = "Spain";
-  private boolean adult = true;
+  private final String country = "Spain";
+  private final boolean adult = true;
   // no getter on purpose for test should_fail_because_of_no_getter
   @SuppressWarnings("unused")
-  private String favoriteSport = "soccer";
+  private final String favoriteSport = "soccer";
 
   public Person(Long id, String name, int age, long ssn, boolean male, char favoriteAlphabetLetter, int favoriteByte,
       int yearOfBirth, float height, double weight, String homeTown) {
@@ -54,8 +53,8 @@ public class Person {
     this.ssn = ssn;
     this.male = male;
     this.favoriteAlphabetLetter = favoriteAlphabetLetter;
-    this.favoriteByte = (byte)favoriteByte;
-    this.yearOfBirth = (short)yearOfBirth;
+    this.favoriteByte = (byte) favoriteByte;
+    this.yearOfBirth = (short) yearOfBirth;
     this.height = height;
     this.weight = weight;
     this.homeTown = homeTown;

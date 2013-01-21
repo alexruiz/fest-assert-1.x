@@ -11,9 +11,11 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2011 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.assertions;
+
+import javax.annotation.Nonnull;
 
 /**
  * A description of something.
@@ -21,10 +23,8 @@ package org.fest.assertions;
  * @author Alex Ruiz
  */
 public interface Description {
-
   /**
-   * Returns the value of this description.
    * @return the value of this description.
    */
-  String value();
+  @Nonnull String value();
 }

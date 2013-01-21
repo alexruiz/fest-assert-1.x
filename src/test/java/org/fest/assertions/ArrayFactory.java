@@ -1,64 +1,68 @@
 /*
  * Created on Sep 14, 2009
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
- * Copyright @2009-2011 the original author or authors.
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.assertions;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author Alex Ruiz
  */
 final class ArrayFactory {
-
-  static boolean[] booleanArray(boolean...values) {
+  static @Nonnull boolean[] booleanArray(@Nonnull boolean... values) {
     return values;
   }
 
-  static byte[] byteArray(int...values) {
+  static @Nonnull byte[] byteArray(@Nonnull int... values) {
     int arraySize = values.length;
     byte[] array = new byte[arraySize];
-    for (int i = 0; i < arraySize; i++) array[i] = (byte)values[i];
+    for (int i = 0; i < arraySize; i++) {
+      array[i] = (byte) values[i];
+    }
     return array;
   }
 
-  static char[] charArray(char...values) {
+  static @Nonnull char[] charArray(@Nonnull char... values) {
     return values;
   }
 
-  static double[] doubleArray(double...values) {
+  static @Nonnull double[] doubleArray(@Nonnull double... values) {
     return values;
   }
 
-  static float[] floatArray(float...values) {
+  static @Nonnull float[] floatArray(@Nonnull float... values) {
     return values;
   }
 
-  static int[] intArray(int...values) {
+  static @Nonnull int[] intArray(@Nonnull int... values) {
     return values;
   }
 
-  static long[] longArray(long...values) {
+  static @Nonnull long[] longArray(@Nonnull long... values) {
     return values;
   }
 
-  static short[] shortArray(int...values) {
+  static @Nonnull short[] shortArray(@Nonnull int... values) {
     int arraySize = values.length;
     short[] array = new short[arraySize];
-    for (int i = 0; i < arraySize; i++) array[i] = (short)values[i];
+    for (int i = 0; i < arraySize; i++) {
+      array[i] = (short) values[i];
+    }
     return array;
   }
 
-  static Object[] objectArray(Object...values) {
+  static @Nonnull Object[] objectArray(@Nonnull Object... values) {
     return values;
   }
 

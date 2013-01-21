@@ -1,58 +1,69 @@
 /*
  * Created on Jan 23, 2008
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- *
- * Copyright @2008-2011 the original author or authors.
+ * 
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.assertions;
 
+import static org.fest.util.Preconditions.checkNotNull;
 import static org.fest.util.Strings.quote;
 import static org.fest.util.ToString.toStringOf;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
- * Assertions for <code>{@link Map}</code>s.
+ * Assertions for {@link Map}s.
  * <p>
- * To create a new instance of this class invoke <code>{@link Assertions#assertThat(Map)}</code>.
+ * To create a new instance of this class invoke {@link Assertions#assertThat(Map)}.
  * </p>
- *
+ * 
  * @author David DIDIER
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
-
   private static final String ENTRY = "entry";
-  private static final String ENTRIES= "entries";
+  private static final String ENTRIES = "entries";
 
   /**
-   * Creates a new </code>{@link MapAssert}</code>.
+   * Creates a new {@link MapAssert}.
+   * 
    * @param actual the target to verify.
    */
-  protected MapAssert(Map<?, ?> actual) {
+  protected MapAssert(@Nullable Map<?, ?> actual) {
     super(MapAssert.class, actual);
   }
 
   /**
-   * Verifies that the actual <code>{@link Map}</code> contains the given entries.
+   * <p>
+   * Verifies that the actual {@link Map} contains the given entries.
+   * </p>
+   * 
    * <p>
    * Example:
    * <pre>
    * // static import org.fest.assertions.Assertions.*;
    * // static import org.fest.assertions.MapAssert.*;
-   *
+   * 
    * assertThat(myMap).{@link #includes(org.fest.assertions.MapAssert.Entry...) includes}({@link #entry(Object, Object) entry}(&quot;jedi&quot;, yoda), {@link #entry(Object, Object) entry}(&quot;sith&quot;, anakin));
    * </pre>
    * </p>
+   * 
    * @param entries the given entries.
    * @return this assertion error.
    * @throws AssertionError if the actual map is {@code null}.
@@ -60,26 +71,34 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
    * @throws NullPointerException if the given array of entries is {@code null}.
    * @throws NullPointerException if any of the entries in the given array is {@code null}.
    */
-  public MapAssert includes(Entry...entries) {
+  public @Nonnull MapAssert includes(@Nonnull Entry... entries) {
     isNotNull();
-    validate(ENTRIES, entries);
+    checkNotNull(entries);
     List<Entry> notFound = new ArrayList<Entry>();
-    for (Entry e : entries) if (!containsEntry(e)) notFound.add(e);
-    if (!notFound.isEmpty()) failIfNotFound(entryOrEntries(notFound), notFound);
+    for (Entry e : entries) {
+      if (!containsEntry(checkNotNull(e))) {
+        notFound.add(e);
+      }
+    }
+    if (!notFound.isEmpty()) {
+      failIfNotFound(entryOrEntries(notFound), notFound);
+    }
     return this;
   }
 
   /**
-   * Verifies that the actual <code>{@link Map}</code> does not contain the given entries.
+   * Verifies that the actual {@link Map} does not contain the given entries.
+   * 
    * <p>
    * Example:
    * <pre>
    * // static import org.fest.assertions.Assertions.*;
    * // static import org.fest.assertions.MapAssert.*;
-   *
+   * 
    * assertThat(myMap).{@link #excludes(org.fest.assertions.MapAssert.Entry...) excludes}({@link #entry(Object, Object) entry}(&quot;jedi&quot;, yoda), {@link #entry(Object, Object) entry}(&quot;sith&quot;, anakin));
    * </pre>
    * </p>
+   * 
    * @param entries the given entries.
    * @return this assertion error.
    * @throws AssertionError if the actual map is {@code null}.
@@ -87,83 +106,85 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
    * @throws NullPointerException if the given array of entries is {@code null}.
    * @throws NullPointerException if any of the entries in the given array is {@code null}.
    */
-  public MapAssert excludes(Entry...entries) {
+  public @Nonnull MapAssert excludes(@Nonnull Entry... entries) {
     isNotNull();
-    validate(ENTRIES, entries);
+    checkNotNull(entries);
     List<Entry> found = new ArrayList<Entry>();
-    for (Entry e : entries) if (containsEntry(e)) found.add(e);
-    if (!found.isEmpty()) failIfFound(entryOrEntries(found), found);
+    for (Entry e : entries) {
+      if (containsEntry(checkNotNull(e))) {
+        found.add(e);
+      }
+    }
+    if (!found.isEmpty()) {
+      failIfFound(entryOrEntries(found), found);
+    }
     return this;
   }
 
-  private boolean containsEntry(Entry e) {
-    if (e == null)
-      throw new NullPointerException(formattedErrorMessage("Entries to check should not contain null"));
-    if (!actual.containsKey(e.key)) return false;
+  private boolean containsEntry(@Nonnull Entry e) {
+    if (!actual.containsKey(e.key)) {
+      return false;
+    }
     return actual.get(e.key).equals(e.value);
   }
 
-  private String entryOrEntries(List<Entry> found) {
+  private @Nonnull String entryOrEntries(@Nonnull List<Entry> found) {
     return found.size() == 1 ? ENTRY : ENTRIES;
   }
 
   /**
    * Creates a new map entry.
+   * 
    * @param key the key of the entry.
    * @param value the value of the entry.
    * @return the created entry.
    * @see #includes(org.fest.assertions.MapAssert.Entry...)
    */
-  public static Entry entry(Object key, Object value) {
+  public static @Nonnull Entry entry(@Nullable Object key, @Nullable Object value) {
     return new Entry(key, value);
   }
 
   /**
-   * An entry in a <code>{@link Map}</code>.
-   *
+   * An entry in a {@link Map}.
+   * 
    * @author Yvonne Wang
    */
   public static class Entry {
     final Object key;
     final Object value;
 
-    Entry(Object key, Object value) {
+    Entry(@Nullable Object key, @Nullable Object value) {
       this.key = key;
       this.value = value;
     }
 
     /** @see java.lang.Object#toString() */
-    @Override public String toString() {
+    @Override
+    public String toString() {
       return String.format("%s=%s", quote(key), quote(value));
     }
   }
 
-  private void failIfNotFound(String description, Collection<?> notFound) {
+  private void failIfNotFound(@Nonnull String description, @Nonnull Collection<?> notFound) {
     failIfCustomMessageIsSet();
-    fail(String.format(
-        "the map:<%s> does not contain the %s:<%s>", formattedActual(), description, toStringOf(notFound)));
+    String format = "the map:<%s> does not contain the %s:<%s>";
+    fail(String.format(format, formattedActual(), description, toStringOf(notFound)));
   }
 
-  private void validate(String description, Object[] objects) {
-    if (objects == null)
-      throw new NullPointerException(
-          formattedErrorMessage(String.format("The given array of %s should not be null", description)));
-  }
-
-  private void failIfFound(String description, Collection<?> found) {
+  private void failIfFound(@Nonnull String description, @Nonnull Collection<?> found) {
     failIfCustomMessageIsSet();
     fail(String.format("the map:<%s> contains the %s:<%s>", formattedActual(), description, toStringOf(found)));
   }
 
-  private String formattedActual() {
-    return toStringOf(actual);
+  private @Nonnull String formattedActual() {
+    return checkNotNull(toStringOf(actual));
   }
 
   /**
-   * Returns the number of elements in the actual <code>{@link Map}</code>.
-   * @return the number of elements in the actual <code>{@link Map}</code>.
+   * @return the number of elements in the actual {@link Map}.
    */
-  @Override protected int actualGroupSize() {
+  @Override
+  protected int actualGroupSize() {
     isNotNull();
     return actual.size();
   }

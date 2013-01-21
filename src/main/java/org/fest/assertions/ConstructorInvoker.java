@@ -10,14 +10,19 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2008-2011 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.assertions;
+
+import static org.fest.util.Preconditions.checkNotNull;
+import static org.fest.util.Preconditions.checkNotNullOrEmpty;
 
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
+
+import javax.annotation.Nonnull;
 
 /**
  * Constructor access through Java reflection.
@@ -26,8 +31,12 @@ import java.security.PrivilegedAction;
  * @author Alex Ruiz
  */
 class ConstructorInvoker {
-
-  Object newInstance(String className, Class<?>[] parameterTypes, Object[] parameterValues) throws Exception {
+  @Nonnull Object newInstance(
+      @Nonnull String className, @Nonnull Class<?>[] parameterTypes, @Nonnull Object[] parameterValues)
+          throws Exception {
+    checkNotNullOrEmpty(className);
+    checkNotNull(parameterTypes);
+    checkNotNull(parameterValues);
     Class<?> targetType = Class.forName(className);
     Constructor<?> constructor = targetType.getConstructor(parameterTypes);
     boolean accessible = constructor.isAccessible();
@@ -41,7 +50,7 @@ class ConstructorInvoker {
     }
   }
 
-  private void setAccessible(AccessibleObject accessible, boolean value) {
+  private void setAccessible(@Nonnull AccessibleObject accessible, boolean value) {
     AccessController.doPrivileged(new SetAccessibleValueAction(accessible, value));
   }
 
@@ -49,11 +58,12 @@ class ConstructorInvoker {
     private final AccessibleObject accessible;
     private final boolean value;
 
-    private SetAccessibleValueAction(AccessibleObject accessible, boolean value) {
-      this.accessible = accessible;
+    private SetAccessibleValueAction(@Nonnull AccessibleObject accessible, boolean value) {
+      this.accessible = checkNotNull(accessible);
       this.value = value;
     }
 
+    @Override
     public Void run() {
       accessible.setAccessible(value);
       return null;
