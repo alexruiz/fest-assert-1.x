@@ -29,7 +29,9 @@ import javax.annotation.Nullable;
 import org.fest.util.IntrospectionError;
 
 /**
+ * <p>
  * Assertions for {@link Collection}s.
+ * </p>
  * 
  * <p>
  * To create a new instance of this class invoke {@link Assertions#assertThat(Collection)}.
@@ -66,13 +68,13 @@ public class CollectionAssert extends ObjectGroupAssert<CollectionAssert, Collec
    * property name from the elements of this {@code CollectionAssert}'s collection. Property access works with both
    * simple properties like {@code Person.age} and nested properties {@code Person.father.age}.
    * </p>
+   * 
    * <p>
    * For example, let's say we have a collection of {@code Person} objects and you want to verify their age:
-   * 
    * <pre>
    * assertThat(persons).onProperty(&quot;age&quot;).containsOnly(25, 16, 44, 37); // simple property
    * assertThat(persons).onProperty("father.age").containsOnly(55, 46, 74, 62); // nested property
-   * 
+   * </pre>
    * </p>
    * 
    * @param propertyName the name of the property to extract values from the actual collection to build a new

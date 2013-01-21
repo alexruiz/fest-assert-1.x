@@ -24,7 +24,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- * Assertions for {@code float} arrays.
+ * <p>
+ * Assertions for arrays of {@code float}.
+ * </p>
+ *
  * <p>
  * To create a new instance of this class invoke {@link Assertions#assertThat(float[])}.
  * </p>

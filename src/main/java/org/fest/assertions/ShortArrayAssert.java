@@ -24,7 +24,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- * Assertions for {@code short} arrays.
+ * <p>
+ * Assertions for arrays of {@code short}.
+ * </p>
+ *
  * <p>
  * To create a new instance of this class invoke {@link Assertions#assertThat(short[])}.
  * </p>

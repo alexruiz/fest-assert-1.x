@@ -26,7 +26,10 @@ import javax.annotation.Nullable;
 import org.fest.util.VisibleForTesting;
 
 /**
+ * <p>
  * Assertions for {@code Short}s and {@code short}s.
+ * </p>
+ *
  * <p>
  * To create a new instance of this class invoke either {@link Assertions#assertThat(Short)} or
  * {@link Assertions#assertThat(short)}.

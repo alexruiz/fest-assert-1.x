@@ -24,7 +24,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- * Assertions for {@code boolean} arrays.
+ * <p>
+ * Assertions for arrays of {@code boolean}.
+ * </p>
+ * 
  * <p>
  * To create a new instance of this class invoke {@link Assertions#assertThat(boolean[])}.
  * </p>

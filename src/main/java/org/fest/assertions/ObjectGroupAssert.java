@@ -97,9 +97,12 @@ public abstract class ObjectGroupAssert<S, A> extends ItemGroupAssert<S, A> {
   }
 
   /**
+   * <p>
    * Creates a new group of objects whose target collection contains the values of the given property name from the
    * elements of the actual group of objects. Property access works with both simple properties like {@code Person.age}
    * and nested properties {@code Person.father.age}.
+   * </p>
+   * 
    * <p>
    * For example, let's say we have a collection of {@code Person} objects and you want to verify their age:
    * 

@@ -30,7 +30,10 @@ import org.fest.assertions.FileContentComparator.LineDiff;
 import org.fest.util.VisibleForTesting;
 
 /**
+ * <p>
  * Assertions for {@link File}.
+ * </p>
+ *
  * <p>
  * To create a new instance of this class invoke {@link Assertions#assertThat(File)}.
  * </p>

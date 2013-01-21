@@ -24,7 +24,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
+ * <p>
  * Assertions for {@code Long}s and {@code long}s.
+ * </p>
+ *
  * <p>
  * To create a new instance of this class invoke either {@link Assertions#assertThat(Long)} or
  * {@link Assertions#assertThat(long)}.

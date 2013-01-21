@@ -30,7 +30,10 @@ import javax.annotation.Nullable;
 import org.fest.util.IntrospectionError;
 
 /**
+ * <p>
  * Assertions for {@link List}s.
+ * </p>
+ *
  * <p>
  * To create a new instance of this class invoke {@link Assertions#assertThat(List)}.
  * </p>
@@ -244,6 +247,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
    * <pre>
    * assertThat(persons).onProperty(&quot;age&quot;).containsOnly(25, 16, 44, 37); // simple property
    * assertThat(persons).onProperty("father.age").containsOnly(55, 46, 74, 62); // nested property
+   * </pre>
    * </p>
    * 
    * @param propertyName the name of the property to extract values from the actual list to build a new

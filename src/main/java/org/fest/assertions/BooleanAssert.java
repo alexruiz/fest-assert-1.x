@@ -20,7 +20,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
+ * <p>
  * Assertions for {@code Boolean}s and {@code boolean}s.
+ * </p>
+ *
  * <p>
  * To create a new instance of this class invoke either {@link Assertions#assertThat(Boolean)} or
  * {@link Assertions#assertThat(boolean)}.

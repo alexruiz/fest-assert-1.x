@@ -27,7 +27,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- * Assertions for {@code double} arrays.
+ * <p>
+ * Assertions for arrays of {@code double}.
+ * </p>
  * 
  * <p>
  * To create a new instance of this class invoke {@link Assertions#assertThat(double[])}.

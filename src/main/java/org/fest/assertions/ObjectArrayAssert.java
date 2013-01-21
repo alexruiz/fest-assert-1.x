@@ -31,7 +31,10 @@ import javax.annotation.Nullable;
 import org.fest.util.IntrospectionError;
 
 /**
- * Assertions for {@code Object} arrays.
+ * <p>
+ * Assertions for arrays of {@code Object}.
+ * </p>
+ *
  * <p>
  * To create a new instance of this class invoke {@link Assertions#assertThat(Object[])}.
  * </p>
@@ -50,11 +53,13 @@ public class ObjectArrayAssert extends ObjectGroupAssert<ObjectArrayAssert, Obje
   }
 
   /**
+   * <p>
    * Verifies that all the elements in the actual {@code Object} array belong to the specified type. Matching includes
    * subclasses of the given type.
+   * </p>
+   * 
    * <p>
    * For example, consider the following code listing:
-   * 
    * <pre>
    * Number[] numbers = { 2, 6, 8 };
    * assertThat(numbers).hasAllElementsOfType(Integer.class);

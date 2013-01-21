@@ -24,7 +24,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
+ * <p>
  * Assertions for {@code Integer}s and {@code int}s.
+ * </p>
+ *
  * <p>
  * To create a new instance of this class invoke either {@link Assertions#assertThat(Integer)} or
  * {@link Assertions#assertThat(int)}.

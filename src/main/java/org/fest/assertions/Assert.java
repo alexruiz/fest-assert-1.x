@@ -134,7 +134,9 @@ public abstract class Assert {
   }
 
   /**
+   * <p>
    * Fails by throwing an {@link AssertionError}.
+   * </p>
    * <p>
    * <strong>Note:</strong> This method appears to return {@link AssertionError}, but it is really not the case, since
    * the exception is thrown and not returned. In version 2.0 the return type of this method will change to {@code void}

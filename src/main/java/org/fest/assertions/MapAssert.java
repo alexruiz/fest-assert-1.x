@@ -27,7 +27,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
+ * <p>
  * Assertions for {@link Map}s.
+ * </p>
+ *
  * <p>
  * To create a new instance of this class invoke {@link Assertions#assertThat(Map)}.
  * </p>
@@ -87,7 +90,9 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
   }
 
   /**
+   * <p>
    * Verifies that the actual {@link Map} does not contain the given entries.
+   * </p>
    * 
    * <p>
    * Example:

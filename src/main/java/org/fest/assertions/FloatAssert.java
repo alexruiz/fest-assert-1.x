@@ -29,7 +29,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
+ * <p>
  * Assertions for {@code Float}s and {@code float}s.
+ * </p>
+ *
  * <p>
  * To create a new instance of this class invoke either {@link Assertions#assertThat(Float)} or
  * {@link Assertions#assertThat(float)}.

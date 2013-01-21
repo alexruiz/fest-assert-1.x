@@ -22,7 +22,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
+ * <p>
  * Assertions for {@link BigDecimal}s.
+ * </p>
+ * 
  * <p>
  * To create a new instance of this class invoke {@link Assertions#assertThat(BigDecimal)}.
  * </p>

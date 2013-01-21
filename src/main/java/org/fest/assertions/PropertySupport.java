@@ -60,8 +60,11 @@ final class PropertySupport {
   }
 
   /**
+   * <p>
    * Returns a list containing the values of the given property name, from the elements of the given collection. If the
    * given collection is empty or {@code null}, this method will return an empty collection.
+   * </p>
+   * 
    * <p>
    * For example, given the nested property "address.street.number", this method will:
    * <ol>
@@ -101,10 +104,12 @@ final class PropertySupport {
   }
 
   /**
+   * <p>
    * Returns {@code true} if property is nested, {@code false} otherwise.
+   * </p>
+   * 
    * <p>
    * Examples:
-   * 
    * <pre>
    * isNestedProperty(&quot;address.street&quot;); // true
    * isNestedProperty(&quot;address.street.name&quot;); // true
@@ -116,6 +121,7 @@ final class PropertySupport {
    * isNestedProperty(&quot;.&quot;); // false
    * isNestedProperty(&quot;&quot;); // false
    * </pre>
+   * </p>
    * 
    * @param propertyName the given property name.
    * @return {@code true} if property is nested, {@code false} otherwise.

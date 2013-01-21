@@ -28,7 +28,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
+ * <p>
  * Assertions for {@code Double}s and {@code double}s.
+ * </p>
+ *
  * <p>
  * To create a new instance of this class invoke {@link Assertions#assertThat(Double)} or
  * {@link Assertions#assertThat(double)}.

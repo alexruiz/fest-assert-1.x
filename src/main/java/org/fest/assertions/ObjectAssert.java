@@ -24,7 +24,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
+ * <p>
  * Assertions for {@link Object}s.
+ * </p>
+ *
  * <p>
  * To create a new instance of this class use the method {@link Assertions#assertThat(Object)}.
  * </p>

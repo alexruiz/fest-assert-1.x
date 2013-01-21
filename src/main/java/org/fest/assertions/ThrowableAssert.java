@@ -24,7 +24,10 @@ import javax.annotation.Nullable;
 import org.fest.util.VisibleForTesting;
 
 /**
+ * <p>
  * Assertions for {@link Throwable}.
+ * </p>
+ *
  * <p>
  * To create a new instance of this class invoke {@link Assertions#assertThat(Throwable)}.
  * </p>

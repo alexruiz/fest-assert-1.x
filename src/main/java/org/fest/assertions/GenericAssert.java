@@ -160,15 +160,13 @@ public abstract class GenericAssert<S, A> extends Assert {
    * Sets the description of the actual value, to be used in as message of any {@link AssertionError} thrown when an
    * assertion fails. This method should be called before any assertion method, otherwise any assertion failure will not
    * show the provided description.
-   * <p>
+   * </p>
    * 
    * <p>
    * For example:
-   * 
    * <pre>
    * assertThat(val).<strong>as</strong>(&quot;name&quot;).isEqualTo(&quot;Frodo&quot;);
    * </pre>
-   * 
    * </p>
    * 
    * @param description the description of the actual value.

@@ -26,11 +26,13 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
+ * <p>
  * Entry point for assertion methods for different data types. Each method in this class is a static factory for the
  * type-specific assertion objects. The purpose of this class is to make test code more readable.
+ * </p>
+ * 
  * <p>
  * For example:
- * 
  * <pre>
  * int removed = employees.removeFired();
  * {@link org.fest.assertions.Assertions#assertThat(int) assertThat}(removed).{@link org.fest.assertions.IntAssert#isZero isZero}();
@@ -38,7 +40,6 @@ import javax.annotation.Nullable;
  * List&lt;Employee&gt; newEmployees = employees.hired(TODAY);
  * {@link org.fest.assertions.Assertions#assertThat(java.util.Collection) assertThat}(newEmployees).{@link org.fest.assertions.CollectionAssert#hasSize(int) hasSize}(6);
  * </pre>
- * 
  * </p>
  * 
  * @author Alex Ruiz
@@ -400,11 +401,13 @@ public class Assertions {
   }
 
   /**
+   * <p>
    * Returns the given assertion. This method improves code readability by surrounding the given assertion with
    * "{@code assertThat}".
+   * </p>
+   * 
    * <p>
    * For example, let's assume we have the following custom assertion class:
-   * 
    * <pre>
    * public class ServerSocketAssertion implements AssertExtension {
    *   private final ServerSocket socket;
@@ -421,16 +424,14 @@ public class Assertions {
    *   }
    * }
    * </pre>
-   * 
    * </p>
+   * 
    * <p>
    * We can wrap that assertion with "{@code assertThat}" to improve test code readability.
-   * 
    * <pre>
    * ServerSocketAssertion socket = new ServerSocketAssertion(server.getSocket());
    * assertThat(socket).isConnectedTo(2000);
    * </pre>
-   * 
    * </p>
    * 
    * @param <T> the generic type of the user-defined assertion.

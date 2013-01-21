@@ -23,7 +23,10 @@ import static org.fest.assertions.ErrorMessages.unexpectedLessThanOrEqualTo;
 import javax.annotation.Nonnull;
 
 /**
+ * <p>
  * Assertions for {@code Character}s and {@code char}s.
+ * </p>
+ *
  * <p>
  * To create a new instance of this class invoke either {@link Assertions#assertThat(Character)} or
  * {@link Assertions#assertThat(char)}.
