@@ -29,6 +29,9 @@ import org.junit.After;
 import org.junit.Rule;
 import org.junit.Test;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 /**
  * Tests for {@link ImageAssert#read(String)}.
  * 
@@ -98,7 +101,7 @@ public class ImageAssert_read_Test {
     }
 
     @Override
-    BufferedImage read(File imageFile) throws IOException {
+    @Nullable BufferedImage read(@Nonnull File imageFile) throws IOException {
       if (toThrow != null) {
         throw toThrow;
       }

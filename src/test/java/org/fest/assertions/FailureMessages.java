@@ -47,7 +47,7 @@ final class FailureMessages {
       return new ComparisonFailure(d, e, a).getMessage();
     }
     d = addSpaceIfNotEmpty(d);
-    return String.format("expected:<%s> but was:<%s>", e, a);
+    return String.format("%sexpected:<%s> but was:<%s>", d, e, a);
   }
 
   static @Nonnull String equal(Object actual, Object other) {

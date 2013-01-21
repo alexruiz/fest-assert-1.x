@@ -21,6 +21,8 @@ import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.annotation.Nonnull;
 
@@ -31,9 +33,11 @@ import javax.annotation.Nonnull;
  * @author Alex Ruiz
  */
 class ConstructorInvoker {
+  private static Logger logger = Logger.getLogger(ConstructorInvoker.class.getCanonicalName());
+
   @Nonnull Object newInstance(
       @Nonnull String className, @Nonnull Class<?>[] parameterTypes, @Nonnull Object[] parameterValues)
-          throws Exception {
+      throws Exception {
     checkNotNullOrEmpty(className);
     checkNotNull(parameterTypes);
     checkNotNull(parameterValues);
@@ -46,7 +50,9 @@ class ConstructorInvoker {
     } finally {
       try {
         setAccessible(constructor, accessible);
-      } catch (RuntimeException e) {}
+      } catch (RuntimeException e) {
+        logger.log(Level.SEVERE, "Failed to set 'accessible' flag back to " + accessible, e);
+      }
     }
   }
 

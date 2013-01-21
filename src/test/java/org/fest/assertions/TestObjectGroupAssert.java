@@ -14,6 +14,7 @@
  */
 package org.fest.assertions;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -33,7 +34,7 @@ public class TestObjectGroupAssert extends ObjectGroupAssert<TestObjectGroupAsse
   }
 
   @Override
-  protected TestObjectGroupAssert onProperty(String propertyName) {
+  protected @Nonnull TestObjectGroupAssert onProperty(@Nonnull String propertyName) {
     throw new UnsupportedOperationException();
   }
 

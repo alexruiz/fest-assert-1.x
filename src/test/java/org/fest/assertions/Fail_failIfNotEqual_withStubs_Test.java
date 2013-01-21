@@ -23,6 +23,8 @@ import org.junit.Before;
 import org.junit.ComparisonFailure;
 import org.junit.Test;
 
+import javax.annotation.Nonnull;
+
 /**
  * Tests for {@link Fail#failIfNotEqual(String, Description, Object, Object)}.
  * 
@@ -35,7 +37,8 @@ public class Fail_failIfNotEqual_withStubs_Test {
   public void setUp() {
     invoker = new ConstructorInvoker() {
       @Override
-      Object newInstance(String className, Class<?>[] parameterTypes, Object[] parameterValues) {
+      Object newInstance(
+          @Nonnull String className, @Nonnull Class<?>[] parameterTypes, @Nonnull Object[] parameterValues) {
         // simulate that ComparisonFailure cannot be created (e.g. if JUnit is not in the classpath)
         return null;
       }
