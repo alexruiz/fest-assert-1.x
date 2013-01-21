@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Formatter.format;
 import static org.fest.test.ExpectedException.none;
+import static org.fest.util.ToString.toStringOf;
 
 import org.fest.test.ExpectedException;
 import org.junit.Before;
@@ -48,15 +48,15 @@ public class GenericAssert_isSameAs_Test {
 
   @Test
   public final void should_fail_if_actual_and_expected_are_not_same() {
-    String msg = String.format("expected same instance but found:<%s> and:<%s>", format(actual), format("Bye"));
+    String msg = String.format("expected same instance but found:<%s> and:<%s>", toStringOf(actual), toStringOf("Bye"));
     thrown.expect(AssertionError.class, msg);
     assertions.isSameAs("Bye");
   }
 
   @Test
   public final void should_fail_and_display_description_if_actual_and_expected_are_not_same() {
-    String msg = String
-        .format("[A Test] expected same instance but found:<%s> and:<%s>", format(actual), format("Bye"));
+    String msg = String.format("[A Test] expected same instance but found:<%s> and:<%s>", toStringOf(actual),
+        toStringOf("Bye"));
     thrown.expect(AssertionError.class, msg);
     assertions.as("A Test").isSameAs("Bye");
   }

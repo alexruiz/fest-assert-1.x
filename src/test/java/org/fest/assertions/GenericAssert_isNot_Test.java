@@ -14,9 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Formatter.format;
 import static org.fest.assertions.NotNull.notNull;
 import static org.fest.test.ExpectedException.none;
+import static org.fest.util.ToString.toStringOf;
 
 import org.fest.test.ExpectedException;
 import org.junit.Before;
@@ -60,14 +60,14 @@ public class GenericAssert_isNot_Test implements GenericAssert_doesNotSatisfy_or
   @Override
   @Test
   public void should_fail_if_condition_is_satisfied() {
-    thrown.expect(AssertionError.class, String.format("actual value:<%s> should not be:<NotNull>", format(actual)));
+    thrown.expect(AssertionError.class, String.format("actual value:<%s> should not be:<NotNull>", toStringOf(actual)));
     assertions.isNot(notNull);
   }
 
   @Override
   @Test
   public void should_fail_and_display_description_if_condition_is_satisfied() {
-    String msg = String.format("[A Test] actual value:<%s> should not be:<NotNull>", format(actual));
+    String msg = String.format("[A Test] actual value:<%s> should not be:<NotNull>", toStringOf(actual));
     thrown.expect(AssertionError.class, msg);
     assertions.as("A Test").isNot(notNull);
   }
@@ -75,14 +75,15 @@ public class GenericAssert_isNot_Test implements GenericAssert_doesNotSatisfy_or
   @Override
   @Test
   public void should_fail_and_display_description_of_condition_if_condition_is_satisfied() {
-    thrown.expect(AssertionError.class, String.format("actual value:<%s> should not be:<Not Null>", format(actual)));
+    thrown.expect(AssertionError.class,
+        String.format("actual value:<%s> should not be:<Not Null>", toStringOf(actual)));
     assertions.isNot(notNull.as("Not Null"));
   }
 
   @Override
   @Test
   public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_satisfied() {
-    String msg = String.format("[A Test] actual value:<%s> should not be:<Not Null>", format(actual));
+    String msg = String.format("[A Test] actual value:<%s> should not be:<Not Null>", toStringOf(actual));
     thrown.expect(AssertionError.class, msg);
     assertions.as("A Test").isNot(notNull.as("Not Null"));
   }

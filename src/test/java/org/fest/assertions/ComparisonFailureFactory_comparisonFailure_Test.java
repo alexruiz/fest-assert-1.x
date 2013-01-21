@@ -14,7 +14,6 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Strings.concat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -61,7 +60,7 @@ public class ComparisonFailureFactory_comparisonFailure_Test {
 
     @Override
     public String toString() {
-      return concat("Jedi [name=", name, "]");
+      return String.format("Jedi [name=%s]", name);
     }
   }
 }

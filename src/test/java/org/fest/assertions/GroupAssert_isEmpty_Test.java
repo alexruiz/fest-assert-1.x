@@ -16,9 +16,9 @@ package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
 import static org.fest.assertions.FailureMessages.actualIsNull;
-import static org.fest.assertions.Formatter.format;
 import static org.fest.test.ExpectedException.none;
 import static org.fest.util.Lists.newArrayList;
+import static org.fest.util.ToString.toStringOf;
 
 import java.util.List;
 
@@ -64,13 +64,13 @@ public final class GroupAssert_isEmpty_Test {
 
   @Test
   public final void should_fail_if_actual_is_not_empty() {
-    thrown.expect(AssertionError.class, String.format("expecting empty, but was:<%s>", format(actual)));
+    thrown.expect(AssertionError.class, String.format("expecting empty, but was:<%s>", toStringOf(actual)));
     assertions.isEmpty();
   }
 
   @Test
   public final void should_fail_and_display_description_if_actual_is_not_empty() {
-    thrown.expect(AssertionError.class, String.format("[A Test] expecting empty, but was:<%s>", format(actual)));
+    thrown.expect(AssertionError.class, String.format("[A Test] expecting empty, but was:<%s>", toStringOf(actual)));
     assertions.as("A Test").isEmpty();
   }
 

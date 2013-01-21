@@ -14,9 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Formatter.format;
 import static org.fest.assertions.NotNull.notNull;
 import static org.fest.test.ExpectedException.none;
+import static org.fest.util.ToString.toStringOf;
 
 import org.fest.test.ExpectedException;
 import org.junit.Before;
@@ -60,7 +60,7 @@ public class GenericAssert_doesNotSatisfy_Test implements GenericAssert_doesNotS
   @Override
   @Test
   public void should_fail_if_condition_is_satisfied() {
-    String msg = String.format("actual value:<%s> should not satisfy condition:<NotNull>", format(actual));
+    String msg = String.format("actual value:<%s> should not satisfy condition:<NotNull>", toStringOf(actual));
     thrown.expect(AssertionError.class, msg);
     assertions.doesNotSatisfy(notNull);
   }
@@ -68,7 +68,7 @@ public class GenericAssert_doesNotSatisfy_Test implements GenericAssert_doesNotS
   @Override
   @Test
   public void should_fail_and_display_description_if_condition_is_satisfied() {
-    String msg = String.format("[A Test] actual value:<%s> should not satisfy condition:<NotNull>", format(actual));
+    String msg = String.format("[A Test] actual value:<%s> should not satisfy condition:<NotNull>", toStringOf(actual));
     thrown.expect(AssertionError.class, msg);
     assertions.as("A Test").doesNotSatisfy(notNull);
   }
@@ -76,7 +76,7 @@ public class GenericAssert_doesNotSatisfy_Test implements GenericAssert_doesNotS
   @Override
   @Test
   public void should_fail_and_display_description_of_condition_if_condition_is_satisfied() {
-    String msg = String.format("actual value:<%s> should not satisfy condition:<Not Null>", format(actual));
+    String msg = String.format("actual value:<%s> should not satisfy condition:<Not Null>", toStringOf(actual));
     thrown.expect(AssertionError.class, msg);
     assertions.doesNotSatisfy(notNull.as("Not Null"));
   }
@@ -84,7 +84,8 @@ public class GenericAssert_doesNotSatisfy_Test implements GenericAssert_doesNotS
   @Override
   @Test
   public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_satisfied() {
-    String msg = String.format("[A Test] actual value:<%s> should not satisfy condition:<Not Null>", format(actual));
+    String msg =
+        String.format("[A Test] actual value:<%s> should not satisfy condition:<Not Null>", toStringOf(actual));
     thrown.expect(AssertionError.class, msg);
     assertions.as("A Test").doesNotSatisfy(notNull.as("Not Null"));
   }

@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Formatter.format;
 import static org.fest.test.ExpectedException.none;
+import static org.fest.util.ToString.toStringOf;
 
 import org.fest.test.ExpectedException;
 import org.junit.Before;
@@ -47,13 +47,13 @@ public class GenericAssert_isNull_Test {
 
   @Test
   public final void should_fail_if_actual_is_not_null() {
-    thrown.expect(AssertionError.class, String.format("<%s> should be null", format(actual)));
+    thrown.expect(AssertionError.class, String.format("<%s> should be null", toStringOf(actual)));
     assertions.isNull();
   }
 
   @Test
   public final void should_fail_and_display_description_if_actual_is_not_null() {
-    thrown.expect(AssertionError.class, String.format("[A Test] <%s> should be null", format(actual)));
+    thrown.expect(AssertionError.class, String.format("[A Test] <%s> should be null", toStringOf(actual)));
     assertions.as("A Test").isNull();
   }
 

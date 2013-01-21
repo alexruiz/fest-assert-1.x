@@ -14,7 +14,6 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Strings.concat;
 import static org.fest.util.Strings.isNullOrEmpty;
 import static org.fest.util.ToString.toStringOf;
 
@@ -48,7 +47,7 @@ final class FailureMessages {
       return new ComparisonFailure(d, e, a).getMessage();
     }
     d = addSpaceIfNotEmpty(d);
-    return concat(d, "expected:<", e, "> but was:<", a, ">");
+    return String.format("expected:<%s> but was:<%s>", e, a);
   }
 
   static @Nonnull String equal(Object actual, Object other) {
@@ -57,7 +56,7 @@ final class FailureMessages {
 
   static @Nonnull String equal(String description, Object actual, Object other) {
     String d = addSpaceIfNotEmpty(inBrackets(description));
-    return concat(d, "actual value:<", toStringOf(actual), "> should not be equal to:<", toStringOf(other), ">");
+    return String.format("%sactual value:<%s> should not be equal to:<%s>", d, toStringOf(actual), toStringOf(other));
   }
 
   static @Nonnull String equalOrLess(Object actual, Object other) {
@@ -66,31 +65,31 @@ final class FailureMessages {
 
   static @Nonnull String equalOrLess(String description, Object actual, Object other) {
     String d = addSpaceIfNotEmpty(inBrackets(description));
-    return concat(d, "actual value:<", toStringOf(actual), "> should be greater than:<", toStringOf(other), ">");
+    return String.format("%sactual value:<%s> should be greater than:<%s>", d, toStringOf(actual), toStringOf(other));
   }
 
   static @Nonnull String notIn(String description, Object actual, Object other) {
     String d = addSpaceIfNotEmpty(inBrackets(description));
-    return concat(d, "actual value:<", toStringOf(actual), "> should be in:<", toStringOf(other), ">");
+    return String.format("%sactual value:<%s> should be in:<%s>", d, toStringOf(actual), toStringOf(other));
   }
 
   static @Nonnull String in(String description, Object actual, Object other) {
     String d = addSpaceIfNotEmpty(inBrackets(description));
-    return concat(d, "actual value:<", toStringOf(actual), "> should not be in:<", toStringOf(other), ">");
+    return String.format("%sactual value:<%s> should not be in:<%s>", d, toStringOf(actual), toStringOf(other));
   }
 
   private static @Nullable String inBrackets(@Nullable String s) {
     if (isNullOrEmpty(s)) {
       return "";
     }
-    return concat("[", s, "]");
+    return String.format("[%s]", s);
   }
 
   private static @Nullable String addSpaceIfNotEmpty(@Nullable String s) {
     if (isNullOrEmpty(s)) {
       return s;
     }
-    return concat(s, " ");
+    return s + " ";
   }
 
   private static boolean isArray(Object o) {
