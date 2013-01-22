@@ -44,7 +44,7 @@ public final class Fail {
   }
 
   /**
-   * Throws an {@link AssertionError} if the given objects are equal.
+   * Throws an {@code AssertionError} if the given objects are equal.
    * 
    * @param customErrorMessage any custom error message. This message will replace the default one only if it (the
    *          custom message) is not {@code null}.
@@ -64,7 +64,7 @@ public final class Fail {
   }
 
   /**
-   * Throws an {@link AssertionError} if 'actual' is not equal to 'expected'. If JUnit 4 (or greater) is in the
+   * Throws an {@code AssertionError} if 'actual' is not equal to 'expected'. If JUnit 4 (or greater) is in the
    * classpath, this method will throw a {@code ComparisonFailure} instead. More details about this feature can be
    * found <a href="http://docs.codehaus.org/display/FEST/JUnit-Specific+Features">here</a>.
    * 
@@ -86,7 +86,7 @@ public final class Fail {
   }
 
   /**
-   * Returns a {@link AssertionError} describing a comparison failure.
+   * Returns a {@code AssertionError} describing a comparison failure.
    * 
    * @param description the description of the comparison.
    * @param actual the actual value.
@@ -104,7 +104,7 @@ public final class Fail {
   }
 
   /**
-   * Throws an {@link AssertionError} if the actual value is {@code null}.
+   * Throws an {@code AssertionError} if the actual value is {@code null}.
    * 
    * @param customErrorMessage any custom error message. This message will replace the default one only if it (the
    *          custom message) is not {@code null}.
@@ -123,7 +123,7 @@ public final class Fail {
   }
 
   /**
-   * Throws an {@link AssertionError} if the given object is {@code null}.
+   * Throws an {@code AssertionError} if the given object is {@code null}.
    * 
    * @param customErrorMessage any custom error message. This message will replace the default one only if it (the
    *          custom message) is not {@code null}.
@@ -142,7 +142,7 @@ public final class Fail {
   }
 
   /**
-   * Throws an {@link AssertionError} if the given object is not {@code null}.
+   * Throws an {@code AssertionError} if the given object is not {@code null}.
    * 
    * @param customErrorMessage any custom error message. This message will replace the default one only if it (the
    *          custom message) is not {@code null}.
@@ -161,7 +161,7 @@ public final class Fail {
   }
 
   /**
-   * Throws an {@link AssertionError} if the given objects are the same.
+   * Throws an {@code AssertionError} if the given objects are the same.
    * 
    * @param customErrorMessage any custom error message. This message will replace the default one only if it (the
    *          custom message) is not {@code null}.
@@ -181,7 +181,7 @@ public final class Fail {
   }
 
   /**
-   * Throws an {@link AssertionError} if the given objects are not the same.
+   * Throws an {@code AssertionError} if the given objects are not the same.
    * 
    * @param customErrorMessage any custom error message. This message will replace the default one only if it (the
    *          custom message) is not {@code null}.
@@ -206,7 +206,7 @@ public final class Fail {
   }
 
   /**
-   * Throws an {@link AssertionError} only if the given custom message is not {@code null}.
+   * Throws an {@code AssertionError} only if the given custom message is not {@code null}.
    * 
    * @param customErrorMessage the custom error message.
    * @throws AssertionError only if the custom error message is not {@code null}.
@@ -219,7 +219,7 @@ public final class Fail {
   }
 
   /**
-   * Throws an {@link AssertionError} only if the given custom message is not {@code null}.
+   * Throws an {@code AssertionError} only if the given custom message is not {@code null}.
    * 
    * @param customErrorMessage the custom error message.
    * @param realCause cause of the error.
@@ -233,7 +233,7 @@ public final class Fail {
   }
 
   /**
-   * Throws an {@link AssertionError} with the given message and with the {@link Throwable} that caused the failure.
+   * Throws an {@code AssertionError} with the given message and with the {@code Throwable} that caused the failure.
    * 
    * @param description the description of the failed assertion. It can be {@code null}.
    * @param realCause cause of the error.
@@ -250,7 +250,7 @@ public final class Fail {
    * </p>
    *
    * <p>
-   * <strong>Note:</strong> This method appears to return {@link AssertionError}, but it is really not the case, since
+   * <strong>Note:</strong> This method appears to return {@code AssertionError}, but it is really not the case, since
    * the exception is thrown and not returned. In version 2.0 the return type of this method will change to
    * {@code void}. Since we cannot create an overloaded version with return type {@code void}, we cannot deprecate this
    * method. Please pretend this method does not return anything :)
@@ -267,7 +267,7 @@ public final class Fail {
   }
 
   /**
-   * Creates a {@link AssertionError} with the given message.
+   * Creates a {@code AssertionError} with the given message.
    * 
    * @param message the message of the exception to create.
    * @return the created exception.

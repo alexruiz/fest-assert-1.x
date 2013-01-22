@@ -157,7 +157,7 @@ public abstract class GenericAssert<S, A> extends Assert {
 
   /**
    * <p>
-   * Sets the description of the actual value, to be used in as message of any {@link AssertionError} thrown when an
+   * Sets the description of the actual value, to be used in as message of any {@code AssertionError} thrown when an
    * assertion fails. This method should be called before any assertion method, otherwise any assertion failure will not
    * show the provided description.
    * </p>
@@ -200,7 +200,7 @@ public abstract class GenericAssert<S, A> extends Assert {
 
   /**
    * <p>
-   * Sets the description of the actual value, to be used in as message of any {@link AssertionError} thrown when an
+   * Sets the description of the actual value, to be used in as message of any {@code AssertionError} thrown when an
    * assertion fails. This method should be called before any assertion method, otherwise any assertion failure will not
    * show the provided description.
    * </p>

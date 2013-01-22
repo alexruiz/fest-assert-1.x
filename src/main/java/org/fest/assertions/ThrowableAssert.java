@@ -25,7 +25,7 @@ import org.fest.util.VisibleForTesting;
 
 /**
  * <p>
- * Assertions for {@link Throwable}.
+ * Assertions for {@code Throwable}.
  * </p>
  *
  * <p>

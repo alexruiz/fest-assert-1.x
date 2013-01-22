@@ -21,7 +21,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- * Condition to be met by an {@link Object}.
+ * Condition to be met by an {@code Object}.
  * 
  * @param <T> the type of {@code Object} this condition accepts.
  * 

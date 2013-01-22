@@ -35,7 +35,7 @@ import org.fest.util.VisibleForTesting;
 
 /**
  * <p>
- * Assertions for {@link BufferedImage}s.
+ * Assertions for {@code BufferedImage}s.
  * </p>
  *
  * <p>

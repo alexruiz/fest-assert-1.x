@@ -39,7 +39,7 @@ public abstract class Assert {
   }
 
   /**
-   * Sets the description of the actual value, to be used in as message of any {@link AssertionError} thrown when an
+   * Sets the description of the actual value, to be used in as message of any {@code AssertionError} thrown when an
    * assertion fails.
    * 
    * @param d the new description.
@@ -49,7 +49,7 @@ public abstract class Assert {
   }
 
   /**
-   * Sets the description of the actual value, to be used in as message of any {@link AssertionError} thrown when an
+   * Sets the description of the actual value, to be used in as message of any {@code AssertionError} thrown when an
    * assertion fails.
    * 
    * @param d the new description.
@@ -102,7 +102,7 @@ public abstract class Assert {
   }
 
   /**
-   * Throws an {@link AssertionError} only if the the custom message in this assertion object is not {@code null}.
+   * Throws an {@code AssertionError} only if the the custom message in this assertion object is not {@code null}.
    * 
    * @throws AssertionError only if the custom error message in this assertion object is not {@code null}.
    * @since 1.2
@@ -112,7 +112,7 @@ public abstract class Assert {
   }
 
   /**
-   * Throws an {@link AssertionError} only if the the custom message in this assertion object is not {@code null}.
+   * Throws an {@code AssertionError} only if the the custom message in this assertion object is not {@code null}.
    * 
    * @param realCause cause of the error.
    * @throws AssertionError only if the custom error message in this assertion object is not {@code null}.
@@ -123,7 +123,7 @@ public abstract class Assert {
   }
 
   /**
-   * Fails by throwing an {@link AssertionError}.
+   * Fails by throwing an {@code AssertionError}.
    * 
    * @param reason the reason for the failure, used as the message for the thrown exception.
    * @param cause the root cause of the failure, included in the thrown exception.
@@ -135,10 +135,10 @@ public abstract class Assert {
 
   /**
    * <p>
-   * Fails by throwing an {@link AssertionError}.
+   * Fails by throwing an {@code AssertionError}.
    * </p>
    * <p>
-   * <strong>Note:</strong> This method appears to return {@link AssertionError}, but it is really not the case, since
+   * <strong>Note:</strong> This method appears to return {@code AssertionError}, but it is really not the case, since
    * the exception is thrown and not returned. In version 2.0 the return type of this method will change to {@code void}
    * . Since we cannot create an overloaded version with return type {@code void}, we cannot deprecate this method.
    * Please pretend this method does not return anything :)
@@ -155,7 +155,7 @@ public abstract class Assert {
   }
 
   /**
-   * Creates an {@link AssertionError}, adding the description of the actual value to the given message.
+   * Creates an {@code AssertionError}, adding the description of the actual value to the given message.
    * 
    * @param reason the reason for the failure, used as the message for the thrown exception.
    * @return the created exception.
@@ -165,7 +165,7 @@ public abstract class Assert {
   }
 
   /**
-   * Throws {@link UnsupportedOperationException} if called. It is easy to accidentally call {@link #equals(Object)}
+   * Throws {@code UnsupportedOperationException} if called. It is easy to accidentally call {@link #equals(Object)}
    * instead of {@code isEqualTo}.
    * 
    * @throws UnsupportedOperationException if this method is called.

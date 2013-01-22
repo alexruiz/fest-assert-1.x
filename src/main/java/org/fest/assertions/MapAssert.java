@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
 
 /**
  * <p>
- * Assertions for {@link Map}s.
+ * Assertions for {@code Map}s.
  * </p>
  *
  * <p>
@@ -54,7 +54,7 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
 
   /**
    * <p>
-   * Verifies that the actual {@link Map} contains the given entries.
+   * Verifies that the actual {@code Map} contains the given entries.
    * </p>
    * 
    * <p>
@@ -91,7 +91,7 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
 
   /**
    * <p>
-   * Verifies that the actual {@link Map} does not contain the given entries.
+   * Verifies that the actual {@code Map} does not contain the given entries.
    * </p>
    * 
    * <p>
@@ -150,7 +150,7 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
   }
 
   /**
-   * An entry in a {@link Map}.
+   * An entry in a {@code Map}.
    * 
    * @author Yvonne Wang
    */
@@ -186,7 +186,7 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
   }
 
   /**
-   * @return the number of elements in the actual {@link Map}.
+   * @return the number of elements in the actual {@code Map}.
    */
   @Override
   protected int actualGroupSize() {

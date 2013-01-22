@@ -31,7 +31,7 @@ import org.fest.util.VisibleForTesting;
 
 /**
  * <p>
- * Assertions for {@link File}.
+ * Assertions for {@code File}.
  * </p>
  *
  * <p>

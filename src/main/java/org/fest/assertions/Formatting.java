@@ -102,9 +102,7 @@ public final class Formatting {
   }
 
   /**
-   * Returns a formatted string using the specified format {@code String} and arguments. This method is similar to
-   * {@link String#format(String, Object...)}. The only difference is that this method uses FEST-Assert's own
-   * {@code toString} representation of the arguments.
+   * Returns a formatted string using the specified format {@code String} and arguments.
    * 
    * @param format a format {@code String}.
    * @param args Arguments referenced by the format specifiers in the format {@code String}. If there are more arguments

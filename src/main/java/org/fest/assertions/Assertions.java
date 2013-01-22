@@ -434,7 +434,6 @@ public class Assertions {
    * </pre>
    * </p>
    * 
-   * @param <T> the generic type of the user-defined assertion.
    * @param assertion the assertion to return.
    * @return the given assertion.
    * @throws NullPointerException if the given assertion is {@code null}.

@@ -26,13 +26,13 @@ import javax.annotation.Nullable;
 import org.fest.util.Lists;
 
 /**
- * Utility methods for {@link Collection}s.
+ * Utility methods for {@code Collection}s.
  * 
  * @author Alex Ruiz
  */
 public final class Collections {
   /**
-   * Attempts to find the given objects in the given {@link Collection}, returning the ones that were not found.
+   * Attempts to find the given objects in the given {@code Collection}, returning the ones that were not found.
    * 
    * @param target the given {@code Collection}.
    * @param objects the elements to find in the given {@code Collection}.
@@ -52,7 +52,7 @@ public final class Collections {
   }
 
   /**
-   * Attempts to find the given objects in the given {@link Collection}, returning the ones that were found.
+   * Attempts to find the given objects in the given {@code Collection}, returning the ones that were found.
    * 
    * @param target the given {@code Collection}.
    * @param objects the elements to find in the given {@code Collection}.

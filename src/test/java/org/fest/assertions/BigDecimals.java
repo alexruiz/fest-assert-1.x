@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 import javax.annotation.Nonnull;
 
 /**
- * Some {@link BigDecimal} values used for testing.
+ * Some {@code BigDecimal} values used for testing.
  * 
  * @author Alex Ruiz
  */

@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
 
 /**
  * <p>
- * Assertions for {@link Object}s.
+ * Assertions for {@code Object}s.
  * </p>
  *
  * <p>

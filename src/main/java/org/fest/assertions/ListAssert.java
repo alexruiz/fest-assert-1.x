@@ -31,7 +31,7 @@ import org.fest.util.IntrospectionError;
 
 /**
  * <p>
- * Assertions for {@link List}s.
+ * Assertions for {@code List}s.
  * </p>
  *
  * <p>
@@ -54,7 +54,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
   }
 
   /**
-   * Verifies that the actual {@link List} contains the given object at the given index.
+   * Verifies that the actual {@code List} contains the given object at the given index.
    * 
    * @param o the object to look for.
    * @param index the index where the object should be stored in the actual {@code List}.
@@ -90,7 +90,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
   }
 
   /**
-   * Verifies that the actual {@link List} contains the given sequence of objects, without any other objects between
+   * Verifies that the actual {@code List} contains the given sequence of objects, without any other objects between
    * them.
    * 
    * @param sequence the sequence of objects to look for.
@@ -129,7 +129,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
   }
 
   /**
-   * Verifies that the actual {@link List} starts with the given sequence of objects, without any other objects between
+   * Verifies that the actual {@code List} starts with the given sequence of objects, without any other objects between
    * them. Same as {@link #containsSequence}, but verifies also that first given object is also first element of
    * {@code List}.
    * 
@@ -168,7 +168,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
   }
 
   /**
-   * Verifies that the actual {@link List} ends with the given sequence of objects, without any other objects between
+   * Verifies that the actual {@code List} ends with the given sequence of objects, without any other objects between
    * them. Same as {@link #containsSequence}, but verifies also that last given object is also last element of
    * {@code List}.
    * 
@@ -209,7 +209,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
   }
 
   /**
-   * Returns the number of elements in the actual {@link List}.
+   * Returns the number of elements in the actual {@code List}.
    * 
    * @return the number of elements in the actual {@code List}.
    * @throws AssertionError if the actual {@code List} is {@code null}.
@@ -221,8 +221,8 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
   }
 
   /**
-   * Verifies that the actual {@link List} contains the given objects, in the same order. This method works just like
-   * {@link #isEqualTo(List)}, with the difference that internally the given array is converted to a {@code List}.
+   * Verifies that the actual {@code List} contains the given objects, in the same order. This method works just like
+   * {@code isEqualTo(List)}, with the difference that internally the given array is converted to a {@code List}.
    * 
    * @param objects the objects to look for.
    * @return this assertion object.

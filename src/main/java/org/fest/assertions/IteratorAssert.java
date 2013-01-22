@@ -30,7 +30,7 @@ import org.fest.util.VisibleForTesting;
 
 /**
  * <p>
- * Assertions for {@link Iterator}s.
+ * Assertions for {@code Iterator}s.
  * </p>
  *
  * <p>

@@ -30,7 +30,7 @@ import org.fest.util.IntrospectionError;
 
 /**
  * <p>
- * Assertions for {@link Collection}s.
+ * Assertions for {@code Collection}s.
  * </p>
  * 
  * <p>

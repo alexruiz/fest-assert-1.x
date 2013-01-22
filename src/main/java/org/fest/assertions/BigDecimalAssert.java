@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
 
 /**
  * <p>
- * Assertions for {@link BigDecimal}s.
+ * Assertions for {@code BigDecimal}s.
  * </p>
  * 
  * <p>
@@ -46,7 +46,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimalAssert, BigDeci
   }
 
   /**
-   * Verifies that the actual {@link BigDecimal} is positive.
+   * Verifies that the actual {@code BigDecimal} is positive.
    * 
    * @return this assertion object.
    * @throws AssertionError if the actual {@code BigDecimal} value is {@code null}.
@@ -58,7 +58,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimalAssert, BigDeci
   }
 
   /**
-   * Verifies that the actual {@link BigDecimal} is negative.
+   * Verifies that the actual {@code BigDecimal} is negative.
    * 
    * @return this assertion object.
    * @throws AssertionError if the actual {@code BigDecimal} value is {@code null}.
@@ -70,9 +70,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimalAssert, BigDeci
   }
 
   /**
-   * Verifies that the actual {@link BigDecimal} is equal to zero, regardless of precision. Essentially,
-   * this is the same as
-   * {@link #isEqualByComparingTo(BigDecimal) isEqualByComparingTo}({@link BigDecimal#ZERO BigDecimal.ZERO}).
+   * Verifies that the actual {@code BigDecimal} is equal to zero, regardless of precision.
    * 
    * @return this assertion object.
    * @throws AssertionError if the actual {@code BigDecimal} value is {@code null}.
@@ -84,9 +82,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimalAssert, BigDeci
   }
 
   /**
-   * Verifies that the actual {@link BigDecimal} is not equal to zero, regardless of precision.
-   * Essentially, this is the same as
-   * {@link #isEqualByComparingTo(BigDecimal) isNotEqualByComparingTo}({@link BigDecimal#ZERO BigDecimal.ZERO}).
+   * Verifies that the actual {@code BigDecimal} is not equal to zero, regardless of precision.
    * 
    * @return this assertion object.
    * @throws AssertionError if the actual {@code BigDecimal} is {@code null}.
