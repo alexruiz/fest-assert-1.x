@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>fest-assert</artifactId>
   <version>1.5-SNAPSHOT</version>
-  <name>FEST Fluent Assertions</name>
+  <name>FEST-Assert</name>
   <description>'Flexible' or 'fluent' assertions for testing</description>
   <inceptionYear>2006</inceptionYear>
   <url>http://fest.easytesting.org/assert</url>

@@ -18,7 +18,6 @@ import static org.fest.assertions.Formatting.format;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.util.Arrays.isNullOrEmpty;
 import static org.fest.util.Preconditions.checkNotNull;
-import static org.fest.util.SystemProperties.LINE_SEPARATOR;
 
 import java.io.File;
 import java.io.IOException;
@@ -168,12 +167,11 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
   private void fail(@Nonnull File expected, @Nonnull LineDiff[] diffs) {
     failIfCustomMessageIsSet();
     StringBuilder b = new StringBuilder();
-    b.append("file:").append(inBrackets(actual)).append(" and file:").append(inBrackets(expected))
-    .append(" do not have same contents:");
+    b.append(String.format("file:%s and file:%s do not have same contents:", inBrackets(actual), inBrackets(expected)));
     for (LineDiff diff : diffs) {
-      b.append(LINE_SEPARATOR)
-      .append("line:").append(inBrackets(diff.lineNumber)).append(", expected:").append(inBrackets(diff.expected))
-      .append(" but was:").append(inBrackets(diff.actual));
+      String line = String.format("%nline:<%d>, expected:%s but was:%s", diff.lineNumber, inBrackets(diff.expected),
+          inBrackets(diff.actual));
+      b.append(line);
     }
     fail(b.toString());
   }

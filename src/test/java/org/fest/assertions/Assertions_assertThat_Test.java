@@ -19,13 +19,14 @@ import static java.lang.Boolean.FALSE;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertSame;
+import static org.fest.util.Maps.newHashMap;
 
 import java.awt.image.BufferedImage;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 import org.fest.util.Files;
 import org.junit.Test;
@@ -194,7 +195,8 @@ public class Assertions_assertThat_Test {
 
   @Test
   public void should_return_MapAssert_if_argument_is_Map() {
-    assertObjectIsInstanceOfType(Assertions.assertThat(new HashMap<Object, Object>()), MapAssert.class);
+    Map<Object, Object> map = newHashMap();
+    assertObjectIsInstanceOfType(Assertions.assertThat(map), MapAssert.class);
   }
 
   @Test

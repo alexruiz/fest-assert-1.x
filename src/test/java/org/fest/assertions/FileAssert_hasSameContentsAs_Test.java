@@ -19,7 +19,7 @@ import static org.fest.assertions.FileContentComparator.LineDiff.lineDiff;
 import static org.fest.assertions.FileStub.newFile;
 import static org.fest.test.ExpectedException.none;
 import static org.fest.util.Strings.concat;
-import static org.fest.util.SystemProperties.LINE_SEPARATOR;
+import static org.fest.util.SystemProperties.lineSeparator;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.fail;
@@ -75,8 +75,8 @@ public class FileAssert_hasSameContentsAs_Test extends FileAssert_TestCase {
   public void should_fail_if_actual_and_expected_do_not_have_same_content() {
     file.ensureExists();
     comparator.expectedLineDiffs(lineDiff(6, "abc", "xyz"), lineDiff(8, "xyz", "abc"));
-    final String message = concat("file:<c:\\f.txt> and file:<c:\\temp\\expected.txt> do not have same contents:",
-        LINE_SEPARATOR, "line:<6>, expected:<'xyz'> but was:<'abc'>", LINE_SEPARATOR,
+    String message = concat("file:<c:\\f.txt> and file:<c:\\temp\\expected.txt> do not have same contents:",
+        lineSeparator(), "line:<6>, expected:<'xyz'> but was:<'abc'>", lineSeparator(),
         "line:<8>, expected:<'abc'> but was:<'xyz'>");
     thrown.expect(AssertionError.class, message);
     FileStub expected = newFile("c:\\temp\\expected.txt").ensureExists();
@@ -87,9 +87,9 @@ public class FileAssert_hasSameContentsAs_Test extends FileAssert_TestCase {
   public void should_fail_and_display_description_if_actual_and_expected_do_not_have_same_content() {
     file.ensureExists();
     comparator.expectedLineDiffs(lineDiff(6, "abc", "xyz"), lineDiff(8, "xyz", "abc"));
-    final String message = concat(
-        "[A Test] file:<c:\\f.txt> and file:<c:\\temp\\expected.txt> do not have same contents:", LINE_SEPARATOR,
-        "line:<6>, expected:<'xyz'> but was:<'abc'>", LINE_SEPARATOR, "line:<8>, expected:<'abc'> but was:<'xyz'>");
+    String message = concat(
+        "[A Test] file:<c:\\f.txt> and file:<c:\\temp\\expected.txt> do not have same contents:", lineSeparator(),
+        "line:<6>, expected:<'xyz'> but was:<'abc'>", lineSeparator(), "line:<8>, expected:<'abc'> but was:<'xyz'>");
     thrown.expect(AssertionError.class, message);
     FileStub expected = newFile("c:\\temp\\expected.txt").ensureExists();
     new FileAssert(file, comparator).as("A Test").hasSameContentAs(expected);
