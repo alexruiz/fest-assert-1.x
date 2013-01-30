@@ -14,8 +14,8 @@
  */
 /**
  * <p>
- * Assertion methods bound to the type they apply. The entry point is any of the &quot;<code>assertThat</code>&quot;
- * methods in <code>{@link org.fest.assertions.Assertions}</code> (assertion classes cannot be instantiated directly.)
+ * Assertion methods bound to the type they apply. The entry point is any of the &quot;{@code assertThat}&quot;
+ * methods in {@link org.fest.assertions.Assertions} (assertion classes cannot be instantiated directly.)
  * </p>
  * 
  * <p>

@@ -29,7 +29,7 @@ import org.junit.Test;
  * 
  * @param <S> used to simulate "self types." For more information please read &quot;<a href="http://goo.gl/fjgOM"
  *          target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
- * @param <A> the generic type of the <code>GenericAssert</code> to test.
+ * @param <A> the generic type of the {@code GenericAssert} to test.
  * 
  * @author Ansgar Konermann
  * @author Alex Ruiz

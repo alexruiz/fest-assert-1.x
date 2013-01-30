@@ -15,7 +15,7 @@
 package org.fest.assertions;
 
 /**
- * d {@link Condition} that verifies that a value is not <code>null</code>.
+ * {@link Condition} that verifies that a value is not {@code null}.
  * 
  * @author Alex Ruiz
  */

@@ -32,7 +32,7 @@ import org.fest.util.Files;
 import org.junit.Test;
 
 /**
- * Tests for all the overloaded versions of <code>assertThat</code> in {@link Assertions}.
+ * Tests for all the overloaded versions of {@code assertThat} in {@link Assertions}.
  * 
  * @author Yvonne Wang
  * @author Alex Ruiz
