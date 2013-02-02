@@ -14,14 +14,15 @@
  */
 package org.fest.assertions;
 
-import static java.util.Collections.emptyList;
 import static org.fest.util.Collections.isNullOrEmpty;
 import static org.fest.util.Collections.nonNullElementsIn;
 import static org.fest.util.Introspection.getProperty;
+import static org.fest.util.Lists.emptyList;
+import static org.fest.util.Lists.newArrayList;
+import static org.fest.util.Preconditions.checkNotNull;
 import static org.fest.util.Strings.quote;
 
 import java.beans.PropertyDescriptor;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -95,10 +96,12 @@ final class PropertySupport {
     return simplePropertyValues(propertyName, nonNullElements);
   }
 
-  private List<Object> simplePropertyValues(String propertyName, Collection<?> target) {
-    List<Object> propertyValues = new ArrayList<Object>();
+  private @Nonnull List<Object> simplePropertyValues(@Nonnull String propertyName, @Nonnull Collection<?> target) {
+    List<Object> propertyValues = newArrayList();
     for (Object e : target) {
-      propertyValues.add(propertyValue(propertyName, e));
+      if (e != null) {
+        propertyValues.add(propertyValue(propertyName, e));
+      }
     }
     return propertyValues;
   }
@@ -146,7 +149,7 @@ final class PropertySupport {
     if (!isNestedProperty(propertyName)) {
       return "";
     }
-    return propertyName.substring(propertyName.indexOf(SEPARATOR) + 1);
+    return checkNotNull(propertyName.substring(propertyName.indexOf(SEPARATOR) + 1));
   }
 
   /**
@@ -163,10 +166,10 @@ final class PropertySupport {
     if (!isNestedProperty(propertyName)) {
       return propertyName;
     }
-    return propertyName.substring(0, propertyName.indexOf(SEPARATOR));
+    return checkNotNull(propertyName.substring(0, propertyName.indexOf(SEPARATOR)));
   }
 
-  private Object propertyValue(@Nonnull String propertyName, @Nonnull Object target) {
+  private @Nullable Object propertyValue(@Nonnull String propertyName, @Nonnull Object target) {
     PropertyDescriptor descriptor = getProperty(propertyName, target);
     return propertyValue(descriptor, propertyName, target);
   }

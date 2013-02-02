@@ -18,7 +18,6 @@ import static org.fest.assertions.FailureMessages.notIn;
 import static org.fest.test.ExpectedException.none;
 import static org.fest.util.Lists.newArrayList;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.fest.test.ExpectedException;
@@ -117,7 +116,7 @@ public final class GenericAssert_isIn_withCollection_Test implements Assert_isIn
   @Override
   @Test
   public void should_fail_if_values_is_empty() {
-    Collection<?> values = new ArrayList<Object>();
+    Collection<?> values = newArrayList();
     thrown.expect(AssertionError.class, notIn(null, actual, values));
     assertions.isIn(values);
   }

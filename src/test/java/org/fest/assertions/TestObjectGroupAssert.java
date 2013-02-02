@@ -14,11 +14,13 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import java.util.ArrayList;
+import static org.fest.util.Lists.newArrayList;
+
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author Alex Ruiz
@@ -47,6 +49,6 @@ public class TestObjectGroupAssert extends ObjectGroupAssert<TestObjectGroupAsse
   /** {@inheritDoc} */
   @Override
   protected List<Object> actualAsList() {
-    return new ArrayList<Object>(actual);
+    return newArrayList(actual);
   }
 }

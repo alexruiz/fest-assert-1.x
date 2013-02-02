@@ -14,15 +14,15 @@
  */
 package org.fest.assertions;
 
-import static java.util.Collections.emptyList;
 import static org.fest.assertions.Collections.found;
 import static org.fest.assertions.Collections.notFound;
 import static org.fest.assertions.Formatting.format;
 import static org.fest.util.Collections.duplicatesFrom;
+import static org.fest.util.Lists.emptyList;
+import static org.fest.util.Lists.newArrayList;
 import static org.fest.util.Preconditions.checkNotNull;
 import static org.fest.util.Sets.newLinkedHashSet;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -108,7 +108,7 @@ public abstract class ItemGroupAssert<S, A> extends GroupAssert<S, A> {
     if (copy == null) {
       return emptyList();
     }
-    List<Object> notFound = new ArrayList<Object>();
+    List<Object> notFound = newArrayList();
     for (Object o : objects) {
       if (!copy.contains(o)) {
         notFound.add(o);

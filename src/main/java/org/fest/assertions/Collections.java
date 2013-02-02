@@ -14,16 +14,14 @@
  */
 package org.fest.assertions;
 
-import static java.util.Collections.emptyList;
+import static org.fest.util.Lists.emptyList;
+import static org.fest.util.Lists.newArrayList;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import org.fest.util.Lists;
 
 /**
  * Utility methods for {@code Collection}s.
@@ -42,7 +40,7 @@ public final class Collections {
     if (target == null) {
       return emptyList();
     }
-    List<Object> notFound = Lists.newArrayList();
+    List<Object> notFound = newArrayList();
     for (Object o : objects) {
       if (!target.contains(o)) {
         notFound.add(o);
@@ -62,7 +60,7 @@ public final class Collections {
     if (target == null) {
       return emptyList();
     }
-    List<Object> found = new ArrayList<Object>();
+    List<Object> found = newArrayList();
     for (Object o : objects) {
       if (target.contains(o)) {
         found.add(o);

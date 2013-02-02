@@ -14,11 +14,11 @@
  */
 package org.fest.assertions;
 
+import static org.fest.util.Lists.newArrayList;
 import static org.fest.util.Preconditions.checkNotNull;
 import static org.fest.util.Strings.quote;
 import static org.fest.util.ToString.toStringOf;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -77,7 +77,7 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
   public @Nonnull MapAssert includes(@Nonnull Entry... entries) {
     isNotNull();
     checkNotNull(entries);
-    List<Entry> notFound = new ArrayList<Entry>();
+    List<Entry> notFound = newArrayList();
     for (Entry e : entries) {
       if (!containsEntry(checkNotNull(e))) {
         notFound.add(e);
@@ -114,7 +114,7 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
   public @Nonnull MapAssert excludes(@Nonnull Entry... entries) {
     isNotNull();
     checkNotNull(entries);
-    List<Entry> found = new ArrayList<Entry>();
+    List<Entry> found = newArrayList();
     for (Entry e : entries) {
       if (containsEntry(checkNotNull(e))) {
         found.add(e);

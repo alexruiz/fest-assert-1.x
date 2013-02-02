@@ -19,6 +19,7 @@ import static java.lang.Boolean.FALSE;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertSame;
+import static org.fest.util.Lists.newArrayList;
 import static org.fest.util.Maps.newHashMap;
 
 import java.awt.image.BufferedImage;
@@ -100,12 +101,13 @@ public class Assertions_assertThat_Test {
 
   @Test
   public void should_return_ListAssert_if_argument_is_List() {
-    assertObjectIsInstanceOfType(Assertions.assertThat(new ArrayList<Object>()), ListAssert.class);
+    ArrayList<Object> actual = newArrayList();
+    assertObjectIsInstanceOfType(Assertions.assertThat(actual), ListAssert.class);
   }
 
   @Test
   public void should_return_IteratorAssert_if_argument_is_Iterator() {
-    List<String> list = new ArrayList<String>();
+    List<String> list = newArrayList();
     list.add("Frodo");
     IteratorAssert assertion = Assertions.assertThat(list.iterator());
     assertObjectIsInstanceOfType(assertion, IteratorAssert.class);
@@ -240,7 +242,7 @@ public class Assertions_assertThat_Test {
 
   @Test
   public void should_return_IteratorAssert_if_actual_is_Iterable() {
-    Iterable<?> iterable = new ArrayList<Object>();
+    Iterable<?> iterable = newArrayList();
     assertObjectIsInstanceOfType(Assertions.assertThat(iterable), IteratorAssert.class);
   }
 

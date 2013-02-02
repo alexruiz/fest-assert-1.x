@@ -17,6 +17,7 @@ package org.fest.assertions;
 import static java.lang.String.format;
 import static org.fest.assertions.FileContentComparator.LineDiff.lineDiff;
 import static org.fest.util.Closeables.closeQuietly;
+import static org.fest.util.Lists.newArrayList;
 import static org.fest.util.Objects.HASH_CODE_PRIME;
 import static org.fest.util.Objects.areEqual;
 import static org.fest.util.Objects.hashCodeFor;
@@ -29,7 +30,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -70,7 +70,7 @@ class FileContentComparator {
 
   private @Nonnull List<LineDiff> verifyEqualContent(
       @Nonnull LineNumberReader actual, @Nonnull LineNumberReader expected) throws IOException {
-    List<LineDiff> diffs = new ArrayList<LineDiff>();
+    List<LineDiff> diffs = newArrayList();
     while (true) {
       if (!expected.ready() && !actual.ready()) {
         return diffs;

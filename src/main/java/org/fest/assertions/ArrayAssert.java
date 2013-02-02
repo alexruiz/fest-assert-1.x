@@ -59,12 +59,14 @@ public abstract class ArrayAssert<S, A> extends ItemGroupAssert<S, A> {
   /** {@inheritDoc} */
   @Override
   protected @Nullable Set<Object> actualAsSet() {
+    isNotNull();
     return copyToSet(actual);
   }
 
   /** {@inheritDoc} */
   @Override
   protected @Nullable List<Object> actualAsList() {
+    isNotNull();
     return copyToList(actual);
   }
 }

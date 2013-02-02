@@ -17,7 +17,6 @@ package org.fest.assertions;
 import static org.fest.util.Lists.newArrayList;
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
 import java.util.Set;
 
 import org.junit.BeforeClass;
@@ -40,6 +39,6 @@ public class ObjectArrayAssert_actualAsSet_Test {
   @Test
   public void should_return_Set_with_contents_in_actual() {
     Set<Object> set = assertions.actualAsSet();
-    assertEquals(newArrayList(assertions.actual), new ArrayList<Object>(set));
+    assertEquals(newArrayList(assertions.actual), newArrayList(set));
   }
 }

@@ -20,9 +20,9 @@ import static org.fest.assertions.Title.Miss;
 import static org.fest.assertions.Title.Mr;
 import static org.fest.assertions.Title.Ms;
 import static org.fest.test.ExpectedException.none;
+import static org.fest.util.Lists.newArrayList;
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -50,7 +50,7 @@ public abstract class ObjectGroupAssert_onProperty_Test<S extends ObjectGroupAss
 
   @Before
   public void setUp() {
-    persons = new ArrayList<Person>(populateData());
+    persons = newArrayList(populateData());
   }
 
   private static Collection<Person> populateData() {
@@ -59,7 +59,7 @@ public abstract class ObjectGroupAssert_onProperty_Test<S extends ObjectGroupAss
      * male; - char favoriteAlphabetLetter; - byte favoriteByte; - short yearOfBirth; - float height; - double weight; -
      * String homeTown;
      */
-    List<Person> persons = new ArrayList<Person>();
+    List<Person> persons = newArrayList();
     Person pier = new Person(1L, "Pier", 25, 6L, true, 'P', 1, 1974, 1.90f, 80.1, "Paris");
     pier.setFather(new Person(11L, "PierFather", 55, 6L, true, 'P', 1, 1974, 1.90f, 80.1, "Paris"));
     persons.add(pier);

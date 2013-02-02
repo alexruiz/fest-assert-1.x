@@ -14,7 +14,8 @@
  */
 package org.fest.assertions;
 
-import java.util.ArrayList;
+import static org.fest.util.Lists.newArrayList;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -27,7 +28,7 @@ import java.util.List;
 public class ListAssert_onProperty_Test extends ObjectGroupAssert_onProperty_Test<ListAssert, List<?>> {
   @Override
   protected ListAssert assertionsFor(Collection<?> data) {
-    List<?> actual = data != null ? new ArrayList<Object>(data) : null;
+    List<?> actual = data != null ? newArrayList(data) : null;
     return new ListAssert(actual);
   }
 }
