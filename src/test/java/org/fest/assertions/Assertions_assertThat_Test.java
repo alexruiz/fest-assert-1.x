@@ -21,6 +21,7 @@ import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertSame;
 import static org.fest.util.Lists.newArrayList;
 import static org.fest.util.Maps.newHashMap;
+import static org.fest.util.Sets.newHashSet;
 
 import java.awt.image.BufferedImage;
 import java.math.BigDecimal;
@@ -96,7 +97,8 @@ public class Assertions_assertThat_Test {
 
   @Test
   public void should_return_CollectionAssert_if_argument_is_Collection() {
-    assertObjectIsInstanceOfType(Assertions.assertThat(new HashSet<Object>()), CollectionAssert.class);
+    HashSet<Object> set = newHashSet();
+    assertObjectIsInstanceOfType(Assertions.assertThat(set), CollectionAssert.class);
   }
 
   @Test
