@@ -26,7 +26,5 @@ public final class Resources {
     return new File(DIRECTORY, name);
   }
 
-  private Resources() {
-  }
-
+  private Resources() {}
 }

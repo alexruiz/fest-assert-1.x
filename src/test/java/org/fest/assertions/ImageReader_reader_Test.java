@@ -54,5 +54,4 @@ public class ImageReader_reader_Test {
       }
     }
   }
-
 }

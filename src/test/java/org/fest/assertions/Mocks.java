@@ -30,6 +30,5 @@ final class Mocks {
     }
   }
 
-  private Mocks() {
-  }
+  private Mocks() {}
 }

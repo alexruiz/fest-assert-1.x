@@ -37,5 +37,4 @@ public class LineDiff_toString_Test {
   public void should_implement_toString() {
     assertEquals("LineDiff [actual='hello', expected='world', lineNumber=1]", diff.toString());
   }
-
 }

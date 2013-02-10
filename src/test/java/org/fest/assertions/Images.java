@@ -42,6 +42,5 @@ final class Images {
     return image;
   }
 
-  private Images() {
-  }
+  private Images() {}
 }

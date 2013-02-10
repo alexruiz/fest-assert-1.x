@@ -24,8 +24,7 @@ class NotNull<T> extends Condition<T> {
     return new NotNull<T>();
   }
 
-  private NotNull() {
-  }
+  private NotNull() {}
 
   @Override
   public boolean matches(T value) {

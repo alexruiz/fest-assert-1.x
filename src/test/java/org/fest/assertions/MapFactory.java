@@ -31,6 +31,5 @@ final class MapFactory {
     return map;
   }
 
-  private MapFactory() {
-  }
+  private MapFactory() {}
 }
