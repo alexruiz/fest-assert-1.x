@@ -25,7 +25,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for {@link PropertySupport#removeFirstPropertyIfNested(String)}
+ * Tests for {@link PropertySupport#removeFirstPropertyIfNested(String)}.
  * 
  * @author Joel Costigliola
  * @author Alex Ruiz

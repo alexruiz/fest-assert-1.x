@@ -25,7 +25,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for {@link PropertySupport#isNestedProperty(String)}
+ * Tests for {@link PropertySupport#isNestedProperty(String)}.
  * 
  * @author Joel Costigliola
  * @author Alex Ruiz

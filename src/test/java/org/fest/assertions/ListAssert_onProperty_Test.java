@@ -20,7 +20,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Tests for {@link ListAssert#onProperty(String)}
+ * Tests for {@link ListAssert#onProperty(String)}.
  * 
  * @author Joel Costigliola
  * @author Alex Ruiz

@@ -17,7 +17,7 @@ package org.fest.assertions;
 import java.util.Collection;
 
 /**
- * Tests for {@link ObjectArrayAssert#onProperty(String)}
+ * Tests for {@link ObjectArrayAssert#onProperty(String)}.
  * 
  * @author Joel Costigliola
  * @author Alex Ruiz

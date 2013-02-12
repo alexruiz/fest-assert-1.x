@@ -21,7 +21,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * Tests for {@link PropertySupport#isNestedProperty(String)}
+ * Tests for {@link PropertySupport#isNestedProperty(String)}.
  * 
  * @author Joel Costigliola
  * @author Alex Ruiz
