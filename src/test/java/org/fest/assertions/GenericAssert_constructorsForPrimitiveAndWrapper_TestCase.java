@@ -64,7 +64,7 @@ public abstract class GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<
   }
 
   private void verifyAssertionTypeHasConstructorWithParameterType(Class<?> type) {
-    Constructor<?> c = constructor().withParameterTypes(type).in(assertionType).constructor();
+    Constructor<?> c = constructor().withParameterTypes(type).in(assertionType).target();
     verifyArrayContainsOnly(c.getParameterTypes(), type);
   }
 
