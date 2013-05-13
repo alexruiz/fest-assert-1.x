@@ -14,25 +14,27 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Lists.emptyList;
-import static org.fest.util.Lists.newArrayList;
-
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.List;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import static org.fest.util.Lists.emptyList;
+import static org.fest.util.Lists.newArrayList;
 
 /**
  * Utility methods for {@code Collection}s.
- * 
+ *
  * @author Alex Ruiz
  */
 public final class Collections {
+  private Collections() {
+  }
+
   /**
    * Attempts to find the given objects in the given {@code Collection}, returning the ones that were not found.
-   * 
-   * @param target the given {@code Collection}.
+   *
+   * @param target  the given {@code Collection}.
    * @param objects the elements to find in the given {@code Collection}.
    * @return the elements that were not found in the given {@code Collection}.
    */
@@ -51,8 +53,8 @@ public final class Collections {
 
   /**
    * Attempts to find the given objects in the given {@code Collection}, returning the ones that were found.
-   * 
-   * @param target the given {@code Collection}.
+   *
+   * @param target  the given {@code Collection}.
    * @param objects the elements to find in the given {@code Collection}.
    * @return the elements that were found in the given {@code Collection}.
    */
@@ -68,6 +70,4 @@ public final class Collections {
     }
     return found;
   }
-
-  private Collections() {}
 }

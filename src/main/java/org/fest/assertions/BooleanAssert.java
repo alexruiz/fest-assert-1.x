@@ -14,21 +14,17 @@
  */
 package org.fest.assertions;
 
-import static java.lang.Boolean.valueOf;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import static java.lang.Boolean.valueOf;
+
 /**
- * <p>
  * Assertions for {@code Boolean}s and {@code boolean}s.
- * </p>
- *
- * <p>
+ * <p/>
  * To create a new instance of this class invoke either {@link Assertions#assertThat(Boolean)} or
  * {@link Assertions#assertThat(boolean)}.
- * </p>
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  * @author David DIDIER
@@ -37,7 +33,7 @@ import javax.annotation.Nullable;
 public class BooleanAssert extends GenericAssert<BooleanAssert, Boolean> {
   /**
    * Creates a new {@link BooleanAssert}.
-   * 
+   *
    * @param actual the actual value to verify.
    */
   protected BooleanAssert(boolean actual) {
@@ -46,7 +42,7 @@ public class BooleanAssert extends GenericAssert<BooleanAssert, Boolean> {
 
   /**
    * Creates a new {@link BooleanAssert}.
-   * 
+   *
    * @param actual the actual value to verify.
    */
   protected BooleanAssert(@Nullable Boolean actual) {
@@ -55,7 +51,7 @@ public class BooleanAssert extends GenericAssert<BooleanAssert, Boolean> {
 
   /**
    * Verifies that the actual {@code Boolean} value is {@code true}.
-   * 
+   *
    * @throws AssertionError if the actual {@code Boolean} value is {@code false}.
    */
   public void isTrue() {
@@ -64,7 +60,7 @@ public class BooleanAssert extends GenericAssert<BooleanAssert, Boolean> {
 
   /**
    * Verifies that the actual {@code Boolean} value is {@code false}.
-   * 
+   *
    * @throws AssertionError if the actual {@code Boolean} value is {@code true}.
    */
   public void isFalse() {
@@ -73,7 +69,7 @@ public class BooleanAssert extends GenericAssert<BooleanAssert, Boolean> {
 
   /**
    * Verifies that the actual {@code Boolean} is equal to the given one.
-   * 
+   *
    * @param expected the given {@code boolean} to compare the actual {@code Boolean} to.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Boolean} is not equal to the given one.
@@ -84,7 +80,7 @@ public class BooleanAssert extends GenericAssert<BooleanAssert, Boolean> {
 
   /**
    * Verifies that the actual {@code Boolean} is not equal to the given one.
-   * 
+   *
    * @param other the given {@code boolean} to compare the actual {@code Boolean} to.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Boolean} is equal to the given one.

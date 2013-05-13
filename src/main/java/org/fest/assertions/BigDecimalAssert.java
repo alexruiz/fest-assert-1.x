@@ -14,22 +14,17 @@
  */
 package org.fest.assertions;
 
-import static java.math.BigDecimal.ZERO;
-
-import java.math.BigDecimal;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.math.BigDecimal;
+
+import static java.math.BigDecimal.ZERO;
 
 /**
- * <p>
  * Assertions for {@code BigDecimal}s.
- * </p>
- * 
- * <p>
+ * <p/>
  * To create a new instance of this class invoke {@link Assertions#assertThat(BigDecimal)}.
- * </p>
- * 
+ *
  * @author David DIDIER
  * @author Ted M. Young
  * @author Yvonne Wang
@@ -38,7 +33,7 @@ import javax.annotation.Nullable;
 public class BigDecimalAssert extends ComparableAssert<BigDecimalAssert, BigDecimal> implements NumberAssert {
   /**
    * Creates a new {@link BigDecimalAssert}.
-   * 
+   *
    * @param actual the target to verify.
    */
   protected BigDecimalAssert(@Nullable BigDecimal actual) {
@@ -47,7 +42,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimalAssert, BigDeci
 
   /**
    * Verifies that the actual {@code BigDecimal} is positive.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code BigDecimal} value is {@code null}.
    * @throws AssertionError if the actual {@code BigDecimal} value is not positive.
@@ -59,7 +54,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimalAssert, BigDeci
 
   /**
    * Verifies that the actual {@code BigDecimal} is negative.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code BigDecimal} value is {@code null}.
    * @throws AssertionError if the actual {@code BigDecimal} value is not negative.
@@ -71,7 +66,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimalAssert, BigDeci
 
   /**
    * Verifies that the actual {@code BigDecimal} is equal to zero, regardless of precision.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code BigDecimal} value is {@code null}.
    * @throws AssertionError if the actual {@code BigDecimal} value is not equal to zero.
@@ -83,7 +78,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimalAssert, BigDeci
 
   /**
    * Verifies that the actual {@code BigDecimal} is not equal to zero, regardless of precision.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code BigDecimal} is {@code null}.
    * @throws AssertionError if the actual {@code BigDecimal} is equal to zero.

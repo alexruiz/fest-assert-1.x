@@ -14,36 +14,31 @@
  */
 package org.fest.assertions;
 
+import org.fest.util.IntrospectionError;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+
 import static java.util.Collections.emptyList;
 import static org.fest.util.Lists.newArrayList;
 import static org.fest.util.Preconditions.checkNotNull;
 import static org.fest.util.Sets.newLinkedHashSet;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import org.fest.util.IntrospectionError;
-
 /**
- * <p>
  * Assertions for {@code Collection}s.
- * </p>
- * 
- * <p>
+ * <p/>
  * To create a new instance of this class invoke {@link Assertions#assertThat(Collection)}.
- * </p>
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class CollectionAssert extends ObjectGroupAssert<CollectionAssert, Collection<?>> {
   /**
    * Creates a new {@link CollectionAssert}.
-   * 
+   *
    * @param actual the target to verify.
    */
   protected CollectionAssert(Collection<?> actual) {
@@ -52,7 +47,7 @@ public class CollectionAssert extends ObjectGroupAssert<CollectionAssert, Collec
 
   /**
    * Returns the number of elements in the actual collection.
-   * 
+   *
    * @return the number of elements in the actual collection.
    * @throws AssertionError if the actual collection is {@code null}.
    */
@@ -63,27 +58,23 @@ public class CollectionAssert extends ObjectGroupAssert<CollectionAssert, Collec
   }
 
   /**
-   * <p>
    * Creates a new instance of {@link CollectionAssert} whose target collection contains the values of the given
    * property name from the elements of this {@code CollectionAssert}'s collection. Property access works with both
    * simple properties like {@code Person.age} and nested properties {@code Person.father.age}.
-   * </p>
-   * 
-   * <p>
+   * <p/>
    * For example, let's say we have a collection of {@code Person} objects and you want to verify their age:
    * <pre>
    * assertThat(persons).onProperty(&quot;age&quot;).containsOnly(25, 16, 44, 37); // simple property
    * assertThat(persons).onProperty("father.age").containsOnly(55, 46, 74, 62); // nested property
    * </pre>
-   * </p>
-   * 
+   *
    * @param propertyName the name of the property to extract values from the actual collection to build a new
-   *          {@code CollectionAssert}.
+   *                     {@code CollectionAssert}.
    * @return a new {@code CollectionAssert} containing the values of the given property name from the elements of this
    *         {@code CollectionAssert}'s collection.
-   * @throws AssertionError if the actual collection is {@code null}.
+   * @throws AssertionError       if the actual collection is {@code null}.
    * @throws NullPointerException if the given property name is {@code null}.
-   * @throws IntrospectionError if an element in the given collection does not have a matching property.
+   * @throws IntrospectionError   if an element in the given collection does not have a matching property.
    * @since 1.3
    */
   @Override
@@ -96,13 +87,17 @@ public class CollectionAssert extends ObjectGroupAssert<CollectionAssert, Collec
     return new CollectionAssert(PropertySupport.instance().propertyValues(propertyName, actual));
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected @Nullable Set<Object> actualAsSet() {
     return actual == null ? null : newLinkedHashSet(actual.toArray());
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected @Nullable List<Object> actualAsList() {
     return actual == null ? null : newArrayList(actual.toArray());

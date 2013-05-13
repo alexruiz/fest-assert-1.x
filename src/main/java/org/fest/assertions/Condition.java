@@ -14,17 +14,16 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Preconditions.checkNotNull;
-import static org.fest.util.Strings.isNullOrEmpty;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import static org.fest.util.Preconditions.checkNotNull;
+import static org.fest.util.Strings.isNullOrEmpty;
+
 /**
  * Condition to be met by an {@code Object}.
- * 
+ *
  * @param <T> the type of {@code Object} this condition accepts.
- * 
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -34,11 +33,12 @@ public abstract class Condition<T> {
   /**
    * Creates a new {@link Condition}.
    */
-  public Condition() {}
+  public Condition() {
+  }
 
   /**
    * Creates a new {@link Condition}.
-   * 
+   *
    * @param description the description of this condition.
    */
   public Condition(@Nullable String description) {
@@ -47,7 +47,7 @@ public abstract class Condition<T> {
 
   /**
    * Sets the description of this condition.
-   * 
+   *
    * @param newDescription the description to set.
    * @return this condition.
    */
@@ -74,7 +74,7 @@ public abstract class Condition<T> {
 
   /**
    * Verifies that the given value satisfies this condition.
-   * 
+   *
    * @param value the value to verify.
    * @return {@code true} if the given value satisfies this condition, {@code false} otherwise.
    */

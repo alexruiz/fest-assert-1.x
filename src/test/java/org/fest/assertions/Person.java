@@ -19,10 +19,9 @@ import static org.fest.assertions.Title.Mr;
 /**
  * 
  * A simple class to test "onProperty" collection/list/array assertions.
- * <p>
+ * <p/>
  * The point here is to have all kind of properties: primitive type, primitive wrapper and Object.
- * </p>
- * 
+ *
  * @author Joel Costigliola
  */
 public class Person {

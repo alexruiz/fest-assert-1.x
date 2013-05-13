@@ -18,15 +18,14 @@ import javax.annotation.Nonnull;
 
 /**
  * Template for assertions for numbers (primitives and objects.)
- * 
+ *
  * @author Alex Ruiz
- * 
  * @since 1.2
  */
 public interface NumberAssert {
   /**
    * Verifies that the actual number is equal to zero.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual number is not equal to zero.
    */
@@ -34,7 +33,7 @@ public interface NumberAssert {
 
   /**
    * Verifies that the actual number is positive.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual number is not positive.
    */
@@ -42,7 +41,7 @@ public interface NumberAssert {
 
   /**
    * Verifies that the actual number is negative.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual number is not negative.
    */

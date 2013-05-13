@@ -18,15 +18,20 @@ import javax.annotation.Nonnull;
 
 /**
  * A finite increment in a variable.
- * 
+ *
  * @author Alex Ruiz
- * 
  * @since 1.1
  */
 public final class Delta {
+  private final Double value;
+
+  private Delta(double value) {
+    this.value = value;
+  }
+
   /**
    * Creates a new {@link Delta}.
-   * 
+   *
    * @param value the value of the delta.
    * @return the created {@code Delta}.
    */
@@ -36,7 +41,7 @@ public final class Delta {
 
   /**
    * Creates a new {@link Delta}.
-   * 
+   *
    * @param value the value of the delta.
    * @return the created {@code Delta}.
    */
@@ -44,15 +49,9 @@ public final class Delta {
     return new Delta(value);
   }
 
-  private final Double value;
-
-  private Delta(double value) {
-    this.value = value;
-  }
-
   /**
    * Returns the value of this delta.
-   * 
+   *
    * @return the value of this delta.
    * @deprecated use {@link #doubleValue()} instead.
    */
@@ -63,17 +62,17 @@ public final class Delta {
 
   /**
    * Returns the value of this delta as a {@code double}.
-   * 
+   *
    * @return the value of this delta as a {@code double}.
    * @since 1.2
    */
   public double doubleValue() {
-    return value.doubleValue();
+    return value;
   }
 
   /**
    * Returns the value of this delta as a {@code float}.
-   * 
+   *
    * @return the value of this delta as a {@code float}.
    * @since 1.2
    */

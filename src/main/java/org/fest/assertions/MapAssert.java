@@ -14,27 +14,22 @@
  */
 package org.fest.assertions;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
 import static org.fest.util.Lists.newArrayList;
 import static org.fest.util.Preconditions.checkNotNull;
 import static org.fest.util.Strings.quote;
 import static org.fest.util.ToString.toStringOf;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 /**
- * <p>
  * Assertions for {@code Map}s.
- * </p>
- *
- * <p>
+ * <p/>
  * To create a new instance of this class invoke {@link Assertions#assertThat(Map)}.
- * </p>
- * 
+ *
  * @author David DIDIER
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -45,7 +40,7 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
 
   /**
    * Creates a new {@link MapAssert}.
-   * 
+   *
    * @param actual the target to verify.
    */
   protected MapAssert(@Nullable Map<?, ?> actual) {
@@ -53,24 +48,32 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
   }
 
   /**
-   * <p>
+   * Creates a new map entry.
+   *
+   * @param key   the key of the entry.
+   * @param value the value of the entry.
+   * @return the created entry.
+   * @see #includes(org.fest.assertions.MapAssert.Entry...)
+   */
+  public static @Nonnull Entry entry(@Nullable Object key, @Nullable Object value) {
+    return new Entry(key, value);
+  }
+
+  /**
    * Verifies that the actual {@code Map} contains the given entries.
-   * </p>
-   * 
-   * <p>
+   * <p/>
    * Example:
    * <pre>
    * // static import org.fest.assertions.Assertions.*;
    * // static import org.fest.assertions.MapAssert.*;
-   * 
+   *
    * assertThat(myMap).{@link #includes(org.fest.assertions.MapAssert.Entry...) includes}({@link #entry(Object, Object) entry}(&quot;jedi&quot;, yoda), {@link #entry(Object, Object) entry}(&quot;sith&quot;, anakin));
    * </pre>
-   * </p>
-   * 
+   *
    * @param entries the given entries.
    * @return this assertion error.
-   * @throws AssertionError if the actual map is {@code null}.
-   * @throws AssertionError if the actual {@code Map} does not contain any of the given entries.
+   * @throws AssertionError       if the actual map is {@code null}.
+   * @throws AssertionError       if the actual {@code Map} does not contain any of the given entries.
    * @throws NullPointerException if the given array of entries is {@code null}.
    * @throws NullPointerException if any of the entries in the given array is {@code null}.
    */
@@ -90,24 +93,20 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
   }
 
   /**
-   * <p>
    * Verifies that the actual {@code Map} does not contain the given entries.
-   * </p>
-   * 
-   * <p>
+   * <p/>
    * Example:
    * <pre>
    * // static import org.fest.assertions.Assertions.*;
    * // static import org.fest.assertions.MapAssert.*;
-   * 
+   *
    * assertThat(myMap).{@link #excludes(org.fest.assertions.MapAssert.Entry...) excludes}({@link #entry(Object, Object) entry}(&quot;jedi&quot;, yoda), {@link #entry(Object, Object) entry}(&quot;sith&quot;, anakin));
    * </pre>
-   * </p>
-   * 
+   *
    * @param entries the given entries.
    * @return this assertion error.
-   * @throws AssertionError if the actual map is {@code null}.
-   * @throws AssertionError if the actual {@code Map} contains any of the given entries.
+   * @throws AssertionError       if the actual map is {@code null}.
+   * @throws AssertionError       if the actual {@code Map} contains any of the given entries.
    * @throws NullPointerException if the given array of entries is {@code null}.
    * @throws NullPointerException if any of the entries in the given array is {@code null}.
    */
@@ -137,39 +136,6 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
     return found.size() == 1 ? ENTRY : ENTRIES;
   }
 
-  /**
-   * Creates a new map entry.
-   * 
-   * @param key the key of the entry.
-   * @param value the value of the entry.
-   * @return the created entry.
-   * @see #includes(org.fest.assertions.MapAssert.Entry...)
-   */
-  public static @Nonnull Entry entry(@Nullable Object key, @Nullable Object value) {
-    return new Entry(key, value);
-  }
-
-  /**
-   * An entry in a {@code Map}.
-   * 
-   * @author Yvonne Wang
-   */
-  public static class Entry {
-    final Object key;
-    final Object value;
-
-    Entry(@Nullable Object key, @Nullable Object value) {
-      this.key = key;
-      this.value = value;
-    }
-
-    /** @see java.lang.Object#toString() */
-    @Override
-    public String toString() {
-      return String.format("%s=%s", quote(key), quote(value));
-    }
-  }
-
   private void failIfNotFound(@Nonnull String description, @Nonnull Collection<?> notFound) {
     failIfCustomMessageIsSet();
     String format = "the map:<%s> does not contain the %s:<%s>";
@@ -192,5 +158,28 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
   protected int actualGroupSize() {
     isNotNull();
     return actual.size();
+  }
+
+  /**
+   * An entry in a {@code Map}.
+   *
+   * @author Yvonne Wang
+   */
+  public static class Entry {
+    final Object key;
+    final Object value;
+
+    Entry(@Nullable Object key, @Nullable Object value) {
+      this.key = key;
+      this.value = value;
+    }
+
+    /**
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+      return String.format("%s=%s", quote(key), quote(value));
+    }
   }
 }

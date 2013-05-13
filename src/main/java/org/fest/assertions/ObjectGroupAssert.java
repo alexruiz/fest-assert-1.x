@@ -14,28 +14,26 @@
  */
 package org.fest.assertions;
 
+import org.fest.util.IntrospectionError;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import org.fest.util.IntrospectionError;
-
 /**
- * Template for assertions for arrays or collections.
- * 
+ * Assertions for arrays or collections.
+ *
  * @param <S> used to simulate "self types." For more information please read &quot;<a href="http://goo.gl/fjgOM"
- *          target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ *            target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
  * @param <A> the type the "actual" value.
- * 
  * @author Yvonne Wang
- * 
  * @since 1.3
  */
 public abstract class ObjectGroupAssert<S, A> extends ItemGroupAssert<S, A> {
   /**
    * Creates a new {@link ObjectGroupAssert}.
-   * 
+   *
    * @param selfType the "self type."
-   * @param actual the target to verify.
+   * @param actual   the target to verify.
    */
   protected ObjectGroupAssert(@Nonnull Class<S> selfType, @Nullable A actual) {
     super(selfType, actual);
@@ -43,12 +41,12 @@ public abstract class ObjectGroupAssert<S, A> extends ItemGroupAssert<S, A> {
 
   /**
    * Verifies that the actual group of objects contains the given objects.
-   * 
+   *
    * @param objects the objects to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual group of objects is {@code null}.
+   * @throws AssertionError       if the actual group of objects is {@code null}.
    * @throws NullPointerException if the given array is {@code null}.
-   * @throws AssertionError if the actual group of objects does not contain the given objects.
+   * @throws AssertionError       if the actual group of objects does not contain the given objects.
    */
   public final @Nonnull S contains(@Nonnull Object... objects) {
     assertContains(objects);
@@ -57,13 +55,13 @@ public abstract class ObjectGroupAssert<S, A> extends ItemGroupAssert<S, A> {
 
   /**
    * Verifies that the actual group of objects contains the given objects <strong>only</strong>, in any order.
-   * 
+   *
    * @param objects the objects to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual group of objects is {@code null}.
+   * @throws AssertionError       if the actual group of objects is {@code null}.
    * @throws NullPointerException if the given group of objects is {@code null}.
-   * @throws AssertionError if the actual group of objects does not contain the given objects, or if the actual group of
-   *           objects contains elements other than the ones specified.
+   * @throws AssertionError       if the actual group of objects does not contain the given objects, or if the actual group of
+   *                              objects contains elements other than the ones specified.
    */
   public final @Nonnull S containsOnly(@Nonnull Object... objects) {
     assertContainsOnly(objects);
@@ -72,12 +70,12 @@ public abstract class ObjectGroupAssert<S, A> extends ItemGroupAssert<S, A> {
 
   /**
    * Verifies that the actual group of objects does not contain the given objects.
-   * 
+   *
    * @param objects the objects that the group of objects should exclude.
    * @return this assertion object.
-   * @throws AssertionError if the actual group of objects is {@code null}.
+   * @throws AssertionError       if the actual group of objects is {@code null}.
    * @throws NullPointerException if the given array is {@code null}.
-   * @throws AssertionError if the actual group of objects contains any of the given objects.
+   * @throws AssertionError       if the actual group of objects contains any of the given objects.
    */
   public final @Nonnull S excludes(@Nonnull Object... objects) {
     assertExcludes(objects);
@@ -86,7 +84,7 @@ public abstract class ObjectGroupAssert<S, A> extends ItemGroupAssert<S, A> {
 
   /**
    * Verifies that the actual group of objects does not have duplicates.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual group of objects is {@code null}.
    * @throws AssertionError if the actual group of objects has duplicates.
@@ -97,28 +95,23 @@ public abstract class ObjectGroupAssert<S, A> extends ItemGroupAssert<S, A> {
   }
 
   /**
-   * <p>
    * Creates a new group of objects whose target collection contains the values of the given property name from the
    * elements of the actual group of objects. Property access works with both simple properties like {@code Person.age}
    * and nested properties {@code Person.father.age}.
-   * </p>
-   * 
-   * <p>
+   * <p/>
    * For example, let's say we have a collection of {@code Person} objects and you want to verify their age:
-   * 
    * <pre>
    * assertThat(persons).onProperty(&quot;age&quot;).containsOnly(25, 16, 44, 37); // simple property
    * assertThat(persons).onProperty("father.age").containsOnly(55, 46, 74, 62); // nested property
-   * 
-   * </p>
-   * 
+   * </pre>
+   *
    * @param propertyName the name of the property to extract values from the actual collection to build a new group of
-   *          objects.
+   *                     objects.
    * @return a new group of objects containing the values of the given property name from the elements of the actual
    *         group of objects.
    * @throws NullPointerException if the given property name is {@code null}.
-   * @throws AssertionError if the actual group of objects is {@code null}.
-   * @throws IntrospectionError if an element in the given collection does not have a matching property.
+   * @throws AssertionError       if the actual group of objects is {@code null}.
+   * @throws IntrospectionError   if an element in the given collection does not have a matching property.
    * @since 1.3
    */
   protected abstract @Nonnull S onProperty(@Nonnull String propertyName);

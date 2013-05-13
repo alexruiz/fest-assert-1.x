@@ -14,9 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Preconditions.checkNotNull;
-import static org.fest.util.Preconditions.checkNotNullOrEmpty;
-
+import javax.annotation.Nonnull;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
 import java.security.AccessController;
@@ -24,7 +22,8 @@ import java.security.PrivilegedAction;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.Nonnull;
+import static org.fest.util.Preconditions.checkNotNull;
+import static org.fest.util.Preconditions.checkNotNullOrEmpty;
 
 /**
  * Constructor access through Java reflection.

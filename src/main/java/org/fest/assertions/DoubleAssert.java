@@ -14,29 +14,20 @@
  */
 package org.fest.assertions;
 
-import static java.lang.Double.valueOf;
-import static java.lang.Math.abs;
-import static org.fest.assertions.ErrorMessages.unexpectedEqual;
-import static org.fest.assertions.ErrorMessages.unexpectedGreaterThan;
-import static org.fest.assertions.ErrorMessages.unexpectedGreaterThanOrEqualTo;
-import static org.fest.assertions.ErrorMessages.unexpectedLessThan;
-import static org.fest.assertions.ErrorMessages.unexpectedLessThanOrEqualTo;
-import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
-import static org.fest.assertions.Formatting.format;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import static java.lang.Double.valueOf;
+import static java.lang.Math.abs;
+import static org.fest.assertions.ErrorMessages.*;
+import static org.fest.assertions.Formatting.format;
+
 /**
- * <p>
  * Assertions for {@code Double}s and {@code double}s.
- * </p>
- *
- * <p>
+ * <p/>
  * To create a new instance of this class invoke {@link Assertions#assertThat(Double)} or
  * {@link Assertions#assertThat(double)}.
- * </p>
- * 
+ *
  * @author Yvonne Wang
  * @author David DIDIER
  * @author Alex Ruiz
@@ -47,7 +38,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
 
   /**
    * Creates a new {@link DoubleAssert}.
-   * 
+   *
    * @param actual the actual value to verify.
    */
   protected DoubleAssert(double actual) {
@@ -56,7 +47,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
 
   /**
    * Creates a new {@link DoubleAssert}.
-   * 
+   *
    * @param actual the actual value to verify.
    */
   protected DoubleAssert(@Nullable Double actual) {
@@ -64,8 +55,22 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
   }
 
   /**
+   * Creates a new holder for a delta value to be used in
+   * {@link DoubleAssert#isEqualTo(double, org.fest.assertions.DoubleAssert.Delta)}.
+   *
+   * @param d the delta value.
+   * @return a new delta value holder.
+   * @deprecated use method {@link org.fest.assertions.Delta#delta(double)} instead. This method will be removed in
+   *             version 2.0.
+   */
+  @Deprecated
+  public static @Nonnull Delta delta(double d) {
+    return new Delta(d);
+  }
+
+  /**
    * Verifies that the actual {@code Double} is equal to the given one.
-   * 
+   *
    * @param expected the value to compare the actual one to.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not equal to the given one.
@@ -76,9 +81,9 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
 
   /**
    * Verifies that the actual {@code Double} is equal to the given one, within a positive delta.
-   * 
+   *
    * @param expected the value to compare the actual one to.
-   * @param delta the given delta.
+   * @param delta    the given delta.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not equal to the given one.
    * @deprecated use method {@link #isEqualTo(double, org.fest.assertions.Delta)} instead. This method will be removed
@@ -91,9 +96,9 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
 
   /**
    * Verifies that the actual {@code Double} is equal to the given one, within a positive delta.
-   * 
+   *
    * @param expected the value to compare the actual one to.
-   * @param delta the given delta.
+   * @param delta    the given delta.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not equal to the given one.
    * @since 1.1
@@ -108,9 +113,9 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
 
   /**
    * Verifies that the actual {@code Double} is equal to the given one, within a positive delta.
-   * 
+   *
    * @param expected the value to compare the actual one to.
-   * @param delta the given delta.
+   * @param delta    the given delta.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not equal to the given one.
    * @since 1.3
@@ -135,7 +140,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
 
   /**
    * Verifies that the actual {@code Double} is not equal to the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is equal to the given one.
@@ -150,7 +155,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
 
   /**
    * Verifies that the actual {@code Double} is greater than the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not greater than the given one.
@@ -165,7 +170,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
 
   /**
    * Verifies that the actual {@code Double} is less than the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not less than the given one.
@@ -180,7 +185,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
 
   /**
    * Verifies that the actual {@code Double} is greater or equal to the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not greater than or equal to the given one.
@@ -195,7 +200,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
 
   /**
    * Verifies that the actual {@code Double} is less or equal to the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not less than or equal to the given one.
@@ -214,7 +219,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
 
   /**
    * Verifies that the actual {@code Double} is equal to zero.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not equal to zero.
    */
@@ -225,7 +230,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
 
   /**
    * Verifies that the actual {@code Double} is positive.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not positive.
    */
@@ -236,7 +241,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
 
   /**
    * Verifies that the actual {@code Double} is negative.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not negative.
    */
@@ -247,7 +252,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
 
   /**
    * Verifies that the actual {@code Double} is equal to {@link Double#NaN}.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not equal to {@code NAN}.
    */
@@ -256,22 +261,8 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
   }
 
   /**
-   * Creates a new holder for a delta value to be used in
-   * {@link DoubleAssert#isEqualTo(double, org.fest.assertions.DoubleAssert.Delta)}.
-   * 
-   * @param d the delta value.
-   * @return a new delta value holder.
-   * @deprecated use method {@link org.fest.assertions.Delta#delta(double)} instead. This method will be removed in
-   *             version 2.0.
-   */
-  @Deprecated
-  public static @Nonnull Delta delta(double d) {
-    return new Delta(d);
-  }
-
-  /**
    * Holds a delta value to be used in {@link DoubleAssert#isEqualTo(double, org.fest.assertions.DoubleAssert.Delta)}.
-   * 
+   *
    * @deprecated use top-level class {@link org.fest.assertions.Delta} instead. This class will be removed in version
    *             2.0.
    */

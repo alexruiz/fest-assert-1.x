@@ -14,29 +14,24 @@
  */
 package org.fest.assertions;
 
+import org.fest.assertions.FileContentComparator.LineDiff;
+import org.fest.util.VisibleForTesting;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.io.File;
+import java.io.IOException;
+
 import static org.fest.assertions.Formatting.format;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.util.Arrays.isNullOrEmpty;
 import static org.fest.util.Preconditions.checkNotNull;
 
-import java.io.File;
-import java.io.IOException;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import org.fest.assertions.FileContentComparator.LineDiff;
-import org.fest.util.VisibleForTesting;
-
 /**
- * <p>
  * Assertions for {@code File}.
- * </p>
- *
- * <p>
+ * <p/>
  * To create a new instance of this class invoke {@link Assertions#assertThat(File)}.
- * </p>
- * 
+ *
  * @author David DIDIER
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -46,22 +41,21 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
 
   /**
    * Creates a new {@link FileAssert}.
-   * 
+   *
    * @param actual the target to verify.
    */
   protected FileAssert(@Nullable File actual) {
     this(actual, new FileContentComparator());
   }
 
-  @VisibleForTesting
-  FileAssert(@Nullable File actual, @Nonnull FileContentComparator comparator) {
+  @VisibleForTesting FileAssert(@Nullable File actual, @Nonnull FileContentComparator comparator) {
     super(FileAssert.class, actual);
     this.comparator = comparator;
   }
 
   /**
    * Verifies that the actual {@code File} does not exist.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the the actual {@code File} is {@code null}.
    * @throws AssertionError if the actual {@code File} exists.
@@ -77,7 +71,7 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
 
   /**
    * Verifies that the actual {@code File} does exist.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the the actual {@code File} is {@code null}.
    * @throws AssertionError if the actual {@code File} does not exist.
@@ -90,7 +84,7 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
 
   /**
    * Verifies that the size of the actual {@code File} is equal to the given one.
-   * 
+   *
    * @param expected the expected size of the actual {@code File}.
    * @return this assertion object.
    * @throws AssertionError if the the actual {@code File} is {@code null}.
@@ -108,7 +102,7 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
 
   /**
    * Verifies that the actual {@code File} is a directory.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the the actual {@code File} is {@code null}.
    * @throws AssertionError if the actual {@code File} is not a directory.
@@ -124,7 +118,7 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
 
   /**
    * Verifies that the actual {@code File} is a regular file.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the the actual {@code File} is {@code null}.
    * @throws AssertionError if the actual {@code File} is not a regular file.
@@ -142,12 +136,12 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
    * Verifies that the content of the actual {@code File} is equal to the content of the given one. Adapted from <a
    * href="http://junit-addons.sourceforge.net/junitx/framework/FileAssert.html" target="_blank">FileAssert</a> (from <a
    * href="http://sourceforge.net/projects/junit-addons">JUnit-addons</a>.)
-   * 
+   *
    * @param expected the given {@code File} to compare the actual {@code File} to.
    * @return this assertion object.
    * @throws NullPointerException if the file to compare to is {@code null}.
-   * @throws AssertionError if the the actual {@code File} is {@code null}.
-   * @throws AssertionError if the content of the actual {@code File} is not equal to the content of the given one.
+   * @throws AssertionError       if the the actual {@code File} is {@code null}.
+   * @throws AssertionError       if the content of the actual {@code File} is not equal to the content of the given one.
    */
   public @Nonnull FileAssert hasSameContentAs(@Nonnull File expected) {
     checkNotNull(expected);
@@ -192,7 +186,7 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
 
   /**
    * Verifies that the actual {@code File} is a relative path.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code File} is not a relative path.
    */
@@ -207,7 +201,7 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
 
   /**
    * Verifies that the actual {@code File} is an absolute path.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code File} is not an absolute path.
    */

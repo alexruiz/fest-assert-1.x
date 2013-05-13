@@ -14,32 +14,27 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ErrorMessages.unexpectedEqual;
-import static org.fest.assertions.ErrorMessages.unexpectedGreaterThan;
-import static org.fest.assertions.ErrorMessages.unexpectedGreaterThanOrEqualTo;
-import static org.fest.assertions.ErrorMessages.unexpectedLessThan;
-import static org.fest.assertions.ErrorMessages.unexpectedLessThanOrEqualTo;
-import static org.fest.assertions.Fail.comparisonFailed;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import static org.fest.assertions.ErrorMessages.*;
+import static org.fest.assertions.Fail.comparisonFailed;
+
 /**
  * Template for assertions applicable to {@link Comparable}s.
- * 
+ *
  * @param <S> used to simulate "self types." For more information please read &quot;<a href="http://goo.gl/fjgOM"
- *          target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ *            target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
  * @param <T> the type of the "actual" value.
- * 
  * @author Alex Ruiz
  * @author Ted M. Young
  */
 public abstract class ComparableAssert<S, T extends Comparable<T>> extends GenericAssert<S, T> {
   /**
    * Creates a new {@link ComparableAssert}.
-   * 
+   *
    * @param selfType the "self type."
-   * @param actual the target to verify.
+   * @param actual   the target to verify.
    */
   protected ComparableAssert(@Nonnull Class<S> selfType, @Nullable T actual) {
     super(selfType, actual);
@@ -47,7 +42,7 @@ public abstract class ComparableAssert<S, T extends Comparable<T>> extends Gener
 
   /**
    * Verifies that the actual {@link Comparable} is equal to the given one.
-   * 
+   *
    * @param expected the given {@code Comparable} to compare the actual {@code Comparable} to.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.
@@ -64,7 +59,7 @@ public abstract class ComparableAssert<S, T extends Comparable<T>> extends Gener
 
   /**
    * Verifies that the actual {@link Comparable} is <b>not</b> equal to the given one.
-   * 
+   *
    * @param expected the given {@code Comparable} to use to compare to the actual {@code Comparable}.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.
@@ -81,7 +76,7 @@ public abstract class ComparableAssert<S, T extends Comparable<T>> extends Gener
 
   /**
    * Verifies that the actual {@link Comparable} is less than the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.
@@ -98,7 +93,7 @@ public abstract class ComparableAssert<S, T extends Comparable<T>> extends Gener
 
   /**
    * Verifies that the actual {@link Comparable} is greater than the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.
@@ -115,7 +110,7 @@ public abstract class ComparableAssert<S, T extends Comparable<T>> extends Gener
 
   /**
    * Verifies that the actual {@link Comparable} is less than or equal to the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.
@@ -132,7 +127,7 @@ public abstract class ComparableAssert<S, T extends Comparable<T>> extends Gener
 
   /**
    * Verifies that the actual {@link Comparable} is greater than or equal to the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.

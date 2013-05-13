@@ -14,6 +14,15 @@
  */
 package org.fest.assertions;
 
+import org.fest.util.VisibleForTesting;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 import static org.fest.assertions.ErrorMessages.unexpectedEqual;
 import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
 import static org.fest.assertions.Fail.comparisonFailed;
@@ -23,42 +32,36 @@ import static org.fest.assertions.Threshold.threshold;
 import static org.fest.util.Objects.areEqual;
 import static org.fest.util.Preconditions.checkNotNull;
 
-import java.awt.Dimension;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import org.fest.util.VisibleForTesting;
-
 /**
- * <p>
  * Assertions for {@code BufferedImage}s.
- * </p>
- *
- * <p>
+ * <p/>
  * To create a new instance of this class invoke {@link Assertions#assertThat(BufferedImage)}.
- * </p>
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  * @author Ansgar Konermann
  */
 public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
   private static final Threshold ZERO_THRESHOLD = threshold(0);
-
   private static ImageReader imageReader = new ImageReader();
 
   /**
+   * Creates a new {@link ImageAssert}.
+   *
+   * @param actual the target to verify.
+   */
+  protected ImageAssert(@Nullable BufferedImage actual) {
+    super(ImageAssert.class, actual);
+  }
+
+  /**
    * Reads the image in the specified path.
-   * 
+   *
    * @param imageFilePath the path of the image to read.
    * @return the read image.
-   * @throws NullPointerException if the given path is {@code null}.
+   * @throws NullPointerException     if the given path is {@code null}.
    * @throws IllegalArgumentException if the given path does not belong to a file.
-   * @throws IOException if any I/O error occurred while reading the image.
+   * @throws IOException              if any I/O error occurred while reading the image.
    */
   public static @Nullable BufferedImage read(@Nonnull String imageFilePath) throws IOException {
     checkNotNull(imageFilePath);
@@ -69,19 +72,22 @@ public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
     return imageReader.read(imageFile);
   }
 
-  /**
-   * Creates a new {@link ImageAssert}.
-   * 
-   * @param actual the target to verify.
-   */
-  protected ImageAssert(@Nullable BufferedImage actual) {
-    super(ImageAssert.class, actual);
+  private static @Nullable Dimension sizeOf(@Nullable BufferedImage image) {
+    if (image == null) {
+      return null;
+    }
+    return new Dimension(image.getWidth(), image.getHeight());
+  }
+
+  @VisibleForTesting
+  static void imageReader(@Nonnull ImageReader newImageReader) {
+    imageReader = newImageReader;
   }
 
   /**
    * Verifies that the actual image is equal to the given one. Two images are equal if they have the same size and the
    * pixels at the same coordinates have the same color.
-   * 
+   *
    * @param expected the given image to compare the actual image to.
    * @return this assertion object.
    * @throws AssertionError if the actual image is not equal to the given one.
@@ -97,14 +103,14 @@ public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
    * <li>they have the same size</li>
    * <li>the difference between the RGB values of the color of each pixel is less than or equal to the given threshold</li>
    * </ol>
-   * 
-   * @param expected the given image to compare the actual image to.
+   *
+   * @param expected  the given image to compare the actual image to.
    * @param threshold the threshold to use to decide if the color of two pixels are similar: two pixels that are
-   *          identical to the human eye may still have slightly different color values. For example, by using a
-   *          threshold of 1 we can indicate that a blue value of 60 is similar to a blue value of 61.
+   *                  identical to the human eye may still have slightly different color values. For example, by using a
+   *                  threshold of 1 we can indicate that a blue value of 60 is similar to a blue value of 61.
    * @return this assertion object.
    * @throws NullPointerException if {@code threshold} is {@code null}.
-   * @throws AssertionError if the actual image is not equal to the given one.
+   * @throws AssertionError       if the actual image is not equal to the given one.
    * @since 1.1
    */
   public @Nonnull ImageAssert isEqualTo(@Nullable BufferedImage expected, @Nonnull Threshold threshold) {
@@ -155,7 +161,7 @@ public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
   /**
    * Verifies that the actual image is not equal to the given one. Two images are equal if they have the same size and
    * the pixels at the same coordinates have the same color.
-   * 
+   *
    * @param image the given image to compare the actual image to.
    * @return this assertion object.
    * @throws AssertionError if the actual image is equal to the given one.
@@ -176,13 +182,6 @@ public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
     return this;
   }
 
-  private static @Nullable Dimension sizeOf(@Nullable BufferedImage image) {
-    if (image == null) {
-      return null;
-    }
-    return new Dimension(image.getWidth(), image.getHeight());
-  }
-
   private boolean hasEqualColor(@Nonnull BufferedImage expected) {
     int w = actual.getWidth();
     int h = actual.getHeight();
@@ -198,12 +197,12 @@ public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
 
   /**
    * Verifies that the size of the actual image is equal to the given one.
-   * 
+   *
    * @param expected the expected size of the actual image.
    * @return this assertion object.
-   * @throws AssertionError if the actual image is {@code null}.
+   * @throws AssertionError       if the actual image is {@code null}.
    * @throws NullPointerException if the given size is {@code null}.
-   * @throws AssertionError if the size of the actual image is not equal to the given one.
+   * @throws AssertionError       if the size of the actual image is not equal to the given one.
    */
   public @Nonnull ImageAssert hasSize(@Nonnull Dimension expected) {
     isNotNull();
@@ -214,11 +213,6 @@ public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
     }
     failWithMessage(customErrorMessage());
     throw comparisonFailed(rawDescription(), new DimensionFormatter(actualDimension), new DimensionFormatter(expected));
-  }
-
-  @VisibleForTesting
-  static void imageReader(@Nonnull ImageReader newImageReader) {
-    imageReader = newImageReader;
   }
 
   private static class DimensionFormatter {

@@ -14,27 +14,27 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Formatting.format;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import static org.fest.assertions.Formatting.format;
+
 /**
  * Template for assertions for classes representing groups of values.
- * 
+ *
  * @param <S> used to simulate "self types." For more information please read &quot;<a href="http://goo.gl/fjgOM"
- *          target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ *            target="_blank">Emulating 'self types' using Java Generics to simplify fluent API
+ *            implementation</a>.&quot;
  * @param <A> the type the "actual" value.
- * 
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public abstract class GroupAssert<S, A> extends GenericAssert<S, A> {
   /**
    * Creates a new {@link GroupAssert}.
-   * 
+   *
    * @param selfType the "self type."
-   * @param actual the target to verify.
+   * @param actual   the target to verify.
    */
   protected GroupAssert(@Nonnull Class<S> selfType, @Nullable A actual) {
     super(selfType, actual);
@@ -42,7 +42,7 @@ public abstract class GroupAssert<S, A> extends GenericAssert<S, A> {
 
   /**
    * Verifies that the actual group of values is {@code null} or empty.
-   * 
+   *
    * @throws AssertionError if the actual group of values is not {@code null} or not empty.
    */
   public final void isNullOrEmpty() {
@@ -55,7 +55,7 @@ public abstract class GroupAssert<S, A> extends GenericAssert<S, A> {
 
   /**
    * Verifies that the actual group of values is empty.
-   * 
+   *
    * @throws AssertionError if the actual group of values is {@code null} or not empty.
    */
   public final void isEmpty() {
@@ -73,7 +73,7 @@ public abstract class GroupAssert<S, A> extends GenericAssert<S, A> {
 
   /**
    * Verifies that the actual group contains at least on value.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual group is {@code null} or empty.
    */
@@ -88,7 +88,7 @@ public abstract class GroupAssert<S, A> extends GenericAssert<S, A> {
 
   /**
    * Verifies that the number of values in the actual group is equal to the given one.
-   * 
+   *
    * @param expected the expected number of values in the actual group.
    * @return this assertion object.
    * @throws AssertionError if the number of values of the actual group is not equal to the given one.
@@ -105,7 +105,7 @@ public abstract class GroupAssert<S, A> extends GenericAssert<S, A> {
 
   /**
    * Returns the size of the actual group of values (array, collection, etc.)
-   * 
+   *
    * @return the size of the actual group of values.
    * @throws AssertionError if the actual group of values is {@code null}.
    */

@@ -14,6 +14,14 @@
  */
 package org.fest.assertions;
 
+import org.fest.util.IntrospectionError;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+
 import static org.fest.assertions.ErrorMessages.unexpectedEqual;
 import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
 import static org.fest.assertions.Formatting.format;
@@ -21,31 +29,18 @@ import static org.fest.util.Lists.newArrayList;
 import static org.fest.util.Preconditions.checkNotNull;
 import static org.fest.util.Sets.newLinkedHashSet;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import org.fest.util.IntrospectionError;
-
 /**
- * <p>
  * Assertions for arrays of {@code Object}.
- * </p>
- *
- * <p>
+ * <p/>
  * To create a new instance of this class invoke {@link Assertions#assertThat(Object[])}.
- * </p>
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class ObjectArrayAssert extends ObjectGroupAssert<ObjectArrayAssert, Object[]> {
   /**
    * Creates a new {@link ObjectArrayAssert}.
-   * 
+   *
    * @param actual the target to verify.
    */
   protected ObjectArrayAssert(@Nullable Object... actual) {
@@ -53,26 +48,22 @@ public class ObjectArrayAssert extends ObjectGroupAssert<ObjectArrayAssert, Obje
   }
 
   /**
-   * <p>
    * Verifies that all the elements in the actual {@code Object} array belong to the specified type. Matching includes
    * subclasses of the given type.
-   * </p>
-   * 
-   * <p>
+   * <p/>
    * For example, consider the following code listing:
    * <pre>
    * Number[] numbers = { 2, 6, 8 };
    * assertThat(numbers).hasAllElementsOfType(Integer.class);
    * </pre>
-   * 
+   * <p/>
    * The assertion {@code hasAllElementsOfType} will be successful.
-   * </p>
-   * 
+   *
    * @param type the expected type.
    * @return this assertion object.
    * @throws NullPointerException if the given type is {@code null}.
-   * @throws AssertionError if the component type of the actual {@code Object} array is not the same as the specified
-   *           one.
+   * @throws AssertionError       if the component type of the actual {@code Object} array is not the same as the specified
+   *                              one.
    */
   public @Nonnull ObjectArrayAssert hasAllElementsOfType(@Nonnull Class<?> type) {
     checkNotNull(type);
@@ -90,7 +81,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<ObjectArrayAssert, Obje
   /**
    * Verifies that at least one element in the actual {@code Object} array belong to the specified type. Matching
    * includes subclasses of the given type.
-   * 
+   *
    * @param type the expected type.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Object} does not have any elements of the given type.
@@ -116,7 +107,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<ObjectArrayAssert, Obje
   /**
    * Verifies that the actual {@code Object} array is equal to the given array. Array equality is checked by
    * {@link Arrays#deepEquals(Object[], Object[])}.
-   * 
+   *
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Object} array is not equal to the given one.
@@ -133,7 +124,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<ObjectArrayAssert, Obje
   /**
    * Verifies that the actual {@code Object} array is not equal to the given array. Array equality is checked by
    * {@link Arrays#deepEquals(Object[], Object[])}.
-   * 
+   *
    * @param array the given array to compare the actual array to.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Object} array is equal to the given one.
@@ -148,24 +139,20 @@ public class ObjectArrayAssert extends ObjectGroupAssert<ObjectArrayAssert, Obje
   }
 
   /**
-   * <p>
    * Creates a new instance of {@link ObjectArrayAssert} whose target array contains the values of the
    * given property name from the elements of this {@code ObjectArrayAssert}'s array. Property access works with both
    * simple properties like {@code Person.age} and nested properties {@code Person.father.age}.
-   * </p>
-   * 
-   * <p>
+   * <p/>
    * For example, let's say we have a array of {@code Person} objects and you want to verify their age:
    * <pre>
    * assertThat(persons).onProperty(&quot;age&quot;).containsOnly(25, 16, 44, 37); // simple property
    * assertThat(persons).onProperty("father.age").containsOnly(55, 46, 74, 62); // nested property
-   * </p>
-   * 
+   *
    * @param propertyName the name of the property to extract values from the actual array to build a new
-   *          {@code ObjectArrayAssert}.
+   *                     {@code ObjectArrayAssert}.
    * @return a new {@code ObjectArrayAssert} containing the values of the given property name from the elements of this
    *         {@code ObjectArrayAssert}'s array.
-   * @throws AssertionError if the actual array is {@code null}.
+   * @throws AssertionError     if the actual array is {@code null}.
    * @throws IntrospectionError if an element in the given array does not have a matching property.
    * @since 1.3
    */
@@ -179,19 +166,25 @@ public class ObjectArrayAssert extends ObjectGroupAssert<ObjectArrayAssert, Obje
     return new ObjectArrayAssert(values.toArray());
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected Set<Object> actualAsSet() {
     return actual == null ? null : newLinkedHashSet(actual);
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected @Nullable List<Object> actualAsList() {
     return actual == null ? null : newArrayList(actual);
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected int actualGroupSize() {
     isNotNull();

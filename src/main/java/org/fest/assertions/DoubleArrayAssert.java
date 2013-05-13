@@ -14,6 +14,10 @@
  */
 package org.fest.assertions;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Arrays;
+
 import static java.lang.Math.abs;
 import static org.fest.assertions.ArrayInspection.copy;
 import static org.fest.assertions.ErrorMessages.unexpectedEqual;
@@ -21,27 +25,18 @@ import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
 import static org.fest.assertions.Formatting.format;
 import static org.fest.util.Preconditions.checkNotNull;
 
-import java.util.Arrays;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 /**
- * <p>
  * Assertions for arrays of {@code double}.
- * </p>
- * 
- * <p>
+ * <p/>
  * To create a new instance of this class invoke {@link Assertions#assertThat(double[])}.
- * </p>
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> {
   /**
    * Creates a new {@link DoubleArrayAssert}.
-   * 
+   *
    * @param actual the target to verify.
    */
   protected DoubleArrayAssert(@Nullable double... actual) {
@@ -50,12 +45,12 @@ public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> 
 
   /**
    * Verifies that the actual {@code double} array contains the given values.
-   * 
+   *
    * @param values the values to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code double} array is {@code null}.
+   * @throws AssertionError       if the actual {@code double} array is {@code null}.
    * @throws NullPointerException if the given {@code double} array is {@code null}.
-   * @throws AssertionError if the actual {@code double} array does not contain the given values.
+   * @throws AssertionError       if the actual {@code double} array does not contain the given values.
    */
   public @Nonnull DoubleArrayAssert contains(@Nonnull double... values) {
     assertContains(copy(values));
@@ -64,13 +59,13 @@ public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> 
 
   /**
    * Verifies that the actual {@code double} array contains the given values <strong>only</strong>.
-   * 
+   *
    * @param values the values to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code double} array is {@code null}.
+   * @throws AssertionError       if the actual {@code double} array is {@code null}.
    * @throws NullPointerException if the given {@code double} array is {@code null}.
-   * @throws AssertionError if the actual {@code double} array does not contain the given objects, or if the actual
-   *           {@code double} array contains elements other than the ones specified.
+   * @throws AssertionError       if the actual {@code double} array does not contain the given objects, or if the actual
+   *                              {@code double} array contains elements other than the ones specified.
    */
   public @Nonnull DoubleArrayAssert containsOnly(@Nonnull double... values) {
     assertContainsOnly(copy(values));
@@ -79,12 +74,12 @@ public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> 
 
   /**
    * Verifies that the actual {@code double} array does not contain the given values.
-   * 
+   *
    * @param values the values the array should exclude.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code double} array is {@code null}.
+   * @throws AssertionError       if the actual {@code double} array is {@code null}.
    * @throws NullPointerException if the given {@code double} array is {@code null}.
-   * @throws AssertionError if the actual {@code double} array contains any of the given values.
+   * @throws AssertionError       if the actual {@code double} array contains any of the given values.
    */
   public @Nonnull DoubleArrayAssert excludes(@Nonnull double... values) {
     assertExcludes(copy(values));
@@ -94,7 +89,7 @@ public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> 
   /**
    * Verifies that the actual {@code double} array is equal to the given array. Array equality is checked by
    * {@link Arrays#equals(double[], double[])}.
-   * 
+   *
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code double} array is not equal to the given one.
@@ -110,12 +105,12 @@ public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> 
 
   /**
    * Verifies that the actual {@code double} array is equal to the given array, within a positive delta.
-   * 
+   *
    * @param expected the given array to compare the actual array to.
-   * @param delta the given delta.
+   * @param delta    the given delta.
    * @return this assertion object.
    * @throws NullPointerException if {@code delta} is {@code null}.
-   * @throws AssertionError if the actual {@code double} array is not equal to the given one.
+   * @throws AssertionError       if the actual {@code double} array is not equal to the given one.
    * @since 1.1
    */
   public @Nonnull DoubleArrayAssert isEqualTo(@Nullable double[] expected, @Nonnull Delta delta) {
@@ -153,7 +148,7 @@ public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> 
   /**
    * Verifies that the actual {@code double} array is not equal to the given array. Array equality is checked by
    * {@link Arrays#equals(double[], double[])}.
-   * 
+   *
    * @param array the given array to compare the actual array to.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code double} array is equal to the given one.

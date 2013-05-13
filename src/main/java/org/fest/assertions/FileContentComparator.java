@@ -14,30 +14,21 @@
  */
 package org.fest.assertions;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.io.*;
+import java.util.List;
+
 import static java.lang.String.format;
 import static org.fest.assertions.FileContentComparator.LineDiff.lineDiff;
 import static org.fest.util.Closeables.closeQuietly;
 import static org.fest.util.Lists.newArrayList;
-import static org.fest.util.Objects.HASH_CODE_PRIME;
-import static org.fest.util.Objects.areEqual;
-import static org.fest.util.Objects.hashCodeFor;
+import static org.fest.util.Objects.*;
 import static org.fest.util.Strings.quote;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.LineNumberReader;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 /**
  * Compares the contents of two files.
- * 
+ *
  * @author David DIDIER
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -98,14 +89,14 @@ class FileContentComparator {
     final String actual;
     final String expected;
 
-    static LineDiff lineDiff(int lineNumber, @Nullable String actual, @Nullable String expected) {
-      return new LineDiff(lineNumber, actual, expected);
-    }
-
     private LineDiff(int lineNumber, @Nullable String actual, @Nullable String expected) {
       this.lineNumber = lineNumber;
       this.actual = actual;
       this.expected = expected;
+    }
+
+    static LineDiff lineDiff(int lineNumber, @Nullable String actual, @Nullable String expected) {
+      return new LineDiff(lineNumber, actual, expected);
     }
 
     @Override

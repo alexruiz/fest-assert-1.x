@@ -18,14 +18,20 @@ import javax.annotation.Nonnull;
 
 /**
  * A threshold.
- * 
+ *
  * @author Alex Ruiz
  * @since 1.1
  */
 public final class Threshold {
+  private final int value;
+
+  private Threshold(int value) {
+    this.value = value;
+  }
+
   /**
    * Creates a new {@link Threshold}.
-   * 
+   *
    * @param value the value of the threshold.
    * @return the created instance.
    * @throws IllegalArgumentException if the given value is less than zero.
@@ -35,12 +41,6 @@ public final class Threshold {
       throw new IllegalArgumentException("The value of the threshold should not be negative");
     }
     return new Threshold(value);
-  }
-
-  private final int value;
-
-  private Threshold(int value) {
-    this.value = value;
   }
 
   public int value() {

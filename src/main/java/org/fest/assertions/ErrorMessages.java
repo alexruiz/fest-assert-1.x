@@ -14,20 +14,21 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Formatting.createMessageFrom;
-import static org.fest.assertions.Formatting.format;
-import static org.fest.assertions.Formatting.inBrackets;
-import static org.fest.util.Arrays.array;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import static org.fest.assertions.Formatting.*;
+import static org.fest.util.Arrays.array;
+
 /**
  * Common error messages.
- * 
+ *
  * @author Alex Ruiz
  */
 final class ErrorMessages {
+  private ErrorMessages() {
+  }
+
   static @Nonnull String unexpectedNotEqual(@Nullable Object actual, @Nullable Object expected) {
     return format("expected:<%s> but was:<%s>", expected, actual);
   }
@@ -52,10 +53,6 @@ final class ErrorMessages {
     return assertionFailed(actual, " should be less than or equal to:", value);
   }
 
-  static @Nonnull String unexpectedNullType(@Nullable Description description) {
-    return createMessageFrom(description, array("expected type should not be null"));
-  }
-
   static @Nonnull String unexpectedNotIn(@Nullable Object actual, @Nonnull Object other) {
     return assertionFailed(actual, " should be in:", other);
   }
@@ -73,6 +70,4 @@ final class ErrorMessages {
       @Nullable Description description, @Nullable Object actual, @Nonnull String reason, @Nullable Object expected) {
     return createMessageFrom(description, array("actual value:", inBrackets(actual), reason, inBrackets(expected)));
   }
-
-  private ErrorMessages() {}
 }

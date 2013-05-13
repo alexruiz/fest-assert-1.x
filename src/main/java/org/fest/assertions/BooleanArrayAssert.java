@@ -14,31 +14,26 @@
  */
 package org.fest.assertions;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Arrays;
+
 import static org.fest.assertions.ArrayInspection.copy;
 import static org.fest.assertions.ErrorMessages.unexpectedEqual;
 import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
 
-import java.util.Arrays;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 /**
- * <p>
  * Assertions for arrays of {@code boolean}.
- * </p>
- * 
- * <p>
+ * <p/>
  * To create a new instance of this class invoke {@link Assertions#assertThat(boolean[])}.
- * </p>
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class BooleanArrayAssert extends ArrayAssert<BooleanArrayAssert, boolean[]> {
   /**
    * Creates a new {@link BooleanArrayAssert}.
-   * 
+   *
    * @param actual the target to verify.
    */
   protected BooleanArrayAssert(@Nullable boolean... actual) {
@@ -47,12 +42,12 @@ public class BooleanArrayAssert extends ArrayAssert<BooleanArrayAssert, boolean[
 
   /**
    * Verifies that the actual {@code boolean} array contains the given values.
-   * 
+   *
    * @param values the values to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code boolean} array is {@code null}.
+   * @throws AssertionError       if the actual {@code boolean} array is {@code null}.
    * @throws NullPointerException if the given {@code boolean} array is {@code null}.
-   * @throws AssertionError if the actual {@code boolean} array does not contain the given values.
+   * @throws AssertionError       if the actual {@code boolean} array does not contain the given values.
    */
   public @Nonnull BooleanArrayAssert contains(@Nonnull boolean... values) {
     assertContains(copy(values));
@@ -61,13 +56,13 @@ public class BooleanArrayAssert extends ArrayAssert<BooleanArrayAssert, boolean[
 
   /**
    * Verifies that the actual {@code boolean} array contains the given values <strong>only</strong>.
-   * 
+   *
    * @param values the values to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code boolean} array is {@code null}.
+   * @throws AssertionError       if the actual {@code boolean} array is {@code null}.
    * @throws NullPointerException if the given {@code boolean} array is {@code null}.
-   * @throws AssertionError if the actual {@code boolean} array does not contain the given objects, or if the actual
-   *           {@code boolean} array contains elements other than the ones specified.
+   * @throws AssertionError       if the actual {@code boolean} array does not contain the given objects, or if the
+   *                              actual {@code boolean} array contains elements other than the ones specified.
    */
   public @Nonnull BooleanArrayAssert containsOnly(@Nonnull boolean... values) {
     assertContainsOnly(copy(values));
@@ -76,12 +71,12 @@ public class BooleanArrayAssert extends ArrayAssert<BooleanArrayAssert, boolean[
 
   /**
    * Verifies that the actual {@code boolean} array does not contain the given values.
-   * 
+   *
    * @param values the values the array should exclude.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code boolean} array is {@code null}.
+   * @throws AssertionError       if the actual {@code boolean} array is {@code null}.
    * @throws NullPointerException if the given {@code boolean} array is {@code null}.
-   * @throws AssertionError if the actual {@code boolean} array contains any of the given values.
+   * @throws AssertionError       if the actual {@code boolean} array contains any of the given values.
    */
   public @Nonnull BooleanArrayAssert excludes(@Nonnull boolean... values) {
     assertExcludes(copy(values));
@@ -91,7 +86,7 @@ public class BooleanArrayAssert extends ArrayAssert<BooleanArrayAssert, boolean[
   /**
    * Verifies that the actual {@code boolean} array is equal to the given array. Array equality is checked by
    * {@link Arrays#equals(boolean[], boolean[])}.
-   * 
+   *
    * @param expected the given array to compare the actual array to.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code boolean} array is not equal to the given one.
@@ -108,7 +103,7 @@ public class BooleanArrayAssert extends ArrayAssert<BooleanArrayAssert, boolean[
   /**
    * Verifies that the actual {@code boolean} array is not equal to the given array. Array equality is checked by
    * {@link Arrays#equals(boolean[], boolean[])}.
-   * 
+   *
    * @param array the given array to compare the actual array to.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code boolean} array is equal to the given one.

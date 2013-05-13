@@ -14,25 +14,18 @@
  */
 package org.fest.assertions;
 
-import static java.lang.Long.valueOf;
-import static org.fest.assertions.ErrorMessages.unexpectedGreaterThan;
-import static org.fest.assertions.ErrorMessages.unexpectedGreaterThanOrEqualTo;
-import static org.fest.assertions.ErrorMessages.unexpectedLessThan;
-import static org.fest.assertions.ErrorMessages.unexpectedLessThanOrEqualTo;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import static java.lang.Long.valueOf;
+import static org.fest.assertions.ErrorMessages.*;
+
 /**
- * <p>
  * Assertions for {@code Long}s and {@code long}s.
- * </p>
- *
- * <p>
+ * <p/>
  * To create a new instance of this class invoke either {@link Assertions#assertThat(Long)} or
  * {@link Assertions#assertThat(long)}.
- * </p>
- * 
+ *
  * @author Yvonne Wang
  * @author David DIDIER
  * @author Ansgar Konermann
@@ -43,7 +36,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
 
   /**
    * Creates a new {@link LongAssert}.
-   * 
+   *
    * @param actual the actual value to verify.
    */
   protected LongAssert(long actual) {
@@ -52,7 +45,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
 
   /**
    * Creates a new {@link LongAssert}.
-   * 
+   *
    * @param actual the actual value to verify.
    */
   protected LongAssert(@Nullable Long actual) {
@@ -61,7 +54,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
 
   /**
    * Verifies that the actual {@code Long} is equal to the given one.
-   * 
+   *
    * @param expected the value to compare the actual one to.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Long} is not equal to the given one.
@@ -72,7 +65,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
 
   /**
    * Verifies that the actual {@code Long} is not equal to the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Long} is equal to the given one.
@@ -83,7 +76,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
 
   /**
    * Verifies that the actual {@code Long} is greater than the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Long} is not greater than the given one.
@@ -98,7 +91,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
 
   /**
    * Verifies that the actual {@code Long} is less than the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Long} is not less than the given one.
@@ -113,7 +106,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
 
   /**
    * Verifies that the actual {@code Long} is greater or equal to the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Long} is not greater than or equal to the given one.
@@ -128,7 +121,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
 
   /**
    * Verifies that the actual {@code Long} is less or equal to the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Long} is not less than or equal to the given one.
@@ -143,7 +136,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
 
   /**
    * Verifies that the actual {@code Long} is equal to zero.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Long} is not equal to zero.
    */
@@ -154,7 +147,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
 
   /**
    * Verifies that the actual {@code Long} is positive.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Long} is not positive.
    */
@@ -165,7 +158,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
 
   /**
    * Verifies that the actual {@code Long} is negative.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Long} is not negative.
    */

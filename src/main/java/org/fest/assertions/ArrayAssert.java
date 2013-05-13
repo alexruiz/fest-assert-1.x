@@ -14,39 +14,33 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayInspection.copyToList;
-import static org.fest.assertions.ArrayInspection.copyToSet;
-import static org.fest.assertions.ArrayInspection.sizeOf;
-
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Set;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import static org.fest.assertions.ArrayInspection.*;
 
 /**
  * Assertions for arrays.
- * 
+ *
  * @param <S> used to simulate "self types." For more information please read &quot;<a href="http://goo.gl/fjgOM"
- *          target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ *            target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
  * @param <A> the type the "actual" value.
- * 
  * @author Alex Ruiz
  */
 public abstract class ArrayAssert<S, A> extends ItemGroupAssert<S, A> {
   /**
    * Creates a new {@link ArrayAssert}.
-   * 
+   *
    * @param selfType the "self type."
-   * @param actual the target to verify.
+   * @param actual   the target to verify.
    */
   protected ArrayAssert(@Nonnull Class<S> selfType, @Nullable A actual) {
     super(selfType, actual);
   }
 
   /**
-   * Returns the size of the actual array.
-   * 
    * @return the size of the actual array.
    * @throws AssertionError if the actual array is {@code null}.
    */
@@ -56,14 +50,18 @@ public abstract class ArrayAssert<S, A> extends ItemGroupAssert<S, A> {
     return sizeOf(actual);
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected @Nullable Set<Object> actualAsSet() {
     isNotNull();
     return copyToSet(actual);
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected @Nullable List<Object> actualAsList() {
     isNotNull();

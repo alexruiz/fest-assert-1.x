@@ -14,37 +14,31 @@
  */
 package org.fest.assertions;
 
+import org.fest.util.VisibleForTesting;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
 import static org.fest.util.Lists.newArrayList;
 import static org.fest.util.Preconditions.checkNotNull;
 import static org.fest.util.Sets.newLinkedHashSet;
 import static org.fest.util.ToString.toStringOf;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import org.fest.util.VisibleForTesting;
-
 /**
- * <p>
  * Assertions for {@code Iterator}s.
- * </p>
- *
- * <p>
+ * <p/>
  * To create a new instance of this class invoke {@link Assertions#assertThat(Iterator)}.
- * </p>
- * 
+ *
  * @author Alex Ruiz
- * 
  * @since 1.4
  */
 public class IteratorAssert extends ObjectGroupAssert<IteratorAssert, Iterator<?>> {
   /**
    * Creates a new {@link IteratorAssert}.
-   * 
+   *
    * @param actual the target to verify.
    */
   protected IteratorAssert(@Nullable Iterator<?> actual) {
@@ -58,7 +52,9 @@ public class IteratorAssert extends ObjectGroupAssert<IteratorAssert, Iterator<?
     return new PrettyPrintIterator(actual);
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected @Nonnull IteratorAssert onProperty(@Nonnull String propertyName) {
     checkNotNull(propertyName);
@@ -67,7 +63,9 @@ public class IteratorAssert extends ObjectGroupAssert<IteratorAssert, Iterator<?
     return new IteratorAssert(subset.iterator());
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected @Nullable Set<Object> actualAsSet() {
     if (actual == null) {
@@ -76,7 +74,9 @@ public class IteratorAssert extends ObjectGroupAssert<IteratorAssert, Iterator<?
     return newLinkedHashSet(contentOfActual());
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected @Nullable List<Object> actualAsList() {
     if (actual == null) {
@@ -85,7 +85,9 @@ public class IteratorAssert extends ObjectGroupAssert<IteratorAssert, Iterator<?
     return newArrayList(contentOfActual());
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected int actualGroupSize() {
     isNotNull();
@@ -100,7 +102,6 @@ public class IteratorAssert extends ObjectGroupAssert<IteratorAssert, Iterator<?
   @VisibleForTesting
   static class PrettyPrintIterator implements Iterator<Object> {
     private final Iterator<?> wrapped;
-
     boolean wrappedWasConsumed;
     List<Object> wrappedContents;
     Iterator<Object> iterator;
@@ -114,14 +115,18 @@ public class IteratorAssert extends ObjectGroupAssert<IteratorAssert, Iterator<?
       return wrappedContents;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean hasNext() {
       consumeIterator();
       return iterator.hasNext();
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public @Nullable Object next() {
       consumeIterator();
@@ -137,13 +142,17 @@ public class IteratorAssert extends ObjectGroupAssert<IteratorAssert, Iterator<?
       iterator = wrappedContents.iterator();
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void remove() {
       throw new UnsupportedOperationException();
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
       consumeIterator();

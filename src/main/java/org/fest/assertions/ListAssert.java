@@ -14,6 +14,13 @@
  */
 package org.fest.assertions;
 
+import org.fest.util.IntrospectionError;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Set;
+
 import static java.util.Collections.emptyList;
 import static org.fest.assertions.Formatting.format;
 import static org.fest.util.Lists.newArrayList;
@@ -21,32 +28,19 @@ import static org.fest.util.Objects.areEqual;
 import static org.fest.util.Preconditions.checkNotNull;
 import static org.fest.util.Sets.newLinkedHashSet;
 
-import java.util.List;
-import java.util.Set;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import org.fest.util.IntrospectionError;
-
 /**
- * <p>
  * Assertions for {@code List}s.
  * </p>
- *
- * <p>
  * To create a new instance of this class invoke {@link Assertions#assertThat(List)}.
- * </p>
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
- * 
  * @since 1.1
  */
 public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
   /**
    * Creates a new {@link ListAssert}.
-   * 
+   *
    * @param actual the target to verify.
    */
   protected ListAssert(@Nullable List<?> actual) {
@@ -55,14 +49,14 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
 
   /**
    * Verifies that the actual {@code List} contains the given object at the given index.
-   * 
-   * @param o the object to look for.
+   *
+   * @param o     the object to look for.
    * @param index the index where the object should be stored in the actual {@code List}.
    * @return this assertion object.
-   * @throws NullPointerException if the given {@code Index} is {@code null}.
+   * @throws NullPointerException      if the given {@code Index} is {@code null}.
    * @throws IndexOutOfBoundsException if the value of the given {@code Index} is negative, or equal to or greater than
-   *           the size of the actual {@code List}.
-   * @throws AssertionError if the given {@code List} does not contain the given object at the given index.
+   *                                   the size of the actual {@code List}.
+   * @throws AssertionError            if the given {@code List} does not contain the given object at the given index.
    */
   public @Nonnull ListAssert contains(@Nullable Object o, @Nonnull Index index) {
     checkNotNull(index);
@@ -92,7 +86,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
   /**
    * Verifies that the actual {@code List} contains the given sequence of objects, without any other objects between
    * them.
-   * 
+   *
    * @param sequence the sequence of objects to look for.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code List} is {@code null}.
@@ -132,7 +126,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
    * Verifies that the actual {@code List} starts with the given sequence of objects, without any other objects between
    * them. Same as {@link #containsSequence}, but verifies also that first given object is also first element of
    * {@code List}.
-   * 
+   *
    * @param sequence the sequence of objects to look for.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code List} is {@code null}.
@@ -171,7 +165,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
    * Verifies that the actual {@code List} ends with the given sequence of objects, without any other objects between
    * them. Same as {@link #containsSequence}, but verifies also that last given object is also last element of
    * {@code List}.
-   * 
+   *
    * @param sequence the sequence of objects to look for.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code List} is {@code null}.
@@ -210,7 +204,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
 
   /**
    * Returns the number of elements in the actual {@code List}.
-   * 
+   *
    * @return the number of elements in the actual {@code List}.
    * @throws AssertionError if the actual {@code List} is {@code null}.
    */
@@ -223,12 +217,12 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
   /**
    * Verifies that the actual {@code List} contains the given objects, in the same order. This method works just like
    * {@code isEqualTo(List)}, with the difference that internally the given array is converted to a {@code List}.
-   * 
+   *
    * @param objects the objects to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code List} is {@code null}.
+   * @throws AssertionError       if the actual {@code List} is {@code null}.
    * @throws NullPointerException if the given array is {@code null}.
-   * @throws AssertionError if the actual {@code List} does not contain the given objects.
+   * @throws AssertionError       if the actual {@code List} does not contain the given objects.
    */
   public @Nonnull ListAssert containsExactly(@Nonnull Object... objects) {
     checkNotNull(objects);
@@ -236,25 +230,21 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
   }
 
   /**
-   * <p>
    * Creates a new instance of {@link ListAssert} whose target list contains the values of the given
    * property name from the elements of this {@code ListAssert}'s list. Property access works with both simple
    * properties like {@code Person.age} and nested properties {@code Person.father.age}.
-   * </p>
-   * 
-   * <p>
+   * <p/>
    * For example, let's say we have a list of {@code Person} objects and you want to verify their age:
    * <pre>
    * assertThat(persons).onProperty(&quot;age&quot;).containsOnly(25, 16, 44, 37); // simple property
    * assertThat(persons).onProperty("father.age").containsOnly(55, 46, 74, 62); // nested property
    * </pre>
-   * </p>
-   * 
+   *
    * @param propertyName the name of the property to extract values from the actual list to build a new
-   *          {@code ListAssert}.
+   *                     {@code ListAssert}.
    * @return a new {@code ListAssert} containing the values of the given property name from the elements of this
    *         {@code ListAssert}'s list.
-   * @throws AssertionError if the actual list is {@code null}.
+   * @throws AssertionError     if the actual list is {@code null}.
    * @throws IntrospectionError if an element in the given list does not have a matching property.
    * @since 1.3
    */
@@ -267,13 +257,17 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
     return new ListAssert(PropertySupport.instance().propertyValues(propertyName, actual));
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected @Nullable Set<Object> actualAsSet() {
     return actual == null ? null : newLinkedHashSet(actual.toArray());
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected @Nullable List<Object> actualAsList() {
     return actual == null ? null : newArrayList(actual.toArray());

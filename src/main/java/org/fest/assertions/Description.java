@@ -18,7 +18,7 @@ import javax.annotation.Nonnull;
 
 /**
  * A description of something.
- * 
+ *
  * @author Alex Ruiz
  */
 public interface Description {

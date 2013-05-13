@@ -14,32 +14,33 @@
  */
 package org.fest.assertions;
 
+import javax.annotation.Nonnull;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+
 import static java.lang.reflect.Array.get;
 import static java.lang.reflect.Array.getLength;
 import static org.fest.util.Lists.newArrayList;
 import static org.fest.util.Preconditions.checkNotNull;
 import static org.fest.util.Sets.newLinkedHashSet;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-
-import javax.annotation.Nonnull;
-
 /**
  * Utility methods for arrays.
- * 
+ *
  * @author Alex Ruiz
- * 
  * @since 1.2
  */
 public final class ArrayInspection {
+  private ArrayInspection() {
+  }
+
   /**
    * Copies the contents of the given array into an array of objects.
-   * 
+   *
    * @param array the array to copy.
    * @return an array of objects containing the contents of the array.
-   * @throws NullPointerException if the given object is {@code null}.
+   * @throws NullPointerException     if the given object is {@code null}.
    * @throws IllegalArgumentException if the given object is not an array.
    */
   public static @Nonnull Object[] copy(@Nonnull Object array) {
@@ -48,7 +49,7 @@ public final class ArrayInspection {
 
   /**
    * Copies the contents of the given array into a list.
-   * 
+   *
    * @param array the array to copy.
    * @return a list containing the contents of the array.
    * @throws IllegalArgumentException if the given object is not an array.
@@ -60,7 +61,7 @@ public final class ArrayInspection {
 
   /**
    * Copies the contents of the given array into a list.
-   * 
+   *
    * @param array the array to copy.
    * @return a list containing the contents of the array.
    * @throws IllegalArgumentException if the given object is not an array.
@@ -80,10 +81,10 @@ public final class ArrayInspection {
 
   /**
    * Returns the size of the given array.
-   * 
+   *
    * @param array the array.
    * @return the size of the given array.
-   * @throws NullPointerException if the given array is {@code null}.
+   * @throws NullPointerException     if the given array is {@code null}.
    * @throws IllegalArgumentException if the given object is not an array.
    */
   public static int sizeOf(@Nonnull Object array) {
@@ -97,6 +98,4 @@ public final class ArrayInspection {
       throw new IllegalArgumentException("The given object is not an array");
     }
   }
-
-  private ArrayInspection() {}
 }

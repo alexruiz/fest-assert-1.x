@@ -14,6 +14,12 @@
  */
 package org.fest.assertions;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+
 import static org.fest.assertions.Collections.found;
 import static org.fest.assertions.Collections.notFound;
 import static org.fest.assertions.Formatting.format;
@@ -23,30 +29,22 @@ import static org.fest.util.Lists.newArrayList;
 import static org.fest.util.Preconditions.checkNotNull;
 import static org.fest.util.Sets.newLinkedHashSet;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 /**
  * Template for assertions for groups of items (e.g. collections or arrays.)
- * 
+ *
  * @param <S> used to simulate "self types." For more information please read &quot;<a href="http://goo.gl/fjgOM"
- *          target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ *            target="_blank">Emulating 'self types' using Java Generics to simplify fluent API
+ *            implementation</a>.&quot;
  * @param <A> the type the "actual" value.
- * 
  * @author Yvonne Wang
- * 
  * @since 1.3
  */
 public abstract class ItemGroupAssert<S, A> extends GroupAssert<S, A> {
   /**
    * Creates a new {@link ItemGroupAssert}.
-   * 
+   *
    * @param selfType the "self type."
-   * @param actual the actual group.
+   * @param actual   the actual group.
    */
   public ItemGroupAssert(@Nonnull Class<S> selfType, @Nullable A actual) {
     super(selfType, actual);
@@ -54,11 +52,11 @@ public abstract class ItemGroupAssert<S, A> extends GroupAssert<S, A> {
 
   /**
    * Verifies that the actual actual group of objects contains the given objects, in any order.
-   * 
+   *
    * @param objects the objects to look for.
-   * @throws AssertionError if the actual actual group of objects is {@code null}.
+   * @throws AssertionError       if the actual actual group of objects is {@code null}.
    * @throws NullPointerException if the given array is {@code null}.
-   * @throws AssertionError if the actual actual group of objects does not contain the given objects.
+   * @throws AssertionError       if the actual actual group of objects does not contain the given objects.
    */
   protected final void assertContains(@Nonnull Object... objects) {
     isNotNull();
@@ -76,12 +74,12 @@ public abstract class ItemGroupAssert<S, A> extends GroupAssert<S, A> {
 
   /**
    * Verifies that the actual group of objects contains the given objects <strong>only</strong>, in any order.
-   * 
+   *
    * @param objects the objects to look for.
-   * @throws AssertionError if the actual group of objects is {@code null}.
+   * @throws AssertionError       if the actual group of objects is {@code null}.
    * @throws NullPointerException if the given group of objects is {@code null}.
-   * @throws AssertionError if the actual group of objects does not contain the given objects, or if the actual group of
-   *           objects contains elements other than the ones specified.
+   * @throws AssertionError       if the actual group of objects does not contain the given objects, or if the actual
+   *                              group of objects contains elements other than the ones specified.
    */
   protected final void assertContainsOnly(@Nonnull Object... objects) {
     isNotNull();
@@ -98,8 +96,6 @@ public abstract class ItemGroupAssert<S, A> extends GroupAssert<S, A> {
   }
 
   /**
-   * Returns the actual value as a {@code Set}.
-   * 
    * @return the actual value as a {@code Set}.
    */
   protected abstract @Nullable Set<Object> actualAsSet();
@@ -131,11 +127,11 @@ public abstract class ItemGroupAssert<S, A> extends GroupAssert<S, A> {
 
   /**
    * Verifies that the actual group of objects does not contain the given objects.
-   * 
+   *
    * @param objects the objects that the group of objects should exclude.
-   * @throws AssertionError if the actual group of objects is {@code null}.
+   * @throws AssertionError       if the actual group of objects is {@code null}.
    * @throws NullPointerException if the given array is {@code null}.
-   * @throws AssertionError if the actual group of objects contains any of the given objects.
+   * @throws AssertionError       if the actual group of objects contains any of the given objects.
    */
   protected final void assertExcludes(@Nonnull Object... objects) {
     isNotNull();
@@ -150,7 +146,7 @@ public abstract class ItemGroupAssert<S, A> extends GroupAssert<S, A> {
 
   /**
    * Verifies that the actual group of objects does not have duplicates.
-   * 
+   *
    * @throws AssertionError if the actual group of objects is {@code null}.
    * @throws AssertionError if the actual group of objects has duplicates.
    */

@@ -16,24 +16,24 @@ package org.fest.assertions;
 
 /**
  * An index.
- * 
+ *
  * @author Alex Ruiz
  */
 public final class Index {
   private final int value;
 
+  private Index(int value) {
+    this.value = value;
+  }
+
   /**
    * Creates a new {@link Index}.
-   * 
+   *
    * @param index the value of the index.
    * @return the created {@code Index}.
    */
   public static Index atIndex(int index) {
     return new Index(index);
-  }
-
-  private Index(int value) {
-    this.value = value;
   }
 
   /**

@@ -14,13 +14,13 @@
  */
 package org.fest.assertions;
 
-import static java.lang.Math.abs;
-
 import javax.annotation.Nonnull;
+
+import static java.lang.Math.abs;
 
 /**
  * A color.
- * 
+ *
  * @author Alex Ruiz
  */
 final class RGBColor {

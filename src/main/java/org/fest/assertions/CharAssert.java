@@ -14,24 +14,17 @@
  */
 package org.fest.assertions;
 
-import static java.lang.Character.valueOf;
-import static org.fest.assertions.ErrorMessages.unexpectedGreaterThan;
-import static org.fest.assertions.ErrorMessages.unexpectedGreaterThanOrEqualTo;
-import static org.fest.assertions.ErrorMessages.unexpectedLessThan;
-import static org.fest.assertions.ErrorMessages.unexpectedLessThanOrEqualTo;
-
 import javax.annotation.Nonnull;
 
+import static java.lang.Character.valueOf;
+import static org.fest.assertions.ErrorMessages.*;
+
 /**
- * <p>
  * Assertions for {@code Character}s and {@code char}s.
- * </p>
- *
- * <p>
+ * <p/>
  * To create a new instance of this class invoke either {@link Assertions#assertThat(Character)} or
  * {@link Assertions#assertThat(char)}.
- * </p>
- * 
+ *
  * @author Yvonne Wang
  * @author David DIDIER
  * @author Ansgar Konermann
@@ -40,7 +33,7 @@ import javax.annotation.Nonnull;
 public class CharAssert extends GenericAssert<CharAssert, Character> {
   /**
    * Creates a new {@link CharAssert}.
-   * 
+   *
    * @param actual the actual value to verify.
    */
   protected CharAssert(char actual) {
@@ -49,7 +42,7 @@ public class CharAssert extends GenericAssert<CharAssert, Character> {
 
   /**
    * Creates a new {@link CharAssert}.
-   * 
+   *
    * @param actual the actual value to verify.
    */
   protected CharAssert(Character actual) {
@@ -58,7 +51,7 @@ public class CharAssert extends GenericAssert<CharAssert, Character> {
 
   /**
    * Verifies that the {@code Character} value is equal to the given one.
-   * 
+   *
    * @param expected the value to compare the actual one to.
    * @return this assertion object.
    * @throws AssertionError if the {@code Character} value is not equal to the given one.
@@ -69,7 +62,7 @@ public class CharAssert extends GenericAssert<CharAssert, Character> {
 
   /**
    * Verifies that the {@code Character} value is not equal to the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the {@code Character} value is equal to the given one.
@@ -80,7 +73,7 @@ public class CharAssert extends GenericAssert<CharAssert, Character> {
 
   /**
    * Verifies that the {@code Character} value is greater than the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the {@code Character} value is not greater than the given one.
@@ -95,7 +88,7 @@ public class CharAssert extends GenericAssert<CharAssert, Character> {
 
   /**
    * Verifies that the {@code Character} value is less than the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the {@code Character} value is not less than the given one.
@@ -110,7 +103,7 @@ public class CharAssert extends GenericAssert<CharAssert, Character> {
 
   /**
    * Verifies that the {@code Character} value is greater or equal to the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the {@code Character} value is not greater than or equal to the given one.
@@ -125,7 +118,7 @@ public class CharAssert extends GenericAssert<CharAssert, Character> {
 
   /**
    * Verifies that the {@code Character} value is less or equal to the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the {@code Character} value is not less than or equal to the given one.
@@ -140,7 +133,7 @@ public class CharAssert extends GenericAssert<CharAssert, Character> {
 
   /**
    * Verifies that the {@code Character} value is an upper-case value.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the {@code Character} value is not an upper-case value.
    */
@@ -154,7 +147,7 @@ public class CharAssert extends GenericAssert<CharAssert, Character> {
 
   /**
    * Verifies that the {@code Character} value is an lower-case value.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the {@code Character} value is not an lower-case value.
    */

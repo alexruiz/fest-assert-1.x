@@ -14,31 +14,26 @@
  */
 package org.fest.assertions;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Arrays;
+
 import static org.fest.assertions.Formatting.format;
 import static org.fest.util.Objects.namesOf;
 import static org.fest.util.Preconditions.checkNotNull;
 
-import java.util.Arrays;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 /**
- * <p>
  * Assertions for {@code Object}s.
- * </p>
- *
- * <p>
+ * <p/>
  * To create a new instance of this class use the method {@link Assertions#assertThat(Object)}.
- * </p>
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class ObjectAssert extends GenericAssert<ObjectAssert, Object> {
   /**
    * Creates a new {@link ObjectAssert}.
-   * 
+   *
    * @param actual the target to verify.
    */
   protected ObjectAssert(@Nullable Object actual) {
@@ -47,11 +42,11 @@ public class ObjectAssert extends GenericAssert<ObjectAssert, Object> {
 
   /**
    * Verifies that the actual {@code Object} is an instance of the given type.
-   * 
+   *
    * @param type the type to check the actual {@code Object} against.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code Object} is {@code null}.
-   * @throws AssertionError if the actual {@code Object} is not an instance of the given type.
+   * @throws AssertionError       if the actual {@code Object} is {@code null}.
+   * @throws AssertionError       if the actual {@code Object} is not an instance of the given type.
    * @throws NullPointerException if the given type is {@code null}.
    */
   public @Nonnull ObjectAssert isInstanceOf(@Nonnull Class<?> type) {
@@ -67,11 +62,11 @@ public class ObjectAssert extends GenericAssert<ObjectAssert, Object> {
 
   /**
    * Verifies that the actual {@code Object} is an instance of any of the given types.
-   * 
+   *
    * @param types the types to check the actual {@code Object} against.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code Object} is {@code null}.
-   * @throws AssertionError if the actual {@code Object} is not an instance of any of the given types.
+   * @throws AssertionError       if the actual {@code Object} is {@code null}.
+   * @throws AssertionError       if the actual {@code Object} is not an instance of any of the given types.
    * @throws NullPointerException if the given array of types is {@code null}.
    * @throws NullPointerException if the given array of types contains {@code null}s.
    */

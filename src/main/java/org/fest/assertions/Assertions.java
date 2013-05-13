@@ -14,6 +14,8 @@
  */
 package org.fest.assertions;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.math.BigDecimal;
@@ -22,26 +24,19 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 /**
- * <p>
  * Entry point for assertion methods for different data types. Each method in this class is a static factory for the
  * type-specific assertion objects. The purpose of this class is to make test code more readable.
- * </p>
- * 
- * <p>
+ * <p/>
  * For example:
  * <pre>
  * int removed = employees.removeFired();
  * {@link org.fest.assertions.Assertions#assertThat(int) assertThat}(removed).{@link org.fest.assertions.IntAssert#isZero isZero}();
- * 
+ *
  * List&lt;Employee&gt; newEmployees = employees.hired(TODAY);
  * {@link org.fest.assertions.Assertions#assertThat(java.util.Collection) assertThat}(newEmployees).{@link org.fest.assertions.CollectionAssert#hasSize(int) hasSize}(6);
  * </pre>
- * </p>
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  * @author David DIDIER
@@ -49,8 +44,15 @@ import javax.annotation.Nullable;
  */
 public class Assertions {
   /**
+   * This constructor is protected to make it possible to subclass this class. Since all its methods are static, there
+   * is no point on creating a new instance of it.
+   */
+  protected Assertions() {
+  }
+
+  /**
    * Creates a new instance of {@link BigDecimalAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -60,7 +62,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link BooleanAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -70,7 +72,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link BooleanAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -80,7 +82,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link BooleanArrayAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -90,7 +92,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link ImageAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -100,7 +102,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link ByteAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -110,7 +112,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link ByteAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -120,7 +122,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link ByteArrayAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -130,7 +132,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link CharAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -140,7 +142,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link CharAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -150,7 +152,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link CharArrayAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -160,7 +162,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link CollectionAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -170,7 +172,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link ListAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    * @since 1.1
@@ -181,7 +183,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link DoubleAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -191,7 +193,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link DoubleAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -201,7 +203,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link DoubleArrayAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -211,7 +213,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link FileAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -221,7 +223,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link FloatAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -231,7 +233,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link FloatAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -241,7 +243,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link FloatArrayAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -251,7 +253,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link IntAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -261,7 +263,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link IntAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -271,7 +273,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link IntArrayAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -281,7 +283,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link IteratorAssert}.
-   * 
+   *
    * @param actual an {@code Iterable} whose contents will be added to a new {@code Collection}.
    * @return the created assertion object.
    */
@@ -292,7 +294,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link IteratorAssert}.
-   * 
+   *
    * @param actual an {@code Iterator} whose contents will be added to a new {@code Collection}.
    * @return the created assertion object.
    */
@@ -302,7 +304,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link LongAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -312,7 +314,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link LongAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -322,7 +324,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link LongArrayAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -332,7 +334,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link MapAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -342,7 +344,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link ObjectAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -352,7 +354,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link ObjectArrayAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -362,7 +364,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link ShortAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -372,7 +374,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link ShortAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -382,7 +384,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link ShortArrayAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -392,7 +394,7 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link StringAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
@@ -401,21 +403,18 @@ public class Assertions {
   }
 
   /**
-   * <p>
    * Returns the given assertion. This method improves code readability by surrounding the given assertion with
    * "{@code assertThat}".
-   * </p>
-   * 
-   * <p>
+   * <p/>
    * For example, let's assume we have the following custom assertion class:
    * <pre>
    * public class ServerSocketAssertion implements AssertExtension {
    *   private final ServerSocket socket;
-   * 
+   *
    *   public ServerSocketAssertion(ServerSocket socket) {
    *     this.socket = socket;
    *   }
-   * 
+   *
    *   public ServerSocketAssert isConnectedTo(int port) {
    *     assertThat(socket.isBound()).isTrue();
    *     assertThat(socket.getLocalPort()).isEqualTo(port);
@@ -424,16 +423,13 @@ public class Assertions {
    *   }
    * }
    * </pre>
-   * </p>
-   * 
-   * <p>
+   * <p/>
    * We can wrap that assertion with "{@code assertThat}" to improve test code readability.
    * <pre>
    * ServerSocketAssertion socket = new ServerSocketAssertion(server.getSocket());
    * assertThat(socket).isConnectedTo(2000);
    * </pre>
-   * </p>
-   * 
+   *
    * @param assertion the assertion to return.
    * @return the given assertion.
    * @throws NullPointerException if the given assertion is {@code null}.
@@ -444,17 +440,11 @@ public class Assertions {
 
   /**
    * Creates a new instance of {@link ThrowableAssert}.
-   * 
+   *
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
   public static @Nonnull ThrowableAssert assertThat(@Nullable Throwable actual) {
     return new ThrowableAssert(actual);
   }
-
-  /**
-   * This constructor is protected to make it possible to subclass this class. Since all its methods are static, there
-   * is no point on creating a new instance of it.
-   */
-  protected Assertions() {}
 }

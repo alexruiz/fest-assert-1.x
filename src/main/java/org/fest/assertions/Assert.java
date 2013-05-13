@@ -14,16 +14,16 @@
  */
 package org.fest.assertions;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static org.fest.assertions.Fail.failWithMessage;
 import static org.fest.assertions.Formatting.format;
 import static org.fest.assertions.Formatting.valueOf;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 /**
  * Base class for all assertion classes.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -41,7 +41,7 @@ public abstract class Assert {
   /**
    * Sets the description of the actual value, to be used in as message of any {@code AssertionError} thrown when an
    * assertion fails.
-   * 
+   *
    * @param d the new description.
    */
   protected final void description(@Nullable String d) {
@@ -51,7 +51,7 @@ public abstract class Assert {
   /**
    * Sets the description of the actual value, to be used in as message of any {@code AssertionError} thrown when an
    * assertion fails.
-   * 
+   *
    * @param d the new description.
    */
   protected final void description(@Nullable Description d) {
@@ -60,7 +60,7 @@ public abstract class Assert {
 
   /**
    * Returns the description of the actual value in this assertion.
-   * 
+   *
    * @return the description of the actual value in this assertion.
    * @since 1.2
    */
@@ -70,11 +70,11 @@ public abstract class Assert {
 
   /**
    * Returns the given message formatted as follows:
-   * 
+   * <p/>
    * <pre>
    * [assertion description] given message.
    * </pre>
-   * 
+   *
    * @param message the message to format.
    * @return the formatted message.
    * @throws NullPointerException if the given message is {@code null}.
@@ -85,7 +85,7 @@ public abstract class Assert {
 
   /**
    * Specifies the message to use in case of a failure, replacing the default one.
-   * 
+   *
    * @param message the new error message.
    */
   protected final void replaceDefaultErrorMessagesWith(@Nullable String message) {
@@ -94,7 +94,7 @@ public abstract class Assert {
 
   /**
    * Returns the message to use when a failure occurs, if one has been specified.
-   * 
+   *
    * @return the message to use when a failure occurs, or {@code null} if none has been specified.
    */
   protected final @Nullable String customErrorMessage() {
@@ -103,7 +103,7 @@ public abstract class Assert {
 
   /**
    * Throws an {@code AssertionError} only if the the custom message in this assertion object is not {@code null}.
-   * 
+   *
    * @throws AssertionError only if the custom error message in this assertion object is not {@code null}.
    * @since 1.2
    */
@@ -113,7 +113,7 @@ public abstract class Assert {
 
   /**
    * Throws an {@code AssertionError} only if the the custom message in this assertion object is not {@code null}.
-   * 
+   *
    * @param realCause cause of the error.
    * @throws AssertionError only if the custom error message in this assertion object is not {@code null}.
    * @since 1.2
@@ -124,9 +124,9 @@ public abstract class Assert {
 
   /**
    * Fails by throwing an {@code AssertionError}.
-   * 
+   *
    * @param reason the reason for the failure, used as the message for the thrown exception.
-   * @param cause the root cause of the failure, included in the thrown exception.
+   * @param cause  the root cause of the failure, included in the thrown exception.
    * @throws NullPointerException if the given reason is {@code null}.
    */
   protected final void fail(@Nonnull String reason, @Nullable Throwable cause) {
@@ -134,16 +134,13 @@ public abstract class Assert {
   }
 
   /**
-   * <p>
    * Fails by throwing an {@code AssertionError}.
-   * </p>
-   * <p>
+   * <p/>
    * <strong>Note:</strong> This method appears to return {@code AssertionError}, but it is really not the case, since
    * the exception is thrown and not returned. In version 2.0 the return type of this method will change to {@code void}
    * . Since we cannot create an overloaded version with return type {@code void}, we cannot deprecate this method.
    * Please pretend this method does not return anything :)
-   * </p>
-   * 
+   *
    * @param reason the reason for the failure, used as the message for the thrown exception.
    * @return the thrown {@code AssertionError}.
    * @throws AssertionError using the given reason as the message.
@@ -156,7 +153,7 @@ public abstract class Assert {
 
   /**
    * Creates an {@code AssertionError}, adding the description of the actual value to the given message.
-   * 
+   *
    * @param reason the reason for the failure, used as the message for the thrown exception.
    * @return the created exception.
    */
@@ -167,7 +164,7 @@ public abstract class Assert {
   /**
    * Throws {@code UnsupportedOperationException} if called. It is easy to accidentally call {@link #equals(Object)}
    * instead of {@code isEqualTo}.
-   * 
+   *
    * @throws UnsupportedOperationException if this method is called.
    */
   @Override
@@ -177,7 +174,7 @@ public abstract class Assert {
 
   /**
    * Always returns 1.
-   * 
+   *
    * @return 1.
    */
   @Override

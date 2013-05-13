@@ -16,7 +16,7 @@ package org.fest.assertions;
 
 /**
  * Marker interface for used-defined assertions.
- * 
+ *
  * @author Yvonne Wang
  */
 public interface AssertExtension {

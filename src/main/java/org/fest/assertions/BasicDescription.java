@@ -14,13 +14,13 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Preconditions.checkNotNull;
-
 import javax.annotation.Nonnull;
+
+import static org.fest.util.Preconditions.checkNotNull;
 
 /**
  * Default implementation of {@link Description}.
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -29,7 +29,7 @@ public class BasicDescription implements Description {
 
   /**
    * Creates a new {@link BasicDescription}.
-   * 
+   *
    * @param description the value of this description.
    * @throws NullPointerException if the given description is {@code null}.
    */
@@ -37,7 +37,9 @@ public class BasicDescription implements Description {
     this.description = checkNotNull(description);
   }
 
-  /** @see org.fest.assertions.Description#value() */
+  /**
+   * @see org.fest.assertions.Description#value()
+   */
   @Override
   public @Nonnull String value() {
     return checkNotNull(description);

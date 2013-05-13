@@ -14,28 +14,24 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Formatting.format;
-import static org.fest.util.Preconditions.checkNotNull;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import static org.fest.assertions.Formatting.format;
+import static org.fest.util.Preconditions.checkNotNull;
+
 /**
- * <p>
  * Assertions for {@code String}s.
- * </p>
- *
- * <p>
+ * <p/>
  * To create a new instance of this class invoke {@link Assertions#assertThat(String)}.
- * </p>
- * 
+ *
  * @author Yvonne Wang
  * @author David DIDIER
  */
 public class StringAssert extends GroupAssert<StringAssert, String> {
   /**
    * Creates a new {@link StringAssert}.
-   * 
+   *
    * @param actual the target to verify.
    */
   protected StringAssert(@Nullable String actual) {
@@ -44,7 +40,7 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
 
   /**
    * Verifies that the actual {@code String} is equal to the given one ignoring case.
-   * 
+   *
    * @param expected the given {@code String} to compare the actual {@code String} to.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code String} is {@code null}.
@@ -64,7 +60,7 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
 
   /**
    * Returns the number of elements in the actual {@code String}.
-   * 
+   *
    * @return the number of elements in the actual {@code String}.
    */
   @Override
@@ -75,7 +71,7 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
 
   /**
    * Verifies that the actual {@code String} contains the given one.
-   * 
+   *
    * @param expected the given {@code String} expected to be contained in the actual one.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code String} is {@code null}.
@@ -92,7 +88,7 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
 
   /**
    * Verifies that the actual {@code String} ends with the given one.
-   * 
+   *
    * @param expected the given {@code String} expected to be at the end of the actual one.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code String} is {@code null}.
@@ -109,7 +105,7 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
 
   /**
    * Verifies that the actual {@code String} starts with the given one.
-   * 
+   *
    * @param expected the given {@code String} expected to be at the beginning of the actual one.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code String} is {@code null}.
@@ -126,7 +122,7 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
 
   /**
    * Verifies that the actual {@code String} does not contains the given one.
-   * 
+   *
    * @param s the given {@code String} expected not to be contained in the actual one.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code String} is {@code null}.
@@ -143,7 +139,7 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
 
   /**
    * Verifies that the actual {@code String} matches the given one.
-   * 
+   *
    * @param regex the given regular expression expected to be matched by the actual one.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code String} is {@code null}.
@@ -160,7 +156,7 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
 
   /**
    * Verifies that the actual {@code String} does not match the given one.
-   * 
+   *
    * @param regex the given regular expression expected not to be matched by the actual one.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code String} is {@code null}.
@@ -177,11 +173,11 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
 
   /**
    * Verifies that the actual {@code String} contains the given text regardless of the case.
-   * 
+   *
    * @param text the given text.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is {@code null}.
-   * @throws AssertionError if the actual {@code String} does not contain the given text.
+   * @throws AssertionError       if the actual {@code String} is {@code null}.
+   * @throws AssertionError       if the actual {@code String} does not contain the given text.
    * @throws NullPointerException if the given {@code String} is {@code null}.
    * @since 1.3
    */
@@ -197,11 +193,11 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
 
   /**
    * Verifies that the actual {@code String} does not contain the given text.
-   * 
+   *
    * @param text the given text.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is {@code null}.
-   * @throws AssertionError if the actual {@code String} contains the given text.
+   * @throws AssertionError       if the actual {@code String} is {@code null}.
+   * @throws AssertionError       if the actual {@code String} contains the given text.
    * @throws NullPointerException if the given {@code String} is {@code null}.
    * @since 1.3
    */

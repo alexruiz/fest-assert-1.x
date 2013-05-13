@@ -14,24 +14,26 @@
  */
 package org.fest.assertions;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static org.fest.util.Preconditions.checkNotNull;
 import static org.fest.util.Strings.isNullOrEmpty;
 import static org.fest.util.Strings.quote;
 import static org.fest.util.ToString.toStringOf;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 /**
  * Creates instances of JUnit's {@code ComparisonFailure}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public final class ComparisonFailureFactory {
   private static final String EMPTY_MESSAGE = "";
-
   private static ConstructorInvoker constructorInvoker = new ConstructorInvoker();
+
+  private ComparisonFailureFactory() {
+  }
 
   static void constructorInvoker(@Nonnull ConstructorInvoker newConstructorInvoker) {
     constructorInvoker = checkNotNull(newConstructorInvoker);
@@ -39,10 +41,10 @@ public final class ComparisonFailureFactory {
 
   /**
    * Creates a new instance of JUnit's {@code ComparisonFailure} only if JUnit 4+ is in the classpath.
-   * 
-   * @param message the identifying message or {@code null}.
+   *
+   * @param message  the identifying message or {@code null}.
    * @param expected the expected value.
-   * @param actual the actual value.
+   * @param actual   the actual value.
    * @return the created {@code ComparisonFailure}, or {@code null} if JUnit 4+ is not in the classpath.
    */
   public static @Nullable AssertionError comparisonFailure(
@@ -61,8 +63,8 @@ public final class ComparisonFailureFactory {
   private static @Nullable AssertionError newComparisonFailure(
       @Nullable String message, @Nullable Object expected, @Nullable Object actual) throws Exception {
     String className = "org.junit.ComparisonFailure";
-    Class<?>[] parameterTypes = new Class<?>[] { String.class, String.class, String.class };
-    Object[] parameterValues = new Object[] { format(message), asString(expected), asString(actual) };
+    Class<?>[] parameterTypes = new Class<?>[]{String.class, String.class, String.class};
+    Object[] parameterValues = new Object[]{format(message), asString(expected), asString(actual)};
     Object o = constructorInvoker.newInstance(className, parameterTypes, parameterValues);
     if (o instanceof AssertionError) {
       return (AssertionError) o;
@@ -86,6 +88,4 @@ public final class ComparisonFailureFactory {
     }
     return String.format("[%s]", message);
   }
-
-  private ComparisonFailureFactory() {}
 }

@@ -14,27 +14,20 @@
  */
 package org.fest.assertions;
 
-import static java.lang.Short.valueOf;
-import static org.fest.assertions.ErrorMessages.unexpectedGreaterThan;
-import static org.fest.assertions.ErrorMessages.unexpectedGreaterThanOrEqualTo;
-import static org.fest.assertions.ErrorMessages.unexpectedLessThan;
-import static org.fest.assertions.ErrorMessages.unexpectedLessThanOrEqualTo;
+import org.fest.util.VisibleForTesting;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import org.fest.util.VisibleForTesting;
+import static java.lang.Short.valueOf;
+import static org.fest.assertions.ErrorMessages.*;
 
 /**
- * <p>
  * Assertions for {@code Short}s and {@code short}s.
- * </p>
- *
- * <p>
+ * <p/>
  * To create a new instance of this class invoke either {@link Assertions#assertThat(Short)} or
  * {@link Assertions#assertThat(short)}.
- * </p>
- * 
+ *
  * @author Yvonne Wang
  * @author David DIDIER
  * @author Ansgar Konermann
@@ -43,14 +36,13 @@ import org.fest.util.VisibleForTesting;
 public class ShortAssert extends GenericAssert<ShortAssert, Short> implements NumberAssert {
   private static final short ZERO = (short) 0;
 
-  @VisibleForTesting
-  ShortAssert(int actual) {
+  @VisibleForTesting ShortAssert(int actual) {
     this((short) actual);
   }
 
   /**
    * Creates a new {@link ShortAssert}.
-   * 
+   *
    * @param actual the actual value to verify.
    */
   protected ShortAssert(short actual) {
@@ -59,7 +51,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
 
   /**
    * Creates a new {@link ShortAssert}.
-   * 
+   *
    * @param actual the actual value to verify.
    */
   protected ShortAssert(@Nullable Short actual) {
@@ -68,7 +60,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
 
   /**
    * Verifies that the actual {@code Short} is equal to the given one.
-   * 
+   *
    * @param expected the value to compare the actual one to.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Short} is not equal to the given one.
@@ -79,7 +71,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
 
   /**
    * Verifies that the actual {@code Short} is not equal to the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Short} is equal to the given one.
@@ -90,7 +82,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
 
   /**
    * Verifies that the actual {@code Short} is greater than the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Short} is not greater than the given one.
@@ -105,7 +97,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
 
   /**
    * Verifies that the actual {@code Short} is less than the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Short} is not less than the given one.
@@ -120,7 +112,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
 
   /**
    * Verifies that the actual {@code Short} is greater or equal to the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Short} is not greater than or equal to the given one.
@@ -135,7 +127,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
 
   /**
    * Verifies that the actual {@code Short} is less or equal to the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Short} is not less than or equal to the given one.
@@ -150,7 +142,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
 
   /**
    * Verifies that the actual {@code Short} is equal to zero.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Short} is not equal to zero.
    */
@@ -161,7 +153,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
 
   /**
    * Verifies that the actual {@code Short} is positive.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Short} is not positive.
    */
@@ -172,7 +164,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
 
   /**
    * Verifies that the actual {@code Short} is negative.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Short} is not negative.
    */

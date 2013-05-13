@@ -14,6 +14,16 @@
  */
 package org.fest.assertions;
 
+import org.fest.util.IntrospectionError;
+import org.fest.util.Preconditions;
+import org.fest.util.VisibleForTesting;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.beans.PropertyDescriptor;
+import java.util.Collection;
+import java.util.List;
+
 import static org.fest.util.Collections.isNullOrEmpty;
 import static org.fest.util.Collections.nonNullElementsIn;
 import static org.fest.util.Introspection.getProperty;
@@ -22,34 +32,16 @@ import static org.fest.util.Lists.newArrayList;
 import static org.fest.util.Preconditions.checkNotNull;
 import static org.fest.util.Strings.quote;
 
-import java.beans.PropertyDescriptor;
-import java.util.Collection;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import org.fest.util.IntrospectionError;
-import org.fest.util.Preconditions;
-import org.fest.util.VisibleForTesting;
-
 /**
  * Utility methods for properties access.
- * 
+ *
  * @author Joel Costigliola
  * @author Alex Ruiz
- * 
  * @since 1.3
  */
 final class PropertySupport {
   private static final String SEPARATOR = ".";
-
   private static final PropertySupport INSTANCE = new PropertySupport();
-
-  static @Nonnull PropertySupport instance() {
-    return INSTANCE;
-  }
-
   private final JavaBeanDescriptor javaBeanDescriptor;
 
   private PropertySupport() {
@@ -60,26 +52,26 @@ final class PropertySupport {
     this.javaBeanDescriptor = javaBeanDescriptor;
   }
 
+  static @Nonnull PropertySupport instance() {
+    return INSTANCE;
+  }
+
   /**
-   * <p>
    * Returns a list containing the values of the given property name, from the elements of the given collection. If the
    * given collection is empty or {@code null}, this method will return an empty collection.
-   * </p>
-   * 
-   * <p>
+   * <p/>
    * For example, given the nested property "address.street.number", this method will:
    * <ol>
    * <li>extract a collection of "address" from the given collection (remaining property is 'street.number')</li>
    * <li>extract a collection of "street" from the "address" collection (remaining property is 'number')</li>
    * <li>extract a collection of "number" from the "street" collection</li>
    * </ol>
-   * </p>
-   * 
+   *
    * @param propertyName the name of the property. It may be a nested property.
-   * @param target the given collection.
+   * @param target       the given collection.
    * @return a list containing the values of the given property name, from the elements of the given collection.
    * @throws NullPointerException if given property name is {@code null}.
-   * @throws IntrospectionError if an element in the given collection does not have a matching property.
+   * @throws IntrospectionError   if an element in the given collection does not have a matching property.
    */
   @Nonnull List<Object> propertyValues(@Nonnull String propertyName, @Nullable Collection<?> target) {
     if (isNullOrEmpty(target)) {
@@ -107,11 +99,8 @@ final class PropertySupport {
   }
 
   /**
-   * <p>
    * Returns {@code true} if property is nested, {@code false} otherwise.
-   * </p>
-   * 
-   * <p>
+   * <p/>
    * Examples:
    * <pre>
    * isNestedProperty(&quot;address.street&quot;); // true
@@ -124,8 +113,7 @@ final class PropertySupport {
    * isNestedProperty(&quot;.&quot;); // false
    * isNestedProperty(&quot;&quot;); // false
    * </pre>
-   * </p>
-   * 
+   *
    * @param propertyName the given property name.
    * @return {@code true} if property is nested, {@code false} otherwise.
    * @throws NullPointerException if given property name is {@code null}.
@@ -139,7 +127,7 @@ final class PropertySupport {
    * Removes the first property from the given property name only if the given property name belongs to a nested
    * property. For example, given the nested property "address.street.name", this method will return "street.name". This
    * method returns an empty {@code String} if the given property name does not belong to a nested property.
-   * 
+   *
    * @param propertyName the given property name.
    * @return the given property name without its first property, if the property name belongs to a nested property;
    *         otherwise, it will return an empty {@code String}.
@@ -156,7 +144,7 @@ final class PropertySupport {
    * Returns the first property from the given property name only if the given property name belongs to a nested
    * property. For example, given the nested property "address.street.name", this method will return "address". This
    * method returns the given property name unchanged if it does not belong to a nested property.
-   * 
+   *
    * @param propertyName the given property name.
    * @return the first property from the given property name, if the property name belongs to a nested property;
    *         otherwise, it will return the given property name unchanged.

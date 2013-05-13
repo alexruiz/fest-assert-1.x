@@ -14,45 +14,36 @@
  */
 package org.fest.assertions;
 
-import static java.lang.Byte.valueOf;
-import static org.fest.assertions.ErrorMessages.unexpectedGreaterThan;
-import static org.fest.assertions.ErrorMessages.unexpectedGreaterThanOrEqualTo;
-import static org.fest.assertions.ErrorMessages.unexpectedLessThan;
-import static org.fest.assertions.ErrorMessages.unexpectedLessThanOrEqualTo;
+import org.fest.util.VisibleForTesting;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import org.fest.util.VisibleForTesting;
+import static java.lang.Byte.valueOf;
+import static org.fest.assertions.ErrorMessages.*;
 
 /**
- * <p>
  * Assertions for {@code Byte}s and {@code byte}s.
- * </p>
- *
- * <p>
+ * <p/>
  * To create a new instance of this class invoke either {@link Assertions#assertThat(Byte)} or
  * {@link Assertions#assertThat(byte)}.
- * </p>
- * 
+ *
  * @author Yvonne Wang
  * @author David DIDIER
  * @author Ansgar Konermann
  * @author Alex Ruiz
- * 
  * @since 1.2
  */
 public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements NumberAssert {
   private static final byte ZERO = (byte) 0;
 
-  @VisibleForTesting
-  ByteAssert(int actual) {
+  @VisibleForTesting ByteAssert(int actual) {
     this((byte) actual);
   }
 
   /**
    * Creates a new {@link ByteAssert}.
-   * 
+   *
    * @param actual the actual value to verify.
    */
   protected ByteAssert(byte actual) {
@@ -61,7 +52,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
 
   /**
    * Creates a new {@link ByteAssert}.
-   * 
+   *
    * @param actual the actual value to verify.
    */
   protected ByteAssert(@Nullable Byte actual) {
@@ -70,7 +61,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
 
   /**
    * Verifies that the actual {@code Byte} value is equal to the given one.
-   * 
+   *
    * @param expected the value to compare the actual one to.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Byte} value is not equal to the given one.
@@ -81,7 +72,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
 
   /**
    * Verifies that the actual {@code Byte} value is not equal to the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Byte} value is equal to the given one.
@@ -92,7 +83,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
 
   /**
    * Verifies that the actual {@code Byte} value is greater than the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Byte} value is not greater than the given one.
@@ -108,7 +99,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
 
   /**
    * Verifies that the actual {@code Byte} value is less than the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Byte} value is not less than the given one.
@@ -123,7 +114,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
 
   /**
    * Verifies that the actual {@code Byte} value is greater or equal to the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Byte} value is not greater than or equal to the given one.
@@ -138,7 +129,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
 
   /**
    * Verifies that the actual {@code Byte} value is less or equal to the given one.
-   * 
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Byte} value is not less than or equal to the given one.
@@ -153,7 +144,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
 
   /**
    * Verifies that the actual {@code Byte} value is equal to zero.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Byte} value is not equal to zero.
    */
@@ -164,7 +155,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
 
   /**
    * Verifies that the actual {@code Byte} value is positive.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Byte} value is not positive.
    */
@@ -175,7 +166,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
 
   /**
    * Verifies that the actual {@code Byte} value is negative.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Byte} value is not negative.
    */

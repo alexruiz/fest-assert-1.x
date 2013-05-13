@@ -14,31 +14,25 @@
  */
 package org.fest.assertions;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Collection;
+
 import static org.fest.assertions.ErrorMessages.unexpectedIn;
 import static org.fest.assertions.ErrorMessages.unexpectedNotIn;
-import static org.fest.assertions.Fail.failIfActualIsNull;
-import static org.fest.assertions.Fail.failIfEqual;
-import static org.fest.assertions.Fail.failIfNotEqual;
-import static org.fest.assertions.Fail.failIfNotNull;
-import static org.fest.assertions.Fail.failIfNotSame;
-import static org.fest.assertions.Fail.failIfSame;
+import static org.fest.assertions.Fail.*;
 import static org.fest.assertions.Formatting.format;
 import static org.fest.util.Lists.newArrayList;
 import static org.fest.util.Objects.areEqual;
 import static org.fest.util.Preconditions.checkNotNull;
 
-import java.util.Collection;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 /**
  * Template for assertions.
- * 
+ *
  * @param <S> used to simulate "self types." For more information please read &quot;<a href="http://goo.gl/fjgOM"
- *          target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ *            target="_blank">Emulating 'self types' using Java Generics to simplify fluent API
+ *            implementation</a>.&quot;
  * @param <A> the type the "actual" value.
- * 
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -48,9 +42,9 @@ public abstract class GenericAssert<S, A> extends Assert {
 
   /**
    * Creates a new {@link GenericAssert}.
-   * 
+   *
    * @param selfType the "self type."
-   * @param actual the actual value to verify.
+   * @param actual   the actual value to verify.
    */
   protected GenericAssert(@Nonnull Class<S> selfType, @Nullable A actual) {
     this.actual = actual;
@@ -59,7 +53,7 @@ public abstract class GenericAssert<S, A> extends Assert {
 
   /**
    * Asserts that the actual value (specified in the constructor of this class) is {@code null}.
-   * 
+   *
    * @throws AssertionError if the actual value is not {@code null}.
    */
   public final void isNull() {
@@ -68,11 +62,11 @@ public abstract class GenericAssert<S, A> extends Assert {
 
   /**
    * Verifies that the actual value satisfies the given condition.
-   * 
+   *
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual value does not satisfy the given condition.
+   * @throws AssertionError       if the actual value does not satisfy the given condition.
    * @see #is(Condition)
    */
   public final @Nonnull S satisfies(@Nonnull Condition<A> condition) {
@@ -89,11 +83,11 @@ public abstract class GenericAssert<S, A> extends Assert {
 
   /**
    * Verifies that the actual value does not satisfy the given condition.
-   * 
+   *
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual value satisfies the given condition.
+   * @throws AssertionError       if the actual value satisfies the given condition.
    * @see #isNot(Condition)
    */
   public final @Nonnull S doesNotSatisfy(@Nonnull Condition<A> condition) {
@@ -110,11 +104,11 @@ public abstract class GenericAssert<S, A> extends Assert {
 
   /**
    * Alias for {@link #satisfies(Condition)}.
-   * 
+   *
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual value does not satisfy the given condition.
+   * @throws AssertionError       if the actual value does not satisfy the given condition.
    * @since 1.2
    */
   public final @Nonnull S is(@Nonnull Condition<A> condition) {
@@ -131,11 +125,11 @@ public abstract class GenericAssert<S, A> extends Assert {
 
   /**
    * Alias for {@link #doesNotSatisfy(Condition)}.
-   * 
+   *
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is {@code null}.
-   * @throws AssertionError if the actual value satisfies the given condition.
+   * @throws AssertionError       if the actual value satisfies the given condition.
    * @since 1.2
    */
   public final @Nonnull S isNot(@Nonnull Condition<A> condition) {
@@ -156,19 +150,15 @@ public abstract class GenericAssert<S, A> extends Assert {
   }
 
   /**
-   * <p>
    * Sets the description of the actual value, to be used in as message of any {@code AssertionError} thrown when an
    * assertion fails. This method should be called before any assertion method, otherwise any assertion failure will not
    * show the provided description.
-   * </p>
-   * 
-   * <p>
+   * <p/>
    * For example:
    * <pre>
    * assertThat(val).<strong>as</strong>(&quot;name&quot;).isEqualTo(&quot;Frodo&quot;);
    * </pre>
-   * </p>
-   * 
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -178,19 +168,15 @@ public abstract class GenericAssert<S, A> extends Assert {
   }
 
   /**
-   * <p>
    * Alias for {@link #as(String)}, since "as" is a keyword in <a href="http://groovy.codehaus.org/"
    * target="_blank">Groovy</a>. This method should be called before any assertion method, otherwise any assertion
    * failure will not show the provided description.
-   * </p>
-   * 
-   * <p>
+   * <p/>
    * For example:
    * <pre>
    * assertThat(val).<strong>describedAs</strong>(&quot;name&quot;).isEqualTo(&quot;Frodo&quot;);
    * </pre>
-   * </p>
-   * 
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -199,19 +185,15 @@ public abstract class GenericAssert<S, A> extends Assert {
   }
 
   /**
-   * <p>
    * Sets the description of the actual value, to be used in as message of any {@code AssertionError} thrown when an
    * assertion fails. This method should be called before any assertion method, otherwise any assertion failure will not
    * show the provided description.
-   * </p>
-   * 
-   * <p>
+   * <p/>
    * For example:
    * <pre>
    * assertThat(val).<strong>as</strong>(new BasicDescription(&quot;name&quot;)).isEqualTo(&quot;Frodo&quot;);
    * </pre>
-   * </p>
-   * 
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -221,19 +203,15 @@ public abstract class GenericAssert<S, A> extends Assert {
   }
 
   /**
-   * <p>
    * Alias for {@link #as(Description)}, since "as" is a keyword in <a href="http://groovy.codehaus.org/"
    * target="_blank">Groovy</a>. This method should be called before any assertion method, otherwise any assertion
    * failure will not show the provided description.
-   * </p>
-   * 
-   * <p>
+   * <p/>
    * For example:
    * <pre>
    * assertThat(val).<strong>describedAs</strong>(new BasicDescription(&quot;name&quot;)).isEqualTo(&quot;Frodo&quot;);
    * </pre>
-   * </p>
-   * 
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -243,7 +221,7 @@ public abstract class GenericAssert<S, A> extends Assert {
 
   /**
    * Verifies that the actual value is equal to the given one.
-   * 
+   *
    * @param expected the given value to compare the actual value to.
    * @return this assertion object.
    * @throws AssertionError if the actual value is not equal to the given one.
@@ -255,7 +233,7 @@ public abstract class GenericAssert<S, A> extends Assert {
 
   /**
    * Verifies that the actual value is not equal to the given one.
-   * 
+   *
    * @param other the given value to compare the actual value to.
    * @return this assertion object.
    * @throws AssertionError if the actual value is equal to the given one.
@@ -267,7 +245,7 @@ public abstract class GenericAssert<S, A> extends Assert {
 
   /**
    * Verifies that the actual value is not {@code null}.
-   * 
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual value is {@code null}.
    */
@@ -278,7 +256,7 @@ public abstract class GenericAssert<S, A> extends Assert {
 
   /**
    * Verifies that the actual value is the same as the given one.
-   * 
+   *
    * @param expected the given value to compare the actual value to.
    * @return this assertion object.
    * @throws AssertionError if the actual value is not the same as the given one.
@@ -290,7 +268,7 @@ public abstract class GenericAssert<S, A> extends Assert {
 
   /**
    * Verifies that the actual value is not the same as the given one.
-   * 
+   *
    * @param other the given value to compare the actual value to.
    * @return this assertion object.
    * @throws AssertionError if the actual value is the same as the given one.
@@ -302,10 +280,10 @@ public abstract class GenericAssert<S, A> extends Assert {
 
   /**
    * Verifies that the actual value is in the given values.
-   * 
+   *
    * @param values the given values to search the actual value in.
    * @return this assertion object.
-   * @throws AssertionError if the actual value is not in the given values.
+   * @throws AssertionError       if the actual value is not in the given values.
    * @throws NullPointerException if the given parameter is null.
    */
   public final @Nonnull S isIn(@Nonnull Object... values) {
@@ -314,10 +292,10 @@ public abstract class GenericAssert<S, A> extends Assert {
 
   /**
    * Verifies that the actual value is in the given collection.
-   * 
+   *
    * @param values the given collection to search the actual value in. must not be null.
    * @return this assertion object.
-   * @throws AssertionError if the actual value is not in the given collection.
+   * @throws AssertionError       if the actual value is not in the given collection.
    * @throws NullPointerException if the given collection is null.
    */
   public final @Nonnull S isIn(@Nonnull Collection<?> values) {
@@ -331,10 +309,10 @@ public abstract class GenericAssert<S, A> extends Assert {
 
   /**
    * Verifies that the actual value is in the given values.
-   * 
+   *
    * @param values the given values to search the actual value in.
    * @return this assertion object.
-   * @throws AssertionError if the actual value is not in the given values.
+   * @throws AssertionError       if the actual value is not in the given values.
    * @throws NullPointerException if the given parameter is null.
    */
   public final @Nonnull S isNotIn(@Nonnull Object... values) {
@@ -343,10 +321,10 @@ public abstract class GenericAssert<S, A> extends Assert {
 
   /**
    * Verifies that the actual value is in the given collection.
-   * 
+   *
    * @param values the given collection to search the actual value in. must not be null.
    * @return this assertion object.
-   * @throws AssertionError if the actual value is not in the given collection.
+   * @throws AssertionError       if the actual value is not in the given collection.
    * @throws NullPointerException if the given collection is null.
    */
   public final @Nonnull S isNotIn(@Nonnull Collection<?> values) {
@@ -371,26 +349,20 @@ public abstract class GenericAssert<S, A> extends Assert {
   }
 
   /**
-   * <p>
    * Replaces the default message displayed in case of a failure with the given one.
-   * </p>
-   * 
-   * <p>
+   * <p/>
    * For example, the following assertion:
    * <pre>
    * assertThat("Hello").isEqualTo("Bye");
    * </pre>
    * will fail with the default message "<em>expected:<'[Bye]'> but was:<'[Hello]'></em>."
-   * </p>
-   * 
-   * <p>
+   * <p/>
    * We can replace this message with our own:
    * <pre>
    * assertThat("Hello").overridingErrorMessage("'Hello' should be equal to 'Bye'").isEqualTo("Bye");
    * </pre>
    * in this case, the assertion will fail showing the message "<em>'Hello' should be equal to 'Bye'</em>".
-   * </p>
-   * 
+   *
    * @param message the given error message, which will replace the default one.
    * @return this assertion.
    * @since 1.2

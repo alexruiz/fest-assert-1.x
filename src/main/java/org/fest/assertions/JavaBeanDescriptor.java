@@ -14,15 +14,14 @@
  */
 package org.fest.assertions;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 /**
  * Wrapper for {@link PropertyDescriptor}.
- * 
+ *
  * @author Alex Ruiz
  */
 class JavaBeanDescriptor {

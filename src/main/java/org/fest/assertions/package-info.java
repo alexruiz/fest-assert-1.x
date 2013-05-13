@@ -13,12 +13,9 @@
  * Copyright @2013 the original author or authors.
  */
 /**
- * <p>
  * Assertion methods bound to the type they apply. The entry point is any of the &quot;{@code assertThat}&quot;
  * methods in {@link org.fest.assertions.Assertions} (assertion classes cannot be instantiated directly.)
- * </p>
- * 
- * <p>
+ * <p/>
  * For example:
  * <pre>
  * int removed = employees.removeFired();
@@ -27,6 +24,5 @@
  * List&lt;Employee&gt; newEmployees = employees.hired(TODAY);
  * {@link org.fest.assertions.Assertions#assertThat(java.util.Collection) assertThat}(newEmployees).{@link org.fest.assertions.CollectionAssert#hasSize(int) hasSize}(6);
  * </pre>
- * </p>
  */
 package org.fest.assertions;
