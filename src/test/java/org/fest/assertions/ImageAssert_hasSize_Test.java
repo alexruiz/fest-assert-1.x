@@ -14,19 +14,19 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FailureMessages.actualIsNull;
-import static org.fest.assertions.Images.fivePixelBlueImage;
-import static org.fest.test.ExpectedException.none;
-
-import java.awt.Dimension;
-
 import org.fest.test.ExpectedException;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.awt.*;
+
+import static org.fest.assertions.FailureMessages.actualIsNull;
+import static org.fest.assertions.Images.fivePixelBlueImage;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link ImageAssert#hasSize(Dimension)}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

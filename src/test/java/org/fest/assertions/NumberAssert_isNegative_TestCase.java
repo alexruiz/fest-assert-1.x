@@ -16,7 +16,7 @@ package org.fest.assertions;
 
 /**
  * Test case for implementations of {@link NumberAssert#isNegative()}.
- * 
+ *
  * @author Alex Ruiz
  */
 public interface NumberAssert_isNegative_TestCase {

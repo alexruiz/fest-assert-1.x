@@ -14,18 +14,18 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.doubleArray;
-
 import org.junit.BeforeClass;
+
+import static org.fest.assertions.ArrayFactory.doubleArray;
 
 /**
  * Tests for {@link DoubleArrayAssert#isNotEqualTo(double[])}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class DoubleArrayAssert_isNotEqualTo_Test extends
-GenericAssert_isNotEqualTo_TestCase<DoubleArrayAssert, double[]> {
+    GenericAssert_isNotEqualTo_TestCase<DoubleArrayAssert, double[]> {
   private static double[] notNullValue;
   private static double[] unequalValue;
 

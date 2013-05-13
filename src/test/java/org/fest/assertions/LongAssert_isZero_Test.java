@@ -18,7 +18,7 @@ import org.junit.BeforeClass;
 
 /**
  * Tests for {@link LongAssert#isZero()}.
- * 
+ *
  * @author Yvonne Wang
  * @author David DIDIER
  * @author Alex Ruiz

@@ -14,23 +14,21 @@
  */
 package org.fest.assertions;
 
-import static java.awt.Color.BLUE;
-import static java.awt.Color.YELLOW;
-import static org.fest.assertions.Images.fivePixelBlueImage;
-import static org.fest.assertions.Images.fivePixelYellowImage;
-import static org.fest.assertions.Images.image;
-import static org.fest.test.ExpectedException.none;
-
-import java.awt.image.BufferedImage;
-
 import org.fest.test.ExpectedException;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.awt.image.BufferedImage;
+
+import static java.awt.Color.BLUE;
+import static java.awt.Color.YELLOW;
+import static org.fest.assertions.Images.*;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link ImageAssert#isEqualTo(BufferedImage)}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

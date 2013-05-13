@@ -16,12 +16,12 @@ package org.fest.assertions;
 
 /**
  * Tests for {@link ByteAssert#ByteAssert(byte)} and {@link ByteAssert#ByteAssert(Byte)}.
- * 
+ *
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
 public class ByteAssert_constructorsForPrimitiveAndWrapper_Test extends
-GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<ByteAssert, Byte> {
+    GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<ByteAssert, Byte> {
   @Override
   protected Class<ByteAssert> assertionType() {
     return ByteAssert.class;

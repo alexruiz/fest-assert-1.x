@@ -14,15 +14,15 @@
  */
 package org.fest.assertions;
 
-import static org.junit.Assert.assertEquals;
-
 import org.fest.assertions.FileContentComparator.LineDiff;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * Tests for {@link LineDiff#toString()}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class LineDiff_toString_Test {

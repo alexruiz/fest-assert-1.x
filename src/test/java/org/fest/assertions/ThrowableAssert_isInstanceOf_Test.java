@@ -14,17 +14,17 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FailureMessages.actualIsNull;
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.assertions.FailureMessages.actualIsNull;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link ThrowableAssert#isInstanceOf(Class)}.
- * 
+ *
  * @author David DIDIER
  * @author Alex Ruiz
  */
@@ -94,6 +94,6 @@ public class ThrowableAssert_isInstanceOf_Test implements Assert_isInstanceOf_Te
   public void should_fail_with_custom_message_ignoring_description_if_actual_is_not_instance_of_expected() {
     thrown.expect(AssertionError.class, "My custom message");
     new ThrowableAssert(actual).as("A Test").overridingErrorMessage("My custom message")
-    .isInstanceOf(NullPointerException.class);
+        .isInstanceOf(NullPointerException.class);
   }
 }

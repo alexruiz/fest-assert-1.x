@@ -14,16 +14,16 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Delta.delta;
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.assertions.Delta.delta;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Test for {@link DoubleAssert#isEqualTo(double, Delta)}.
- * 
+ *
  * @author Yvonne Wang
  * @author David DIDIER
  * @author Alex Ruiz

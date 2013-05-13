@@ -14,21 +14,21 @@
  */
 package org.fest.assertions;
 
+import org.fest.util.IntrospectionError;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.beans.PropertyDescriptor;
+
 import static org.fest.assertions.Fail.fail;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import java.beans.PropertyDescriptor;
-
-import org.fest.util.IntrospectionError;
-import org.junit.Before;
-import org.junit.Test;
-
 /**
  * Tests for {@link PropertySupport#propertyValue(PropertyDescriptor, String, Object)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class PropertySupport_propertyValue_Test {

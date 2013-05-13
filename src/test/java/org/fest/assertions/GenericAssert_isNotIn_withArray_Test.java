@@ -14,18 +14,18 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FailureMessages.in;
-import static org.fest.test.ExpectedException.none;
-import static org.fest.util.Arrays.array;
-
 import org.fest.test.ExpectedException;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.assertions.FailureMessages.in;
+import static org.fest.test.ExpectedException.none;
+import static org.fest.util.Arrays.array;
+
 /**
  * Tests for code>{@link GenericAssert#isNotIn(Object...)}.
- * 
+ *
  * @author Joel Costigliola
  * @author Alex Ruiz
  */

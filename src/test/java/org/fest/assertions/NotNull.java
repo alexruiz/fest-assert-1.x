@@ -16,7 +16,7 @@ package org.fest.assertions;
 
 /**
  * {@link Condition} that verifies that a value is not {@code null}.
- * 
+ *
  * @author Alex Ruiz
  */
 class NotNull<T> extends Condition<T> {
@@ -24,7 +24,8 @@ class NotNull<T> extends Condition<T> {
     return new NotNull<T>();
   }
 
-  private NotNull() {}
+  private NotNull() {
+  }
 
   @Override
   public boolean matches(T value) {

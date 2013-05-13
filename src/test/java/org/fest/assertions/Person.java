@@ -17,7 +17,6 @@ package org.fest.assertions;
 import static org.fest.assertions.Title.Mr;
 
 /**
- * 
  * A simple class to test "onProperty" collection/list/array assertions.
  * <p/>
  * The point here is to have all kind of properties: primitive type, primitive wrapper and Object.
@@ -45,7 +44,7 @@ public class Person {
   private final String favoriteSport = "soccer";
 
   public Person(Long id, String name, int age, long ssn, boolean male, char favoriteAlphabetLetter, int favoriteByte,
-      int yearOfBirth, float height, double weight, String homeTown) {
+                int yearOfBirth, float height, double weight, String homeTown) {
     this.id = id;
     this.name = new Name(name, "");
     this.age = age;

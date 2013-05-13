@@ -14,18 +14,18 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.objectArray;
-import static org.fest.assertions.FailureMessages.actualIsNull;
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.assertions.ArrayFactory.objectArray;
+import static org.fest.assertions.FailureMessages.actualIsNull;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link ObjectArrayAssert#hasAllElementsOfType(Class)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class ObjectArrayAssert_hasAllElementsOfType_Test {
@@ -87,6 +87,6 @@ public class ObjectArrayAssert_hasAllElementsOfType_Test {
   public void should_fail_with_custom_message_ignoring_description_if_elements_in_actual_do_not_belong_to_expected_type() {
     thrown.expect(AssertionError.class, "My custom message");
     new ObjectArrayAssert(array).as("A Test").overridingErrorMessage("My custom message")
-    .hasAllElementsOfType(String.class);
+        .hasAllElementsOfType(String.class);
   }
 }

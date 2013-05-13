@@ -66,5 +66,6 @@ final class ArrayFactory {
     return values;
   }
 
-  private ArrayFactory() {}
+  private ArrayFactory() {
+  }
 }

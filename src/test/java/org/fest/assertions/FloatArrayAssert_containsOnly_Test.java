@@ -14,19 +14,19 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.floatArray;
-import static org.fest.assertions.EmptyArrays.emptyFloatArray;
-import static org.fest.assertions.FailureMessages.actualIsNull;
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.assertions.ArrayFactory.floatArray;
+import static org.fest.assertions.EmptyArrays.emptyFloatArray;
+import static org.fest.assertions.FailureMessages.actualIsNull;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link FloatArrayAssert#containsOnly(float...)}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

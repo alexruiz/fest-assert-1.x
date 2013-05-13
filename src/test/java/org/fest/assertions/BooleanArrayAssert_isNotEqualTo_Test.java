@@ -14,18 +14,18 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.booleanArray;
-
 import org.junit.BeforeClass;
+
+import static org.fest.assertions.ArrayFactory.booleanArray;
 
 /**
  * Tests for {@link BooleanArrayAssert#isNotEqualTo(boolean[])}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class BooleanArrayAssert_isNotEqualTo_Test extends
-GenericAssert_isNotEqualTo_TestCase<BooleanArrayAssert, boolean[]> {
+    GenericAssert_isNotEqualTo_TestCase<BooleanArrayAssert, boolean[]> {
   private static boolean[] notNullValue;
   private static boolean[] unequalValue;
 

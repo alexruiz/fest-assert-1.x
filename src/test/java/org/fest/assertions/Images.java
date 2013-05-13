@@ -14,13 +14,12 @@
  */
 package org.fest.assertions;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
 import static java.awt.Color.BLUE;
 import static java.awt.Color.YELLOW;
 import static java.awt.image.BufferedImage.TYPE_INT_ARGB;
-
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 
 /**
  * @author Alex Ruiz
@@ -42,5 +41,6 @@ final class Images {
     return image;
   }
 
-  private Images() {}
+  private Images() {
+  }
 }

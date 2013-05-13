@@ -14,16 +14,13 @@
  */
 package org.fest.assertions;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  * Tests for {@link ArrayInspection#copy(Object)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class ArrayInspection_copy_Test {
@@ -44,17 +41,17 @@ public class ArrayInspection_copy_Test {
 
   @Test
   public void should_copy_boolean_array() {
-    boolean[] array = { true, false };
+    boolean[] array = {true, false};
     Object[] a = ArrayInspection.copy(array);
-    Object[] e = { true, false };
+    Object[] e = {true, false};
     assertArrayEquals(e, a);
   }
 
   @Test
   public void should_copy_int_array() {
-    int[] array = { 6, 8, 10, 12 };
+    int[] array = {6, 8, 10, 12};
     Object[] a = ArrayInspection.copy(array);
-    Object[] e = { 6, 8, 10, 12 };
+    Object[] e = {6, 8, 10, 12};
     assertArrayEquals(e, a);
   }
 }

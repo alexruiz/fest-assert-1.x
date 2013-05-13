@@ -16,7 +16,7 @@ package org.fest.assertions;
 
 /**
  * Test case for implementations of {@link org.fest.assertions.NumberAssert#isZero()}.
- * 
+ *
  * @author Alex Ruiz
  */
 public interface NumberAssert_isNotZero_TestCase {

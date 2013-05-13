@@ -14,15 +14,15 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link LongAssert#isGreaterThan(long)}.
- * 
+ *
  * @author Yvonne Wang
  * @author David DIDIER
  */

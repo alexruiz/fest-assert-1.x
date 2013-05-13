@@ -14,19 +14,19 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.intArray;
-import static org.fest.assertions.EmptyArrays.emptyIntArray;
-import static org.fest.assertions.FailureMessages.actualIsNull;
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.assertions.ArrayFactory.intArray;
+import static org.fest.assertions.EmptyArrays.emptyIntArray;
+import static org.fest.assertions.FailureMessages.actualIsNull;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link IntArrayAssert#containsOnly(int...)}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -100,7 +100,7 @@ public class IntArrayAssert_containsOnly_Test implements GroupAssert_containsOnl
   public void should_fail_with_custom_message_ignoring_description_if_actual_is_empty_and_expecting_at_least_one_element() {
     thrown.expect(AssertionError.class, "My custom message");
     new IntArrayAssert(emptyIntArray()).as("A Test").overridingErrorMessage("My custom message")
-    .containsOnly(intArray(10, 2));
+        .containsOnly(intArray(10, 2));
   }
 
   @Override

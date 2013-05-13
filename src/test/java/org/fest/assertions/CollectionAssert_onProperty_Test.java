@@ -18,12 +18,12 @@ import java.util.Collection;
 
 /**
  * Tests for {@link CollectionAssert#onProperty(String)}.
- * 
+ *
  * @author Joel Costigliola
  * @author Alex Ruiz
  */
 public class CollectionAssert_onProperty_Test extends
-ObjectGroupAssert_onProperty_Test<CollectionAssert, Collection<?>> {
+    ObjectGroupAssert_onProperty_Test<CollectionAssert, Collection<?>> {
   @Override
   protected CollectionAssert assertionsFor(Collection<?> data) {
     return new CollectionAssert(data);

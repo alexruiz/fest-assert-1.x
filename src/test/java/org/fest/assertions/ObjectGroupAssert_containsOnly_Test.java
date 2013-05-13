@@ -14,21 +14,21 @@
  */
 package org.fest.assertions;
 
-import static java.util.Collections.emptyList;
-import static org.fest.assertions.FailureMessages.actualIsNull;
-import static org.fest.test.ExpectedException.none;
-import static org.fest.util.Lists.newArrayList;
-
-import java.util.List;
-
 import org.fest.test.ExpectedException;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.util.List;
+
+import static java.util.Collections.emptyList;
+import static org.fest.assertions.FailureMessages.actualIsNull;
+import static org.fest.test.ExpectedException.none;
+import static org.fest.util.Lists.newArrayList;
+
 /**
  * Tests for {@link ObjectGroupAssert#containsOnly(Object...)}.
- * 
+ *
  * @author Yvonne Wang
  */
 public final class ObjectGroupAssert_containsOnly_Test implements GroupAssert_containsOnly_TestCase {
@@ -164,6 +164,6 @@ public final class ObjectGroupAssert_containsOnly_Test implements GroupAssert_co
   public final void should_fail_with_custom_message_ignoring_description_if_actual_does_not_contain_all_the_expected_values() {
     thrown.expect(AssertionError.class, "My custom message");
     assertions.as("A Test").overridingErrorMessage("My custom message")
-    .containsOnly("Gandalf", "Frodo", "Sam", "Meriadoc");
+        .containsOnly("Gandalf", "Frodo", "Sam", "Meriadoc");
   }
 }

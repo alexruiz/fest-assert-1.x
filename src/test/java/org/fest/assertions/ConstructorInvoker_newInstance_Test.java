@@ -14,15 +14,15 @@
  */
 package org.fest.assertions;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Tests for {@link ConstructorInvoker#newInstance(String, Class[], Object[])}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class ConstructorInvoker_newInstance_Test {
@@ -35,7 +35,7 @@ public class ConstructorInvoker_newInstance_Test {
 
   @Test
   public void should_create_Object_using_reflection() throws Exception {
-    Object o = invoker.newInstance("java.lang.Exception", new Class<?>[] { String.class }, new Object[] { "Hi" });
+    Object o = invoker.newInstance("java.lang.Exception", new Class<?>[]{String.class}, new Object[]{"Hi"});
     assertTrue(o instanceof Exception);
     Exception e = (Exception) o;
     assertEquals("Hi", e.getMessage());

@@ -14,29 +14,26 @@
  */
 package org.fest.assertions;
 
+import org.fest.test.ExpectedException;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+
+import javax.annotation.Nonnull;
+import java.io.File;
+import java.io.IOException;
+
 import static org.fest.assertions.FailureMessages.actualIsNull;
 import static org.fest.assertions.FileContentComparator.LineDiff.lineDiff;
 import static org.fest.assertions.FileStub.newFile;
 import static org.fest.test.ExpectedException.none;
 import static org.fest.util.Strings.concat;
 import static org.fest.util.SystemProperties.lineSeparator;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.fail;
-
-import java.io.File;
-import java.io.IOException;
-
-import javax.annotation.Nonnull;
-
-import org.fest.test.ExpectedException;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  * Tests for {@link FileAssert#hasSameContentAs(File)}.
- * 
+ *
  * @author David DIDIER
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -111,7 +108,7 @@ public class FileAssert_hasSameContentsAs_Test extends FileAssert_TestCase {
     thrown.expect(AssertionError.class, "My custom message");
     FileStub expected = newFile("c:\\temp\\expected.txt").ensureExists();
     new FileAssert(file, comparator).as("A Test").overridingErrorMessage("My custom message")
-    .hasSameContentAs(expected);
+        .hasSameContentAs(expected);
   }
 
   @Test
@@ -168,7 +165,7 @@ public class FileAssert_hasSameContentsAs_Test extends FileAssert_TestCase {
     FileStub expected = newFile("c:\\temp\\expected.txt").ensureExists();
     try {
       new FileAssert(file, comparator).as("A Test").overridingErrorMessage("My custom message")
-      .hasSameContentAs(expected);
+          .hasSameContentAs(expected);
       fail();
     } catch (AssertionError e) {
       assertEquals("My custom message", e.getMessage());

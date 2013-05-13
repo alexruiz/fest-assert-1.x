@@ -14,16 +14,16 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link ShortAssert#isLessThanOrEqualTo(short)}.
- * 
+ *
  * @author Yvonne Wang
  * @author David DIDIER
  * @author Alex Ruiz
@@ -79,6 +79,6 @@ public class ShortAssert_isLessThanOrEqualTo_Test implements Assert_isLessThanOr
   public void should_fail_with_custom_message_ignoring_description_if_actual_is_greater_than_expected() {
     thrown.expect(AssertionError.class, "My custom message");
     new ShortAssert(actual).as("A Test").overridingErrorMessage("My custom message")
-    .isLessThanOrEqualTo(lessThanActual);
+        .isLessThanOrEqualTo(lessThanActual);
   }
 }

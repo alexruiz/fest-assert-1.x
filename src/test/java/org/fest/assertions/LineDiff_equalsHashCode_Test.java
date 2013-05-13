@@ -14,22 +14,18 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.EqualsHashCodeContractAssert.assertEqualsIsReflexive;
-import static org.fest.test.EqualsHashCodeContractAssert.assertEqualsIsSymmetric;
-import static org.fest.test.EqualsHashCodeContractAssert.assertEqualsIsTransitive;
-import static org.fest.test.EqualsHashCodeContractAssert.assertIsNotEqualToNull;
-import static org.fest.test.EqualsHashCodeContractAssert.assertMaintainsEqualsAndHashCodeContract;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-
 import org.fest.assertions.FileContentComparator.LineDiff;
 import org.fest.test.EqualsHashCodeContractTestCase;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.fest.test.EqualsHashCodeContractAssert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
 /**
  * Tests for {@link LineDiff#equals(Object)} and {@link LineDiff#hashCode()}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class LineDiff_equalsHashCode_Test implements EqualsHashCodeContractTestCase {

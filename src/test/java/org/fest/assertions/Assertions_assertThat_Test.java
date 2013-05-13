@@ -14,14 +14,8 @@
  */
 package org.fest.assertions;
 
-import static java.awt.image.BufferedImage.TYPE_INT_RGB;
-import static java.lang.Boolean.FALSE;
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNull;
-import static junit.framework.Assert.assertSame;
-import static org.fest.util.Lists.newArrayList;
-import static org.fest.util.Maps.newHashMap;
-import static org.fest.util.Sets.newHashSet;
+import org.fest.util.Files;
+import org.junit.Test;
 
 import java.awt.image.BufferedImage;
 import java.math.BigDecimal;
@@ -30,12 +24,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-import org.fest.util.Files;
-import org.junit.Test;
+import static java.awt.image.BufferedImage.TYPE_INT_RGB;
+import static java.lang.Boolean.FALSE;
+import static junit.framework.Assert.*;
+import static org.fest.util.Lists.newArrayList;
+import static org.fest.util.Maps.newHashMap;
+import static org.fest.util.Sets.newHashSet;
 
 /**
  * Tests for all the overloaded versions of {@code assertThat} in {@link Assertions}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -47,7 +45,7 @@ public class Assertions_assertThat_Test {
 
   @Test
   public void should_return_BooleanArrayAssert_if_argument_is_array_of_boolean() {
-    boolean[] booleans = new boolean[] { false };
+    boolean[] booleans = new boolean[]{false};
     assertObjectIsInstanceOfType(Assertions.assertThat(booleans), BooleanArrayAssert.class);
   }
 
@@ -63,7 +61,7 @@ public class Assertions_assertThat_Test {
 
   @Test
   public void should_return_ByteArrayAssert_if_argument_is_array_of_byte() {
-    byte[] bytes = new byte[] { 0 };
+    byte[] bytes = new byte[]{0};
     assertObjectIsInstanceOfType(Assertions.assertThat(bytes), ByteArrayAssert.class);
   }
 
@@ -81,7 +79,7 @@ public class Assertions_assertThat_Test {
 
   @Test
   public void should_return_CharArrayAssert_if_argument_is_array_of_char() {
-    char[] chars = new char[] { 0 };
+    char[] chars = new char[]{0};
     assertObjectIsInstanceOfType(Assertions.assertThat(chars), CharArrayAssert.class);
   }
 
@@ -117,7 +115,7 @@ public class Assertions_assertThat_Test {
 
   @Test
   public void should_return_DoubleArrayAssert_if_argument_is_array_of_double() {
-    double[] doubles = new double[] { 0 };
+    double[] doubles = new double[]{0};
     assertObjectIsInstanceOfType(Assertions.assertThat(doubles), DoubleArrayAssert.class);
   }
 
@@ -138,7 +136,7 @@ public class Assertions_assertThat_Test {
 
   @Test
   public void should_return_FloatArrayAssert_if_argument_is_array_of_float() {
-    float[] floats = new float[] { 0f };
+    float[] floats = new float[]{0f};
     assertObjectIsInstanceOfType(Assertions.assertThat(floats), FloatArrayAssert.class);
   }
 
@@ -167,7 +165,7 @@ public class Assertions_assertThat_Test {
 
   @Test
   public void should_return_IntArrayAssert_if_argument_is_array_of_int() {
-    int[] ints = new int[] { 0 };
+    int[] ints = new int[]{0};
     assertObjectIsInstanceOfType(Assertions.assertThat(ints), IntArrayAssert.class);
   }
 
@@ -183,7 +181,7 @@ public class Assertions_assertThat_Test {
 
   @Test
   public void should_return_LongArrayAssert_if_argument_is_array_of_long() {
-    long[] longs = new long[] { 0 };
+    long[] longs = new long[]{0};
     assertObjectIsInstanceOfType(Assertions.assertThat(longs), LongArrayAssert.class);
   }
 
@@ -205,7 +203,7 @@ public class Assertions_assertThat_Test {
 
   @Test
   public void should_return_ObjectArrayAssert_if_argument_is_array_of_Object() {
-    String[] objects = new String[] { "One" };
+    String[] objects = new String[]{"One"};
     assertObjectIsInstanceOfType(Assertions.assertThat(objects), ObjectArrayAssert.class);
   }
 
@@ -216,7 +214,7 @@ public class Assertions_assertThat_Test {
 
   @Test
   public void should_return_ShortArrayAssert_if_argument_is_array_of_short() {
-    short[] shorts = new short[] { 0 };
+    short[] shorts = new short[]{0};
     assertObjectIsInstanceOfType(Assertions.assertThat(shorts), ShortArrayAssert.class);
   }
 

@@ -14,23 +14,22 @@
  */
 package org.fest.assertions;
 
+import org.junit.Before;
+import org.junit.Test;
+
+import java.lang.reflect.Constructor;
+
 import static org.fest.reflect.core.Reflection.constructor;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.lang.reflect.Constructor;
-
-import org.junit.Before;
-import org.junit.Test;
-
 /**
  * Tests that implementations of {@link GenericAssert} that handle primitive wrappers provide a constructor
  * that takes a primitive value.
- * 
+ *
  * @param <S> used to simulate "self types." For more information please read &quot;<a href="http://goo.gl/fjgOM"
- *          target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ *            target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
  * @param <A> the generic type of the {@code GenericAssert} to test.
- * 
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */

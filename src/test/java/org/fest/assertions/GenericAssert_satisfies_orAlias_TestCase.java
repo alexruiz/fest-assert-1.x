@@ -16,7 +16,7 @@ package org.fest.assertions;
 
 /**
  * Test case for implementations of {@link GenericAssert#satisfies(Condition)} or any of its alias.
- * 
+ *
  * @author Alex Ruiz
  */
 public interface GenericAssert_satisfies_orAlias_TestCase {

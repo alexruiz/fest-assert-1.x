@@ -16,7 +16,7 @@ package org.fest.assertions;
 
 /**
  * Test case for implementations of {@code isEqualTo} for objects and primitives.
- * 
+ *
  * @author Alex Ruiz
  */
 public interface Assert_isEqualTo_TestCase {

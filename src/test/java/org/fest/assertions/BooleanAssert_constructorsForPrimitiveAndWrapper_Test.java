@@ -16,12 +16,12 @@ package org.fest.assertions;
 
 /**
  * Tests for {@link BooleanAssert#BooleanAssert(boolean)} and {@link BooleanAssert#BooleanAssert(Boolean)}.
- * 
+ *
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
 public class BooleanAssert_constructorsForPrimitiveAndWrapper_Test extends
-GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<BooleanAssert, Boolean> {
+    GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<BooleanAssert, Boolean> {
   @Override
   protected Class<BooleanAssert> assertionType() {
     return BooleanAssert.class;

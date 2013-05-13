@@ -14,18 +14,18 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Lists.newArrayList;
-import static org.junit.Assert.assertEquals;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import java.util.List;
 import java.util.Set;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.fest.util.Lists.newArrayList;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Tests for {@link ListAssert#actualAsSet()}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class ListAssert_actualAsSet_Test {

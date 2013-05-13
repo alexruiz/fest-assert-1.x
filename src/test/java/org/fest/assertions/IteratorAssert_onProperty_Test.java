@@ -19,7 +19,7 @@ import java.util.Iterator;
 
 /**
  * Tests for {@link IteratorAssert#onProperty(String)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class IteratorAssert_onProperty_Test extends ObjectGroupAssert_onProperty_Test<IteratorAssert, Iterator<?>> {

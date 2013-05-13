@@ -112,7 +112,9 @@ class FileStub extends File {
     length = val;
   }
 
-  /** @see java.lang.Object#hashCode() */
+  /**
+   * @see java.lang.Object#hashCode()
+   */
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -121,7 +123,9 @@ class FileStub extends File {
     return result;
   }
 
-  /** @see java.lang.Object#equals(java.lang.Object) */
+  /**
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
   @Override
   public boolean equals(Object obj) {
     if (this == obj) {

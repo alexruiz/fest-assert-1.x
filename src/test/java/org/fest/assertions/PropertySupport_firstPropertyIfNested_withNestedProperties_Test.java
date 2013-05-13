@@ -14,19 +14,19 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Lists.newArrayList;
-import static org.junit.Assert.assertEquals;
-
-import java.util.Collection;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import java.util.Collection;
+
+import static org.fest.util.Lists.newArrayList;
+import static org.junit.Assert.assertEquals;
+
 /**
  * Tests for {@link PropertySupport#firstPropertyIfNested(String)}.
- * 
+ *
  * @author Joel Costigliola
  * @author Alex Ruiz
  */
@@ -34,7 +34,7 @@ import org.junit.runners.Parameterized.Parameters;
 public class PropertySupport_firstPropertyIfNested_withNestedProperties_Test {
   @Parameters
   public static Collection<Object[]> propertyNames() {
-    return newArrayList(new Object[][] { { "person.name", "person" }, { "address.street.name", "address" } });
+    return newArrayList(new Object[][]{{"person.name", "person"}, {"address.street.name", "address"}});
   }
 
   private final String nestedPropertyName;

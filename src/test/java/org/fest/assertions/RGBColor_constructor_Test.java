@@ -14,15 +14,15 @@
  */
 package org.fest.assertions;
 
-import static org.junit.Assert.assertEquals;
-
-import java.awt.Color;
-
 import org.junit.Test;
+
+import java.awt.*;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Test case for {@link RGBColor#RGBColor(int)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class RGBColor_constructor_Test {

@@ -16,7 +16,7 @@ package org.fest.assertions;
 
 /**
  * Test case for implementations of {@link NumberAssert#isPositive()}.
- * 
+ *
  * @author Alex Ruiz
  */
 public interface NumberAssert_isPositive_TestCase {

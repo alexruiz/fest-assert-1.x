@@ -14,20 +14,20 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.booleanArray;
-import static org.fest.assertions.EmptyArrays.emptyBooleanArray;
-import static org.fest.assertions.FailureMessages.actualIsNull;
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.assertions.ArrayFactory.booleanArray;
+import static org.fest.assertions.EmptyArrays.emptyBooleanArray;
+import static org.fest.assertions.FailureMessages.actualIsNull;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link BooleanArrayAssert#excludes(boolean...)}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

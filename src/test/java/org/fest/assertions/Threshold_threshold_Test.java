@@ -18,7 +18,7 @@ import org.junit.Test;
 
 /**
  * Tests for {@link Threshold#threshold(int)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class Threshold_threshold_Test {

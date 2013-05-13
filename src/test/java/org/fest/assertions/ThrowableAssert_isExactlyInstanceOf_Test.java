@@ -14,16 +14,16 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FailureMessages.actualIsNull;
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.assertions.FailureMessages.actualIsNull;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link ThrowableAssert#isExactlyInstanceOf(Class)}.
- * 
+ *
  * @author David DIDIER
  * @author Alex Ruiz
  */
@@ -67,7 +67,7 @@ public class ThrowableAssert_isExactlyInstanceOf_Test {
   public void should_fail_with_custom_message_ignoring_description_if_actual_is_instance_of_expected_but_not_exactly() {
     thrown.expect(AssertionError.class, "My custom message");
     new ThrowableAssert(new NullPointerException()).as("A Test").overridingErrorMessage("My custom message")
-    .isExactlyInstanceOf(Exception.class);
+        .isExactlyInstanceOf(Exception.class);
   }
 
   @Test
@@ -95,7 +95,7 @@ public class ThrowableAssert_isExactlyInstanceOf_Test {
   public void should_fail_with_custom_message_ignoring_description_if_actual_is_not_exactly_instance_of_expected() {
     thrown.expect(AssertionError.class, "My custom message");
     new ThrowableAssert(new Exception()).as("A Test").overridingErrorMessage("My custom message")
-    .isExactlyInstanceOf(NullPointerException.class);
+        .isExactlyInstanceOf(NullPointerException.class);
   }
 
   @Test

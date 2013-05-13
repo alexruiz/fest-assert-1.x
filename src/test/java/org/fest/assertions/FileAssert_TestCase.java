@@ -14,13 +14,13 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FileStub.newFile;
-
 import org.junit.Before;
+
+import static org.fest.assertions.FileStub.newFile;
 
 /**
  * Base test case for {@link FileAssert}.
- * 
+ *
  * @author David DIDIER
  * @author Yvonne Wang
  * @author Alex Ruiz

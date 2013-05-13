@@ -14,13 +14,13 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.doubleArray;
-
 import org.junit.BeforeClass;
+
+import static org.fest.assertions.ArrayFactory.doubleArray;
 
 /**
  * Tests for {@link DoubleArrayAssert#isEqualTo(double[])}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

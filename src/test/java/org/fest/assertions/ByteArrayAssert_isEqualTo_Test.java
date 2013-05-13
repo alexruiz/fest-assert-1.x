@@ -14,13 +14,13 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.byteArray;
-
 import org.junit.BeforeClass;
+
+import static org.fest.assertions.ArrayFactory.byteArray;
 
 /**
  * Tests for {@link ByteArrayAssert#isEqualTo(byte[])}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

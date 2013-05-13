@@ -14,31 +14,28 @@
  */
 package org.fest.assertions;
 
-import static java.util.Collections.emptyList;
-import static org.fest.assertions.FailureMessages.actualIsNull;
-import static org.fest.assertions.Title.Miss;
-import static org.fest.assertions.Title.Mr;
-import static org.fest.assertions.Title.Ms;
-import static org.fest.test.ExpectedException.none;
-import static org.fest.util.Lists.newArrayList;
-import static org.junit.Assert.assertEquals;
-
-import java.util.Collection;
-import java.util.List;
-
 import org.fest.test.ExpectedException;
 import org.fest.util.IntrospectionError;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.util.Collection;
+import java.util.List;
+
+import static java.util.Collections.emptyList;
+import static org.fest.assertions.FailureMessages.actualIsNull;
+import static org.fest.assertions.Title.*;
+import static org.fest.test.ExpectedException.none;
+import static org.fest.util.Lists.newArrayList;
+import static org.junit.Assert.assertEquals;
+
 /**
  * Base class for testing implementations of {@link ObjectGroupAssert#onProperty(String)}.
- * 
+ *
  * @param <S> used to simulate "self types." For more information please read &quot;<a href="http://goo.gl/fjgOM"
- *          target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ *            target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
  * @param <A> The type supported by the implementation of the {@code ObjectGroupAssert} to test.
- * 
  * @author Joel Costigliola
  * @author Alex Ruiz
  */

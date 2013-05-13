@@ -14,15 +14,15 @@
  */
 package org.fest.assertions;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.ComparisonFailure;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Tests for {@link ComparisonFailureFactory#comparisonFailure(String, Object, Object)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class ComparisonFailureFactory_comparisonFailure_Test {

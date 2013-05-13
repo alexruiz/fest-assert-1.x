@@ -14,17 +14,17 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Lists.newArrayList;
-import static org.junit.Assert.assertEquals;
-
-import java.util.List;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.List;
+
+import static org.fest.util.Lists.newArrayList;
+import static org.junit.Assert.assertEquals;
+
 /**
  * Tests for {@link ObjectArrayAssert#actualAsSet()}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class ArrayAssert_actualAsSet_Test {
@@ -32,7 +32,7 @@ public class ArrayAssert_actualAsSet_Test {
 
   @BeforeClass
   public static void setUpOnce() {
-    int[] actual = { 6, 8, 10 };
+    int[] actual = {6, 8, 10};
     assertions = new IntArrayAssert(actual);
   }
 

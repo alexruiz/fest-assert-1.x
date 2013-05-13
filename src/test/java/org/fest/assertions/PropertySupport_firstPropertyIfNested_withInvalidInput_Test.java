@@ -14,16 +14,16 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedException.none;
-import static org.junit.Assert.assertEquals;
-
 import org.fest.test.ExpectedException;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.test.ExpectedException.none;
+import static org.junit.Assert.assertEquals;
+
 /**
  * Tests for {@link PropertySupport#firstPropertyIfNested(String)}.
- * 
+ *
  * @author Joel Costigliola
  * @author Alex Ruiz
  */

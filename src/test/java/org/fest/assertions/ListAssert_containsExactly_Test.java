@@ -14,20 +14,20 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FailureMessages.actualIsNull;
-import static org.fest.test.ExpectedException.none;
-import static org.fest.util.Lists.newArrayList;
-
-import java.util.List;
-
 import org.fest.test.ExpectedException;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.util.List;
+
+import static org.fest.assertions.FailureMessages.actualIsNull;
+import static org.fest.test.ExpectedException.none;
+import static org.fest.util.Lists.newArrayList;
+
 /**
  * Tests for {@link ListAssert#containsExactly(Object...)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class ListAssert_containsExactly_Test {

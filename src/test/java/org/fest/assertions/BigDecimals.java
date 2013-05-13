@@ -14,13 +14,12 @@
  */
 package org.fest.assertions;
 
-import java.math.BigDecimal;
-
 import javax.annotation.Nonnull;
+import java.math.BigDecimal;
 
 /**
  * Some {@code BigDecimal} values used for testing.
- * 
+ *
  * @author Alex Ruiz
  */
 final class BigDecimals {
@@ -40,5 +39,6 @@ final class BigDecimals {
     return EIGHT;
   }
 
-  private BigDecimals() {}
+  private BigDecimals() {
+  }
 }

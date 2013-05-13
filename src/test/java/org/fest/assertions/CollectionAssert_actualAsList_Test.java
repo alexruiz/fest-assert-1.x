@@ -14,18 +14,18 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Lists.newArrayList;
-import static org.junit.Assert.assertEquals;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import java.util.Collection;
 import java.util.List;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.fest.util.Lists.newArrayList;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Tests for {@link CollectionAssert#actualAsList()}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class CollectionAssert_actualAsList_Test {

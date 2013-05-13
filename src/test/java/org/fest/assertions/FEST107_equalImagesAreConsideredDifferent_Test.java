@@ -14,19 +14,19 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.assertions.Resources.file;
-import static org.fest.assertions.Threshold.threshold;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.assertions.Resources.file;
+import static org.fest.assertions.Threshold.threshold;
 
 /**
  * Tests for bug <a href="http://jira.codehaus.org/browse/FEST-107" target="_blank">FEST-107</a>.
- * 
+ *
  * @author Alex Ruiz
  */
 public class FEST107_equalImagesAreConsideredDifferent_Test {

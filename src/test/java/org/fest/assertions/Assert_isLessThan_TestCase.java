@@ -16,7 +16,7 @@ package org.fest.assertions;
 
 /**
  * Test case for implementations of {@code isLessThan} for objects and primitives.
- * 
+ *
  * @author Alex Ruiz
  */
 public interface Assert_isLessThan_TestCase {

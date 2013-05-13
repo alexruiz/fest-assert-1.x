@@ -14,16 +14,16 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link ByteAssert#isGreaterThanOrEqualTo(byte)}.
- * 
+ *
  * @author Yvonne Wang
  * @author David DIDIER
  */
@@ -78,6 +78,6 @@ public class ByteAssert_isGreaterThanOrEqualTo_Test implements Assert_isGreaterT
   public void should_fail_with_custom_message_ignoring_description_if_actual_is_less_than_expected() {
     thrown.expect(AssertionError.class, "My custom message");
     new ByteAssert(actual).as("A Test").overridingErrorMessage("My custom message")
-    .isGreaterThanOrEqualTo(greaterThanActual);
+        .isGreaterThanOrEqualTo(greaterThanActual);
   }
 }

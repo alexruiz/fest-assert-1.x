@@ -14,15 +14,15 @@
  */
 package org.fest.assertions;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Tests for {@link PropertySupport#isNestedProperty(String)}.
- * 
+ *
  * @author Joel Costigliola
  * @author Alex Ruiz
  */

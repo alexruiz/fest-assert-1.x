@@ -14,14 +14,14 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Lists.newArrayList;
-
 import java.util.Collection;
 import java.util.List;
 
+import static org.fest.util.Lists.newArrayList;
+
 /**
  * Tests for {@link ListAssert#onProperty(String)}.
- * 
+ *
  * @author Joel Costigliola
  * @author Alex Ruiz
  */

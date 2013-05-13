@@ -14,13 +14,13 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.booleanArray;
-
 import org.junit.BeforeClass;
+
+import static org.fest.assertions.ArrayFactory.booleanArray;
 
 /**
  * Tests for {@link BooleanArrayAssert#isEqualTo(boolean[])}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

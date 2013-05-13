@@ -14,15 +14,6 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedException.none;
-import static org.fest.util.Lists.newArrayList;
-import static org.fest.util.ToString.toStringOf;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-
 import org.fest.assertions.IteratorAssert.PrettyPrintIterator;
 import org.fest.test.ExpectedException;
 import org.junit.Before;
@@ -30,9 +21,16 @@ import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.util.List;
+
+import static org.fest.test.ExpectedException.none;
+import static org.fest.util.Lists.newArrayList;
+import static org.fest.util.ToString.toStringOf;
+import static org.junit.Assert.*;
+
 /**
  * Tests for {@link PrettyPrintIterator}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class PrettyPrintIterator_Iterator_Test {

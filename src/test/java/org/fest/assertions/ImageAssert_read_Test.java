@@ -14,16 +14,6 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Images.fivePixelBlueImage;
-import static org.fest.assertions.Resources.file;
-import static org.fest.test.ExpectedException.none;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.fail;
-
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
 import org.fest.test.ExpectedException;
 import org.junit.After;
 import org.junit.Rule;
@@ -31,10 +21,19 @@ import org.junit.Test;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import static org.fest.assertions.Images.fivePixelBlueImage;
+import static org.fest.assertions.Resources.file;
+import static org.fest.test.ExpectedException.none;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.fail;
 
 /**
  * Tests for {@link ImageAssert#read(String)}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  * @author Ansgar Konermann

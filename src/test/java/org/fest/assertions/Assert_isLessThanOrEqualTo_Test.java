@@ -16,7 +16,7 @@ package org.fest.assertions;
 
 /**
  * Test case for implementations of {@code isLessThanOrEqualTo}.
- * 
+ *
  * @author Alex Ruiz
  */
 public interface Assert_isLessThanOrEqualTo_Test {

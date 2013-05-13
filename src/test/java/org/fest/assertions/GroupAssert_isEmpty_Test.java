@@ -14,22 +14,22 @@
  */
 package org.fest.assertions;
 
+import org.fest.test.ExpectedException;
+import org.junit.BeforeClass;
+import org.junit.Rule;
+import org.junit.Test;
+
+import java.util.List;
+
 import static java.util.Collections.emptyList;
 import static org.fest.assertions.FailureMessages.actualIsNull;
 import static org.fest.test.ExpectedException.none;
 import static org.fest.util.Lists.newArrayList;
 import static org.fest.util.ToString.toStringOf;
 
-import java.util.List;
-
-import org.fest.test.ExpectedException;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
-
 /**
  * Tests for {@link GroupAssert#isEmpty()}.
- * 
+ *
  * @author Alex Ruiz
  */
 public final class GroupAssert_isEmpty_Test {

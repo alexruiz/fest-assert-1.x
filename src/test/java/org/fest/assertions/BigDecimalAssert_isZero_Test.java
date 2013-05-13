@@ -14,16 +14,16 @@
  */
 package org.fest.assertions;
 
-import static java.math.BigDecimal.ZERO;
-import static org.fest.assertions.BigDecimals.eight;
+import org.junit.BeforeClass;
 
 import java.math.BigDecimal;
 
-import org.junit.BeforeClass;
+import static java.math.BigDecimal.ZERO;
+import static org.fest.assertions.BigDecimals.eight;
 
 /**
  * Tests for {@link BigDecimalAssert#isZero()}.
- * 
+ *
  * @author David DIDIER
  * @author Ted M. Young
  * @author Yvonne Wang

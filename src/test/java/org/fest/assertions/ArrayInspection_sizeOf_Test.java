@@ -14,14 +14,14 @@
  */
 package org.fest.assertions;
 
+import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import org.junit.Test;
-
 /**
  * Tests for {@link ArrayInspection#sizeOf(Object)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class ArrayInspection_sizeOf_Test {
@@ -42,7 +42,7 @@ public class ArrayInspection_sizeOf_Test {
 
   @Test
   public void should_return_size_of_array() {
-    boolean[] array = { true, false };
+    boolean[] array = {true, false};
     assertEquals(2, ArrayInspection.sizeOf(array));
   }
 }

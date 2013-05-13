@@ -14,11 +14,11 @@
  */
 package org.fest.assertions;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Tests for:
@@ -28,7 +28,7 @@ import org.junit.Test;
  * <li>{@link GenericAssert#describedAs(Description)}</li>
  * <li>{@link GenericAssert#describedAs(String)}</li>
  * </ul>
- * 
+ *
  * @author Alex Ruiz
  */
 public class GenericAssert_description_Test {

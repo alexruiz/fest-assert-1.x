@@ -14,13 +14,12 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Lists.newArrayList;
-
+import javax.annotation.Nonnull;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.annotation.Nonnull;
+import static org.fest.util.Lists.newArrayList;
 
 /**
  * @author Alex Ruiz
@@ -40,13 +39,17 @@ public class TestObjectGroupAssert extends ObjectGroupAssert<TestObjectGroupAsse
     throw new UnsupportedOperationException();
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected Set<Object> actualAsSet() {
     return new LinkedHashSet<Object>(actual);
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected List<Object> actualAsList() {
     return newArrayList(actual);

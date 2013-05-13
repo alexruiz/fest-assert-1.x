@@ -14,21 +14,21 @@
  */
 package org.fest.assertions;
 
-import static java.awt.Color.RED;
-import static org.fest.assertions.Resources.file;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static java.awt.Color.RED;
+import static org.fest.assertions.Resources.file;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Tests for {@link ImageReader#read(File)}.
- * 
+ *
  * @author Yvonne Wang
  */
 public class ImageReader_reader_Test {

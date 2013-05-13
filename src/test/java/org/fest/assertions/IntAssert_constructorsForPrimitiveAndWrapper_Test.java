@@ -16,12 +16,12 @@ package org.fest.assertions;
 
 /**
  * Tests for {@link IntAssert#IntAssert(int)} and {@link IntAssert#IntAssert(Integer)}.
- * 
+ *
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
 public class IntAssert_constructorsForPrimitiveAndWrapper_Test extends
-GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<IntAssert, Integer> {
+    GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<IntAssert, Integer> {
   @Override
   protected Class<IntAssert> assertionType() {
     return IntAssert.class;

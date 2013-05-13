@@ -14,22 +14,22 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FailureMessages.actualIsNull;
-import static org.fest.assertions.MapAssert.entry;
-import static org.fest.assertions.MapFactory.map;
-import static org.fest.test.ExpectedException.none;
-
-import java.util.Map;
-
 import org.fest.assertions.MapAssert.Entry;
 import org.fest.test.ExpectedException;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.util.Map;
+
+import static org.fest.assertions.FailureMessages.actualIsNull;
+import static org.fest.assertions.MapAssert.entry;
+import static org.fest.assertions.MapFactory.map;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link MapAssert#excludes(Entry...)}.
- * 
+ *
  * @author David DIDIER
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -53,7 +53,7 @@ public class MapAssert_excludes_Test {
   @Test
   public void should_throw_error_if_entry_is_null() {
     thrown.expect(NullPointerException.class);
-    Entry[] entries = { entry("key6", 6), null };
+    Entry[] entries = {entry("key6", 6), null};
     new MapAssert(map).excludes(entries);
   }
 
@@ -125,6 +125,6 @@ public class MapAssert_excludes_Test {
   public void should_fail_with_custom_message_ignoring_description_if_actual_contains_entries() {
     thrown.expect(AssertionError.class, "My custom message");
     new MapAssert(map).as("A Test").overridingErrorMessage("My custom message")
-    .excludes(entry("key1", 1), entry("key2", 2));
+        .excludes(entry("key1", 1), entry("key2", 2));
   }
 }

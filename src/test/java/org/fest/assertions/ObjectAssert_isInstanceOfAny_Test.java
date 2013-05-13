@@ -14,16 +14,16 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FailureMessages.actualIsNull;
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.assertions.FailureMessages.actualIsNull;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link ObjectAssert#isInstanceOfAny(Class...)}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -45,7 +45,7 @@ public class ObjectAssert_isInstanceOfAny_Test {
   @Test
   public void should_throw_error_if_an_element_in_expected_is_null() {
     thrown.expect(NullPointerException.class);
-    new ObjectAssert(6).isInstanceOfAny(new Class<?>[] { null });
+    new ObjectAssert(6).isInstanceOfAny(new Class<?>[]{null});
   }
 
   @Test

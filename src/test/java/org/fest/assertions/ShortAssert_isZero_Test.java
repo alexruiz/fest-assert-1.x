@@ -18,7 +18,7 @@ import org.junit.BeforeClass;
 
 /**
  * Tests for {@link ShortAssert#isZero()}.
- * 
+ *
  * @author Yvonne Wang
  * @author David DIDIER
  * @author Alex Ruiz

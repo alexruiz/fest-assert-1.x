@@ -14,20 +14,19 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FailureMessages.actualIsNull;
-import static org.fest.assertions.FailureMessages.notEqual;
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.assertions.FailureMessages.actualIsNull;
+import static org.fest.assertions.FailureMessages.notEqual;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Test case for implementations of {@link NumberAssert#isZero()}.
- * 
+ *
  * @param <T> The type supported by the implementation of the {@code NumberAssert} to test.
- * 
  * @author Alex Ruiz
  */
 public abstract class NumberAssert_isZero_TestCase<T extends Number> {

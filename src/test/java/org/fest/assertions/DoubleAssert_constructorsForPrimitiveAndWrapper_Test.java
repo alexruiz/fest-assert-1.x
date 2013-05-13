@@ -17,12 +17,12 @@ package org.fest.assertions;
 /**
  * Tests for {@link DoubleAssert#DoubleAssert(double)} and
  * {@link DoubleAssert#DoubleAssert(Double)}.
- * 
+ *
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
 public class DoubleAssert_constructorsForPrimitiveAndWrapper_Test extends
-GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<DoubleAssert, Double> {
+    GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<DoubleAssert, Double> {
   @Override
   protected Class<DoubleAssert> assertionType() {
     return DoubleAssert.class;

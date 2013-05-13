@@ -14,15 +14,13 @@
  */
 package org.fest.assertions;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  * Tests for {@link Fail#fail(String, Throwable)}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

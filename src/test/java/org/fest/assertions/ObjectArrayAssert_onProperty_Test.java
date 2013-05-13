@@ -18,7 +18,7 @@ import java.util.Collection;
 
 /**
  * Tests for {@link ObjectArrayAssert#onProperty(String)}.
- * 
+ *
  * @author Joel Costigliola
  * @author Alex Ruiz
  */

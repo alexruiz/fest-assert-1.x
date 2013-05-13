@@ -16,7 +16,7 @@ package org.fest.assertions;
 
 /**
  * Test case for implementations of {@code doesNotHaveDuplicates}.
- * 
+ *
  * @author Alex Ruiz
  */
 public interface GroupAssert_doesNotHaveDuplicates_TestCase {

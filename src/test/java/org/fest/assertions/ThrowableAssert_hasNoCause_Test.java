@@ -14,18 +14,18 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FailureMessages.actualIsNull;
-import static org.fest.test.ExpectedException.none;
-
-import java.io.IOException;
-
 import org.fest.test.ExpectedException;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.io.IOException;
+
+import static org.fest.assertions.FailureMessages.actualIsNull;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link ThrowableAssert#hasNoCause()}.
- * 
+ *
  * @author David DIDIER
  * @author Alex Ruiz
  */

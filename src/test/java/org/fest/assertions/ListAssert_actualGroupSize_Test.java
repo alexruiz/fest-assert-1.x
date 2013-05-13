@@ -14,17 +14,17 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Lists.newArrayList;
-import static org.junit.Assert.assertEquals;
-
-import java.util.List;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.List;
+
+import static org.fest.util.Lists.newArrayList;
+import static org.junit.Assert.assertEquals;
+
 /**
  * Tests for {@link CollectionAssert#actualGroupSize()}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class ListAssert_actualGroupSize_Test {

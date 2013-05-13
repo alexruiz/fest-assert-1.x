@@ -18,7 +18,7 @@ import org.junit.BeforeClass;
 
 /**
  * Tests for {@link ByteAssert#isZero()}.
- * 
+ *
  * @author Yvonne Wang
  * @author David DIDIER
  * @author Alex Ruiz

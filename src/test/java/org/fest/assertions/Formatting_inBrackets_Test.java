@@ -14,21 +14,14 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.booleanArray;
-import static org.fest.assertions.ArrayFactory.byteArray;
-import static org.fest.assertions.ArrayFactory.charArray;
-import static org.fest.assertions.ArrayFactory.doubleArray;
-import static org.fest.assertions.ArrayFactory.floatArray;
-import static org.fest.assertions.ArrayFactory.intArray;
-import static org.fest.assertions.ArrayFactory.longArray;
-import static org.fest.assertions.ArrayFactory.shortArray;
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
+
+import static org.fest.assertions.ArrayFactory.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Tests for {@link Formatting#inBrackets(Object)}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -50,7 +43,7 @@ public class Formatting_inBrackets_Test {
 
   @Test
   public void should_surround_array_of_Objects_with_brackets() {
-    Object o = new Object[] { "First", 3 };
+    Object o = new Object[]{"First", 3};
     assertEquals("<['First', 3]>", Formatting.inBrackets(o));
   }
 

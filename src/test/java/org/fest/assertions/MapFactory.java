@@ -14,10 +14,10 @@
  */
 package org.fest.assertions;
 
+import org.fest.assertions.MapAssert.Entry;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import org.fest.assertions.MapAssert.Entry;
 
 /**
  * @author Alex Ruiz
@@ -31,5 +31,6 @@ final class MapFactory {
     return map;
   }
 
-  private MapFactory() {}
+  private MapFactory() {
+  }
 }

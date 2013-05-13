@@ -14,18 +14,18 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.objectArray;
-
 import org.junit.BeforeClass;
+
+import static org.fest.assertions.ArrayFactory.objectArray;
 
 /**
  * Tests for {@link ObjectArrayAssert#isNotEqualTo(Object[])}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class ObjectArrayAssert_isNotEqualTo_Test extends
-GenericAssert_isNotEqualTo_TestCase<ObjectArrayAssert, Object[]> {
+    GenericAssert_isNotEqualTo_TestCase<ObjectArrayAssert, Object[]> {
   private static Object[] notNullValue;
   private static Object[] unequalValue;
 

@@ -14,15 +14,15 @@
  */
 package org.fest.assertions;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 /**
  * Tests for {@link Assert#equals(Object)} and {@link Assert#hashCode()}.
- * 
+ *
  * @author Yvonne Wang
  */
 public class Assert_equals_hashCode_Test {

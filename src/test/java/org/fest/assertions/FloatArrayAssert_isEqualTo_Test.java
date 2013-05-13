@@ -14,13 +14,13 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.floatArray;
-
 import org.junit.BeforeClass;
+
+import static org.fest.assertions.ArrayFactory.floatArray;
 
 /**
  * Tests for {@link FloatArrayAssert#isEqualTo(float[])}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

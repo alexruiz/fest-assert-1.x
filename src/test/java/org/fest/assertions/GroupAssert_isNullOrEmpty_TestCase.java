@@ -16,7 +16,7 @@ package org.fest.assertions;
 
 /**
  * Test case for implementations of {@link GroupAssert#isNullOrEmpty()}.
- * 
+ *
  * @author Alex Ruiz
  */
 public interface GroupAssert_isNullOrEmpty_TestCase {

@@ -16,7 +16,7 @@ package org.fest.assertions;
 
 /**
  * Test case for implementations of {@code contains}.
- * 
+ *
  * @author Alex Ruiz
  */
 public interface GroupAssert_contains_TestCase {

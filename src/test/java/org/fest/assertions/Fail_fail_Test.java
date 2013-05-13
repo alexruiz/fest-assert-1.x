@@ -18,7 +18,7 @@ import org.junit.Test;
 
 /**
  * Tests for {@link Fail#fail()}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

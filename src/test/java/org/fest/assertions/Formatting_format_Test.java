@@ -14,13 +14,13 @@
  */
 package org.fest.assertions;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Tests for {@link Formatting#format(String)}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

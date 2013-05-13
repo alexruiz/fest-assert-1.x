@@ -16,12 +16,12 @@ package org.fest.assertions;
 
 /**
  * Tests for {@link CharAssert#CharAssert(char)} and {@link CharAssert#CharAssert(Character)}.
- * 
+ *
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
 public class CharAssert_constructorsForPrimitiveAndWrapper_Test extends
-GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<CharAssert, Character> {
+    GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<CharAssert, Character> {
   @Override
   protected Class<CharAssert> assertionType() {
     return CharAssert.class;

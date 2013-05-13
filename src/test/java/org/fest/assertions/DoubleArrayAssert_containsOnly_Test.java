@@ -14,19 +14,19 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.doubleArray;
-import static org.fest.assertions.EmptyArrays.emptyDoubleArray;
-import static org.fest.assertions.FailureMessages.actualIsNull;
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.assertions.ArrayFactory.doubleArray;
+import static org.fest.assertions.EmptyArrays.emptyDoubleArray;
+import static org.fest.assertions.FailureMessages.actualIsNull;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link DoubleArrayAssert#containsOnly(double...)}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -101,7 +101,7 @@ public class DoubleArrayAssert_containsOnly_Test implements GroupAssert_contains
   public void should_fail_with_custom_message_ignoring_description_if_actual_is_empty_and_expecting_at_least_one_element() {
     thrown.expect(AssertionError.class, "My custom message");
     new DoubleArrayAssert(emptyDoubleArray()).as("A Test").overridingErrorMessage("My custom message")
-    .containsOnly(doubleArray(5323.2));
+        .containsOnly(doubleArray(5323.2));
   }
 
   @Override
@@ -130,7 +130,7 @@ public class DoubleArrayAssert_containsOnly_Test implements GroupAssert_contains
   public void should_fail_with_custom_message_ignoring_description_if_actual_contains_unexpected_values() {
     thrown.expect(AssertionError.class, "My custom message");
     new DoubleArrayAssert(array).as("A Test").overridingErrorMessage("My custom message")
-    .containsOnly(doubleArray(8.66));
+        .containsOnly(doubleArray(8.66));
   }
 
   @Override
@@ -159,6 +159,6 @@ public class DoubleArrayAssert_containsOnly_Test implements GroupAssert_contains
   public void should_fail_with_custom_message_ignoring_description_if_actual_does_not_contain_all_the_expected_values() {
     thrown.expect(AssertionError.class, "My custom message");
     new DoubleArrayAssert(array).as("A Test").overridingErrorMessage("My custom message")
-    .containsOnly(doubleArray(5323.2));
+        .containsOnly(doubleArray(5323.2));
   }
 }

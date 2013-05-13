@@ -14,17 +14,17 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FailureMessages.notEqual;
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.assertions.FailureMessages.notEqual;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link GenericAssert#isEqualTo(Object)}.
- * 
+ *
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */

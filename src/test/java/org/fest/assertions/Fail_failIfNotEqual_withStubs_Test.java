@@ -14,10 +14,6 @@
  */
 package org.fest.assertions;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.fail;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.ComparisonFailure;
@@ -25,9 +21,11 @@ import org.junit.Test;
 
 import javax.annotation.Nonnull;
 
+import static org.junit.Assert.*;
+
 /**
  * Tests for {@link Fail#failIfNotEqual(String, Description, Object, Object)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class Fail_failIfNotEqual_withStubs_Test {
@@ -36,8 +34,7 @@ public class Fail_failIfNotEqual_withStubs_Test {
   @Before
   public void setUp() {
     invoker = new ConstructorInvoker() {
-      @Override
-      Object newInstance(
+      @Override Object newInstance(
           @Nonnull String className, @Nonnull Class<?>[] parameterTypes, @Nonnull Object[] parameterValues) {
         // simulate that ComparisonFailure cannot be created (e.g. if JUnit is not in the classpath)
         return null;

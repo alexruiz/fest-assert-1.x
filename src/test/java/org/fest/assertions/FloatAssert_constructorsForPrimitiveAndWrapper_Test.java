@@ -17,12 +17,12 @@ package org.fest.assertions;
 /**
  * Tests for {@link FloatAssert#FloatAssert(float)} and {@link FloatAssert#FloatAssert(Float)}
  * .
- * 
+ *
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
 public class FloatAssert_constructorsForPrimitiveAndWrapper_Test extends
-GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<FloatAssert, Float> {
+    GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<FloatAssert, Float> {
   @Override
   protected Class<FloatAssert> assertionType() {
     return FloatAssert.class;

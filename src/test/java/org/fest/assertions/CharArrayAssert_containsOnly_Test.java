@@ -14,18 +14,18 @@
  */
 package org.fest.assertions;
 
+import org.fest.test.ExpectedException;
+import org.junit.Rule;
+import org.junit.Test;
+
 import static org.fest.assertions.ArrayFactory.charArray;
 import static org.fest.assertions.EmptyArrays.emptyCharArray;
 import static org.fest.assertions.FailureMessages.actualIsNull;
 import static org.fest.test.ExpectedException.none;
 
-import org.fest.test.ExpectedException;
-import org.junit.Rule;
-import org.junit.Test;
-
 /**
  * Tests for {@link CharArrayAssert#containsOnly(char...)}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -92,7 +92,7 @@ public class CharArrayAssert_containsOnly_Test implements GroupAssert_containsOn
   public void should_fail_with_custom_message_ignoring_description_if_actual_is_empty_and_expecting_at_least_one_element() {
     thrown.expect(AssertionError.class, "My custom message");
     new CharArrayAssert(emptyCharArray()).as("A Test").overridingErrorMessage("My custom message")
-    .containsOnly(charArray('c', 'd'));
+        .containsOnly(charArray('c', 'd'));
   }
 
   @Override

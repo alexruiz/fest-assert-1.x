@@ -14,18 +14,18 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.charArray;
-import static org.fest.assertions.EmptyArrays.emptyCharArray;
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.assertions.ArrayFactory.charArray;
+import static org.fest.assertions.EmptyArrays.emptyCharArray;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link CharArrayAssert#isNullOrEmpty()}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

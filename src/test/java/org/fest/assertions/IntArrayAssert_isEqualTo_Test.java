@@ -14,13 +14,13 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.intArray;
-
 import org.junit.BeforeClass;
+
+import static org.fest.assertions.ArrayFactory.intArray;
 
 /**
  * Tests for {@link IntArrayAssert#isEqualTo(int[])}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

@@ -14,19 +14,19 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Lists.newArrayList;
-import static org.junit.Assert.assertTrue;
-
-import java.util.Collection;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import java.util.Collection;
+
+import static org.fest.util.Lists.newArrayList;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Tests for {@link PropertySupport#isNestedProperty(String)}.
- * 
+ *
  * @author Joel Costigliola
  * @author Alex Ruiz
  */
@@ -34,7 +34,7 @@ import org.junit.runners.Parameterized.Parameters;
 public class PropertySupport_isNestedProperty_withNestedProperties_Test {
   @Parameters
   public static Collection<Object[]> propertyNames() {
-    return newArrayList(new Object[][] { { "person.name" }, { "address.street" } });
+    return newArrayList(new Object[][]{{"person.name"}, {"address.street"}});
   }
 
   private final String propertyName;

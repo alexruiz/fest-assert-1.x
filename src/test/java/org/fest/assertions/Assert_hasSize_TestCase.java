@@ -16,7 +16,7 @@ package org.fest.assertions;
 
 /**
  * Test case for implementations of {@code hasSize(int)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public interface Assert_hasSize_TestCase {

@@ -14,20 +14,20 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.MapAssert.entry;
-import static org.fest.test.ExpectedException.none;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import org.fest.test.ExpectedException;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import static org.fest.assertions.MapAssert.entry;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for bug <a href="http://jira.codehaus.org/browse/FEST-329" target="_blank">FEST-329</a>.
- * 
+ *
  * @author Yvonne Wang
  */
 public class FEST329_containsEntryFails_Test {

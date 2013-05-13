@@ -14,15 +14,15 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Assertions.assertThat;
-import static org.junit.Assert.fail;
-
 import org.junit.Assert;
 import org.junit.Test;
 
+import static org.fest.assertions.Assertions.assertThat;
+import static org.junit.Assert.fail;
+
 /**
  * Tests for bug <a href="http://jira.codehaus.org/browse/FEST-234" target="_blank">FEST-234</a>.
- * 
+ *
  * @author Alex Ruiz
  */
 public class FEST234_overrideErrorMessage_Test {

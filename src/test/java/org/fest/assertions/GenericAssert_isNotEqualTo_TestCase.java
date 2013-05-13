@@ -14,26 +14,25 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FailureMessages.equal;
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.assertions.FailureMessages.equal;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Base class for testing {@link GenericAssert#isNotEqualTo(Object)}.
- * 
+ *
  * @param <S> used to simulate "self types." For more information please read &quot;<a href="http://goo.gl/fjgOM"
- *          target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ *            target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
  * @param <A> The type supported by the implementation of the {@code GenericAssert} to test.
- * 
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
 public abstract class GenericAssert_isNotEqualTo_TestCase<S extends GenericAssert<S, A>, A> extends
-GenericAssert_TestCase<S, A> implements Assert_isNotEqualTo_TestCase {
+    GenericAssert_TestCase<S, A> implements Assert_isNotEqualTo_TestCase {
   @Rule
   public ExpectedException thrown = none();
 

@@ -14,18 +14,18 @@
  */
 package org.fest.assertions;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import static org.fest.assertions.Mocks.createComparisonFailureFrom;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
 /**
  * Tests for {@link ComparisonFailureFactory#comparisonFailure(String, Object, Object)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class ComparisonFailureFactory_comparisonFailure_withMocks_Test {

@@ -19,7 +19,7 @@ import org.junit.Test;
 
 /**
  * Tests for {@link Condition#Condition(String)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class Condition_constructorWithDescription_Test {

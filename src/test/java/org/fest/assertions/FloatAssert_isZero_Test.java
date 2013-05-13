@@ -18,7 +18,7 @@ import org.junit.BeforeClass;
 
 /**
  * Test for {@link FloatAssert#isZero()}.
- * 
+ *
  * @author Yvonne Wang
  * @author David DIDIER
  * @author Alex Ruiz

@@ -14,13 +14,6 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FileContentComparator.LineDiff.lineDiff;
-import static org.fest.assertions.Resources.file;
-import static org.fest.util.Lists.newArrayList;
-import static org.junit.Assert.assertEquals;
-
-import java.util.Collection;
-
 import org.fest.assertions.FileContentComparator.LineDiff;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,9 +21,16 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import java.util.Collection;
+
+import static org.fest.assertions.FileContentComparator.LineDiff.lineDiff;
+import static org.fest.assertions.Resources.file;
+import static org.fest.util.Lists.newArrayList;
+import static org.junit.Assert.assertEquals;
+
 /**
  * Tests for {@link FileContentComparator#compareContents(java.io.File, java.io.File)}.
- * 
+ *
  * @author David DIDIER
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -45,20 +45,22 @@ public class FileContentComparator_compareContents_withDifferentFiles_Test {
 
   @Parameters
   public static Collection<Object[]> differentFiles() {
-    return newArrayList(new Object[][] {
-        { "fileAssertTest2.txt", "fileAssertTest3.txt",
-          diffs(lineDiff(1, "abcde fghij abcde fghij", "abcde fghij abcde fghij z")) },
-          { "fileAssertTest1.txt", "fileAssertTest2.txt",
-            diffs(lineDiff(0, "this file is 22 bytes.", "abcde fghij"), lineDiff(0, "EOF", "abcde fghij")) },
-            { "fileAssertTest2.txt", "fileAssertTest1.txt",
-              diffs(lineDiff(0, "abcde fghij", "this file is 22 bytes."), lineDiff(0, "abcde fghij", "EOF")) } });
+    return newArrayList(new Object[][]{
+        {"fileAssertTest2.txt", "fileAssertTest3.txt",
+            diffs(lineDiff(1, "abcde fghij abcde fghij", "abcde fghij abcde fghij z"))},
+        {"fileAssertTest1.txt", "fileAssertTest2.txt",
+            diffs(lineDiff(0, "this file is 22 bytes.", "abcde fghij"), lineDiff(0, "EOF", "abcde fghij"))},
+        {"fileAssertTest2.txt", "fileAssertTest1.txt",
+            diffs(lineDiff(0, "abcde fghij", "this file is 22 bytes."), lineDiff(0, "abcde fghij", "EOF"))}});
   }
 
   private static LineDiff[] diffs(LineDiff... diffs) {
     return diffs;
   }
 
-  public FileContentComparator_compareContents_withDifferentFiles_Test(String actual, String expected, LineDiff[] diffs) {
+  public FileContentComparator_compareContents_withDifferentFiles_Test(String actual,
+                                                                       String expected,
+                                                                       LineDiff[] diffs) {
     this.actual = actual;
     this.expected = expected;
     this.diffs = diffs;

@@ -14,14 +14,6 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Resources.file;
-import static org.fest.test.ParameterSource.parametersFrom;
-import static org.fest.util.Lists.newArrayList;
-import static org.junit.Assert.assertEquals;
-
-import java.util.Collection;
-import java.util.List;
-
 import org.fest.assertions.FileContentComparator.LineDiff;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,9 +21,17 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import java.util.Collection;
+import java.util.List;
+
+import static org.fest.assertions.Resources.file;
+import static org.fest.test.ParameterSource.parametersFrom;
+import static org.fest.util.Lists.newArrayList;
+import static org.junit.Assert.assertEquals;
+
 /**
  * Tests for {@link FileContentComparator#compareContents(java.io.File, java.io.File)}.
- * 
+ *
  * @author David DIDIER
  * @author Yvonne Wang
  * @author Alex Ruiz

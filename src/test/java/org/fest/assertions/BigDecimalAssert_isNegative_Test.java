@@ -14,18 +14,18 @@
  */
 package org.fest.assertions;
 
+import org.fest.test.ExpectedException;
+import org.junit.Rule;
+import org.junit.Test;
+
 import static java.math.BigDecimal.ZERO;
 import static org.fest.assertions.BigDecimals.eight;
 import static org.fest.assertions.BigDecimals.negativeEight;
 import static org.fest.test.ExpectedException.none;
 
-import org.fest.test.ExpectedException;
-import org.junit.Rule;
-import org.junit.Test;
-
 /**
  * Tests for {@link BigDecimalAssert#isNegative()}.
- * 
+ *
  * @author David DIDIER
  * @author Ted M. Young
  * @author Yvonne Wang

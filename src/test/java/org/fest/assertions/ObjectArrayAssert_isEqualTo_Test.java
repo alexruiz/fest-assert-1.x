@@ -14,13 +14,13 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.objectArray;
-
 import org.junit.BeforeClass;
+
+import static org.fest.assertions.ArrayFactory.objectArray;
 
 /**
  * Tests for {@link ObjectArrayAssert#isEqualTo(Object[])}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

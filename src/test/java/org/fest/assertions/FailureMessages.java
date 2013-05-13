@@ -14,13 +14,13 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Strings.isNullOrEmpty;
-import static org.fest.util.ToString.toStringOf;
+import org.junit.ComparisonFailure;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import org.junit.ComparisonFailure;
+import static org.fest.util.Strings.isNullOrEmpty;
+import static org.fest.util.ToString.toStringOf;
 
 /**
  * @author Alex Ruiz

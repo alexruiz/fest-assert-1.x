@@ -14,19 +14,19 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.shortArray;
-import static org.fest.assertions.EmptyArrays.emptyShortArray;
-import static org.fest.assertions.FailureMessages.actualIsNull;
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.assertions.ArrayFactory.shortArray;
+import static org.fest.assertions.EmptyArrays.emptyShortArray;
+import static org.fest.assertions.FailureMessages.actualIsNull;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link ShortArrayAssert#containsOnly(short...)}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -100,7 +100,7 @@ public class ShortArrayAssert_containsOnly_Test implements GroupAssert_containsO
   public void should_fail_with_custom_message_ignoring_description_if_actual_is_empty_and_expecting_at_least_one_element() {
     thrown.expect(AssertionError.class, "My custom message");
     new ShortArrayAssert(emptyShortArray()).as("A Test").overridingErrorMessage("My custom message")
-    .containsOnly(shortArray(7));
+        .containsOnly(shortArray(7));
   }
 
   @Override

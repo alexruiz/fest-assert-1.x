@@ -21,8 +21,8 @@ import static org.mockito.Matchers.eq;
  */
 final class Mocks {
   static Object createComparisonFailureFrom(ConstructorInvoker invoker) {
-    Class<?>[] paramTypes = { String.class, String.class, String.class };
-    Object[] args = { "[message]", "'expected'", "'actual'" };
+    Class<?>[] paramTypes = {String.class, String.class, String.class};
+    Object[] args = {"[message]", "'expected'", "'actual'"};
     try {
       return invoker.newInstance(eq("org.junit.ComparisonFailure"), eq(paramTypes), eq(args));
     } catch (Exception e) {
@@ -30,5 +30,6 @@ final class Mocks {
     }
   }
 
-  private Mocks() {}
+  private Mocks() {
+  }
 }

@@ -14,20 +14,20 @@
  */
 package org.fest.assertions;
 
+import org.fest.test.ExpectedException;
+import org.junit.Rule;
+import org.junit.Test;
+
+import java.math.BigDecimal;
+
 import static org.fest.assertions.BigDecimals.eight;
 import static org.fest.assertions.BigDecimals.seven;
 import static org.fest.assertions.FailureMessages.actualIsNull;
 import static org.fest.test.ExpectedException.none;
 
-import java.math.BigDecimal;
-
-import org.fest.test.ExpectedException;
-import org.junit.Rule;
-import org.junit.Test;
-
 /**
  * Tests for {@link BigDecimalAssert#isNotEqualByComparingTo(BigDecimal)}.
- * 
+ *
  * @author David DIDIER
  * @author Ted M. Young
  * @author Yvonne Wang

@@ -14,14 +14,14 @@
  */
 package org.fest.assertions;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * Tests for {@link PropertySupport#removeFirstPropertyIfNested(String)}.
- * 
+ *
  * @author Joel Costigliola
  * @author Alex Ruiz
  */

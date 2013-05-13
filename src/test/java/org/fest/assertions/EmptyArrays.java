@@ -66,5 +66,6 @@ final class EmptyArrays {
     return EMPTY_OBJECT_ARRAY;
   }
 
-  private EmptyArrays() {}
+  private EmptyArrays() {
+  }
 }

@@ -14,18 +14,18 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.MapFactory.map;
-import static org.junit.Assert.assertEquals;
-
-import java.util.Map;
-
 import org.fest.assertions.MapAssert.Entry;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.Map;
+
+import static org.fest.assertions.MapFactory.map;
+import static org.junit.Assert.assertEquals;
+
 /**
  * Tests for {@link MapAssert#actualGroupSize()}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class MapAssert_actualGroupSize_Test {

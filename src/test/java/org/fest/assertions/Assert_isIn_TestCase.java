@@ -16,7 +16,7 @@ package org.fest.assertions;
 
 /**
  * Test case for implementations of {@code isIn} assertion.
- * 
+ *
  * @author Joel Costigliola
  */
 public interface Assert_isIn_TestCase {

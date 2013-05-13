@@ -16,12 +16,12 @@ package org.fest.assertions;
 
 /**
  * Tests for {@link LongAssert#LongAssert(long)} and {@link LongAssert#LongAssert(Long)}.
- * 
+ *
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
 public class LongAssert_constructorsForPrimitiveAndWrapper_Test extends
-GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<LongAssert, Long> {
+    GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<LongAssert, Long> {
   @Override
   protected Class<LongAssert> assertionType() {
     return LongAssert.class;

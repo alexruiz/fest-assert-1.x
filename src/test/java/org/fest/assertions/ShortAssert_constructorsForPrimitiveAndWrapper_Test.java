@@ -17,12 +17,12 @@ package org.fest.assertions;
 /**
  * Tests for {@link ShortAssert#ShortAssert(short)} and {@link ShortAssert#ShortAssert(Short)}
  * .
- * 
+ *
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
 public class ShortAssert_constructorsForPrimitiveAndWrapper_Test extends
-GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<ShortAssert, Short> {
+    GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<ShortAssert, Short> {
   @Override
   protected Class<ShortAssert> assertionType() {
     return ShortAssert.class;

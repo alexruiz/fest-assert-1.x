@@ -14,17 +14,17 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Delta.delta;
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.ComparisonFailure;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.assertions.Delta.delta;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Test for {@link DoubleAssert#isEqualTo(Double, Delta)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class DoubleAssert_isEqualTo_withDoubleAndDelta_Test {
@@ -63,7 +63,7 @@ public class DoubleAssert_isEqualTo_withDoubleAndDelta_Test {
   public void should_fail_with_custom_message_ignoring_description_if_actual_and_expected_are_not_equal() {
     thrown.expect(AssertionError.class, "My custom message");
     new DoubleAssert(8.688).as("A Test").overridingErrorMessage("My custom message")
-    .isEqualTo(new Double(8.888), delta(0.009));
+        .isEqualTo(new Double(8.888), delta(0.009));
   }
 
   @Test
@@ -88,6 +88,6 @@ public class DoubleAssert_isEqualTo_withDoubleAndDelta_Test {
   public void should_fail_with_custom_message_ignoring_description_if_actual_is_null_and_expected_is_not_null() {
     thrown.expect(AssertionError.class, "My custom message");
     new DoubleAssert(null).as("A Test").overridingErrorMessage("My custom message")
-    .isEqualTo(new Double(8), delta(0.1));
+        .isEqualTo(new Double(8), delta(0.1));
   }
 }

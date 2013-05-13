@@ -14,14 +14,14 @@
  */
 package org.fest.assertions;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * Tests for {@link ObjectArrayAssert#actualGroupSize()}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class ObjectArrayAssert_actualGroupSize_Test {
@@ -29,7 +29,7 @@ public class ObjectArrayAssert_actualGroupSize_Test {
 
   @BeforeClass
   public static void setUpOnce() {
-    Object[] actual = { "Luke", "Yoda", "Leia" };
+    Object[] actual = {"Luke", "Yoda", "Leia"};
     assertions = new ObjectArrayAssert(actual);
   }
 

@@ -14,18 +14,18 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.doubleArray;
-import static org.fest.assertions.Delta.delta;
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.assertions.ArrayFactory.doubleArray;
+import static org.fest.assertions.Delta.delta;
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for {@link DoubleArrayAssert#isEqualTo(double[], Delta)}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -106,7 +106,7 @@ public class DoubleArrayAssert_isEqualTo_withDelta_Test {
   public void should_fail_with_custom_message_ignoring_description_if_arrays_do_not_have_equal_size() {
     thrown.expect(AssertionError.class, "My custom message");
     new DoubleArrayAssert(array).as("A Test").overridingErrorMessage("My custom message")
-    .isEqualTo(doubleArray(5323.2), delta(0.1));
+        .isEqualTo(doubleArray(5323.2), delta(0.1));
   }
 
   @Test
@@ -132,6 +132,6 @@ public class DoubleArrayAssert_isEqualTo_withDelta_Test {
   public void should_fail_with_custom_message_ignoring_description_if_actual_and_expected_are_not_equal() {
     thrown.expect(AssertionError.class, "My custom message");
     new DoubleArrayAssert(array).as("A Test").overridingErrorMessage("My custom message")
-    .isEqualTo(doubleArray(55.0, 4345.0), delta(0.1));
+        .isEqualTo(doubleArray(55.0, 4345.0), delta(0.1));
   }
 }

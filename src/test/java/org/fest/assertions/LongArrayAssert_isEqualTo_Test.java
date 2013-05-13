@@ -14,13 +14,13 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.longArray;
-
 import org.junit.BeforeClass;
+
+import static org.fest.assertions.ArrayFactory.longArray;
 
 /**
  * Tests for {@link LongArrayAssert#isEqualTo(long[])}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

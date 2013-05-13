@@ -16,7 +16,7 @@ package org.fest.assertions;
 
 /**
  * Test case for implementations of {@code excludes}.
- * 
+ *
  * @author Alex Ruiz
  */
 public interface GroupAssert_excludes_TestCase {

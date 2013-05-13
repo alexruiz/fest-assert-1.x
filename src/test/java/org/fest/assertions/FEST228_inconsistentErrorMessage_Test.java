@@ -14,15 +14,15 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedException.none;
-
 import org.fest.test.ExpectedException;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static org.fest.test.ExpectedException.none;
+
 /**
  * Tests for bug <a href="http://jira.codehaus.org/browse/FEST-228" target="_blank">FEST-228</a>.
- * 
+ *
  * @author Alex Ruiz
  */
 public class FEST228_inconsistentErrorMessage_Test {

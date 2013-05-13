@@ -16,7 +16,7 @@ package org.fest.assertions;
 
 /**
  * A simple class to test onProperty collection/list/array assertions.
- * 
+ *
  * @author Joel Costigliola
  */
 public class Name {

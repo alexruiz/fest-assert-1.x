@@ -18,7 +18,7 @@ import org.junit.Test;
 
 /**
  * Tests for bug <a href="http://jira.codehaus.org/browse/FEST-378" target="_blank">FEST-378</a>.
- * 
+ *
  * @author Alex Ruiz
  */
 public class FEST378_npeWithNullIterable_Test {

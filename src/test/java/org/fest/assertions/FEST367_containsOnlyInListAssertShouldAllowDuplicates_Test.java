@@ -14,15 +14,15 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Lists.newArrayList;
+import org.junit.Test;
 
 import java.util.List;
 
-import org.junit.Test;
+import static org.fest.util.Lists.newArrayList;
 
 /**
  * Tests for bug <a href="http://jira.codehaus.org/browse/FEST-367" target="_blank">FEST-367</a>.
- * 
+ *
  * @author Yvonne Wang
  */
 public class FEST367_containsOnlyInListAssertShouldAllowDuplicates_Test {

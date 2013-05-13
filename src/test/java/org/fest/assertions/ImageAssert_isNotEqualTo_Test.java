@@ -14,19 +14,17 @@
  */
 package org.fest.assertions;
 
-import static java.awt.Color.BLUE;
-import static org.fest.assertions.Images.fivePixelBlueImage;
-import static org.fest.assertions.Images.fivePixelYellowImage;
-import static org.fest.assertions.Images.image;
-
-import java.awt.image.BufferedImage;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.awt.image.BufferedImage;
+
+import static java.awt.Color.BLUE;
+import static org.fest.assertions.Images.*;
+
 /**
  * Tests for {@link ImageAssert#isNotEqualTo(BufferedImage)}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

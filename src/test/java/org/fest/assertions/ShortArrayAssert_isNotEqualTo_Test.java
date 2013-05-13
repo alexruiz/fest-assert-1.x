@@ -14,13 +14,13 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.shortArray;
-
 import org.junit.BeforeClass;
+
+import static org.fest.assertions.ArrayFactory.shortArray;
 
 /**
  * Tests for {@link ShortArrayAssert#isNotEqualTo(short[])}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

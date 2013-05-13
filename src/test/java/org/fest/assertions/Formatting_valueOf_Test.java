@@ -14,14 +14,14 @@
  */
 package org.fest.assertions;
 
+import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import org.junit.Test;
-
 /**
  * Tests for {@link Formatting#valueOf(Description)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class Formatting_valueOf_Test {
