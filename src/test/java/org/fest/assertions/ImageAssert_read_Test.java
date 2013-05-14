@@ -71,7 +71,7 @@ public class ImageAssert_read_Test {
     }
   }
 
-  private String pathOf(String fileName) {
+  private String pathOf(String fileName) throws IOException {
     return file(fileName).getPath();
   }
 

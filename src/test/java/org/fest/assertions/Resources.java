@@ -15,17 +15,27 @@
 package org.fest.assertions;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 /**
  * @author Yvonne Wang
  */
 public final class Resources {
-  private static final File DIRECTORY = new File("src/test/resources/org/fest/assertions");
-
-  public static File file(String name) {
-    return new File(DIRECTORY, name);
-  }
+  private static final String PARENT_DIR_PATH = "org/fest/assertions/";
 
   private Resources() {
+  }
+
+  public static File file(String name) throws IOException {
+    URL resourceUrl = Resources.class.getClassLoader().getResource(PARENT_DIR_PATH);
+    File parent;
+    try {
+      parent = new File(resourceUrl.toURI());
+    } catch (URISyntaxException e) {
+      throw new IOException("Unable to get directory " + PARENT_DIR_PATH, e);
+    }
+    return new File(parent, name);
   }
 }
