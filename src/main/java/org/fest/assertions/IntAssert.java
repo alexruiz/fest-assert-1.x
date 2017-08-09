@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static java.lang.Integer.valueOf;
 import static org.fest.assertions.ErrorMessages.*;
@@ -59,7 +59,7 @@ public class IntAssert extends GenericAssert<IntAssert, Integer> implements Numb
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Integer} is not equal to the given one.
    */
-  public @Nonnull IntAssert isEqualTo(int expected) {
+  public @NotNull IntAssert isEqualTo(int expected) {
     return isEqualTo(valueOf(expected));
   }
 
@@ -70,7 +70,7 @@ public class IntAssert extends GenericAssert<IntAssert, Integer> implements Numb
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Integer} is equal to the given one.
    */
-  public @Nonnull IntAssert isNotEqualTo(int other) {
+  public @NotNull IntAssert isNotEqualTo(int other) {
     return isNotEqualTo(valueOf(other));
   }
 
@@ -81,7 +81,7 @@ public class IntAssert extends GenericAssert<IntAssert, Integer> implements Numb
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Integer} is not greater than the given one.
    */
-  public @Nonnull IntAssert isGreaterThan(int other) {
+  public @NotNull IntAssert isGreaterThan(int other) {
     if (actual > other) {
       return this;
     }
@@ -96,7 +96,7 @@ public class IntAssert extends GenericAssert<IntAssert, Integer> implements Numb
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Integer} is not less than the given one.
    */
-  public @Nonnull IntAssert isLessThan(int other) {
+  public @NotNull IntAssert isLessThan(int other) {
     if (actual < other) {
       return this;
     }
@@ -111,7 +111,7 @@ public class IntAssert extends GenericAssert<IntAssert, Integer> implements Numb
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Integer} is not greater than or equal to the given one.
    */
-  public @Nonnull IntAssert isGreaterThanOrEqualTo(int other) {
+  public @NotNull IntAssert isGreaterThanOrEqualTo(int other) {
     if (actual >= other) {
       return this;
     }
@@ -126,7 +126,7 @@ public class IntAssert extends GenericAssert<IntAssert, Integer> implements Numb
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Integer} is not less than or equal to the given one.
    */
-  public @Nonnull IntAssert isLessThanOrEqualTo(int other) {
+  public @NotNull IntAssert isLessThanOrEqualTo(int other) {
     if (actual <= other) {
       return this;
     }
@@ -141,7 +141,7 @@ public class IntAssert extends GenericAssert<IntAssert, Integer> implements Numb
    * @throws AssertionError if the actual {@code Integer} is not equal to zero.
    */
   @Override
-  public @Nonnull IntAssert isZero() {
+  public @NotNull IntAssert isZero() {
     return isEqualTo(ZERO);
   }
 
@@ -152,7 +152,7 @@ public class IntAssert extends GenericAssert<IntAssert, Integer> implements Numb
    * @throws AssertionError if the actual {@code Integer} is not positive.
    */
   @Override
-  public @Nonnull IntAssert isPositive() {
+  public @NotNull IntAssert isPositive() {
     return isGreaterThan(ZERO);
   }
 
@@ -163,7 +163,7 @@ public class IntAssert extends GenericAssert<IntAssert, Integer> implements Numb
    * @throws AssertionError if the actual {@code Integer} is not negative.
    */
   @Override
-  public @Nonnull IntAssert isNegative() {
+  public @NotNull IntAssert isNegative() {
     return isLessThan(ZERO);
   }
 }

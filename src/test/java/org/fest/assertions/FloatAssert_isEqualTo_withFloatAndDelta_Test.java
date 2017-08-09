@@ -43,13 +43,13 @@ public class FloatAssert_isEqualTo_withFloatAndDelta_Test {
 
   @Test
   public void should_fail_if_actual_and_expected_are_not_equal() {
-    thrown.expect(AssertionError.class, "expected:<8.888f> but was:<8.688f> using delta:<0.0090f>");
+    thrown.expect(AssertionError.class, "expected:<8.888f> but was:<8.688f> using delta:<0.009f>");
     new FloatAssert(8.688f).isEqualTo(new Float(8.888), delta(0.009));
   }
 
   @Test
   public void should_fail_and_display_description_if_actual_and_expected_are_not_equal() {
-    thrown.expect(AssertionError.class, "[A Test] expected:<8.888f> but was:<8.688f> using delta:<0.0090f>");
+    thrown.expect(AssertionError.class, "[A Test] expected:<8.888f> but was:<8.688f> using delta:<0.009f>");
     new FloatAssert(8.688f).as("A Test").isEqualTo(new Float(8.888), delta(0.009));
   }
 

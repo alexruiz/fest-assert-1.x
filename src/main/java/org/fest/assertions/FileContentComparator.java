@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.io.*;
 import java.util.List;
 
@@ -41,7 +41,7 @@ class FileContentComparator {
    * href="http://junit-addons.sourceforge.net/junitx/framework/FileAssert.html" target="_blank">FileAssert</a> (from <a
    * href="http://sourceforge.net/projects/junit-addons">JUnit-addons</a>.)
    */
-  @Nonnull LineDiff[] compareContents(@Nonnull File actual, @Nonnull File expected) throws IOException {
+  @NotNull LineDiff[] compareContents(@NotNull File actual, @NotNull File expected) throws IOException {
     InputStream ais = null;
     InputStream eis = null;
     try {
@@ -55,12 +55,12 @@ class FileContentComparator {
     }
   }
 
-  private @Nonnull LineNumberReader readerFor(@Nonnull InputStream inputStream) {
+  private @NotNull LineNumberReader readerFor(@NotNull InputStream inputStream) {
     return new LineNumberReader(new BufferedReader(new InputStreamReader(inputStream)));
   }
 
-  private @Nonnull List<LineDiff> verifyEqualContent(
-      @Nonnull LineNumberReader actual, @Nonnull LineNumberReader expected) throws IOException {
+  private @NotNull List<LineDiff> verifyEqualContent(
+      @NotNull LineNumberReader actual, @NotNull LineNumberReader expected) throws IOException {
     List<LineDiff> diffs = newArrayList();
     while (true) {
       if (!expected.ready() && !actual.ready()) {

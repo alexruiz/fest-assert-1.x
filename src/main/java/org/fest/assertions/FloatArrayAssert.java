@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 
 import static org.fest.assertions.ArrayInspection.copy;
@@ -49,7 +49,7 @@ public class FloatArrayAssert extends ArrayAssert<FloatArrayAssert, float[]> {
    * @throws NullPointerException if the given {@code float} array is {@code null}.
    * @throws AssertionError       if the actual {@code float} array does not contain the given values.
    */
-  public @Nonnull FloatArrayAssert contains(@Nonnull float... values) {
+  public @NotNull FloatArrayAssert contains(@NotNull float... values) {
     assertContains(copy(values));
     return this;
   }
@@ -64,7 +64,7 @@ public class FloatArrayAssert extends ArrayAssert<FloatArrayAssert, float[]> {
    * @throws AssertionError       if the actual {@code float} array does not contain the given objects, or if the actual
    *                              {@code float} array contains elements other than the ones specified.
    */
-  public @Nonnull FloatArrayAssert containsOnly(@Nonnull float... values) {
+  public @NotNull FloatArrayAssert containsOnly(@NotNull float... values) {
     assertContainsOnly(copy(values));
     return this;
   }
@@ -77,7 +77,7 @@ public class FloatArrayAssert extends ArrayAssert<FloatArrayAssert, float[]> {
    * @throws AssertionError       if the actual {@code float} array is {@code null}.
    * @throws NullPointerException if the given {@code float} array is {@code null}.
    */
-  public @Nonnull FloatArrayAssert excludes(@Nonnull float... values) {
+  public @NotNull FloatArrayAssert excludes(@NotNull float... values) {
     assertExcludes(copy(values));
     return this;
   }
@@ -91,7 +91,7 @@ public class FloatArrayAssert extends ArrayAssert<FloatArrayAssert, float[]> {
    * @throws AssertionError if the actual {@code float} array is not equal to the given one.
    */
   @Override
-  public @Nonnull FloatArrayAssert isEqualTo(@Nullable float[] expected) {
+  public @NotNull FloatArrayAssert isEqualTo(@Nullable float[] expected) {
     if (Arrays.equals(actual, expected)) {
       return this;
     }
@@ -108,7 +108,7 @@ public class FloatArrayAssert extends ArrayAssert<FloatArrayAssert, float[]> {
    * @throws AssertionError if the actual {@code float} array is equal to the given one.
    */
   @Override
-  public @Nonnull FloatArrayAssert isNotEqualTo(@Nullable float[] array) {
+  public @NotNull FloatArrayAssert isNotEqualTo(@Nullable float[] array) {
     if (!Arrays.equals(actual, array)) {
       return this;
     }

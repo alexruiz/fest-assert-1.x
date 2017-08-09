@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -46,7 +46,7 @@ public abstract class ItemGroupAssert<S, A> extends GroupAssert<S, A> {
    * @param selfType the "self type."
    * @param actual   the actual group.
    */
-  public ItemGroupAssert(@Nonnull Class<S> selfType, @Nullable A actual) {
+  public ItemGroupAssert(@NotNull Class<S> selfType, @Nullable A actual) {
     super(selfType, actual);
   }
 
@@ -58,7 +58,7 @@ public abstract class ItemGroupAssert<S, A> extends GroupAssert<S, A> {
    * @throws NullPointerException if the given array is {@code null}.
    * @throws AssertionError       if the actual actual group of objects does not contain the given objects.
    */
-  protected final void assertContains(@Nonnull Object... objects) {
+  protected final void assertContains(@NotNull Object... objects) {
     isNotNull();
     checkNotNull(objects);
     Collection<Object> notFound = notFoundInActual(objects);
@@ -68,7 +68,7 @@ public abstract class ItemGroupAssert<S, A> extends GroupAssert<S, A> {
     throw failureIfExpectedElementsNotFound(notFound);
   }
 
-  private Collection<Object> notFoundInActual(@Nonnull Object... objects) {
+  private Collection<Object> notFoundInActual(@NotNull Object... objects) {
     return notFound(actualAsSet(), objects);
   }
 
@@ -81,7 +81,7 @@ public abstract class ItemGroupAssert<S, A> extends GroupAssert<S, A> {
    * @throws AssertionError       if the actual group of objects does not contain the given objects, or if the actual
    *                              group of objects contains elements other than the ones specified.
    */
-  protected final void assertContainsOnly(@Nonnull Object... objects) {
+  protected final void assertContainsOnly(@NotNull Object... objects) {
     isNotNull();
     checkNotNull(objects);
     Set<Object> copy = actualAsSet();
@@ -100,7 +100,7 @@ public abstract class ItemGroupAssert<S, A> extends GroupAssert<S, A> {
    */
   protected abstract @Nullable Set<Object> actualAsSet();
 
-  private @Nonnull List<Object> notFoundInCopy(@Nullable Set<Object> copy, @Nonnull Set<Object> objects) {
+  private @NotNull List<Object> notFoundInCopy(@Nullable Set<Object> copy, @NotNull Set<Object> objects) {
     if (copy == null) {
       return emptyList();
     }
@@ -115,12 +115,12 @@ public abstract class ItemGroupAssert<S, A> extends GroupAssert<S, A> {
     return notFound;
   }
 
-  private @Nonnull AssertionError failureIfExpectedElementsNotFound(@Nonnull Collection<Object> notFound) {
+  private @NotNull AssertionError failureIfExpectedElementsNotFound(@NotNull Collection<Object> notFound) {
     failIfCustomMessageIsSet();
     return failure(format("<%s> does not contain element(s):<%s>", actual, notFound));
   }
 
-  private @Nonnull AssertionError failureIfUnexpectedElementsFound(@Nonnull Collection<Object> unexpected) {
+  private @NotNull AssertionError failureIfUnexpectedElementsFound(@NotNull Collection<Object> unexpected) {
     failIfCustomMessageIsSet();
     return failure(format("unexpected element(s):<%s> in <%s>", unexpected, actual));
   }
@@ -133,7 +133,7 @@ public abstract class ItemGroupAssert<S, A> extends GroupAssert<S, A> {
    * @throws NullPointerException if the given array is {@code null}.
    * @throws AssertionError       if the actual group of objects contains any of the given objects.
    */
-  protected final void assertExcludes(@Nonnull Object... objects) {
+  protected final void assertExcludes(@NotNull Object... objects) {
     isNotNull();
     checkNotNull(objects);
     Collection<Object> found = found(actualAsSet(), objects);

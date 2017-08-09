@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A description of something.
@@ -25,5 +25,5 @@ public interface Description {
   /**
    * @return the value of this description.
    */
-  @Nonnull String value();
+  @NotNull String value();
 }

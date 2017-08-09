@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.math.BigDecimal;
 
 import static java.math.BigDecimal.ZERO;
@@ -48,7 +48,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimalAssert, BigDeci
    * @throws AssertionError if the actual {@code BigDecimal} value is not positive.
    */
   @Override
-  public @Nonnull BigDecimalAssert isPositive() {
+  public @NotNull BigDecimalAssert isPositive() {
     return isGreaterThan(ZERO);
   }
 
@@ -60,7 +60,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimalAssert, BigDeci
    * @throws AssertionError if the actual {@code BigDecimal} value is not negative.
    */
   @Override
-  public @Nonnull BigDecimalAssert isNegative() {
+  public @NotNull BigDecimalAssert isNegative() {
     return isLessThan(ZERO);
   }
 
@@ -72,7 +72,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimalAssert, BigDeci
    * @throws AssertionError if the actual {@code BigDecimal} value is not equal to zero.
    */
   @Override
-  public @Nonnull BigDecimalAssert isZero() {
+  public @NotNull BigDecimalAssert isZero() {
     return isEqualByComparingTo(ZERO);
   }
 
@@ -83,7 +83,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimalAssert, BigDeci
    * @throws AssertionError if the actual {@code BigDecimal} is {@code null}.
    * @throws AssertionError if the actual {@code BigDecimal} is equal to zero.
    */
-  public @Nonnull BigDecimalAssert isNotZero() {
+  public @NotNull BigDecimalAssert isNotZero() {
     return isNotEqualByComparingTo(ZERO);
   }
 }

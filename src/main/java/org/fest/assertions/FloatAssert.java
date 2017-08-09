@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static java.lang.Float.compare;
 import static java.lang.Float.valueOf;
@@ -64,7 +64,7 @@ public class FloatAssert extends GenericAssert<FloatAssert, Float> implements Nu
    *             version 2.0.
    */
   @Deprecated
-  public static @Nonnull Delta delta(float d) {
+  public static @NotNull Delta delta(float d) {
     return new Delta(d);
   }
 
@@ -75,7 +75,7 @@ public class FloatAssert extends GenericAssert<FloatAssert, Float> implements Nu
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is not equal to the given one.
    */
-  public @Nonnull FloatAssert isEqualTo(float expected) {
+  public @NotNull FloatAssert isEqualTo(float expected) {
     return isEqualTo(valueOf(expected));
   }
 
@@ -90,7 +90,7 @@ public class FloatAssert extends GenericAssert<FloatAssert, Float> implements Nu
    *             version 2.0.
    */
   @Deprecated
-  public @Nonnull FloatAssert isEqualTo(float expected, @Nonnull Delta delta) {
+  public @NotNull FloatAssert isEqualTo(float expected, @NotNull Delta delta) {
     return isEqualTo(expected, delta.value);
   }
 
@@ -103,11 +103,11 @@ public class FloatAssert extends GenericAssert<FloatAssert, Float> implements Nu
    * @throws AssertionError if the actual {@code Float} is not equal to the given one.
    * @since 1.2
    */
-  public @Nonnull FloatAssert isEqualTo(float expected, @Nonnull org.fest.assertions.Delta delta) {
+  public @NotNull FloatAssert isEqualTo(float expected, @NotNull org.fest.assertions.Delta delta) {
     return isEqualTo(expected, delta.floatValue());
   }
 
-  private @Nonnull FloatAssert isEqualTo(float expected, float deltaValue) {
+  private @NotNull FloatAssert isEqualTo(float expected, float deltaValue) {
     return isEqualTo(valueOf(expected), deltaValue);
   }
 
@@ -120,11 +120,11 @@ public class FloatAssert extends GenericAssert<FloatAssert, Float> implements Nu
    * @throws AssertionError if the actual {@code Float} is not equal to the given one.
    * @since 1.3
    */
-  public @Nonnull FloatAssert isEqualTo(@Nullable Float expected, @Nonnull org.fest.assertions.Delta delta) {
+  public @NotNull FloatAssert isEqualTo(@Nullable Float expected, @NotNull org.fest.assertions.Delta delta) {
     return isEqualTo(expected, delta.floatValue());
   }
 
-  private @Nonnull FloatAssert isEqualTo(@Nullable Float expected, float deltaValue) {
+  private @NotNull FloatAssert isEqualTo(@Nullable Float expected, float deltaValue) {
     if (actual == null || expected == null) {
       return isEqualTo(expected);
     }
@@ -145,7 +145,7 @@ public class FloatAssert extends GenericAssert<FloatAssert, Float> implements Nu
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is equal to the given one.
    */
-  public @Nonnull FloatAssert isNotEqualTo(float other) {
+  public @NotNull FloatAssert isNotEqualTo(float other) {
     if (compareTo(other) != 0) {
       return this;
     }
@@ -160,7 +160,7 @@ public class FloatAssert extends GenericAssert<FloatAssert, Float> implements Nu
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is not greater than the given one.
    */
-  public @Nonnull FloatAssert isGreaterThan(float other) {
+  public @NotNull FloatAssert isGreaterThan(float other) {
     if (compareTo(other) > 0) {
       return this;
     }
@@ -175,7 +175,7 @@ public class FloatAssert extends GenericAssert<FloatAssert, Float> implements Nu
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is not less than the given one.
    */
-  public @Nonnull FloatAssert isLessThan(float other) {
+  public @NotNull FloatAssert isLessThan(float other) {
     if (compareTo(other) < 0) {
       return this;
     }
@@ -190,7 +190,7 @@ public class FloatAssert extends GenericAssert<FloatAssert, Float> implements Nu
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is not greater than or equal to the given one.
    */
-  public @Nonnull FloatAssert isGreaterThanOrEqualTo(float other) {
+  public @NotNull FloatAssert isGreaterThanOrEqualTo(float other) {
     if (compareTo(other) >= 0) {
       return this;
     }
@@ -205,7 +205,7 @@ public class FloatAssert extends GenericAssert<FloatAssert, Float> implements Nu
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is not less than or equal to the given one.
    */
-  public @Nonnull FloatAssert isLessThanOrEqualTo(float other) {
+  public @NotNull FloatAssert isLessThanOrEqualTo(float other) {
     if (compareTo(other) <= 0) {
       return this;
     }
@@ -223,7 +223,7 @@ public class FloatAssert extends GenericAssert<FloatAssert, Float> implements Nu
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is not equal to {@code NaN}.
    */
-  public @Nonnull FloatAssert isNaN() {
+  public @NotNull FloatAssert isNaN() {
     return isEqualTo(Float.NaN);
   }
 
@@ -234,7 +234,7 @@ public class FloatAssert extends GenericAssert<FloatAssert, Float> implements Nu
    * @throws AssertionError if the actual {@code Float} is not equal to zero.
    */
   @Override
-  public @Nonnull FloatAssert isZero() {
+  public @NotNull FloatAssert isZero() {
     return isEqualTo(ZERO);
   }
 
@@ -245,7 +245,7 @@ public class FloatAssert extends GenericAssert<FloatAssert, Float> implements Nu
    * @throws AssertionError if the actual {@code Float} is not positive.
    */
   @Override
-  public @Nonnull FloatAssert isPositive() {
+  public @NotNull FloatAssert isPositive() {
     return isGreaterThan(ZERO);
   }
 
@@ -256,7 +256,7 @@ public class FloatAssert extends GenericAssert<FloatAssert, Float> implements Nu
    * @throws AssertionError if the actual {@code Float} is not negative.
    */
   @Override
-  public @Nonnull FloatAssert isNegative() {
+  public @NotNull FloatAssert isNegative() {
     return isLessThan(ZERO);
   }
 

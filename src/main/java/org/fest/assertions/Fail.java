@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static org.fest.assertions.ComparisonFailureFactory.comparisonFailure;
 import static org.fest.assertions.ErrorMessages.unexpectedEqual;
@@ -98,7 +98,7 @@ public final class Fail {
    * @return a {@code AssertionError} describing the comparison failure.
    * @since 1.3
    */
-  protected static @Nonnull AssertionError comparisonFailed(
+  protected static @NotNull AssertionError comparisonFailed(
       @Nullable Description description, @Nullable Object actual, @Nullable Object expected) {
     AssertionError comparisonFailure = comparisonFailure(valueOf(description), expected, actual);
     if (comparisonFailure != null) {
@@ -205,7 +205,7 @@ public final class Fail {
         array("expected same instance but found:", inBrackets(actual), " and:", inBrackets(other)));
   }
 
-  private static void fail(@Nullable Description description, @Nonnull Object[] message) {
+  private static void fail(@Nullable Description description, @NotNull Object[] message) {
     throw failure(createMessageFrom(description, message));
   }
 
@@ -261,7 +261,7 @@ public final class Fail {
    * @throws AssertionError with the given message.
    * @see #failure(String)
    */
-  public static @Nonnull AssertionError fail(@Nullable String message) {
+  public static @NotNull AssertionError fail(@Nullable String message) {
     // TODO in 2.0: change return type to 'void'
     throw failure(message);
   }
@@ -273,7 +273,7 @@ public final class Fail {
    * @return the created exception.
    * @since 1.2
    */
-  public static @Nonnull AssertionError failure(@Nullable String message) {
+  public static @NotNull AssertionError failure(@Nullable String message) {
     return new AssertionError(message);
   }
 }

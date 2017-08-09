@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -43,7 +43,7 @@ public final class ArrayInspection {
    * @throws NullPointerException     if the given object is {@code null}.
    * @throws IllegalArgumentException if the given object is not an array.
    */
-  public static @Nonnull Object[] copy(@Nonnull Object array) {
+  public static @NotNull Object[] copy(@NotNull Object array) {
     return copyToList(checkNotNull(array)).toArray();
   }
 
@@ -55,7 +55,7 @@ public final class ArrayInspection {
    * @throws IllegalArgumentException if the given object is not an array.
    * @since 1.3.
    */
-  public static @Nonnull List<Object> copyToList(@Nonnull Object array) {
+  public static @NotNull List<Object> copyToList(@NotNull Object array) {
     return copy(checkNotNull(array), newArrayList());
   }
 
@@ -67,11 +67,11 @@ public final class ArrayInspection {
    * @throws IllegalArgumentException if the given object is not an array.
    * @since 1.3.
    */
-  public static @Nonnull Set<Object> copyToSet(@Nonnull Object array) {
+  public static @NotNull Set<Object> copyToSet(@NotNull Object array) {
     return copy(checkNotNull(array), newLinkedHashSet());
   }
 
-  private static @Nonnull <T extends Collection<Object>> T copy(@Nonnull Object array, @Nonnull T destination) {
+  private static @NotNull <T extends Collection<Object>> T copy(@NotNull Object array, @NotNull T destination) {
     int length = sizeOf(array);
     for (int i = 0; i < length; i++) {
       destination.add(get(array, i));
@@ -87,13 +87,13 @@ public final class ArrayInspection {
    * @throws NullPointerException     if the given array is {@code null}.
    * @throws IllegalArgumentException if the given object is not an array.
    */
-  public static int sizeOf(@Nonnull Object array) {
+  public static int sizeOf(@NotNull Object array) {
     checkNotNull(array);
     validateIsArray(array);
     return getLength(array);
   }
 
-  private static void validateIsArray(@Nonnull Object array) {
+  private static void validateIsArray(@NotNull Object array) {
     if (!array.getClass().isArray()) {
       throw new IllegalArgumentException("The given object is not an array");
     }

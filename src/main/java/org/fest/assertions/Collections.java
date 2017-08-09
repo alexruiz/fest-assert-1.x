@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import java.util.List;
 
@@ -38,7 +38,7 @@ public final class Collections {
    * @param objects the elements to find in the given {@code Collection}.
    * @return the elements that were not found in the given {@code Collection}.
    */
-  public static @Nonnull Collection<Object> notFound(@Nullable Collection<?> target, @Nonnull Object... objects) {
+  public static @NotNull Collection<Object> notFound(@Nullable Collection<?> target, @NotNull Object... objects) {
     if (target == null) {
       return emptyList();
     }
@@ -58,7 +58,7 @@ public final class Collections {
    * @param objects the elements to find in the given {@code Collection}.
    * @return the elements that were found in the given {@code Collection}.
    */
-  public static @Nonnull Collection<Object> found(@Nullable Collection<?> target, @Nonnull Object... objects) {
+  public static @NotNull Collection<Object> found(@Nullable Collection<?> target, @NotNull Object... objects) {
     if (target == null) {
       return emptyList();
     }

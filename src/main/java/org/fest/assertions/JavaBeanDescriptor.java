@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 
@@ -25,7 +25,7 @@ import java.lang.reflect.InvocationTargetException;
  * @author Alex Ruiz
  */
 class JavaBeanDescriptor {
-  @Nullable Object invokeReadMethod(@Nonnull PropertyDescriptor descriptor, @Nonnull Object target)
+  @Nullable Object invokeReadMethod(@NotNull PropertyDescriptor descriptor, @NotNull Object target)
       throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
     return descriptor.getReadMethod().invoke(target);
   }

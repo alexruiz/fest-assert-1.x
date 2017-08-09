@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static org.fest.assertions.Formatting.format;
 import static org.fest.util.Preconditions.checkNotNull;
@@ -46,7 +46,7 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
    * @throws AssertionError if the actual {@code String} is {@code null}.
    * @throws AssertionError if the actual {@code String} is not equal to the given one ignoring case.
    */
-  public @Nonnull StringAssert isEqualToIgnoringCase(String expected) {
+  public @NotNull StringAssert isEqualToIgnoringCase(String expected) {
     if (actual == null && expected == null) {
       return this;
     }
@@ -77,7 +77,7 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
    * @throws AssertionError if the actual {@code String} is {@code null}.
    * @throws AssertionError if the actual {@code String} does not contain the given one.
    */
-  public @Nonnull StringAssert contains(String expected) {
+  public @NotNull StringAssert contains(String expected) {
     isNotNull();
     if (actual.indexOf(expected) != -1) {
       return this;
@@ -94,7 +94,7 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
    * @throws AssertionError if the actual {@code String} is {@code null}.
    * @throws AssertionError if the actual {@code String} does not end with the given one.
    */
-  public @Nonnull StringAssert endsWith(String expected) {
+  public @NotNull StringAssert endsWith(String expected) {
     isNotNull();
     if (actual.endsWith(expected)) {
       return this;
@@ -111,7 +111,7 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
    * @throws AssertionError if the actual {@code String} is {@code null}.
    * @throws AssertionError if the actual {@code String} does not start with the given one.
    */
-  public @Nonnull StringAssert startsWith(String expected) {
+  public @NotNull StringAssert startsWith(String expected) {
     isNotNull();
     if (actual.startsWith(expected)) {
       return this;
@@ -128,7 +128,7 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
    * @throws AssertionError if the actual {@code String} is {@code null}.
    * @throws AssertionError if the actual {@code String} does contain the given one.
    */
-  public @Nonnull StringAssert excludes(String s) {
+  public @NotNull StringAssert excludes(String s) {
     isNotNull();
     if (actual.indexOf(s) == -1) {
       return this;
@@ -145,7 +145,7 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
    * @throws AssertionError if the actual {@code String} is {@code null}.
    * @throws AssertionError if the actual {@code String} does not match the given regular expression.
    */
-  public @Nonnull StringAssert matches(String regex) {
+  public @NotNull StringAssert matches(String regex) {
     isNotNull();
     if (actual.matches(regex)) {
       return this;
@@ -162,7 +162,7 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
    * @throws AssertionError if the actual {@code String} is {@code null}.
    * @throws AssertionError if the actual {@code String} matches the given regular expression.
    */
-  public @Nonnull StringAssert doesNotMatch(String regex) {
+  public @NotNull StringAssert doesNotMatch(String regex) {
     isNotNull();
     if (!actual.matches(regex)) {
       return this;
@@ -181,7 +181,7 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
    * @throws NullPointerException if the given {@code String} is {@code null}.
    * @since 1.3
    */
-  public @Nonnull StringAssert containsIgnoringCase(@Nonnull String text) {
+  public @NotNull StringAssert containsIgnoringCase(@NotNull String text) {
     checkNotNull(text);
     isNotNull();
     if (actual.toLowerCase().contains(text.toLowerCase())) {
@@ -201,7 +201,7 @@ public class StringAssert extends GroupAssert<StringAssert, String> {
    * @throws NullPointerException if the given {@code String} is {@code null}.
    * @since 1.3
    */
-  public @Nonnull StringAssert doesNotContain(@Nonnull String text) {
+  public @NotNull StringAssert doesNotContain(@NotNull String text) {
     checkNotNull(text);
     isNotNull();
     if (!actual.contains(text)) {

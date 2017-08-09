@@ -16,8 +16,8 @@ package org.fest.assertions;
 
 import org.fest.util.VisibleForTesting;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static java.lang.Short.valueOf;
 import static org.fest.assertions.ErrorMessages.*;
@@ -65,7 +65,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Short} is not equal to the given one.
    */
-  public @Nonnull ShortAssert isEqualTo(short expected) {
+  public @NotNull ShortAssert isEqualTo(short expected) {
     return isEqualTo(valueOf(expected));
   }
 
@@ -76,7 +76,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Short} is equal to the given one.
    */
-  public @Nonnull ShortAssert isNotEqualTo(short other) {
+  public @NotNull ShortAssert isNotEqualTo(short other) {
     return isNotEqualTo(valueOf(other));
   }
 
@@ -87,7 +87,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Short} is not greater than the given one.
    */
-  public @Nonnull ShortAssert isGreaterThan(short other) {
+  public @NotNull ShortAssert isGreaterThan(short other) {
     if (actual > other) {
       return this;
     }
@@ -102,7 +102,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Short} is not less than the given one.
    */
-  public @Nonnull ShortAssert isLessThan(short other) {
+  public @NotNull ShortAssert isLessThan(short other) {
     if (actual < other) {
       return this;
     }
@@ -117,7 +117,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Short} is not greater than or equal to the given one.
    */
-  public @Nonnull ShortAssert isGreaterThanOrEqualTo(short other) {
+  public @NotNull ShortAssert isGreaterThanOrEqualTo(short other) {
     if (actual >= other) {
       return this;
     }
@@ -132,7 +132,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Short} is not less than or equal to the given one.
    */
-  public @Nonnull ShortAssert isLessThanOrEqualTo(short other) {
+  public @NotNull ShortAssert isLessThanOrEqualTo(short other) {
     if (actual <= other) {
       return this;
     }
@@ -147,7 +147,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
    * @throws AssertionError if the actual {@code Short} is not equal to zero.
    */
   @Override
-  public @Nonnull ShortAssert isZero() {
+  public @NotNull ShortAssert isZero() {
     return isEqualTo(ZERO);
   }
 
@@ -158,7 +158,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
    * @throws AssertionError if the actual {@code Short} is not positive.
    */
   @Override
-  public @Nonnull ShortAssert isPositive() {
+  public @NotNull ShortAssert isPositive() {
     return isGreaterThan(ZERO);
   }
 
@@ -169,7 +169,7 @@ public class ShortAssert extends GenericAssert<ShortAssert, Short> implements Nu
    * @throws AssertionError if the actual {@code Short} is not negative.
    */
   @Override
-  public @Nonnull ShortAssert isNegative() {
+  public @NotNull ShortAssert isNegative() {
     return isLessThan(ZERO);
   }
 }

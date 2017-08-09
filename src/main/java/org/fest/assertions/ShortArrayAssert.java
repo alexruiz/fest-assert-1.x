@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 
 import static org.fest.assertions.ArrayInspection.copy;
@@ -49,7 +49,7 @@ public class ShortArrayAssert extends ArrayAssert<ShortArrayAssert, short[]> {
    * @throws NullPointerException if the given {@code short} array is {@code null}.
    * @throws AssertionError       if the actual {@code short} array does not contain the given values.
    */
-  public @Nonnull ShortArrayAssert contains(@Nonnull short... values) {
+  public @NotNull ShortArrayAssert contains(@NotNull short... values) {
     assertContains(copy(values));
     return this;
   }
@@ -64,7 +64,7 @@ public class ShortArrayAssert extends ArrayAssert<ShortArrayAssert, short[]> {
    * @throws AssertionError       if the actual {@code short} array does not contain the given objects, or if the actual
    *                              {@code short} array contains elements other than the ones specified.
    */
-  public @Nonnull ShortArrayAssert containsOnly(@Nonnull short... values) {
+  public @NotNull ShortArrayAssert containsOnly(@NotNull short... values) {
     assertContainsOnly(copy(values));
     return this;
   }
@@ -78,7 +78,7 @@ public class ShortArrayAssert extends ArrayAssert<ShortArrayAssert, short[]> {
    * @throws NullPointerException if the given {@code short} array is {@code null}.
    * @throws AssertionError       if the actual {@code Object} array contains any of the given values.
    */
-  public @Nonnull ShortArrayAssert excludes(short... values) {
+  public @NotNull ShortArrayAssert excludes(short... values) {
     assertExcludes(copy(values));
     return this;
   }
@@ -92,7 +92,7 @@ public class ShortArrayAssert extends ArrayAssert<ShortArrayAssert, short[]> {
    * @throws AssertionError if the actual {@code short} array is not equal to the given one.
    */
   @Override
-  public @Nonnull ShortArrayAssert isEqualTo(@Nullable short[] expected) {
+  public @NotNull ShortArrayAssert isEqualTo(@Nullable short[] expected) {
     if (Arrays.equals(actual, expected)) {
       return this;
     }
@@ -109,7 +109,7 @@ public class ShortArrayAssert extends ArrayAssert<ShortArrayAssert, short[]> {
    * @throws AssertionError if the actual {@code short} array is equal to the given one.
    */
   @Override
-  public @Nonnull ShortArrayAssert isNotEqualTo(@Nullable short[] array) {
+  public @NotNull ShortArrayAssert isNotEqualTo(@Nullable short[] array) {
     if (!Arrays.equals(actual, array)) {
       return this;
     }

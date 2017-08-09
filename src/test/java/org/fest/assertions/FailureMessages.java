@@ -16,8 +16,8 @@ package org.fest.assertions;
 
 import org.junit.ComparisonFailure;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static org.fest.util.Strings.isNullOrEmpty;
 import static org.fest.util.ToString.toStringOf;
@@ -26,19 +26,19 @@ import static org.fest.util.ToString.toStringOf;
  * @author Alex Ruiz
  */
 final class FailureMessages {
-  static @Nonnull String actualIsNull() {
+  static @NotNull String actualIsNull() {
     return "expecting actual value not to be null";
   }
 
-  static @Nonnull String actualIsNull(String description) {
+  static @NotNull String actualIsNull(String description) {
     return String.format("[%s] expecting actual value not to be null", description);
   }
 
-  static @Nonnull String notEqual(Object actual, Object expected) {
+  static @NotNull String notEqual(Object actual, Object expected) {
     return notEqual(null, actual, expected);
   }
 
-  static @Nonnull String notEqual(String description, Object actual, Object expected) {
+  static @NotNull String notEqual(String description, Object actual, Object expected) {
     String d = inBrackets(description);
     String a = toStringOf(actual);
     String e = toStringOf(expected);
@@ -50,30 +50,30 @@ final class FailureMessages {
     return String.format("%sexpected:<%s> but was:<%s>", d, e, a);
   }
 
-  static @Nonnull String equal(Object actual, Object other) {
+  static @NotNull String equal(Object actual, Object other) {
     return equal(null, actual, other);
   }
 
-  static @Nonnull String equal(String description, Object actual, Object other) {
+  static @NotNull String equal(String description, Object actual, Object other) {
     String d = addSpaceIfNotEmpty(inBrackets(description));
     return String.format("%sactual value:<%s> should not be equal to:<%s>", d, toStringOf(actual), toStringOf(other));
   }
 
-  static @Nonnull String equalOrLess(Object actual, Object other) {
+  static @NotNull String equalOrLess(Object actual, Object other) {
     return equalOrLess(null, actual, other);
   }
 
-  static @Nonnull String equalOrLess(String description, Object actual, Object other) {
+  static @NotNull String equalOrLess(String description, Object actual, Object other) {
     String d = addSpaceIfNotEmpty(inBrackets(description));
     return String.format("%sactual value:<%s> should be greater than:<%s>", d, toStringOf(actual), toStringOf(other));
   }
 
-  static @Nonnull String notIn(String description, Object actual, Object other) {
+  static @NotNull String notIn(String description, Object actual, Object other) {
     String d = addSpaceIfNotEmpty(inBrackets(description));
     return String.format("%sactual value:<%s> should be in:<%s>", d, toStringOf(actual), toStringOf(other));
   }
 
-  static @Nonnull String in(String description, Object actual, Object other) {
+  static @NotNull String in(String description, Object actual, Object other) {
     String d = addSpaceIfNotEmpty(inBrackets(description));
     return String.format("%sactual value:<%s> should not be in:<%s>", d, toStringOf(actual), toStringOf(other));
   }

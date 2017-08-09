@@ -16,8 +16,8 @@ package org.fest.assertions;
 
 import org.fest.util.VisibleForTesting;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -56,7 +56,7 @@ public class IteratorAssert extends ObjectGroupAssert<IteratorAssert, Iterator<?
    * {@inheritDoc}
    */
   @Override
-  protected @Nonnull IteratorAssert onProperty(@Nonnull String propertyName) {
+  protected @NotNull IteratorAssert onProperty(@NotNull String propertyName) {
     checkNotNull(propertyName);
     isNotNull();
     List<Object> subset = PropertySupport.instance().propertyValues(propertyName, newArrayList(contentOfActual()));
@@ -94,7 +94,7 @@ public class IteratorAssert extends ObjectGroupAssert<IteratorAssert, Iterator<?
     return contentOfActual().length;
   }
 
-  private @Nonnull Object[] contentOfActual() {
+  private @NotNull Object[] contentOfActual() {
     PrettyPrintIterator wrapped = (PrettyPrintIterator) actual;
     return wrapped.contents().toArray();
   }
@@ -106,11 +106,11 @@ public class IteratorAssert extends ObjectGroupAssert<IteratorAssert, Iterator<?
     List<Object> wrappedContents;
     Iterator<Object> iterator;
 
-    PrettyPrintIterator(@Nonnull Iterator<?> wrapped) {
+    PrettyPrintIterator(@NotNull Iterator<?> wrapped) {
       this.wrapped = wrapped;
     }
 
-    @Nonnull List<Object> contents() {
+    @NotNull List<Object> contents() {
       consumeIterator();
       return wrappedContents;
     }

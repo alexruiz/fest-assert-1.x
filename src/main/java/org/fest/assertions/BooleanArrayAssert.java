@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 
 import static org.fest.assertions.ArrayInspection.copy;
@@ -49,7 +49,7 @@ public class BooleanArrayAssert extends ArrayAssert<BooleanArrayAssert, boolean[
    * @throws NullPointerException if the given {@code boolean} array is {@code null}.
    * @throws AssertionError       if the actual {@code boolean} array does not contain the given values.
    */
-  public @Nonnull BooleanArrayAssert contains(@Nonnull boolean... values) {
+  public @NotNull BooleanArrayAssert contains(@NotNull boolean... values) {
     assertContains(copy(values));
     return this;
   }
@@ -64,7 +64,7 @@ public class BooleanArrayAssert extends ArrayAssert<BooleanArrayAssert, boolean[
    * @throws AssertionError       if the actual {@code boolean} array does not contain the given objects, or if the
    *                              actual {@code boolean} array contains elements other than the ones specified.
    */
-  public @Nonnull BooleanArrayAssert containsOnly(@Nonnull boolean... values) {
+  public @NotNull BooleanArrayAssert containsOnly(@NotNull boolean... values) {
     assertContainsOnly(copy(values));
     return this;
   }
@@ -78,7 +78,7 @@ public class BooleanArrayAssert extends ArrayAssert<BooleanArrayAssert, boolean[
    * @throws NullPointerException if the given {@code boolean} array is {@code null}.
    * @throws AssertionError       if the actual {@code boolean} array contains any of the given values.
    */
-  public @Nonnull BooleanArrayAssert excludes(@Nonnull boolean... values) {
+  public @NotNull BooleanArrayAssert excludes(@NotNull boolean... values) {
     assertExcludes(copy(values));
     return this;
   }
@@ -92,7 +92,7 @@ public class BooleanArrayAssert extends ArrayAssert<BooleanArrayAssert, boolean[
    * @throws AssertionError if the actual {@code boolean} array is not equal to the given one.
    */
   @Override
-  public @Nonnull BooleanArrayAssert isEqualTo(@Nullable boolean[] expected) {
+  public @NotNull BooleanArrayAssert isEqualTo(@Nullable boolean[] expected) {
     if (Arrays.equals(actual, expected)) {
       return this;
     }
@@ -109,7 +109,7 @@ public class BooleanArrayAssert extends ArrayAssert<BooleanArrayAssert, boolean[
    * @throws AssertionError if the actual {@code boolean} array is equal to the given one.
    */
   @Override
-  public @Nonnull BooleanArrayAssert isNotEqualTo(@Nullable boolean[] array) {
+  public @NotNull BooleanArrayAssert isNotEqualTo(@Nullable boolean[] array) {
     if (!Arrays.equals(actual, array)) {
       return this;
     }

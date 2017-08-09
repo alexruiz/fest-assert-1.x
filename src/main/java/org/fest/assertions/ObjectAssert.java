@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 
 import static org.fest.assertions.Formatting.format;
@@ -49,7 +49,7 @@ public class ObjectAssert extends GenericAssert<ObjectAssert, Object> {
    * @throws AssertionError       if the actual {@code Object} is not an instance of the given type.
    * @throws NullPointerException if the given type is {@code null}.
    */
-  public @Nonnull ObjectAssert isInstanceOf(@Nonnull Class<?> type) {
+  public @NotNull ObjectAssert isInstanceOf(@NotNull Class<?> type) {
     isNotNull();
     checkNotNull(type);
     Class<?> current = actual.getClass();
@@ -70,7 +70,7 @@ public class ObjectAssert extends GenericAssert<ObjectAssert, Object> {
    * @throws NullPointerException if the given array of types is {@code null}.
    * @throws NullPointerException if the given array of types contains {@code null}s.
    */
-  public @Nonnull ObjectAssert isInstanceOfAny(@Nonnull Class<?>... types) {
+  public @NotNull ObjectAssert isInstanceOfAny(@NotNull Class<?>... types) {
     isNotNull();
     checkNotNull(types);
     if (!foundInstanceOfAny(types)) {
@@ -80,7 +80,7 @@ public class ObjectAssert extends GenericAssert<ObjectAssert, Object> {
     return this;
   }
 
-  private boolean foundInstanceOfAny(@Nonnull Class<?>... types) {
+  private boolean foundInstanceOfAny(@NotNull Class<?>... types) {
     Class<?> current = actual.getClass();
     for (Class<?> type : types) {
       checkNotNull(type);
@@ -91,7 +91,7 @@ public class ObjectAssert extends GenericAssert<ObjectAssert, Object> {
     return false;
   }
 
-  private @Nonnull String typeNames(@Nonnull Class<?>... types) {
+  private @NotNull String typeNames(@NotNull Class<?>... types) {
     return Arrays.toString(namesOf(types));
   }
 }

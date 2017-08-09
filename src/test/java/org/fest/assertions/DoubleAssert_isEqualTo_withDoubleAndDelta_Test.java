@@ -43,13 +43,13 @@ public class DoubleAssert_isEqualTo_withDoubleAndDelta_Test {
 
   @Test
   public void should_fail_if_actual_and_expected_are_not_equal() {
-    thrown.expect(AssertionError.class, "expected:<8.888> but was:<8.688> using delta:<0.0090>");
+    thrown.expect(AssertionError.class, "expected:<8.888> but was:<8.688> using delta:<0.009>");
     new DoubleAssert(8.688).isEqualTo(new Double(8.888), delta(0.009));
   }
 
   @Test
   public void should_fail_and_display_description_if_actual_and_expected_are_not_equal() {
-    thrown.expect(AssertionError.class, "[A Test] expected:<8.888> but was:<8.688> using delta:<0.0090>");
+    thrown.expect(AssertionError.class, "[A Test] expected:<8.888> but was:<8.688> using delta:<0.009>");
     new DoubleAssert(8.688).as("A Test").isEqualTo(new Double(8.888), delta(0.009));
   }
 

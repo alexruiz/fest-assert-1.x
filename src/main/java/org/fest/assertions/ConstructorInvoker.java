@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
 import java.security.AccessController;
@@ -34,8 +34,8 @@ import static org.fest.util.Preconditions.checkNotNullOrEmpty;
 class ConstructorInvoker {
   private static Logger logger = Logger.getLogger(ConstructorInvoker.class.getCanonicalName());
 
-  @Nonnull Object newInstance(
-      @Nonnull String className, @Nonnull Class<?>[] parameterTypes, @Nonnull Object[] parameterValues)
+  @NotNull Object newInstance(
+      @NotNull String className, @NotNull Class<?>[] parameterTypes, @NotNull Object[] parameterValues)
       throws Exception {
     checkNotNullOrEmpty(className);
     checkNotNull(parameterTypes);
@@ -55,7 +55,7 @@ class ConstructorInvoker {
     }
   }
 
-  private void setAccessible(@Nonnull AccessibleObject accessible, boolean value) {
+  private void setAccessible(@NotNull AccessibleObject accessible, boolean value) {
     AccessController.doPrivileged(new SetAccessibleValueAction(accessible, value));
   }
 
@@ -63,7 +63,7 @@ class ConstructorInvoker {
     private final AccessibleObject accessible;
     private final boolean value;
 
-    private SetAccessibleValueAction(@Nonnull AccessibleObject accessible, boolean value) {
+    private SetAccessibleValueAction(@NotNull AccessibleObject accessible, boolean value) {
       this.accessible = checkNotNull(accessible);
       this.value = value;
     }

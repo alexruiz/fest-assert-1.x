@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 import static java.lang.Math.abs;
 
@@ -62,7 +62,7 @@ final class RGBColor {
     return b;
   }
 
-  boolean isEqualTo(@Nonnull RGBColor color, int threshold) {
+  boolean isEqualTo(@NotNull RGBColor color, int threshold) {
     if (abs(r - color.r) > threshold) {
       return false;
     }

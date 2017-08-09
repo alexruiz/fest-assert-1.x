@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -55,7 +55,7 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
    * @return the created entry.
    * @see #includes(org.fest.assertions.MapAssert.Entry...)
    */
-  public static @Nonnull Entry entry(@Nullable Object key, @Nullable Object value) {
+  public static @NotNull Entry entry(@Nullable Object key, @Nullable Object value) {
     return new Entry(key, value);
   }
 
@@ -77,7 +77,7 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
    * @throws NullPointerException if the given array of entries is {@code null}.
    * @throws NullPointerException if any of the entries in the given array is {@code null}.
    */
-  public @Nonnull MapAssert includes(@Nonnull Entry... entries) {
+  public @NotNull MapAssert includes(@NotNull Entry... entries) {
     isNotNull();
     checkNotNull(entries);
     List<Entry> notFound = newArrayList();
@@ -110,7 +110,7 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
    * @throws NullPointerException if the given array of entries is {@code null}.
    * @throws NullPointerException if any of the entries in the given array is {@code null}.
    */
-  public @Nonnull MapAssert excludes(@Nonnull Entry... entries) {
+  public @NotNull MapAssert excludes(@NotNull Entry... entries) {
     isNotNull();
     checkNotNull(entries);
     List<Entry> found = newArrayList();
@@ -125,29 +125,29 @@ public class MapAssert extends GroupAssert<MapAssert, Map<?, ?>> {
     return this;
   }
 
-  private boolean containsEntry(@Nonnull Entry e) {
+  private boolean containsEntry(@NotNull Entry e) {
     if (!actual.containsKey(e.key)) {
       return false;
     }
     return actual.get(e.key).equals(e.value);
   }
 
-  private @Nonnull String entryOrEntries(@Nonnull List<Entry> found) {
+  private @NotNull String entryOrEntries(@NotNull List<Entry> found) {
     return found.size() == 1 ? ENTRY : ENTRIES;
   }
 
-  private void failIfNotFound(@Nonnull String description, @Nonnull Collection<?> notFound) {
+  private void failIfNotFound(@NotNull String description, @NotNull Collection<?> notFound) {
     failIfCustomMessageIsSet();
     String format = "the map:<%s> does not contain the %s:<%s>";
     fail(String.format(format, formattedActual(), description, toStringOf(notFound)));
   }
 
-  private void failIfFound(@Nonnull String description, @Nonnull Collection<?> found) {
+  private void failIfFound(@NotNull String description, @NotNull Collection<?> found) {
     failIfCustomMessageIsSet();
     fail(String.format("the map:<%s> contains the %s:<%s>", formattedActual(), description, toStringOf(found)));
   }
 
-  private @Nonnull String formattedActual() {
+  private @NotNull String formattedActual() {
     return checkNotNull(toStringOf(actual));
   }
 

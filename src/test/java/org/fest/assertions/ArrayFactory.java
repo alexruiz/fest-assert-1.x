@@ -14,17 +14,17 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Alex Ruiz
  */
 final class ArrayFactory {
-  static @Nonnull boolean[] booleanArray(@Nonnull boolean... values) {
+  static @NotNull boolean[] booleanArray(@NotNull boolean... values) {
     return values;
   }
 
-  static @Nonnull byte[] byteArray(@Nonnull int... values) {
+  static @NotNull byte[] byteArray(@NotNull int... values) {
     int arraySize = values.length;
     byte[] array = new byte[arraySize];
     for (int i = 0; i < arraySize; i++) {
@@ -33,27 +33,27 @@ final class ArrayFactory {
     return array;
   }
 
-  static @Nonnull char[] charArray(@Nonnull char... values) {
+  static @NotNull char[] charArray(@NotNull char... values) {
     return values;
   }
 
-  static @Nonnull double[] doubleArray(@Nonnull double... values) {
+  static @NotNull double[] doubleArray(@NotNull double... values) {
     return values;
   }
 
-  static @Nonnull float[] floatArray(@Nonnull float... values) {
+  static @NotNull float[] floatArray(@NotNull float... values) {
     return values;
   }
 
-  static @Nonnull int[] intArray(@Nonnull int... values) {
+  static @NotNull int[] intArray(@NotNull int... values) {
     return values;
   }
 
-  static @Nonnull long[] longArray(@Nonnull long... values) {
+  static @NotNull long[] longArray(@NotNull long... values) {
     return values;
   }
 
-  static @Nonnull short[] shortArray(@Nonnull int... values) {
+  static @NotNull short[] shortArray(@NotNull int... values) {
     int arraySize = values.length;
     short[] array = new short[arraySize];
     for (int i = 0; i < arraySize; i++) {
@@ -62,7 +62,7 @@ final class ArrayFactory {
     return array;
   }
 
-  static @Nonnull Object[] objectArray(@Nonnull Object... values) {
+  static @NotNull Object[] objectArray(@NotNull Object... values) {
     return values;
   }
 

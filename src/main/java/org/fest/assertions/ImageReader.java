@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -27,7 +27,7 @@ import java.io.IOException;
  * @author Yvonne Wang
  */
 class ImageReader {
-  @Nullable BufferedImage read(@Nonnull File imageFile) throws IOException {
+  @Nullable BufferedImage read(@NotNull File imageFile) throws IOException {
     return ImageIO.read(imageFile);
   }
 }

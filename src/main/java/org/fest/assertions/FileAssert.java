@@ -17,8 +17,8 @@ package org.fest.assertions;
 import org.fest.assertions.FileContentComparator.LineDiff;
 import org.fest.util.VisibleForTesting;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.io.File;
 import java.io.IOException;
 
@@ -48,7 +48,7 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
     this(actual, new FileContentComparator());
   }
 
-  @VisibleForTesting FileAssert(@Nullable File actual, @Nonnull FileContentComparator comparator) {
+  @VisibleForTesting FileAssert(@Nullable File actual, @NotNull FileContentComparator comparator) {
     super(FileAssert.class, actual);
     this.comparator = comparator;
   }
@@ -60,7 +60,7 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
    * @throws AssertionError if the the actual {@code File} is {@code null}.
    * @throws AssertionError if the actual {@code File} exists.
    */
-  public @Nonnull FileAssert doesNotExist() {
+  public @NotNull FileAssert doesNotExist() {
     isNotNull();
     if (!actual.exists()) {
       return this;
@@ -76,7 +76,7 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
    * @throws AssertionError if the the actual {@code File} is {@code null}.
    * @throws AssertionError if the actual {@code File} does not exist.
    */
-  public @Nonnull FileAssert exists() {
+  public @NotNull FileAssert exists() {
     isNotNull();
     assertExists(actual);
     return this;
@@ -90,7 +90,7 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
    * @throws AssertionError if the the actual {@code File} is {@code null}.
    * @throws AssertionError if the size of the actual {@code File} is not equal to the given one.
    */
-  public @Nonnull FileAssert hasSize(long expected) {
+  public @NotNull FileAssert hasSize(long expected) {
     isNotNull();
     long size = actual.length();
     if (size == expected) {
@@ -107,7 +107,7 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
    * @throws AssertionError if the the actual {@code File} is {@code null}.
    * @throws AssertionError if the actual {@code File} is not a directory.
    */
-  public @Nonnull FileAssert isDirectory() {
+  public @NotNull FileAssert isDirectory() {
     isNotNull();
     if (actual.isDirectory()) {
       return this;
@@ -123,7 +123,7 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
    * @throws AssertionError if the the actual {@code File} is {@code null}.
    * @throws AssertionError if the actual {@code File} is not a regular file.
    */
-  public @Nonnull FileAssert isFile() {
+  public @NotNull FileAssert isFile() {
     isNotNull();
     if (actual.isFile()) {
       return this;
@@ -143,7 +143,7 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
    * @throws AssertionError       if the the actual {@code File} is {@code null}.
    * @throws AssertionError       if the content of the actual {@code File} is not equal to the content of the given one.
    */
-  public @Nonnull FileAssert hasSameContentAs(@Nonnull File expected) {
+  public @NotNull FileAssert hasSameContentAs(@NotNull File expected) {
     checkNotNull(expected);
     isNotNull();
     assertExists(actual).assertExists(expected);
@@ -158,7 +158,7 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
     return this;
   }
 
-  private void fail(@Nonnull File expected, @Nonnull LineDiff[] diffs) {
+  private void fail(@NotNull File expected, @NotNull LineDiff[] diffs) {
     failIfCustomMessageIsSet();
     StringBuilder b = new StringBuilder();
     b.append(String.format("file:%s and file:%s do not have same contents:", inBrackets(actual), inBrackets(expected)));
@@ -170,13 +170,13 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
     fail(b.toString());
   }
 
-  private void cannotCompareToExpectedFile(@Nonnull File expected, @Nonnull Exception e) {
+  private void cannotCompareToExpectedFile(@NotNull File expected, @NotNull Exception e) {
     failIfCustomMessageIsSet(e);
     String message = format("unable to compare contents of files:<%s> and <%s>", actual, expected);
     fail(message, e);
   }
 
-  private FileAssert assertExists(@Nonnull File file) {
+  private FileAssert assertExists(@NotNull File file) {
     if (file.exists()) {
       return this;
     }
@@ -190,7 +190,7 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
    * @return this assertion object.
    * @throws AssertionError if the actual {@code File} is not a relative path.
    */
-  public @Nonnull FileAssert isRelative() {
+  public @NotNull FileAssert isRelative() {
     isNotNull();
     if (!actual.isAbsolute()) {
       return this;
@@ -205,7 +205,7 @@ public class FileAssert extends GenericAssert<FileAssert, File> {
    * @return this assertion object.
    * @throws AssertionError if the actual {@code File} is not an absolute path.
    */
-  public @Nonnull FileAssert isAbsolute() {
+  public @NotNull FileAssert isAbsolute() {
     isNotNull();
     if (actual.isAbsolute()) {
       return this;

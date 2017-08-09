@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static org.fest.util.Preconditions.checkNotNull;
 import static org.fest.util.Strings.isNullOrEmpty;
@@ -51,12 +51,12 @@ public abstract class Condition<T> {
    * @param newDescription the description to set.
    * @return this condition.
    */
-  public final @Nonnull Condition<T> as(@Nullable String newDescription) {
+  public final @NotNull Condition<T> as(@Nullable String newDescription) {
     description = newDescription;
     return this;
   }
 
-  final @Nonnull String addDescriptionTo(@Nonnull String s) {
+  final @NotNull String addDescriptionTo(@NotNull String s) {
     checkNotNull(s);
     String descriptionToAdd = description();
     if (isNullOrEmpty(descriptionToAdd)) {

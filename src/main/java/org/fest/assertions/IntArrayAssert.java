@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 
 import static org.fest.assertions.ArrayInspection.copy;
@@ -49,7 +49,7 @@ public class IntArrayAssert extends ArrayAssert<IntArrayAssert, int[]> {
    * @throws NullPointerException if the given {@code int} array is {@code null}.
    * @throws AssertionError       if the actual {@code int} array does not contain the given values.
    */
-  public @Nonnull IntArrayAssert contains(@Nonnull int... values) {
+  public @NotNull IntArrayAssert contains(@NotNull int... values) {
     assertContains(copy(values));
     return this;
   }
@@ -64,7 +64,7 @@ public class IntArrayAssert extends ArrayAssert<IntArrayAssert, int[]> {
    * @throws AssertionError       if the actual {@code int} array does not contain the given objects, or if the actual
    *                              {@code int} array contains elements other than the ones specified.
    */
-  public @Nonnull IntArrayAssert containsOnly(@Nonnull int... values) {
+  public @NotNull IntArrayAssert containsOnly(@NotNull int... values) {
     assertContainsOnly(copy(values));
     return this;
   }
@@ -78,7 +78,7 @@ public class IntArrayAssert extends ArrayAssert<IntArrayAssert, int[]> {
    * @throws NullPointerException if the given {@code int} array is {@code null}.
    * @throws AssertionError       if the actual {@code int} array contains any of the given values.
    */
-  public @Nonnull IntArrayAssert excludes(@Nonnull int... values) {
+  public @NotNull IntArrayAssert excludes(@NotNull int... values) {
     assertExcludes(copy(values));
     return this;
   }
@@ -92,7 +92,7 @@ public class IntArrayAssert extends ArrayAssert<IntArrayAssert, int[]> {
    * @throws AssertionError if the actual {@code int} array is not equal to the given one.
    */
   @Override
-  public @Nonnull IntArrayAssert isEqualTo(@Nullable int[] expected) {
+  public @NotNull IntArrayAssert isEqualTo(@Nullable int[] expected) {
     if (Arrays.equals(actual, expected)) {
       return this;
     }
@@ -109,7 +109,7 @@ public class IntArrayAssert extends ArrayAssert<IntArrayAssert, int[]> {
    * @throws AssertionError if the actual {@code int} array is equal to the given one.
    */
   @Override
-  public @Nonnull IntArrayAssert isNotEqualTo(@Nullable int[] array) {
+  public @NotNull IntArrayAssert isNotEqualTo(@Nullable int[] array) {
     if (!Arrays.equals(actual, array)) {
       return this;
     }

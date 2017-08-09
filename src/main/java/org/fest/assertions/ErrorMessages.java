@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static org.fest.assertions.Formatting.*;
 import static org.fest.util.Arrays.array;
@@ -29,45 +29,45 @@ final class ErrorMessages {
   private ErrorMessages() {
   }
 
-  static @Nonnull String unexpectedNotEqual(@Nullable Object actual, @Nullable Object expected) {
+  static @NotNull String unexpectedNotEqual(@Nullable Object actual, @Nullable Object expected) {
     return format("expected:<%s> but was:<%s>", expected, actual);
   }
 
-  static @Nonnull String unexpectedEqual(@Nullable Object actual, @Nullable Object o) {
+  static @NotNull String unexpectedEqual(@Nullable Object actual, @Nullable Object o) {
     return assertionFailed(actual, " should not be equal to:", o);
   }
 
-  static @Nonnull String unexpectedLessThanOrEqualTo(@Nullable Object actual, @Nullable Object value) {
+  static @NotNull String unexpectedLessThanOrEqualTo(@Nullable Object actual, @Nullable Object value) {
     return assertionFailed(actual, " should be greater than:", value);
   }
 
-  static @Nonnull String unexpectedLessThan(@Nullable Object actual, @Nullable Object value) {
+  static @NotNull String unexpectedLessThan(@Nullable Object actual, @Nullable Object value) {
     return assertionFailed(actual, " should be greater than or equal to:", value);
   }
 
-  static @Nonnull String unexpectedGreaterThanOrEqualTo(@Nullable Object actual, @Nullable Object value) {
+  static @NotNull String unexpectedGreaterThanOrEqualTo(@Nullable Object actual, @Nullable Object value) {
     return assertionFailed(actual, " should be less than:", value);
   }
 
-  static @Nonnull String unexpectedGreaterThan(@Nullable Object actual, @Nullable Object value) {
+  static @NotNull String unexpectedGreaterThan(@Nullable Object actual, @Nullable Object value) {
     return assertionFailed(actual, " should be less than or equal to:", value);
   }
 
-  static @Nonnull String unexpectedNotIn(@Nullable Object actual, @Nonnull Object other) {
+  static @NotNull String unexpectedNotIn(@Nullable Object actual, @NotNull Object other) {
     return assertionFailed(actual, " should be in:", other);
   }
 
-  static @Nonnull String unexpectedIn(@Nullable Object actual, @Nonnull Object other) {
+  static @NotNull String unexpectedIn(@Nullable Object actual, @NotNull Object other) {
     return assertionFailed(actual, " should not be in:", other);
   }
 
-  private static @Nonnull String assertionFailed(
-      @Nullable Object actual, @Nonnull String reason, @Nullable Object expected) {
+  private static @NotNull String assertionFailed(
+      @Nullable Object actual, @NotNull String reason, @Nullable Object expected) {
     return assertionFailed(null, actual, reason, expected);
   }
 
-  private static @Nonnull String assertionFailed(
-      @Nullable Description description, @Nullable Object actual, @Nonnull String reason, @Nullable Object expected) {
+  private static @NotNull String assertionFailed(
+      @Nullable Description description, @Nullable Object actual, @NotNull String reason, @Nullable Object expected) {
     return createMessageFrom(description, array("actual value:", inBrackets(actual), reason, inBrackets(expected)));
   }
 }

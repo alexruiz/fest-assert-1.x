@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.IllegalFormatException;
 
 import static org.fest.util.Preconditions.checkNotNull;
@@ -35,7 +35,7 @@ public final class Formatting {
   private Formatting() {
   }
 
-  static @Nonnull String createMessageFrom(@Nullable Description description, @Nonnull Object[] message) {
+  static @NotNull String createMessageFrom(@Nullable Description description, @NotNull Object[] message) {
     return format(description, concat(message));
   }
 
@@ -51,7 +51,7 @@ public final class Formatting {
    * @throws NullPointerException if the given message is {@code null}.
    * @since 1.2
    */
-  public static @Nonnull String format(@Nullable Description description, @Nonnull String message) {
+  public static @NotNull String format(@Nullable Description description, @NotNull String message) {
     checkNotNull(message);
     String s = valueOf(description);
     return format(s) + message;
@@ -78,7 +78,7 @@ public final class Formatting {
    * @param message the message to format.
    * @return the formatted message.
    */
-  public static @Nonnull String format(@Nullable String message) {
+  public static @NotNull String format(@Nullable String message) {
     if (isNullOrEmpty(message)) {
       return EMPTY_MESSAGE;
     }
@@ -93,11 +93,11 @@ public final class Formatting {
    * @param o the given object.
    * @return the {@code String} representation of the given object in between brackets.
    */
-  public static @Nonnull String inBrackets(@Nullable Object o) {
+  public static @NotNull String inBrackets(@Nullable Object o) {
     return doBracketAround(toStringOf(o));
   }
 
-  private static @Nonnull String doBracketAround(@Nullable String s) {
+  private static @NotNull String doBracketAround(@Nullable String s) {
     return String.format("<%s>", s);
   }
 
@@ -115,7 +115,7 @@ public final class Formatting {
    * @throws NullPointerException   if the given format is {@code null}.
    * @since 1.3.1
    */
-  public static @Nonnull String format(@Nonnull String format, @Nonnull Object... args) {
+  public static @NotNull String format(@NotNull String format, @NotNull Object... args) {
     Object[] argsAsText = new String[args.length];
     for (int i = 0; i < args.length; i++) {
       argsAsText[i] = toStringOf(args[i]);

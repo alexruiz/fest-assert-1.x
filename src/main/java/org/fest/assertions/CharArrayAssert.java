@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 
 import static org.fest.assertions.ArrayInspection.copy;
@@ -49,7 +49,7 @@ public class CharArrayAssert extends ArrayAssert<CharArrayAssert, char[]> {
    * @throws NullPointerException if the given {@code char} array is {@code null}.
    * @throws AssertionError       if the actual {@code char} array does not contain the given values.
    */
-  public @Nonnull CharArrayAssert contains(@Nonnull char... values) {
+  public @NotNull CharArrayAssert contains(@NotNull char... values) {
     assertContains(copy(values));
     return this;
   }
@@ -64,7 +64,7 @@ public class CharArrayAssert extends ArrayAssert<CharArrayAssert, char[]> {
    * @throws AssertionError       if the actual {@code char} array does not contain the given objects, or if the actual
    *                              {@code char} array contains elements other than the ones specified.
    */
-  public @Nonnull CharArrayAssert containsOnly(@Nonnull char... values) {
+  public @NotNull CharArrayAssert containsOnly(@NotNull char... values) {
     assertContainsOnly(copy(values));
     return this;
   }
@@ -78,7 +78,7 @@ public class CharArrayAssert extends ArrayAssert<CharArrayAssert, char[]> {
    * @throws NullPointerException if the given {@code char} array is {@code null}.
    * @throws AssertionError       if the actual {@code char} array contains any of the given values.
    */
-  public @Nonnull CharArrayAssert excludes(@Nonnull char... values) {
+  public @NotNull CharArrayAssert excludes(@NotNull char... values) {
     assertExcludes(copy(values));
     return this;
   }
@@ -92,7 +92,7 @@ public class CharArrayAssert extends ArrayAssert<CharArrayAssert, char[]> {
    * @throws AssertionError if the actual {@code char} array is not equal to the given one.
    */
   @Override
-  public @Nonnull CharArrayAssert isEqualTo(@Nullable char[] expected) {
+  public @NotNull CharArrayAssert isEqualTo(@Nullable char[] expected) {
     if (Arrays.equals(actual, expected)) {
       return this;
     }
@@ -109,7 +109,7 @@ public class CharArrayAssert extends ArrayAssert<CharArrayAssert, char[]> {
    * @throws AssertionError if the actual {@code char} array is equal to the given one.
    */
   @Override
-  public @Nonnull CharArrayAssert isNotEqualTo(@Nullable char[] array) {
+  public @NotNull CharArrayAssert isNotEqualTo(@Nullable char[] array) {
     if (!Arrays.equals(actual, array)) {
       return this;
     }

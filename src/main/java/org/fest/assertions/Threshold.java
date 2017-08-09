@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A threshold.
@@ -36,7 +36,7 @@ public final class Threshold {
    * @return the created instance.
    * @throws IllegalArgumentException if the given value is less than zero.
    */
-  public static @Nonnull Threshold threshold(int value) {
+  public static @NotNull Threshold threshold(int value) {
     if (value < 0) {
       throw new IllegalArgumentException("The value of the threshold should not be negative");
     }

@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static java.lang.Double.valueOf;
 import static java.lang.Math.abs;
@@ -64,7 +64,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
    *             version 2.0.
    */
   @Deprecated
-  public static @Nonnull Delta delta(double d) {
+  public static @NotNull Delta delta(double d) {
     return new Delta(d);
   }
 
@@ -75,7 +75,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not equal to the given one.
    */
-  public @Nonnull DoubleAssert isEqualTo(double expected) {
+  public @NotNull DoubleAssert isEqualTo(double expected) {
     return isEqualTo(valueOf(expected));
   }
 
@@ -90,7 +90,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
    *             in version 2.0.
    */
   @Deprecated
-  public @Nonnull DoubleAssert isEqualTo(double expected, Delta delta) {
+  public @NotNull DoubleAssert isEqualTo(double expected, Delta delta) {
     return isEqualTo(expected, delta.value);
   }
 
@@ -103,11 +103,11 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
    * @throws AssertionError if the actual {@code Double} is not equal to the given one.
    * @since 1.1
    */
-  public @Nonnull DoubleAssert isEqualTo(double expected, org.fest.assertions.Delta delta) {
+  public @NotNull DoubleAssert isEqualTo(double expected, org.fest.assertions.Delta delta) {
     return isEqualTo(expected, delta.doubleValue());
   }
 
-  private @Nonnull DoubleAssert isEqualTo(double expected, double deltaValue) {
+  private @NotNull DoubleAssert isEqualTo(double expected, double deltaValue) {
     return isEqualTo(valueOf(expected), deltaValue);
   }
 
@@ -120,11 +120,11 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
    * @throws AssertionError if the actual {@code Double} is not equal to the given one.
    * @since 1.3
    */
-  public @Nonnull DoubleAssert isEqualTo(@Nullable Double expected, @Nonnull org.fest.assertions.Delta delta) {
+  public @NotNull DoubleAssert isEqualTo(@Nullable Double expected, @NotNull org.fest.assertions.Delta delta) {
     return isEqualTo(expected, delta.doubleValue());
   }
 
-  private @Nonnull DoubleAssert isEqualTo(@Nullable Double expected, double deltaValue) {
+  private @NotNull DoubleAssert isEqualTo(@Nullable Double expected, double deltaValue) {
     if (actual == null || expected == null) {
       return isEqualTo(expected);
     }
@@ -145,7 +145,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is equal to the given one.
    */
-  public @Nonnull DoubleAssert isNotEqualTo(double other) {
+  public @NotNull DoubleAssert isNotEqualTo(double other) {
     if (compareTo(other) != 0) {
       return this;
     }
@@ -160,7 +160,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not greater than the given one.
    */
-  public @Nonnull DoubleAssert isGreaterThan(double other) {
+  public @NotNull DoubleAssert isGreaterThan(double other) {
     if (compareTo(other) > 0) {
       return this;
     }
@@ -175,7 +175,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not less than the given one.
    */
-  public @Nonnull DoubleAssert isLessThan(double other) {
+  public @NotNull DoubleAssert isLessThan(double other) {
     if (compareTo(other) < 0) {
       return this;
     }
@@ -190,7 +190,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not greater than or equal to the given one.
    */
-  public @Nonnull DoubleAssert isGreaterThanOrEqualTo(double other) {
+  public @NotNull DoubleAssert isGreaterThanOrEqualTo(double other) {
     if (compareTo(other) >= 0) {
       return this;
     }
@@ -205,7 +205,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not less than or equal to the given one.
    */
-  public @Nonnull DoubleAssert isLessThanOrEqualTo(double other) {
+  public @NotNull DoubleAssert isLessThanOrEqualTo(double other) {
     if (compareTo(other) <= 0) {
       return this;
     }
@@ -224,7 +224,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
    * @throws AssertionError if the actual {@code Double} is not equal to zero.
    */
   @Override
-  public @Nonnull DoubleAssert isZero() {
+  public @NotNull DoubleAssert isZero() {
     return isEqualTo(ZERO);
   }
 
@@ -235,7 +235,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
    * @throws AssertionError if the actual {@code Double} is not positive.
    */
   @Override
-  public @Nonnull DoubleAssert isPositive() {
+  public @NotNull DoubleAssert isPositive() {
     return isGreaterThan(ZERO);
   }
 
@@ -246,7 +246,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
    * @throws AssertionError if the actual {@code Double} is not negative.
    */
   @Override
-  public @Nonnull DoubleAssert isNegative() {
+  public @NotNull DoubleAssert isNegative() {
     return isLessThan(ZERO);
   }
 
@@ -256,7 +256,7 @@ public class DoubleAssert extends GenericAssert<DoubleAssert, Double> implements
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Double} is not equal to {@code NAN}.
    */
-  public @Nonnull DoubleAssert isNaN() {
+  public @NotNull DoubleAssert isNaN() {
     return isEqualTo(Double.NaN);
   }
 

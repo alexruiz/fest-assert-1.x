@@ -16,8 +16,8 @@ package org.fest.assertions;
 
 import org.fest.util.IntrospectionError;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -78,7 +78,7 @@ public class CollectionAssert extends ObjectGroupAssert<CollectionAssert, Collec
    * @since 1.3
    */
   @Override
-  public @Nonnull CollectionAssert onProperty(@Nonnull String propertyName) {
+  public @NotNull CollectionAssert onProperty(@NotNull String propertyName) {
     isNotNull();
     checkNotNull(propertyName);
     if (actual.isEmpty()) {

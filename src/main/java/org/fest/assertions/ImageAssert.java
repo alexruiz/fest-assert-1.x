@@ -16,8 +16,8 @@ package org.fest.assertions;
 
 import org.fest.util.VisibleForTesting;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -63,7 +63,7 @@ public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
    * @throws IllegalArgumentException if the given path does not belong to a file.
    * @throws IOException              if any I/O error occurred while reading the image.
    */
-  public static @Nullable BufferedImage read(@Nonnull String imageFilePath) throws IOException {
+  public static @Nullable BufferedImage read(@NotNull String imageFilePath) throws IOException {
     checkNotNull(imageFilePath);
     File imageFile = new File(imageFilePath);
     if (!imageFile.isFile()) {
@@ -80,7 +80,7 @@ public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
   }
 
   @VisibleForTesting
-  static void imageReader(@Nonnull ImageReader newImageReader) {
+  static void imageReader(@NotNull ImageReader newImageReader) {
     imageReader = newImageReader;
   }
 
@@ -93,7 +93,7 @@ public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
    * @throws AssertionError if the actual image is not equal to the given one.
    */
   @Override
-  public @Nonnull ImageAssert isEqualTo(@Nullable BufferedImage expected) {
+  public @NotNull ImageAssert isEqualTo(@Nullable BufferedImage expected) {
     return isEqualTo(expected, ZERO_THRESHOLD);
   }
 
@@ -113,7 +113,7 @@ public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
    * @throws AssertionError       if the actual image is not equal to the given one.
    * @since 1.1
    */
-  public @Nonnull ImageAssert isEqualTo(@Nullable BufferedImage expected, @Nonnull Threshold threshold) {
+  public @NotNull ImageAssert isEqualTo(@Nullable BufferedImage expected, @NotNull Threshold threshold) {
     checkNotNull(threshold);
     if (areEqual(actual, expected)) {
       return this;
@@ -140,7 +140,7 @@ public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
     fail(format("image size: expected:<%s> but was:<%s>", new DimensionFormatter(e), new DimensionFormatter(a)));
   }
 
-  private void failIfNotEqualColor(@Nonnull BufferedImage expected, @Nonnull Threshold threshold) {
+  private void failIfNotEqualColor(@NotNull BufferedImage expected, @NotNull Threshold threshold) {
     int w = actual.getWidth();
     int h = actual.getHeight();
     for (int x = 0; x < w; x++) {
@@ -150,7 +150,7 @@ public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
     }
   }
 
-  private void failIfNotEqual(@Nonnull RGBColor a, @Nonnull RGBColor e, @Nonnull Threshold threshold, int x, int y) {
+  private void failIfNotEqual(@NotNull RGBColor a, @NotNull RGBColor e, @NotNull Threshold threshold, int x, int y) {
     if (a.isEqualTo(e, threshold.value())) {
       return;
     }
@@ -167,7 +167,7 @@ public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
    * @throws AssertionError if the actual image is equal to the given one.
    */
   @Override
-  public @Nonnull ImageAssert isNotEqualTo(@Nullable BufferedImage image) {
+  public @NotNull ImageAssert isNotEqualTo(@Nullable BufferedImage image) {
     if (areEqual(actual, image)) {
       failIfCustomMessageIsSet();
       throw failure(unexpectedEqual(actual, image));
@@ -182,7 +182,7 @@ public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
     return this;
   }
 
-  private boolean hasEqualColor(@Nonnull BufferedImage expected) {
+  private boolean hasEqualColor(@NotNull BufferedImage expected) {
     int w = actual.getWidth();
     int h = actual.getHeight();
     for (int x = 0; x < w; x++) {
@@ -204,7 +204,7 @@ public class ImageAssert extends GenericAssert<ImageAssert, BufferedImage> {
    * @throws NullPointerException if the given size is {@code null}.
    * @throws AssertionError       if the size of the actual image is not equal to the given one.
    */
-  public @Nonnull ImageAssert hasSize(@Nonnull Dimension expected) {
+  public @NotNull ImageAssert hasSize(@NotNull Dimension expected) {
     isNotNull();
     checkNotNull(expected);
     Dimension actualDimension = new Dimension(actual.getWidth(), actual.getHeight());

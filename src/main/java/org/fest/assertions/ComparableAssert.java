@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static org.fest.assertions.ErrorMessages.*;
 import static org.fest.assertions.Fail.comparisonFailed;
@@ -36,7 +36,7 @@ public abstract class ComparableAssert<S, T extends Comparable<T>> extends Gener
    * @param selfType the "self type."
    * @param actual   the target to verify.
    */
-  protected ComparableAssert(@Nonnull Class<S> selfType, @Nullable T actual) {
+  protected ComparableAssert(@NotNull Class<S> selfType, @Nullable T actual) {
     super(selfType, actual);
   }
 
@@ -48,7 +48,7 @@ public abstract class ComparableAssert<S, T extends Comparable<T>> extends Gener
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.
    * @throws AssertionError if the actual {@code Comparable} is not equal to the given one.
    */
-  public final @Nonnull S isEqualByComparingTo(T expected) {
+  public final @NotNull S isEqualByComparingTo(T expected) {
     isNotNull();
     if (actual.compareTo(expected) == 0) {
       return myself();
@@ -65,7 +65,7 @@ public abstract class ComparableAssert<S, T extends Comparable<T>> extends Gener
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.
    * @throws AssertionError if the actual {@code Comparable} is equal to the given one.
    */
-  public final @Nonnull S isNotEqualByComparingTo(T expected) {
+  public final @NotNull S isNotEqualByComparingTo(T expected) {
     isNotNull();
     if (actual.compareTo(expected) != 0) {
       return myself();
@@ -82,7 +82,7 @@ public abstract class ComparableAssert<S, T extends Comparable<T>> extends Gener
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.
    * @throws AssertionError if the actual {@code Comparable} is not less than the given one.
    */
-  public final @Nonnull S isLessThan(T other) {
+  public final @NotNull S isLessThan(T other) {
     isNotNull();
     if (actual.compareTo(other) < 0) {
       return myself();
@@ -99,7 +99,7 @@ public abstract class ComparableAssert<S, T extends Comparable<T>> extends Gener
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.
    * @throws AssertionError if the actual {@code Comparable} is not greater than the given one.
    */
-  public final @Nonnull S isGreaterThan(@Nullable T other) {
+  public final @NotNull S isGreaterThan(@Nullable T other) {
     isNotNull();
     if (actual.compareTo(other) > 0) {
       return myself();
@@ -116,7 +116,7 @@ public abstract class ComparableAssert<S, T extends Comparable<T>> extends Gener
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.
    * @throws AssertionError if the actual {@code Comparable} is not less than or equal to the given one.
    */
-  public final @Nonnull S isLessThanOrEqualTo(@Nullable T other) {
+  public final @NotNull S isLessThanOrEqualTo(@Nullable T other) {
     isNotNull();
     if (actual.compareTo(other) <= 0) {
       return myself();
@@ -133,7 +133,7 @@ public abstract class ComparableAssert<S, T extends Comparable<T>> extends Gener
    * @throws AssertionError if the actual {@code Comparable} is {@code null}.
    * @throws AssertionError if the actual {@code Comparable} is not greater than or equal to the given one.
    */
-  public final @Nonnull S isGreaterThanOrEqualTo(@Nullable T other) {
+  public final @NotNull S isGreaterThanOrEqualTo(@Nullable T other) {
     isNotNull();
     if (actual.compareTo(other) >= 0) {
       return myself();

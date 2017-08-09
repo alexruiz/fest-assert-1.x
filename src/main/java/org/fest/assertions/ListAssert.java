@@ -16,8 +16,8 @@ package org.fest.assertions;
 
 import org.fest.util.IntrospectionError;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Set;
 
@@ -58,7 +58,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
    *                                   the size of the actual {@code List}.
    * @throws AssertionError            if the given {@code List} does not contain the given object at the given index.
    */
-  public @Nonnull ListAssert contains(@Nullable Object o, @Nonnull Index index) {
+  public @NotNull ListAssert contains(@Nullable Object o, @NotNull Index index) {
     checkNotNull(index);
     isNotNull().isNotEmpty();
     int indexValue = index.value();
@@ -93,7 +93,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
    * @throws AssertionError if the given array is {@code null}.
    * @throws AssertionError if the actual {@code List} does not contain the given sequence of objects.
    */
-  public @Nonnull ListAssert containsSequence(@Nonnull Object... sequence) {
+  public @NotNull ListAssert containsSequence(@NotNull Object... sequence) {
     isNotNull();
     checkNotNull(sequence);
     int sequenceSize = sequence.length;
@@ -117,7 +117,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
     return this;
   }
 
-  private void failIfSequenceNotFound(@Nonnull Object[] notFound) {
+  private void failIfSequenceNotFound(@NotNull Object[] notFound) {
     failIfCustomMessageIsSet();
     fail(format("list:<%s> does not contain the sequence:<%s>", actual, notFound));
   }
@@ -134,7 +134,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
    * @throws AssertionError if the actual {@code List} is not empty and with the given sequence of objects is empty.
    * @throws AssertionError if the actual {@code List} does not start with the given sequence of objects.
    */
-  public @Nonnull ListAssert startsWith(@Nonnull Object... sequence) {
+  public @NotNull ListAssert startsWith(@NotNull Object... sequence) {
     isNotNull();
     checkNotNull(sequence);
     int sequenceSize = sequence.length;
@@ -156,7 +156,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
     return this;
   }
 
-  private void failIfNotStartingWithSequence(@Nonnull Object[] notFound) {
+  private void failIfNotStartingWithSequence(@NotNull Object[] notFound) {
     failIfCustomMessageIsSet();
     fail(format("list:<%s> does not start with the sequence:<%s>", actual, notFound));
   }
@@ -173,7 +173,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
    * @throws AssertionError if the actual {@code List} is not empty and with the given sequence of objects is empty.
    * @throws AssertionError if the actual {@code List} does not end with the given sequence of objects.
    */
-  public @Nonnull ListAssert endsWith(@Nonnull Object... sequence) {
+  public @NotNull ListAssert endsWith(@NotNull Object... sequence) {
     isNotNull();
     checkNotNull(sequence);
     int sequenceSize = sequence.length;
@@ -197,7 +197,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
     return this;
   }
 
-  private void failIfNotEndingWithSequence(@Nonnull Object[] notFound) {
+  private void failIfNotEndingWithSequence(@NotNull Object[] notFound) {
     failIfCustomMessageIsSet();
     fail(format("list:<%s> does not end with the sequence:<%s>", actual, notFound));
   }
@@ -224,7 +224,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
    * @throws NullPointerException if the given array is {@code null}.
    * @throws AssertionError       if the actual {@code List} does not contain the given objects.
    */
-  public @Nonnull ListAssert containsExactly(@Nonnull Object... objects) {
+  public @NotNull ListAssert containsExactly(@NotNull Object... objects) {
     checkNotNull(objects);
     return isNotNull().isEqualTo(newArrayList(objects));
   }
@@ -249,7 +249,7 @@ public class ListAssert extends ObjectGroupAssert<ListAssert, List<?>> {
    * @since 1.3
    */
   @Override
-  public @Nonnull ListAssert onProperty(@Nonnull String propertyName) {
+  public @NotNull ListAssert onProperty(@NotNull String propertyName) {
     isNotNull();
     if (actual.isEmpty()) {
       return new ListAssert(emptyList());

@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A finite increment in a variable.
@@ -35,7 +35,7 @@ public final class Delta {
    * @param value the value of the delta.
    * @return the created {@code Delta}.
    */
-  public static @Nonnull Delta delta(double value) {
+  public static @NotNull Delta delta(double value) {
     return new Delta(value);
   }
 
@@ -45,7 +45,7 @@ public final class Delta {
    * @param value the value of the delta.
    * @return the created {@code Delta}.
    */
-  public static @Nonnull Delta delta(float value) {
+  public static @NotNull Delta delta(float value) {
     return new Delta(value);
   }
 

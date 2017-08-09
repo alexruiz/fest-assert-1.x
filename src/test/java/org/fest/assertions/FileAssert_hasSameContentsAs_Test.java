@@ -19,7 +19,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 import java.io.File;
 import java.io.IOException;
 
@@ -192,7 +192,7 @@ public class FileAssert_hasSameContentsAs_Test extends FileAssert_TestCase {
     }
 
     @Override
-    @Nonnull LineDiff[] compareContents(@Nonnull File actual, @Nonnull File expected) throws IOException {
+    @NotNull LineDiff[] compareContents(@NotNull File actual, @NotNull File expected) throws IOException {
       if (toThrow != null) {
         throw toThrow;
       }

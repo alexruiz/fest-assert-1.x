@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Template for assertions for numbers (primitives and objects.)
@@ -29,7 +29,7 @@ public interface NumberAssert {
    * @return this assertion object.
    * @throws AssertionError if the actual number is not equal to zero.
    */
-  @Nonnull NumberAssert isZero();
+  @NotNull NumberAssert isZero();
 
   /**
    * Verifies that the actual number is positive.
@@ -37,7 +37,7 @@ public interface NumberAssert {
    * @return this assertion object.
    * @throws AssertionError if the actual number is not positive.
    */
-  @Nonnull NumberAssert isPositive();
+  @NotNull NumberAssert isPositive();
 
   /**
    * Verifies that the actual number is negative.
@@ -45,5 +45,5 @@ public interface NumberAssert {
    * @return this assertion object.
    * @throws AssertionError if the actual number is not negative.
    */
-  @Nonnull NumberAssert isNegative();
+  @NotNull NumberAssert isNegative();
 }

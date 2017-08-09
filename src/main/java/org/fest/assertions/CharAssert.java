@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 import static java.lang.Character.valueOf;
 import static org.fest.assertions.ErrorMessages.*;
@@ -56,7 +56,7 @@ public class CharAssert extends GenericAssert<CharAssert, Character> {
    * @return this assertion object.
    * @throws AssertionError if the {@code Character} value is not equal to the given one.
    */
-  public @Nonnull CharAssert isEqualTo(char expected) {
+  public @NotNull CharAssert isEqualTo(char expected) {
     return isEqualTo(valueOf(expected));
   }
 
@@ -67,7 +67,7 @@ public class CharAssert extends GenericAssert<CharAssert, Character> {
    * @return this assertion object.
    * @throws AssertionError if the {@code Character} value is equal to the given one.
    */
-  public @Nonnull CharAssert isNotEqualTo(char other) {
+  public @NotNull CharAssert isNotEqualTo(char other) {
     return isNotEqualTo(valueOf(other));
   }
 
@@ -78,7 +78,7 @@ public class CharAssert extends GenericAssert<CharAssert, Character> {
    * @return this assertion object.
    * @throws AssertionError if the {@code Character} value is not greater than the given one.
    */
-  public @Nonnull CharAssert isGreaterThan(char other) {
+  public @NotNull CharAssert isGreaterThan(char other) {
     if (actual > other) {
       return this;
     }
@@ -93,7 +93,7 @@ public class CharAssert extends GenericAssert<CharAssert, Character> {
    * @return this assertion object.
    * @throws AssertionError if the {@code Character} value is not less than the given one.
    */
-  public @Nonnull CharAssert isLessThan(char other) {
+  public @NotNull CharAssert isLessThan(char other) {
     if (actual < other) {
       return this;
     }
@@ -108,7 +108,7 @@ public class CharAssert extends GenericAssert<CharAssert, Character> {
    * @return this assertion object.
    * @throws AssertionError if the {@code Character} value is not greater than or equal to the given one.
    */
-  public @Nonnull CharAssert isGreaterThanOrEqualTo(char other) {
+  public @NotNull CharAssert isGreaterThanOrEqualTo(char other) {
     if (actual >= other) {
       return this;
     }
@@ -123,7 +123,7 @@ public class CharAssert extends GenericAssert<CharAssert, Character> {
    * @return this assertion object.
    * @throws AssertionError if the {@code Character} value is not less than or equal to the given one.
    */
-  public @Nonnull CharAssert isLessThanOrEqualTo(char other) {
+  public @NotNull CharAssert isLessThanOrEqualTo(char other) {
     if (actual <= other) {
       return this;
     }
@@ -137,7 +137,7 @@ public class CharAssert extends GenericAssert<CharAssert, Character> {
    * @return this assertion object.
    * @throws AssertionError if the {@code Character} value is not an upper-case value.
    */
-  public @Nonnull CharAssert isUpperCase() {
+  public @NotNull CharAssert isUpperCase() {
     if (Character.isUpperCase(actual)) {
       return this;
     }
@@ -151,7 +151,7 @@ public class CharAssert extends GenericAssert<CharAssert, Character> {
    * @return this assertion object.
    * @throws AssertionError if the {@code Character} value is not an lower-case value.
    */
-  public @Nonnull CharAssert isLowerCase() {
+  public @NotNull CharAssert isLowerCase() {
     if (Character.isLowerCase(actual)) {
       return this;
     }

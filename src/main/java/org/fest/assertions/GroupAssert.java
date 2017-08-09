@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static org.fest.assertions.Formatting.format;
 
@@ -36,7 +36,7 @@ public abstract class GroupAssert<S, A> extends GenericAssert<S, A> {
    * @param selfType the "self type."
    * @param actual   the target to verify.
    */
-  protected GroupAssert(@Nonnull Class<S> selfType, @Nullable A actual) {
+  protected GroupAssert(@NotNull Class<S> selfType, @Nullable A actual) {
     super(selfType, actual);
   }
 
@@ -77,7 +77,7 @@ public abstract class GroupAssert<S, A> extends GenericAssert<S, A> {
    * @return this assertion object.
    * @throws AssertionError if the actual group is {@code null} or empty.
    */
-  public final @Nonnull S isNotEmpty() {
+  public final @NotNull S isNotEmpty() {
     isNotNull();
     if (hasElements()) {
       return myself();
@@ -93,7 +93,7 @@ public abstract class GroupAssert<S, A> extends GenericAssert<S, A> {
    * @return this assertion object.
    * @throws AssertionError if the number of values of the actual group is not equal to the given one.
    */
-  public final @Nonnull S hasSize(int expected) {
+  public final @NotNull S hasSize(int expected) {
     isNotNull();
     int size = actualGroupSize();
     if (size == expected) {

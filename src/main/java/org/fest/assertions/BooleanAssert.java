@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static java.lang.Boolean.valueOf;
 
@@ -74,7 +74,7 @@ public class BooleanAssert extends GenericAssert<BooleanAssert, Boolean> {
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Boolean} is not equal to the given one.
    */
-  public @Nonnull BooleanAssert isEqualTo(boolean expected) {
+  public @NotNull BooleanAssert isEqualTo(boolean expected) {
     return isEqualTo(valueOf(expected));
   }
 
@@ -85,7 +85,7 @@ public class BooleanAssert extends GenericAssert<BooleanAssert, Boolean> {
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Boolean} is equal to the given one.
    */
-  public @Nonnull BooleanAssert isNotEqualTo(boolean other) {
+  public @NotNull BooleanAssert isNotEqualTo(boolean other) {
     return isNotEqualTo(valueOf(other));
   }
 }

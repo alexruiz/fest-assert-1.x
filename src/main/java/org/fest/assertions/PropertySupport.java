@@ -18,8 +18,8 @@ import org.fest.util.IntrospectionError;
 import org.fest.util.Preconditions;
 import org.fest.util.VisibleForTesting;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.beans.PropertyDescriptor;
 import java.util.Collection;
 import java.util.List;
@@ -48,11 +48,11 @@ final class PropertySupport {
     this(new JavaBeanDescriptor());
   }
 
-  PropertySupport(@Nonnull JavaBeanDescriptor javaBeanDescriptor) {
+  PropertySupport(@NotNull JavaBeanDescriptor javaBeanDescriptor) {
     this.javaBeanDescriptor = javaBeanDescriptor;
   }
 
-  static @Nonnull PropertySupport instance() {
+  static @NotNull PropertySupport instance() {
     return INSTANCE;
   }
 
@@ -73,7 +73,7 @@ final class PropertySupport {
    * @throws NullPointerException if given property name is {@code null}.
    * @throws IntrospectionError   if an element in the given collection does not have a matching property.
    */
-  @Nonnull List<Object> propertyValues(@Nonnull String propertyName, @Nullable Collection<?> target) {
+  @NotNull List<Object> propertyValues(@NotNull String propertyName, @Nullable Collection<?> target) {
     if (isNullOrEmpty(target)) {
       return emptyList();
     }
@@ -88,7 +88,7 @@ final class PropertySupport {
     return simplePropertyValues(propertyName, nonNullElements);
   }
 
-  private @Nonnull List<Object> simplePropertyValues(@Nonnull String propertyName, @Nonnull Collection<?> target) {
+  private @NotNull List<Object> simplePropertyValues(@NotNull String propertyName, @NotNull Collection<?> target) {
     List<Object> propertyValues = newArrayList();
     for (Object e : target) {
       if (e != null) {
@@ -133,7 +133,7 @@ final class PropertySupport {
    *         otherwise, it will return an empty {@code String}.
    * @throws NullPointerException if given property name is {@code null}.
    */
-  @Nonnull String removeFirstPropertyIfNested(@Nonnull String propertyName) {
+  @NotNull String removeFirstPropertyIfNested(@NotNull String propertyName) {
     if (!isNestedProperty(propertyName)) {
       return "";
     }
@@ -150,21 +150,21 @@ final class PropertySupport {
    *         otherwise, it will return the given property name unchanged.
    * @throws NullPointerException if given property name is {@code null}.
    */
-  @Nonnull String firstPropertyIfNested(@Nonnull String propertyName) {
+  @NotNull String firstPropertyIfNested(@NotNull String propertyName) {
     if (!isNestedProperty(propertyName)) {
       return propertyName;
     }
     return checkNotNull(propertyName.substring(0, propertyName.indexOf(SEPARATOR)));
   }
 
-  private @Nullable Object propertyValue(@Nonnull String propertyName, @Nonnull Object target) {
+  private @Nullable Object propertyValue(@NotNull String propertyName, @NotNull Object target) {
     PropertyDescriptor descriptor = getProperty(propertyName, target);
     return propertyValue(descriptor, propertyName, target);
   }
 
   @VisibleForTesting
   @Nullable Object propertyValue(
-      @Nonnull PropertyDescriptor descriptor, @Nonnull String propertyName, @Nonnull Object target) {
+      @NotNull PropertyDescriptor descriptor, @NotNull String propertyName, @NotNull Object target) {
     try {
       return javaBeanDescriptor.invokeReadMethod(descriptor, target);
     } catch (Exception e) {

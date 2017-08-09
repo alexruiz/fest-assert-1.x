@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 
 import static java.lang.Math.abs;
@@ -52,7 +52,7 @@ public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> 
    * @throws NullPointerException if the given {@code double} array is {@code null}.
    * @throws AssertionError       if the actual {@code double} array does not contain the given values.
    */
-  public @Nonnull DoubleArrayAssert contains(@Nonnull double... values) {
+  public @NotNull DoubleArrayAssert contains(@NotNull double... values) {
     assertContains(copy(values));
     return this;
   }
@@ -67,7 +67,7 @@ public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> 
    * @throws AssertionError       if the actual {@code double} array does not contain the given objects, or if the actual
    *                              {@code double} array contains elements other than the ones specified.
    */
-  public @Nonnull DoubleArrayAssert containsOnly(@Nonnull double... values) {
+  public @NotNull DoubleArrayAssert containsOnly(@NotNull double... values) {
     assertContainsOnly(copy(values));
     return this;
   }
@@ -81,7 +81,7 @@ public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> 
    * @throws NullPointerException if the given {@code double} array is {@code null}.
    * @throws AssertionError       if the actual {@code double} array contains any of the given values.
    */
-  public @Nonnull DoubleArrayAssert excludes(@Nonnull double... values) {
+  public @NotNull DoubleArrayAssert excludes(@NotNull double... values) {
     assertExcludes(copy(values));
     return this;
   }
@@ -95,7 +95,7 @@ public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> 
    * @throws AssertionError if the actual {@code double} array is not equal to the given one.
    */
   @Override
-  public @Nonnull DoubleArrayAssert isEqualTo(@Nullable double[] expected) {
+  public @NotNull DoubleArrayAssert isEqualTo(@Nullable double[] expected) {
     if (Arrays.equals(actual, expected)) {
       return this;
     }
@@ -113,7 +113,7 @@ public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> 
    * @throws AssertionError       if the actual {@code double} array is not equal to the given one.
    * @since 1.1
    */
-  public @Nonnull DoubleArrayAssert isEqualTo(@Nullable double[] expected, @Nonnull Delta delta) {
+  public @NotNull DoubleArrayAssert isEqualTo(@Nullable double[] expected, @NotNull Delta delta) {
     checkNotNull(delta);
     if (actual == expected) {
       return this;
@@ -133,12 +133,12 @@ public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> 
     return this;
   }
 
-  private @Nonnull AssertionError failureWhenNotEqual(@Nullable double[] expected, @Nonnull Delta delta) {
+  private @NotNull AssertionError failureWhenNotEqual(@Nullable double[] expected, @NotNull Delta delta) {
     failIfCustomMessageIsSet();
     throw failure(unexpectedNotEqual(actual, expected) + format(" using delta:<%s>", delta.doubleValue()));
   }
 
-  private boolean equals(double e, double a, @Nonnull Delta delta) {
+  private boolean equals(double e, double a, @NotNull Delta delta) {
     if (Double.compare(e, a) == 0) {
       return true;
     }
@@ -154,7 +154,7 @@ public class DoubleArrayAssert extends ArrayAssert<DoubleArrayAssert, double[]> 
    * @throws AssertionError if the actual {@code double} array is equal to the given one.
    */
   @Override
-  public @Nonnull DoubleArrayAssert isNotEqualTo(@Nullable double[] array) {
+  public @NotNull DoubleArrayAssert isNotEqualTo(@Nullable double[] array) {
     if (!Arrays.equals(actual, array)) {
       return this;
     }

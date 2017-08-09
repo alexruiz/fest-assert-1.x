@@ -16,8 +16,8 @@ package org.fest.assertions;
 
 import org.fest.util.VisibleForTesting;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static java.lang.Byte.valueOf;
 import static org.fest.assertions.ErrorMessages.*;
@@ -66,7 +66,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Byte} value is not equal to the given one.
    */
-  public @Nonnull ByteAssert isEqualTo(byte expected) {
+  public @NotNull ByteAssert isEqualTo(byte expected) {
     return isEqualTo(valueOf(expected));
   }
 
@@ -77,7 +77,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Byte} value is equal to the given one.
    */
-  public @Nonnull ByteAssert isNotEqualTo(byte other) {
+  public @NotNull ByteAssert isNotEqualTo(byte other) {
     return isNotEqualTo(valueOf(other));
   }
 
@@ -88,7 +88,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Byte} value is not greater than the given one.
    */
-  public @Nonnull ByteAssert isGreaterThan(byte other) {
+  public @NotNull ByteAssert isGreaterThan(byte other) {
     // TODO check for NPE
     if (actual > other) {
       return this;
@@ -104,7 +104,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Byte} value is not less than the given one.
    */
-  public @Nonnull ByteAssert isLessThan(byte other) {
+  public @NotNull ByteAssert isLessThan(byte other) {
     if (actual < other) {
       return this;
     }
@@ -119,7 +119,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Byte} value is not greater than or equal to the given one.
    */
-  public @Nonnull ByteAssert isGreaterThanOrEqualTo(byte other) {
+  public @NotNull ByteAssert isGreaterThanOrEqualTo(byte other) {
     if (actual >= other) {
       return this;
     }
@@ -134,7 +134,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Byte} value is not less than or equal to the given one.
    */
-  public @Nonnull ByteAssert isLessThanOrEqualTo(byte other) {
+  public @NotNull ByteAssert isLessThanOrEqualTo(byte other) {
     if (actual <= other) {
       return this;
     }
@@ -149,7 +149,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
    * @throws AssertionError if the actual {@code Byte} value is not equal to zero.
    */
   @Override
-  public @Nonnull ByteAssert isZero() {
+  public @NotNull ByteAssert isZero() {
     return isEqualTo(ZERO);
   }
 
@@ -160,7 +160,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
    * @throws AssertionError if the actual {@code Byte} value is not positive.
    */
   @Override
-  public @Nonnull ByteAssert isPositive() {
+  public @NotNull ByteAssert isPositive() {
     return isGreaterThan(ZERO);
   }
 
@@ -171,7 +171,7 @@ public class ByteAssert extends GenericAssert<ByteAssert, Byte> implements Numbe
    * @throws AssertionError if the actual {@code Byte} value is not negative.
    */
   @Override
-  public @Nonnull ByteAssert isNegative() {
+  public @NotNull ByteAssert isNegative() {
     return isLessThan(ZERO);
   }
 }

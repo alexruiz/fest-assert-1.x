@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static org.fest.assertions.Fail.failWithMessage;
 import static org.fest.assertions.Formatting.format;
@@ -79,7 +79,7 @@ public abstract class Assert {
    * @return the formatted message.
    * @throws NullPointerException if the given message is {@code null}.
    */
-  protected final @Nonnull String formattedErrorMessage(@Nonnull String message) {
+  protected final @NotNull String formattedErrorMessage(@NotNull String message) {
     return format(description, message);
   }
 
@@ -129,7 +129,7 @@ public abstract class Assert {
    * @param cause  the root cause of the failure, included in the thrown exception.
    * @throws NullPointerException if the given reason is {@code null}.
    */
-  protected final void fail(@Nonnull String reason, @Nullable Throwable cause) {
+  protected final void fail(@NotNull String reason, @Nullable Throwable cause) {
     Fail.fail(formattedErrorMessage(reason), cause);
   }
 
@@ -146,7 +146,7 @@ public abstract class Assert {
    * @throws AssertionError using the given reason as the message.
    * @see #failure(String)
    */
-  protected final @Nonnull AssertionError fail(@Nonnull String reason) {
+  protected final @NotNull AssertionError fail(@NotNull String reason) {
     // TODO in 2.0: change return type to 'void'
     throw failure(reason);
   }
@@ -157,7 +157,7 @@ public abstract class Assert {
    * @param reason the reason for the failure, used as the message for the thrown exception.
    * @return the created exception.
    */
-  protected final @Nonnull AssertionError failure(@Nonnull String reason) {
+  protected final @NotNull AssertionError failure(@NotNull String reason) {
     return Fail.failure(formattedErrorMessage(reason));
   }
 

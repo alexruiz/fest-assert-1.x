@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.math.BigDecimal;
@@ -56,7 +56,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull BigDecimalAssert assertThat(@Nullable BigDecimal actual) {
+  public static @NotNull BigDecimalAssert assertThat(@Nullable BigDecimal actual) {
     return new BigDecimalAssert(actual);
   }
 
@@ -66,7 +66,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull BooleanAssert assertThat(boolean actual) {
+  public static @NotNull BooleanAssert assertThat(boolean actual) {
     return new BooleanAssert(actual);
   }
 
@@ -76,7 +76,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull BooleanAssert assertThat(@Nullable Boolean actual) {
+  public static @NotNull BooleanAssert assertThat(@Nullable Boolean actual) {
     return new BooleanAssert(actual);
   }
 
@@ -86,7 +86,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull BooleanArrayAssert assertThat(@Nullable boolean[] actual) {
+  public static @NotNull BooleanArrayAssert assertThat(@Nullable boolean[] actual) {
     return new BooleanArrayAssert(actual);
   }
 
@@ -96,7 +96,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull ImageAssert assertThat(@Nullable BufferedImage actual) {
+  public static @NotNull ImageAssert assertThat(@Nullable BufferedImage actual) {
     return new ImageAssert(actual);
   }
 
@@ -106,7 +106,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull ByteAssert assertThat(byte actual) {
+  public static @NotNull ByteAssert assertThat(byte actual) {
     return new ByteAssert(actual);
   }
 
@@ -116,7 +116,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull ByteAssert assertThat(@Nullable Byte actual) {
+  public static @NotNull ByteAssert assertThat(@Nullable Byte actual) {
     return new ByteAssert(actual);
   }
 
@@ -126,7 +126,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull ByteArrayAssert assertThat(@Nullable byte[] actual) {
+  public static @NotNull ByteArrayAssert assertThat(@Nullable byte[] actual) {
     return new ByteArrayAssert(actual);
   }
 
@@ -136,7 +136,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull CharAssert assertThat(char actual) {
+  public static @NotNull CharAssert assertThat(char actual) {
     return new CharAssert(actual);
   }
 
@@ -146,7 +146,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull CharAssert assertThat(@Nullable Character actual) {
+  public static @NotNull CharAssert assertThat(@Nullable Character actual) {
     return new CharAssert(actual);
   }
 
@@ -156,7 +156,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull CharArrayAssert assertThat(@Nullable char[] actual) {
+  public static @NotNull CharArrayAssert assertThat(@Nullable char[] actual) {
     return new CharArrayAssert(actual);
   }
 
@@ -166,7 +166,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull CollectionAssert assertThat(@Nullable Collection<?> actual) {
+  public static @NotNull CollectionAssert assertThat(@Nullable Collection<?> actual) {
     return new CollectionAssert(actual);
   }
 
@@ -177,7 +177,7 @@ public class Assertions {
    * @return the created assertion object.
    * @since 1.1
    */
-  public static @Nonnull ListAssert assertThat(@Nullable List<?> actual) {
+  public static @NotNull ListAssert assertThat(@Nullable List<?> actual) {
     return new ListAssert(actual);
   }
 
@@ -187,7 +187,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull DoubleAssert assertThat(double actual) {
+  public static @NotNull DoubleAssert assertThat(double actual) {
     return new DoubleAssert(actual);
   }
 
@@ -197,7 +197,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull DoubleAssert assertThat(@Nullable Double actual) {
+  public static @NotNull DoubleAssert assertThat(@Nullable Double actual) {
     return new DoubleAssert(actual);
   }
 
@@ -207,7 +207,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull DoubleArrayAssert assertThat(@Nullable double[] actual) {
+  public static @NotNull DoubleArrayAssert assertThat(@Nullable double[] actual) {
     return new DoubleArrayAssert(actual);
   }
 
@@ -217,7 +217,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull FileAssert assertThat(@Nullable File actual) {
+  public static @NotNull FileAssert assertThat(@Nullable File actual) {
     return new FileAssert(actual);
   }
 
@@ -227,7 +227,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull FloatAssert assertThat(float actual) {
+  public static @NotNull FloatAssert assertThat(float actual) {
     return new FloatAssert(actual);
   }
 
@@ -237,7 +237,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull FloatAssert assertThat(@Nullable Float actual) {
+  public static @NotNull FloatAssert assertThat(@Nullable Float actual) {
     return new FloatAssert(actual);
   }
 
@@ -247,7 +247,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull FloatArrayAssert assertThat(@Nullable float[] actual) {
+  public static @NotNull FloatArrayAssert assertThat(@Nullable float[] actual) {
     return new FloatArrayAssert(actual);
   }
 
@@ -257,7 +257,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull IntAssert assertThat(int actual) {
+  public static @NotNull IntAssert assertThat(int actual) {
     return new IntAssert(actual);
   }
 
@@ -267,7 +267,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull IntAssert assertThat(@Nullable Integer actual) {
+  public static @NotNull IntAssert assertThat(@Nullable Integer actual) {
     return new IntAssert(actual);
   }
 
@@ -277,7 +277,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull IntArrayAssert assertThat(@Nullable int[] actual) {
+  public static @NotNull IntArrayAssert assertThat(@Nullable int[] actual) {
     return new IntArrayAssert(actual);
   }
 
@@ -287,7 +287,7 @@ public class Assertions {
    * @param actual an {@code Iterable} whose contents will be added to a new {@code Collection}.
    * @return the created assertion object.
    */
-  public static @Nonnull IteratorAssert assertThat(@Nullable Iterable<?> actual) {
+  public static @NotNull IteratorAssert assertThat(@Nullable Iterable<?> actual) {
     Iterator<?> iterator = actual == null ? null : actual.iterator();
     return assertThat(iterator);
   }
@@ -298,7 +298,7 @@ public class Assertions {
    * @param actual an {@code Iterator} whose contents will be added to a new {@code Collection}.
    * @return the created assertion object.
    */
-  public static @Nonnull IteratorAssert assertThat(@Nullable Iterator<?> actual) {
+  public static @NotNull IteratorAssert assertThat(@Nullable Iterator<?> actual) {
     return new IteratorAssert(actual);
   }
 
@@ -308,7 +308,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull LongAssert assertThat(long actual) {
+  public static @NotNull LongAssert assertThat(long actual) {
     return new LongAssert(actual);
   }
 
@@ -318,7 +318,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull LongAssert assertThat(@Nullable Long actual) {
+  public static @NotNull LongAssert assertThat(@Nullable Long actual) {
     return new LongAssert(actual);
   }
 
@@ -328,7 +328,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull LongArrayAssert assertThat(@Nullable long[] actual) {
+  public static @NotNull LongArrayAssert assertThat(@Nullable long[] actual) {
     return new LongArrayAssert(actual);
   }
 
@@ -338,7 +338,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull MapAssert assertThat(@Nullable Map<?, ?> actual) {
+  public static @NotNull MapAssert assertThat(@Nullable Map<?, ?> actual) {
     return new MapAssert(actual);
   }
 
@@ -348,7 +348,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull ObjectAssert assertThat(@Nullable Object actual) {
+  public static @NotNull ObjectAssert assertThat(@Nullable Object actual) {
     return new ObjectAssert(actual);
   }
 
@@ -358,7 +358,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull ObjectArrayAssert assertThat(@Nullable Object[] actual) {
+  public static @NotNull ObjectArrayAssert assertThat(@Nullable Object[] actual) {
     return new ObjectArrayAssert(actual);
   }
 
@@ -368,7 +368,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull ShortAssert assertThat(short actual) {
+  public static @NotNull ShortAssert assertThat(short actual) {
     return new ShortAssert(actual);
   }
 
@@ -378,7 +378,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull ShortAssert assertThat(@Nullable Short actual) {
+  public static @NotNull ShortAssert assertThat(@Nullable Short actual) {
     return new ShortAssert(actual);
   }
 
@@ -388,7 +388,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull ShortArrayAssert assertThat(@Nullable short[] actual) {
+  public static @NotNull ShortArrayAssert assertThat(@Nullable short[] actual) {
     return new ShortArrayAssert(actual);
   }
 
@@ -398,7 +398,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull StringAssert assertThat(@Nullable String actual) {
+  public static @NotNull StringAssert assertThat(@Nullable String actual) {
     return new StringAssert(actual);
   }
 
@@ -434,7 +434,7 @@ public class Assertions {
    * @return the given assertion.
    * @throws NullPointerException if the given assertion is {@code null}.
    */
-  public static @Nonnull <T extends AssertExtension> T assertThat(@Nonnull T assertion) {
+  public static @NotNull <T extends AssertExtension> T assertThat(@NotNull T assertion) {
     return assertion;
   }
 
@@ -444,7 +444,7 @@ public class Assertions {
    * @param actual the value to be the target of the assertions methods.
    * @return the created assertion object.
    */
-  public static @Nonnull ThrowableAssert assertThat(@Nullable Throwable actual) {
+  public static @NotNull ThrowableAssert assertThat(@Nullable Throwable actual) {
     return new ThrowableAssert(actual);
   }
 }

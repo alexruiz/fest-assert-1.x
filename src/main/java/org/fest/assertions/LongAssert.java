@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static java.lang.Long.valueOf;
 import static org.fest.assertions.ErrorMessages.*;
@@ -59,7 +59,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Long} is not equal to the given one.
    */
-  public @Nonnull LongAssert isEqualTo(long expected) {
+  public @NotNull LongAssert isEqualTo(long expected) {
     return isEqualTo(valueOf(expected));
   }
 
@@ -70,7 +70,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Long} is equal to the given one.
    */
-  public @Nonnull LongAssert isNotEqualTo(long other) {
+  public @NotNull LongAssert isNotEqualTo(long other) {
     return isNotEqualTo(valueOf(other));
   }
 
@@ -81,7 +81,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Long} is not greater than the given one.
    */
-  public @Nonnull LongAssert isGreaterThan(long other) {
+  public @NotNull LongAssert isGreaterThan(long other) {
     if (actual > other) {
       return this;
     }
@@ -96,7 +96,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Long} is not less than the given one.
    */
-  public @Nonnull LongAssert isLessThan(long other) {
+  public @NotNull LongAssert isLessThan(long other) {
     if (actual < other) {
       return this;
     }
@@ -111,7 +111,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Long} is not greater than or equal to the given one.
    */
-  public @Nonnull LongAssert isGreaterThanOrEqualTo(long other) {
+  public @NotNull LongAssert isGreaterThanOrEqualTo(long other) {
     if (actual >= other) {
       return this;
     }
@@ -126,7 +126,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Long} is not less than or equal to the given one.
    */
-  public @Nonnull LongAssert isLessThanOrEqualTo(long other) {
+  public @NotNull LongAssert isLessThanOrEqualTo(long other) {
     if (actual <= other) {
       return this;
     }
@@ -141,7 +141,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
    * @throws AssertionError if the actual {@code Long} is not equal to zero.
    */
   @Override
-  public @Nonnull LongAssert isZero() {
+  public @NotNull LongAssert isZero() {
     return isEqualTo(ZERO);
   }
 
@@ -152,7 +152,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
    * @throws AssertionError if the actual {@code Long} is not positive.
    */
   @Override
-  public @Nonnull LongAssert isPositive() {
+  public @NotNull LongAssert isPositive() {
     return isGreaterThan(ZERO);
   }
 
@@ -163,7 +163,7 @@ public class LongAssert extends GenericAssert<LongAssert, Long> implements Numbe
    * @throws AssertionError if the actual {@code Long} is not negative.
    */
   @Override
-  public @Nonnull LongAssert isNegative() {
+  public @NotNull LongAssert isNegative() {
     return isLessThan(ZERO);
   }
 }

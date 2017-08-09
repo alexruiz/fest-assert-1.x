@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Alex Ruiz
@@ -30,39 +30,39 @@ final class EmptyArrays {
   private static final short[] EMPTY_SHORT_ARRAY = new short[0];
   private static final Object[] EMPTY_OBJECT_ARRAY = new Object[0];
 
-  static @Nonnull boolean[] emptyBooleanArray() {
+  static @NotNull boolean[] emptyBooleanArray() {
     return EMPTY_BOOLEAN_ARRAY;
   }
 
-  static @Nonnull byte[] emptyByteArray() {
+  static @NotNull byte[] emptyByteArray() {
     return EMPTY_BYTE_ARRAY;
   }
 
-  static @Nonnull char[] emptyCharArray() {
+  static @NotNull char[] emptyCharArray() {
     return EMPTY_CHAR_ARRAY;
   }
 
-  static @Nonnull double[] emptyDoubleArray() {
+  static @NotNull double[] emptyDoubleArray() {
     return EMPTY_DOUBLE_ARRAY;
   }
 
-  static @Nonnull float[] emptyFloatArray() {
+  static @NotNull float[] emptyFloatArray() {
     return EMPTY_FLOAT_ARRAY;
   }
 
-  static @Nonnull int[] emptyIntArray() {
+  static @NotNull int[] emptyIntArray() {
     return EMPTY_INT_ARRAY;
   }
 
-  static @Nonnull long[] emptyLongArray() {
+  static @NotNull long[] emptyLongArray() {
     return EMPTY_LONG_ARRAY;
   }
 
-  static @Nonnull short[] emptyShortArray() {
+  static @NotNull short[] emptyShortArray() {
     return EMPTY_SHORT_ARRAY;
   }
 
-  static @Nonnull Object[] emptyObjectArray() {
+  static @NotNull Object[] emptyObjectArray() {
     return EMPTY_OBJECT_ARRAY;
   }
 

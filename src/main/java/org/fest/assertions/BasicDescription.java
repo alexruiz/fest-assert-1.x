@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 import static org.fest.util.Preconditions.checkNotNull;
 
@@ -33,7 +33,7 @@ public class BasicDescription implements Description {
    * @param description the value of this description.
    * @throws NullPointerException if the given description is {@code null}.
    */
-  public BasicDescription(@Nonnull String description) {
+  public BasicDescription(@NotNull String description) {
     this.description = checkNotNull(description);
   }
 
@@ -41,7 +41,7 @@ public class BasicDescription implements Description {
    * @see org.fest.assertions.Description#value()
    */
   @Override
-  public @Nonnull String value() {
+  public @NotNull String value() {
     return checkNotNull(description);
   }
 }

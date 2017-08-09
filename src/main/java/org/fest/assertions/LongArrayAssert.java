@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 
 import static org.fest.assertions.ArrayInspection.copy;
@@ -49,7 +49,7 @@ public class LongArrayAssert extends ArrayAssert<LongArrayAssert, long[]> {
    * @throws NullPointerException if the given {@code long} array is {@code null}.
    * @throws AssertionError       if the actual {@code long} array does not contain the given values.
    */
-  public @Nonnull LongArrayAssert contains(@Nonnull long... values) {
+  public @NotNull LongArrayAssert contains(@NotNull long... values) {
     assertContains(copy(values));
     return this;
   }
@@ -64,7 +64,7 @@ public class LongArrayAssert extends ArrayAssert<LongArrayAssert, long[]> {
    * @throws AssertionError       if the actual {@code long} array does not contain the given objects, or if the actual
    *                              {@code long} array contains elements other than the ones specified.
    */
-  public @Nonnull LongArrayAssert containsOnly(@Nonnull long... values) {
+  public @NotNull LongArrayAssert containsOnly(@NotNull long... values) {
     assertContainsOnly(copy(values));
     return this;
   }
@@ -78,7 +78,7 @@ public class LongArrayAssert extends ArrayAssert<LongArrayAssert, long[]> {
    * @throws NullPointerException if the given {@code long} array is {@code null}.
    * @throws AssertionError       if the actual {@code long} array contains any of the given values.
    */
-  public @Nonnull LongArrayAssert excludes(@Nonnull long... values) {
+  public @NotNull LongArrayAssert excludes(@NotNull long... values) {
     assertExcludes(copy(values));
     return this;
   }
@@ -92,7 +92,7 @@ public class LongArrayAssert extends ArrayAssert<LongArrayAssert, long[]> {
    * @throws AssertionError if the actual {@code long} array is not equal to the given one.
    */
   @Override
-  public @Nonnull LongArrayAssert isEqualTo(@Nullable long[] expected) {
+  public @NotNull LongArrayAssert isEqualTo(@Nullable long[] expected) {
     if (Arrays.equals(actual, expected)) {
       return this;
     }
@@ -109,7 +109,7 @@ public class LongArrayAssert extends ArrayAssert<LongArrayAssert, long[]> {
    * @throws AssertionError if the actual {@code long} array is equal to the given one.
    */
   @Override
-  public @Nonnull LongArrayAssert isNotEqualTo(@Nullable long[] array) {
+  public @NotNull LongArrayAssert isNotEqualTo(@Nullable long[] array) {
     if (!Arrays.equals(actual, array)) {
       return this;
     }

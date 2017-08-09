@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 
 import static org.fest.assertions.ArrayInspection.copy;
@@ -49,7 +49,7 @@ public class ByteArrayAssert extends ArrayAssert<ByteArrayAssert, byte[]> {
    * @throws NullPointerException if the given {@code byte} array is {@code null}.
    * @throws AssertionError       if the actual {@code byte} array does not contain the given values.
    */
-  public @Nonnull ByteArrayAssert contains(@Nonnull byte... values) {
+  public @NotNull ByteArrayAssert contains(@NotNull byte... values) {
     assertContains(copy(values));
     return this;
   }
@@ -64,7 +64,7 @@ public class ByteArrayAssert extends ArrayAssert<ByteArrayAssert, byte[]> {
    * @throws AssertionError       if the actual {@code byte} array does not contain the given objects, or if the actual
    *                              {@code byte} array contains elements other than the ones specified.
    */
-  public @Nonnull ByteArrayAssert containsOnly(@Nonnull byte... values) {
+  public @NotNull ByteArrayAssert containsOnly(@NotNull byte... values) {
     assertContainsOnly(copy(values));
     return this;
   }
@@ -78,7 +78,7 @@ public class ByteArrayAssert extends ArrayAssert<ByteArrayAssert, byte[]> {
    * @throws NullPointerException if the given {@code byte} array is {@code null}.
    * @throws AssertionError       if the actual {@code byte} array contains any of the given values.
    */
-  public @Nonnull ByteArrayAssert excludes(@Nonnull byte... values) {
+  public @NotNull ByteArrayAssert excludes(@NotNull byte... values) {
     assertExcludes(copy(values));
     return this;
   }
@@ -92,7 +92,7 @@ public class ByteArrayAssert extends ArrayAssert<ByteArrayAssert, byte[]> {
    * @throws AssertionError if the actual {@code byte} array is not equal to the given one.
    */
   @Override
-  public @Nonnull ByteArrayAssert isEqualTo(@Nullable byte[] expected) {
+  public @NotNull ByteArrayAssert isEqualTo(@Nullable byte[] expected) {
     if (Arrays.equals(actual, expected)) {
       return this;
     }
@@ -109,7 +109,7 @@ public class ByteArrayAssert extends ArrayAssert<ByteArrayAssert, byte[]> {
    * @throws AssertionError if the actual {@code byte} array is equal to the given one.
    */
   @Override
-  public @Nonnull ByteArrayAssert isNotEqualTo(@Nullable byte[] array) {
+  public @NotNull ByteArrayAssert isNotEqualTo(@Nullable byte[] array) {
     if (!Arrays.equals(actual, array)) {
       return this;
     }

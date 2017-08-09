@@ -16,8 +16,8 @@ package org.fest.assertions;
 
 import org.fest.util.VisibleForTesting;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static org.fest.assertions.Fail.failIfNotEqual;
 import static org.fest.assertions.Formatting.format;
@@ -55,7 +55,7 @@ public class ThrowableAssert extends GenericAssert<ThrowableAssert, Throwable> {
    * @throws AssertionError       if the actual {@code Throwable} is not an instance of the given type.
    * @throws NullPointerException if the given type is {@code null}.
    */
-  public @Nonnull ThrowableAssert isInstanceOf(@Nonnull Class<? extends Throwable> type) {
+  public @NotNull ThrowableAssert isInstanceOf(@NotNull Class<? extends Throwable> type) {
     objectAssert.isInstanceOf(type);
     return this;
   }
@@ -70,7 +70,7 @@ public class ThrowableAssert extends GenericAssert<ThrowableAssert, Throwable> {
    * @throws AssertionError       if the actual {@code Throwable} is not an instance of the given type.
    * @throws NullPointerException if the given type is {@code null}.
    */
-  public @Nonnull ThrowableAssert isExactlyInstanceOf(@Nonnull Class<?> type) {
+  public @NotNull ThrowableAssert isExactlyInstanceOf(@NotNull Class<?> type) {
     isNotNull();
     checkNotNull(type);
     Class<?> current = actual.getClass();
@@ -89,7 +89,7 @@ public class ThrowableAssert extends GenericAssert<ThrowableAssert, Throwable> {
    * @throws AssertionError if the actual {@code Throwable} is {@code null}.
    * @throws AssertionError if the message of the actual {@code Throwable} is not equal to the given one.
    */
-  public @Nonnull ThrowableAssert hasMessage(@Nullable String message) {
+  public @NotNull ThrowableAssert hasMessage(@Nullable String message) {
     isNotNull();
     failIfNotEqual(customErrorMessage(), rawDescription(), actual.getMessage(), message);
     return this;
@@ -102,7 +102,7 @@ public class ThrowableAssert extends GenericAssert<ThrowableAssert, Throwable> {
    * @throws AssertionError if the actual {@code Throwable} is {@code null}.
    * @throws AssertionError if the actual {@code Throwable} has a cause.
    */
-  public @Nonnull ThrowableAssert hasNoCause() {
+  public @NotNull ThrowableAssert hasNoCause() {
     isNotNull();
     Throwable actualCause = actual.getCause();
     if (actualCause == null) {
@@ -116,7 +116,7 @@ public class ThrowableAssert extends GenericAssert<ThrowableAssert, Throwable> {
    * {@inheritDoc}
    */
   @Override
-  public @Nonnull ThrowableAssert as(@Nullable String description) {
+  public @NotNull ThrowableAssert as(@Nullable String description) {
     objectAssert.as(description);
     return super.as(description);
   }
@@ -125,7 +125,7 @@ public class ThrowableAssert extends GenericAssert<ThrowableAssert, Throwable> {
    * {@inheritDoc}
    */
   @Override
-  public @Nonnull ThrowableAssert describedAs(@Nullable String description) {
+  public @NotNull ThrowableAssert describedAs(@Nullable String description) {
     return as(description);
   }
 
@@ -133,7 +133,7 @@ public class ThrowableAssert extends GenericAssert<ThrowableAssert, Throwable> {
    * {@inheritDoc}
    */
   @Override
-  public @Nonnull ThrowableAssert as(@Nullable Description description) {
+  public @NotNull ThrowableAssert as(@Nullable Description description) {
     objectAssert.as(description);
     return super.as(description);
   }
@@ -142,7 +142,7 @@ public class ThrowableAssert extends GenericAssert<ThrowableAssert, Throwable> {
    * {@inheritDoc}
    */
   @Override
-  public @Nonnull ThrowableAssert describedAs(@Nullable Description description) {
+  public @NotNull ThrowableAssert describedAs(@Nullable Description description) {
     return as(description);
   }
 
@@ -150,7 +150,7 @@ public class ThrowableAssert extends GenericAssert<ThrowableAssert, Throwable> {
    * {@inheritDoc}
    */
   @Override
-  public @Nonnull ThrowableAssert overridingErrorMessage(@Nullable String message) {
+  public @NotNull ThrowableAssert overridingErrorMessage(@Nullable String message) {
     objectAssert.overridingErrorMessage(message);
     return super.overridingErrorMessage(message);
   }

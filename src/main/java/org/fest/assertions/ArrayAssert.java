@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Set;
 
@@ -36,7 +36,7 @@ public abstract class ArrayAssert<S, A> extends ItemGroupAssert<S, A> {
    * @param selfType the "self type."
    * @param actual   the target to verify.
    */
-  protected ArrayAssert(@Nonnull Class<S> selfType, @Nullable A actual) {
+  protected ArrayAssert(@NotNull Class<S> selfType, @Nullable A actual) {
     super(selfType, actual);
   }
 

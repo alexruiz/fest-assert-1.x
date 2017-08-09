@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static org.fest.util.Preconditions.checkNotNull;
 import static org.fest.util.Strings.isNullOrEmpty;
@@ -35,7 +35,7 @@ public final class ComparisonFailureFactory {
   private ComparisonFailureFactory() {
   }
 
-  static void constructorInvoker(@Nonnull ConstructorInvoker newConstructorInvoker) {
+  static void constructorInvoker(@NotNull ConstructorInvoker newConstructorInvoker) {
     constructorInvoker = checkNotNull(newConstructorInvoker);
   }
 
@@ -56,7 +56,7 @@ public final class ComparisonFailureFactory {
     }
   }
 
-  private static @Nonnull String clean(@Nullable String message) {
+  private static @NotNull String clean(@Nullable String message) {
     return message == null ? "" : message;
   }
 
@@ -82,7 +82,7 @@ public final class ComparisonFailureFactory {
     return toStringOf(o);
   }
 
-  private static @Nonnull String format(@Nullable String message) {
+  private static @NotNull String format(@Nullable String message) {
     if (isNullOrEmpty(message)) {
       return EMPTY_MESSAGE;
     }

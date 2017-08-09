@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 
 /**
@@ -27,15 +27,15 @@ final class BigDecimals {
   private static final BigDecimal SEVEN = new BigDecimal("7.0");
   private static final BigDecimal EIGHT = new BigDecimal("8.0");
 
-  static @Nonnull BigDecimal negativeEight() {
+  static @NotNull BigDecimal negativeEight() {
     return NEGATIVE_EIGHT;
   }
 
-  static @Nonnull BigDecimal seven() {
+  static @NotNull BigDecimal seven() {
     return SEVEN;
   }
 
-  static @Nonnull BigDecimal eight() {
+  static @NotNull BigDecimal eight() {
     return EIGHT;
   }
 

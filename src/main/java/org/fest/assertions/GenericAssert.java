@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 
 import static org.fest.assertions.ErrorMessages.unexpectedIn;
@@ -46,7 +46,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @param selfType the "self type."
    * @param actual   the actual value to verify.
    */
-  protected GenericAssert(@Nonnull Class<S> selfType, @Nullable A actual) {
+  protected GenericAssert(@NotNull Class<S> selfType, @Nullable A actual) {
     this.actual = actual;
     myself = selfType.cast(this);
   }
@@ -69,7 +69,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @throws AssertionError       if the actual value does not satisfy the given condition.
    * @see #is(Condition)
    */
-  public final @Nonnull S satisfies(@Nonnull Condition<A> condition) {
+  public final @NotNull S satisfies(@NotNull Condition<A> condition) {
     if (matches(condition)) {
       return myself();
     }
@@ -77,7 +77,7 @@ public abstract class GenericAssert<S, A> extends Assert {
     throw failure(errorMessageIfConditionNotSatisfied(condition));
   }
 
-  private @Nonnull String errorMessageIfConditionNotSatisfied(@Nonnull Condition<A> condition) {
+  private @NotNull String errorMessageIfConditionNotSatisfied(@NotNull Condition<A> condition) {
     return condition.addDescriptionTo(format("actual value:<%s> should satisfy condition", actual));
   }
 
@@ -90,7 +90,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @throws AssertionError       if the actual value satisfies the given condition.
    * @see #isNot(Condition)
    */
-  public final @Nonnull S doesNotSatisfy(@Nonnull Condition<A> condition) {
+  public final @NotNull S doesNotSatisfy(@NotNull Condition<A> condition) {
     if (!matches(condition)) {
       return myself();
     }
@@ -98,7 +98,7 @@ public abstract class GenericAssert<S, A> extends Assert {
     throw failure(errorMessageIfConditionSatisfied(condition));
   }
 
-  private @Nonnull String errorMessageIfConditionSatisfied(@Nonnull Condition<A> condition) {
+  private @NotNull String errorMessageIfConditionSatisfied(@NotNull Condition<A> condition) {
     return condition.addDescriptionTo(format("actual value:<%s> should not satisfy condition", actual));
   }
 
@@ -111,7 +111,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @throws AssertionError       if the actual value does not satisfy the given condition.
    * @since 1.2
    */
-  public final @Nonnull S is(@Nonnull Condition<A> condition) {
+  public final @NotNull S is(@NotNull Condition<A> condition) {
     if (matches(condition)) {
       return myself();
     }
@@ -119,7 +119,7 @@ public abstract class GenericAssert<S, A> extends Assert {
     throw failure(errorMessageIfIsNot(condition));
   }
 
-  private @Nonnull String errorMessageIfIsNot(@Nonnull Condition<A> condition) {
+  private @NotNull String errorMessageIfIsNot(@NotNull Condition<A> condition) {
     return condition.addDescriptionTo(format("actual value:<%s> should be", actual));
   }
 
@@ -132,7 +132,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @throws AssertionError       if the actual value satisfies the given condition.
    * @since 1.2
    */
-  public final @Nonnull S isNot(@Nonnull Condition<A> condition) {
+  public final @NotNull S isNot(@NotNull Condition<A> condition) {
     if (!matches(condition)) {
       return myself();
     }
@@ -140,12 +140,12 @@ public abstract class GenericAssert<S, A> extends Assert {
     throw failure(errorMessageIfIs(condition));
   }
 
-  private boolean matches(@Nonnull Condition<A> condition) {
+  private boolean matches(@NotNull Condition<A> condition) {
     checkNotNull(condition);
     return condition.matches(actual);
   }
 
-  private @Nonnull String errorMessageIfIs(@Nonnull Condition<A> condition) {
+  private @NotNull String errorMessageIfIs(@NotNull Condition<A> condition) {
     return condition.addDescriptionTo(format("actual value:<%s> should not be", actual));
   }
 
@@ -162,7 +162,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @param description the description of the actual value.
    * @return this assertion object.
    */
-  public @Nonnull S as(@Nullable String description) {
+  public @NotNull S as(@Nullable String description) {
     description(description);
     return myself();
   }
@@ -180,7 +180,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @param description the description of the actual value.
    * @return this assertion object.
    */
-  public @Nonnull S describedAs(@Nullable String description) {
+  public @NotNull S describedAs(@Nullable String description) {
     return as(description);
   }
 
@@ -197,7 +197,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @param description the description of the actual value.
    * @return this assertion object.
    */
-  public @Nonnull S as(@Nullable Description description) {
+  public @NotNull S as(@Nullable Description description) {
     description(description);
     return myself();
   }
@@ -215,7 +215,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @param description the description of the actual value.
    * @return this assertion object.
    */
-  public @Nonnull S describedAs(@Nullable Description description) {
+  public @NotNull S describedAs(@Nullable Description description) {
     return as(description);
   }
 
@@ -226,7 +226,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @return this assertion object.
    * @throws AssertionError if the actual value is not equal to the given one.
    */
-  public @Nonnull S isEqualTo(@Nullable A expected) {
+  public @NotNull S isEqualTo(@Nullable A expected) {
     failIfNotEqual(customErrorMessage(), rawDescription(), actual, expected);
     return myself();
   }
@@ -238,7 +238,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @return this assertion object.
    * @throws AssertionError if the actual value is equal to the given one.
    */
-  public @Nonnull S isNotEqualTo(@Nullable A other) {
+  public @NotNull S isNotEqualTo(@Nullable A other) {
     failIfEqual(customErrorMessage(), rawDescription(), actual, other);
     return myself();
   }
@@ -249,7 +249,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @return this assertion object.
    * @throws AssertionError if the actual value is {@code null}.
    */
-  public final @Nonnull S isNotNull() {
+  public final @NotNull S isNotNull() {
     failIfActualIsNull(customErrorMessage(), rawDescription(), actual);
     return myself();
   }
@@ -261,7 +261,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @return this assertion object.
    * @throws AssertionError if the actual value is not the same as the given one.
    */
-  public final @Nonnull S isSameAs(@Nullable A expected) {
+  public final @NotNull S isSameAs(@Nullable A expected) {
     failIfNotSame(customErrorMessage(), rawDescription(), actual, expected);
     return myself();
   }
@@ -273,7 +273,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @return this assertion object.
    * @throws AssertionError if the actual value is the same as the given one.
    */
-  public final @Nonnull S isNotSameAs(@Nullable A other) {
+  public final @NotNull S isNotSameAs(@Nullable A other) {
     failIfSame(customErrorMessage(), rawDescription(), actual, other);
     return myself();
   }
@@ -286,7 +286,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @throws AssertionError       if the actual value is not in the given values.
    * @throws NullPointerException if the given parameter is null.
    */
-  public final @Nonnull S isIn(@Nonnull Object... values) {
+  public final @NotNull S isIn(@NotNull Object... values) {
     return isIn(newArrayList(values));
   }
 
@@ -298,7 +298,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @throws AssertionError       if the actual value is not in the given collection.
    * @throws NullPointerException if the given collection is null.
    */
-  public final @Nonnull S isIn(@Nonnull Collection<?> values) {
+  public final @NotNull S isIn(@NotNull Collection<?> values) {
     checkNotNull(values);
     if (isActualIn(values)) {
       return myself();
@@ -315,7 +315,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @throws AssertionError       if the actual value is not in the given values.
    * @throws NullPointerException if the given parameter is null.
    */
-  public final @Nonnull S isNotIn(@Nonnull Object... values) {
+  public final @NotNull S isNotIn(@NotNull Object... values) {
     return isNotIn(newArrayList(values));
   }
 
@@ -327,7 +327,7 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @throws AssertionError       if the actual value is not in the given collection.
    * @throws NullPointerException if the given collection is null.
    */
-  public final @Nonnull S isNotIn(@Nonnull Collection<?> values) {
+  public final @NotNull S isNotIn(@NotNull Collection<?> values) {
     checkNotNull(values);
     if (!isActualIn(values)) {
       return myself();
@@ -336,7 +336,7 @@ public abstract class GenericAssert<S, A> extends Assert {
     throw failure(unexpectedIn(actual, values));
   }
 
-  private boolean isActualIn(@Nonnull Collection<?> values) {
+  private boolean isActualIn(@NotNull Collection<?> values) {
     if (values.isEmpty()) {
       return false;
     }
@@ -367,12 +367,12 @@ public abstract class GenericAssert<S, A> extends Assert {
    * @return this assertion.
    * @since 1.2
    */
-  public @Nonnull S overridingErrorMessage(@Nullable String message) {
+  public @NotNull S overridingErrorMessage(@Nullable String message) {
     replaceDefaultErrorMessagesWith(message);
     return myself();
   }
 
-  protected final @Nonnull S myself() {
+  protected final @NotNull S myself() {
     return checkNotNull(myself);
   }
 }
